@@ -395,6 +395,11 @@ btnCreateTeams.addEventListener('click', () => {
     console.log("Modal ouvert");
 });
 
+btnCreateTeams.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    modalTeams.classList.add('active');
+}, { passive: false });
+
 // Team Count Selector (Improved with delegation for iPad)
 const countContainer = document.querySelector('.count-btns');
 if (countContainer) {
@@ -437,7 +442,7 @@ document.querySelectorAll('.team-inputs input').forEach(input => {
 });
 
 
-btnStartGame.addEventListener('click', () => {
+const startGame = () => {
     console.log("Démarrage avec", state.teamCount, "équipes");
 
     // Refresh team buttons reference to be sure we have them all
@@ -469,7 +474,13 @@ btnStartGame.addEventListener('click', () => {
     initAudio();
     if (audioContext) audioContext.resume();
     showScreen('themes');
-});
+};
+
+btnStartGame.addEventListener('click', startGame);
+btnStartGame.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    startGame();
+}, { passive: false });
 
 
 
@@ -995,6 +1006,11 @@ function activateJoker(teamIdx) {
 btnNext.addEventListener('click', () => {
     nextSong();
 });
+
+btnNext.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    nextSong();
+}, { passive: false });
 
 function stopGame() {
     state.isPlaying = false;
