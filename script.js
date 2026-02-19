@@ -1,3 +1,10 @@
+// Debug helper
+window.addEventListener('error', (e) => {
+    alert(`JS Error: ${e.message} at ${e.filename}:${e.lineno}`);
+    console.error('Global Error:', e);
+});
+
+console.log('Script loaded v2026_v5');
 const state = {
     screen: 'home',
     teams: [
