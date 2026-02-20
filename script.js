@@ -233,10 +233,25 @@ btnRoleHost.addEventListener('click', () => {
     // Create Room in Firebase
     if (window.firebase && firebase.apps.length) {
         state.roomRef = firebase.database().ref('rooms/' + state.roomId);
+        
+        // Initial setup with default names
+        const defaultNames = state.teams.map(t => t.name);
         state.roomRef.set({
             status: 'lobby',
             mode: state.gameMode,
+            teams: defaultNames,
             timestamp: Date.now()
+        });
+
+        // Sync names in real-time as they are typed in the modal
+        document.querySelectorAll('.team-inputs input').forEach((input, i) => {
+            input.addEventListener('input', () => {
+                const names = [];
+                for (let j = 1; j <= 4; j++) {
+                    names.push(document.getElementById(`input-team-${j}`).value || `Équipe ${j}`);
+                }
+                state.roomRef.update({ teams: names });
+            });
         });
 
         // Listen for buzzer
@@ -303,6 +318,14 @@ btnJoinRoom.addEventListener('click', () => {
         state.roomRef.on('value', (snapshot) => {
             const Val = snapshot.val();
             if (!Val) return console.log("Waiting for room...");
+            
+            // CRITICAL: Update local team names from Firebase for the player
+            if (Val.teams && Array.isArray(Val.teams)) {
+                Val.teams.forEach((name, idx) => {
+                    if (state.teams[idx]) state.teams[idx].name = name;
+                });
+            }
+            
             updatePlayerInterface(Val);
         });
 
@@ -316,6 +339,7 @@ btnJoinRoom.addEventListener('click', () => {
 
 function updatePlayerInterface(roomData) {
     waitingMsg.className = 'player-status-indicator';
+    const myName = state.teams[state.myTeamIdx] ? state.teams[state.myTeamIdx].name : "Joueur";
 
     if (roomData.status === 'playing') {
         waitingMsg.innerText = "À L'ÉCOUTE...";
@@ -326,7 +350,7 @@ function updatePlayerInterface(roomData) {
     } else if (roomData.status === 'buzzed') {
         btnPlayerBuzz.disabled = true;
         if (roomData.buzzerTeam === state.myTeamIdx) {
-            waitingMsg.innerText = "C'EST À VOUS !";
+            waitingMsg.innerText = "C'EST À VOUS " + myName.toUpperCase() + " !";
             waitingMsg.classList.add('status-active');
             if (roomData.mode === 'buttons') {
                 showPlayerChoices(roomData.choices);
@@ -338,7 +362,8 @@ function updatePlayerInterface(roomData) {
             playerChoices.classList.add('hidden');
         }
     } else {
-        waitingMsg.innerText = "PRÉPAREZ-VOUS...";
+        // Here we use the synchronized team name
+        waitingMsg.innerText = myName.toUpperCase() + " PRÊT !";
         waitingMsg.classList.add('status-waiting');
         btnPlayerBuzz.classList.add('hidden');
         playerChoices.classList.add('hidden');
@@ -528,7 +553,7 @@ async function nextSong() {
         if (state.currentModifier === 'bonus1') label = "Surprise +1 🎁";
         if (state.currentModifier === 'bonus3') label = "Ultra +3 💎";
         if (state.currentModifier === 'fast') label = "Chrono 10s ⏱️";
-        if (state.currentModifier === 'steal') label = "Le Voleur de Points 🏴‍☠️";
+        if (state.currentModifier === 'steal') label = "Le Voleur de Points 🏴‍C ️";
         if (state.currentModifier === 'bomb') label = "La Bombe 💣";
 
         modifierBadge.innerText = label;
