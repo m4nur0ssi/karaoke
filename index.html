@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Musical Quiz 2026</title>
-    <link rel="stylesheet" href="style.css?v=2026_v15">
+    <link rel="stylesheet" href="style.css?v=2026_v40.0">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body class="dark-mode">
     <nav class="menu-bar">
-        <button id="nav-home" class="nav-btn">Accueil</button>
-        <div id="room-code-display" class="room-code-tag hidden">ROOM: <span id="current-room-id">----</span></div>
+        <button id="nav-home" class="nav-btn" onclick="window.location.reload();">Accueil</button>
+        <div id="room-code-display" class="room-code-tag hidden">CODE: <span id="current-room-id">----</span> <span
+                id="rest-push-status" style="font-size: 10px; opacity: 0.5;"></span></div>
+        <div id="firebase-status" style="font-size: 10px; color: #aaa;">Connexion DB...</div>
         <div class="team-scores">
             <span id="score-team-1" class="score-chip"></span>
             <span id="score-team-2" class="score-chip"></span>
@@ -87,7 +89,7 @@
                 <div class="theme-card" data-theme="rapfr">
                     <div class="poster-container">
                         <div class="poster-placeholder rapfr"></div>
-                        <div class="poster-overlay"><span>Rap FR</span></div>
+                        <div class="poster-overlay"><span>Rap FR (1995-2025) 🎤</span></div>
                     </div>
                 </div>
                 <div class="theme-card" data-theme="rapus">
@@ -173,6 +175,9 @@
                                     <p id="reveal-title">Titre</p>
                                 </div>
                             </div>
+                            <div id="vocal-answer-display" class="vocal-answer hidden">
+                                🎤 L'équipe a dit : <strong>...</strong>
+                            </div>
                             <div id="validation-controls" class="validation-controls">
                                 <button id="btn-wrong" class="val-btn wrong">Mauvaise Réponse ❌</button>
                                 <button id="btn-correct" class="val-btn correct">Bonne Réponse ✅</button>
@@ -195,20 +200,17 @@
                     <!-- Dynamic Team Blocks -->
                     <div class="team-block" id="block-team-1">
                         <button class="team-btn" data-team="0">ÉQUIPE 1</button>
-                        <button id="joker-1" class="joker-btn" onclick="activateJoker(0)">QUITTE OU DOUBLE 🃏</button>
                     </div>
                     <div class="team-block" id="block-team-2">
                         <button class="team-btn" data-team="1">ÉQUIPE 2</button>
-                        <button id="joker-2" class="joker-btn" onclick="activateJoker(1)">QUITTE OU DOUBLE 🃏</button>
                     </div>
                     <div class="team-block hidden" id="block-team-3">
                         <button class="team-btn" data-team="2">ÉQUIPE 3</button>
-                        <button id="joker-3" class="joker-btn" onclick="activateJoker(2)">QUITTE OU DOUBLE 🃏</button>
                     </div>
                     <div class="team-block hidden" id="block-team-4">
                         <button class="team-btn" data-team="3">ÉQUIPE 4</button>
-                        <button id="joker-4" class="joker-btn" onclick="activateJoker(3)">QUITTE OU DOUBLE 🃏</button>
                     </div>
+
                 </div>
             </div>
 
@@ -216,20 +218,34 @@
 
         <!-- Screen Player (Mobile Interface) -->
         <section id="screen-player" class="screen">
-            <div id="player-lobby" class="player-lobby">
-                <h2 class="glow-text mini">Rejoindre</h2>
-                <input type="text" id="input-room-code" placeholder="CODE SALON (4 lettres)" maxlength="4"
-                    class="room-input">
-                <select id="select-team-join" class="team-select">
-                    <option value="0">ÉQUIPE 1</option>
-                    <option value="1">ÉQUIPE 2</option>
-                    <option value="2">ÉQUIPE 3</option>
-                    <option value="3">ÉQUIPE 4</option>
-                </select>
-                <button id="btn-join-room" class="main-btn primary">REJOINDRE LE JEU</button>
-            </div>
+            <div id="player-lobby" class="player-lobby glass">
+                <div class="lobby-header">
+                    <h2 class="glow-text mini">REJOINDRE</h2>
+                </div>
+                <div class="lobby-fields">
+                    <div class="field-group">
+                        <label class="field-label">CODE DU SALON</label>
+                        <input type="text" id="input-room-code" placeholder="----" class="lobby-input"
+                            autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" maxlength="4">
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">CHOISIR L'ÉQUIPE</label>
+                        <select id="select-team-join" class="lobby-select">
+                            <option value="">RECHERCHE DU SALON...</option>
+                        </select>
+                    </div>
+
+                    <div id="rest-push-status"></div>
+
+                    <button id="btn-join-room" class="lobby-btn main-btn primary" disabled>C'EST PARTI !</button>
+                </div>
+            </div> <!-- FERMETURE DE PLAYER-LOBBY -->
 
             <div id="player-game" class="player-game hidden">
+                <div id="player-room-badge"
+                    style="position:fixed; top:10px; right:10px; background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:100px; font-size:12px; pointer-events:none; border:1px solid rgba(255,255,255,0.2);">
+                    ROOM: --</div>
                 <div id="waiting-msg" class="waiting-msg">Attente de la musique...</div>
 
                 <button id="btn-player-buzz" class="huge-buzz-btn hidden">
@@ -242,6 +258,13 @@
                     <button class="choice-btn" data-idx="2">C</button>
                     <button class="choice-btn" data-idx="3">D</button>
                 </div>
+
+                <div class="player-actions" style="margin-top: 20px;">
+                    <button id="btn-player-joker" class="joker-btn hidden" onclick="handlePlayerJoker()">
+                        QUITTE OU DOUBLE 🃏
+                    </button>
+                </div>
+
             </div>
         </section>
 
@@ -292,6 +315,9 @@
                 <input type="text" id="input-team-4" class="hidden" placeholder="Équipe 4..." value="Équipe 4">
             </div>
             <button id="btn-start-game" class="main-btn primary">C'est parti !</button>
+            <button onclick="syncHostTeams()"
+                style="background:none; border:none; color:rgba(255,255,255,0.2); font-size:10px; cursor:pointer; margin-top:10px;">Forcer
+                Sync (v38)</button>
         </div>
     </div>
 
@@ -304,8 +330,12 @@
     </div>
 
 
-    <script src="firebase-config.js?v=2026_v15"></script>
-    <script src="script.js?v=2026_v15"></script>
+    <div id="version-tag"
+        style="position: fixed; bottom: 5px; right: 5px; font-size: 8px; opacity: 0.3; color: white; pointer-events: none;">
+        v40.0</div>
+
+    <script src="firebase-config.js?v=2026_v40.0"></script>
+    <script src="script.js?v=2026_v40.0"></script>
 </body>
 
 </html>
