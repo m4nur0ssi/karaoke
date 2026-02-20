@@ -943,13 +943,13 @@ input {
 }
 
 .huge-buzz-btn {
-    width: 280px;
-    height: 280px;
+    width: min(280px, 60vw);
+    height: min(280px, 60vw);
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
     border: 10px solid rgba(255, 255, 255, 0.2);
     color: white;
-    font-size: 3rem;
+    font-size: min(3rem, 10vw);
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 20px 0 #660000, 0 30px 60px rgba(255, 0, 0, 0.5);
@@ -959,6 +959,8 @@ input {
     justify-content: center;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     animation: buzzPulse 2s infinite;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .huge-buzz-btn:active {
@@ -1007,9 +1009,13 @@ input {
 }
 
 .waiting-msg {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 800;
     color: var(--secondary);
     text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
     animation: fadeInOut 2s infinite;
 }
 
