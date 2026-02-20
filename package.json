@@ -1,1 +1,5 @@
-{\n  \"name\": \"musical-quiz-2026\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"description\": \"Multiplayer Karaoke Quiz Game\",\n  \"scripts\": {\n    \"build\": \"echo 'Static Build'\"\n  }\n}
+{
+  "name": "musical-quiz-2026",
+  "version": "1.0.0",
+  "private": true
+}
