@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Musical Quiz 2026</title>
-    <link rel="stylesheet" href="style.css?v=2026_v8">
+    <link rel="stylesheet" href="style.css?v=2026_v15">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
@@ -295,12 +295,17 @@
         </div>
     </div>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK (Compat) -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
-    <script src="firebase-config.js"></script>
-    <script src="script.js?v=2026_multi_v8"></script>
+    <div id="debug-log"
+        style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: lime; font-family: monospace; font-size: 10px; z-index: 10000; pointer-events: none; max-height: 50px; overflow: hidden; padding: 2px;">
+    </div>
+
+
+    <script src="firebase-config.js?v=2026_v15"></script>
+    <script src="script.js?v=2026_v15"></script>
 </body>
 
 </html>
