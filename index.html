@@ -1,1 +1,306 @@
-<!DOCTYPE html>\n<html lang=\"fr\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">\n    <title>Musical Quiz 2026</title>\n    <link rel=\"stylesheet\" href=\"style.css?v=2026_v7\">\n    <link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap\" rel=\"stylesheet\">\n</head>\n\n<body class=\"dark-mode\">\n    <nav class=\"menu-bar\">\n        <button id=\"nav-home\" class=\"nav-btn\">Accueil</button>\n        <div id=\"room-code-display\" class=\"room-code-tag hidden\">ROOM: <span id=\"current-room-id\">----</span></div>\n        <div class=\"team-scores\">\n            <span id=\"score-team-1\" class=\"score-chip\"></span>\n            <span id=\"score-team-2\" class=\"score-chip\"></span>\n            <span id=\"score-team-3\" class=\"score-chip hidden\"></span>\n            <span id=\"score-team-4\" class=\"score-chip hidden\"></span>\n        </div>\n    </nav>\n\n    <main id=\"app-container\">\n        <!-- Screen Role Selection (STITCH 2026 Entry) -->\n        <section id=\"screen-role\" class=\"screen active\">\n            <div class=\"hero\">\n                <h1 class=\"glow-text\">Musical Quiz</h1>\n                <p class=\"welcome-msg\">Choisissez votre mode de jeu :</p>\n                <div class=\"role-selector\">\n                    <button id=\"btn-role-host\" class=\"role-card\">\n                        <div class=\"role-icon\">\uD83D\uDCFA</div>\n                        <h3>Écran Principal</h3>\n                        <p>iPad / TV (Hôte)</p>\n                    </button>\n                    <button id=\"btn-role-player\" class=\"role-card\">\n                        <div class=\"role-icon\">\uD83D\uDCF1</div>\n                        <h3>Buzzer Téléphone</h3>\n                        <p>Joueur (Manette)</p>\n                    </button>\n                </div>\n            </div>\n        </section>\n\n        <!-- Screen Home (Host Only) -->\n        <section id=\"screen-home\" class=\"screen\">\n            <div class=\"hero\">\n                <h2 class=\"glow-text mini\">Prêt pour le défi ?</h2>\n                <div class=\"game-setup-options glass\">\n                    <div class=\"setup-group\">\n                        <label>Mode de Réponse :</label>\n                        <div class=\"mode-btns\">\n                            <button class=\"mode-btn active\" data-mode=\"oral\">🎤 VOIX HAUTE</button>\n                            <button class=\"mode-btn\" data-mode=\"buttons\">🔘 4 BOUTONS</button>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"team-setup\">\n                    <button id=\"btn-create-teams\" class=\"main-btn primary\">Configurer le Salon</button>\n                </div>\n            </div>\n        </section>\n\n        <!-- Screen Themes -->\n        <section id=\"screen-themes\" class=\"screen\">\n            <h2 class=\"section-title\">Choisissez un Thème</h2>\n            <div class=\"themes-grid\">\n                <div class=\"theme-card\" data-theme=\"80s\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder theme-80s\"></div>\n                        <div class=\"poster-overlay\"><span>Années 80</span></div>\n                    </div>\n                </div>\n\n                <div class=\"theme-card\" data-theme=\"poprock\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder poprock\"></div>\n                        <div class=\"poster-overlay\"><span>Pop Rock</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"disney\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder disney\"></div>\n                        <div class=\"poster-overlay\"><span>Disney FR</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"rapfr\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder rapfr\"></div>\n                        <div class=\"poster-overlay\"><span>Rap FR</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"rapus\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder rapus\"></div>\n                        <div class=\"poster-overlay\"><span>Rap/R&B US</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"cartoons\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder cartoons\"></div>\n                        <div class=\"poster-overlay\"><span>Dessins Animés \uD83D\uDCFA</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"movies\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder movies\"></div>\n                        <div class=\"poster-overlay\"><span>Films \uD83C\uDFAC</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"series\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder series\"></div>\n                        <div class=\"poster-overlay\"><span>Séries TV \uD83C\uDF9E️</span></div>\n                    </div>\n                </div>\n                <div class=\"theme-card\" data-theme=\"random\">\n                    <div class=\"poster-container\">\n                        <div class=\"poster-placeholder random-grad\"></div>\n                        <div class=\"poster-overlay\"><span>🎭 Aléatoire</span></div>\n                    </div>\n                </div>\n\n            </div>\n\n        </section>\n\n        <!-- Screen Game -->\n        <section id=\"screen-game\" class=\"screen\">\n            <div class=\"game-ui\">\n                <div class=\"now-playing\">\n                    <div class=\"visualizer\">\n                        <div class=\"bar\"></div>\n                        <div class=\"bar\"></div>\n                        <div class=\"bar\"></div>\n                        <div class=\"bar\"></div>\n                        <div class=\"bar\"></div>\n                    </div>\n                    <div class=\"game-header\">\n                        <div id=\"modifier-badge\" class=\"modifier-badge hidden\">Surprise Bonus</div>\n                        <div id=\"countdown\" class=\"timer\">30</div>\n                    </div>\n\n                    <!-- La Roue du Destin (Slot Machine Effect) -->\n                    <div id=\"modal-wheel\" class=\"modal-wheel hidden\">\n                        <div class=\"wheel-overlay\"></div>\n                        <div class=\"slot-machine\">\n                            <h2 class=\"slot-title\">LA ROUE DU DESTIN \uD83C\uDFA1</h2>\n\n                            <div id=\"wheel-team-zone\" class=\"wheel-team-zone\">\n                                <p>C'est au tour de :</p>\n                                <div id=\"wheel-team-name\" class=\"wheel-team-name\">ÉQUIPE 1</div>\n                                <button id=\"btn-spin-wheel\" class=\"main-btn spin-btn\">LANCER LA ROUE ! \uD83C\uDFB0</button>\n                            </div>\n\n                            <div id=\"slot-window\" class=\"slot-window hidden\">\n                                <div id=\"slot-reel\" class=\"slot-reel\">\n                                    <!-- Will be populated by JS -->\n                                </div>\n                            </div>\n                            <div class=\"slot-light left\"></div>\n                            <div class=\"slot-light right\"></div>\n                        </div>\n                    </div>\n\n                    <div id=\"reveal-card\" class=\"reveal-card hidden\">\n                        <div class=\"reveal-content-container\">\n                            <div id=\"bravo-container\" class=\"bravo-container\"></div>\n                            <div class=\"reveal-content\">\n                                <div class=\"mini-cover\"></div>\n                                <div class=\"reveal-info\">\n                                    <h3 id=\"reveal-artist\">Artiste</h3>\n                                    <p id=\"reveal-title\">Titre</p>\n                                </div>\n                            </div>\n                            <div id=\"validation-controls\" class=\"validation-controls\">\n                                <button id=\"btn-wrong\" class=\"val-btn wrong\">Mauvaise Réponse ❌</button>\n                                <button id=\"btn-correct\" class=\"val-btn correct\">Bonne Réponse ✅</button>\n                            </div>\n\n                            <button id=\"btn-next\" class=\"main-btn next hidden\">SUIVANT</button>\n\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"hints-container hidden\" id=\"hints\">\n                    <button class=\"hint-btn\">Artiste 1</button>\n                    <button class=\"hint-btn\">Artiste 2</button>\n                    <button class=\"hint-btn\">Artiste 3</button>\n                    <button class=\"hint-btn\">Artiste 4</button>\n                </div>\n\n                <div class=\"teams-action\" id=\"teams-action\">\n                    <!-- Dynamic Team Blocks -->\n                    <div class=\"team-block\" id=\"block-team-1\">\n                        <button class=\"team-btn\" data-team=\"0\">ÉQUIPE 1</button>\n                        <button id=\"joker-1\" class=\"joker-btn\" onclick=\"activateJoker(0)\">QUITTE OU DOUBLE \uD83C\uDCCF</button>\n                    </div>\n                    <div class=\"team-block\" id=\"block-team-2\">\n                        <button class=\"team-btn\" data-team=\"1\">ÉQUIPE 2</button>\n                        <button id=\"joker-2\" class=\"joker-btn\" onclick=\"activateJoker(1)\">QUITTE OU DOUBLE \uD83C\uDCCF</button>\n                    </div>\n                    <div class=\"team-block hidden\" id=\"block-team-3\">\n                        <button class=\"team-btn\" data-team=\"2\">ÉQUIPE 3</button>\n                        <button id=\"joker-3\" class=\"joker-btn\" onclick=\"activateJoker(2)\">QUITTE OU DOUBLE \uD83C\uDCCF</button>\n                    </div>\n                    <div class=\"team-block hidden\" id=\"block-team-4\">\n                        <button class=\"team-btn\" data-team=\"3\">ÉQUIPE 4</button>\n                        <button id=\"joker-4\" class=\"joker-btn\" onclick=\"activateJoker(3)\">QUITTE OU DOUBLE \uD83C\uDCCF</button>\n                    </div>\n                </div>\n            </div>\n\n        </section>\n\n        <!-- Screen Player (Mobile Interface) -->\n        <section id=\"screen-player\" class=\"screen\">\n            <div id=\"player-lobby\" class=\"player-lobby\">\n                <h2 class=\"glow-text mini\">Rejoindre</h2>\n                <input type=\"text\" id=\"input-room-code\" placeholder=\"CODE SALON (4 lettres)\" maxlength=\"4\"\n                    class=\"room-input\">\n                <select id=\"select-team-join\" class=\"team-select\">\n                    <option value=\"0\">ÉQUIPE 1</option>\n                    <option value=\"1\">ÉQUIPE 2</option>\n                    <option value=\"2\">ÉQUIPE 3</option>\n                    <option value=\"3\">ÉQUIPE 4</option>\n                </select>\n                <button id=\"btn-join-room\" class=\"main-btn primary\">REJOINDRE LE JEU</button>\n            </div>\n\n            <div id=\"player-game\" class=\"player-game hidden\">\n                <div id=\"waiting-msg\" class=\"waiting-msg\">Attente de la musique...</div>\n\n                <button id=\"btn-player-buzz\" class=\"huge-buzz-btn hidden\">\n                    <span>BUZZ !</span>\n                </button>\n\n                <div id=\"player-choices\" class=\"player-choices hidden\">\n                    <button class=\"choice-btn\" data-idx=\"0\">A</button>\n                    <button class=\"choice-btn\" data-idx=\"1\">B</button>\n                    <button class=\"choice-btn\" data-idx=\"2\">C</button>\n                    <button class=\"choice-btn\" data-idx=\"3\">D</button>\n                </div>\n            </div>\n        </section>\n\n        <!-- Results/Podium Screen -->\n        <section id=\"screen-results\" class=\"screen hidden\">\n            <div class=\"results-container glass\">\n                <div class=\"trophy-glow\"></div>\n                <div class=\"podium-header\">\n                    <span class=\"winner-label\">\uD83C\uDFC6 VICTOIRE \uD83C\uDFC6</span>\n                    <h1 id=\"winner-name\">NOM DE L'ÉQUIPE</h1>\n                    <p id=\"winner-message\" class=\"winner-message\">Félicitations pour cette performance incroyable !\n                    </p>\n                </div>\n\n                <div id=\"final-podium\" class=\"final-podium\">\n                    <!-- Sorted scores appear here -->\n                </div>\n\n                <div class=\"podium-comfort\">\n                    <p id=\"comfort-message\">Pas de soucis, l'important c'est de participer ! \uD83D\uDE09</p>\n                </div>\n\n                <div class=\"results-actions\">\n                    <button onclick=\"restartGame()\" class=\"main-btn primary\">REJOUER \uD83D\uDCC4</button>\n                    <button onclick=\"window.location.reload()\" class=\"nav-btn\">ACCUEIL</button>\n                </div>\n            </div>\n        </section>\n\n    </main>\n\n    <!-- Modal for Team Creation -->\n    <div id=\"modal-teams\" class=\"modal\">\n        <div class=\"modal-content glass\">\n            <h2>Configuration des Équipes</h2>\n            <div class=\"team-count-selector\">\n                <label>Nombre d'équipes :</label>\n                <div class=\"count-btns\">\n                    <button class=\"count-btn active\" data-count=\"2\">2</button>\n                    <button class=\"count-btn\" data-count=\"3\">3</button>\n                    <button class=\"count-btn\" data-count=\"4\">4</button>\n                </div>\n            </div>\n            <div class=\"team-inputs\">\n                <input type=\"text\" id=\"input-team-1\" placeholder=\"Équipe 1...\" value=\"Équipe 1\">\n                <input type=\"text\" id=\"input-team-2\" placeholder=\"Équipe 2...\" value=\"Équipe 2\">\n                <input type=\"text\" id=\"input-team-3\" class=\"hidden\" placeholder=\"Équipe 3...\" value=\"Équipe 3\">\n                <input type=\"text\" id=\"input-team-4\" class=\"hidden\" placeholder=\"Équipe 4...\" value=\"Équipe 4\">\n            </div>\n            <button id=\"btn-start-game\" class=\"main-btn primary\">C'est parti !</button>\n        </div>\n    </div>\n\n    <!-- Firebase SDK -->\n    <script src=\"https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js\"></script>\n    <script src=\"https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js\"></script>\n\n    <script src=\"firebase-config.js\"></script>\n    <script src=\"script.js?v=2026_multi_v2\"></script>\n</body>\n\n</html>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Musical Quiz 2026</title>
+    <link rel="stylesheet" href="style.css?v=2026_v8">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="dark-mode">
+    <nav class="menu-bar">
+        <button id="nav-home" class="nav-btn">Accueil</button>
+        <div id="room-code-display" class="room-code-tag hidden">ROOM: <span id="current-room-id">----</span></div>
+        <div class="team-scores">
+            <span id="score-team-1" class="score-chip"></span>
+            <span id="score-team-2" class="score-chip"></span>
+            <span id="score-team-3" class="score-chip hidden"></span>
+            <span id="score-team-4" class="score-chip hidden"></span>
+        </div>
+    </nav>
+
+    <main id="app-container">
+        <!-- Screen Role Selection (STITCH 2026 Entry) -->
+        <section id="screen-role" class="screen active">
+            <div class="hero">
+                <h1 class="glow-text">Musical Quiz</h1>
+                <p class="welcome-msg">Choisissez votre mode de jeu :</p>
+                <div class="role-selector">
+                    <button id="btn-role-host" class="role-card">
+                        <div class="role-icon">📺</div>
+                        <h3>Écran Principal</h3>
+                        <p>iPad / TV (Hôte)</p>
+                    </button>
+                    <button id="btn-role-player" class="role-card">
+                        <div class="role-icon">📱</div>
+                        <h3>Buzzer Téléphone</h3>
+                        <p>Joueur (Manette)</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen Home (Host Only) -->
+        <section id="screen-home" class="screen">
+            <div class="hero">
+                <h2 class="glow-text mini">Prêt pour le défi ?</h2>
+                <div class="game-setup-options glass">
+                    <div class="setup-group">
+                        <label>Mode de Réponse :</label>
+                        <div class="mode-btns">
+                            <button class="mode-btn active" data-mode="oral">🎤 VOIX HAUTE</button>
+                            <button class="mode-btn" data-mode="buttons">🔘 4 BOUTONS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-setup">
+                    <button id="btn-create-teams" class="main-btn primary">Configurer le Salon</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen Themes -->
+        <section id="screen-themes" class="screen">
+            <h2 class="section-title">Choisissez un Thème</h2>
+            <div class="themes-grid">
+                <div class="theme-card" data-theme="80s">
+                    <div class="poster-container">
+                        <div class="poster-placeholder theme-80s"></div>
+                        <div class="poster-overlay"><span>Années 80</span></div>
+                    </div>
+                </div>
+
+                <div class="theme-card" data-theme="poprock">
+                    <div class="poster-container">
+                        <div class="poster-placeholder poprock"></div>
+                        <div class="poster-overlay"><span>Pop Rock</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="disney">
+                    <div class="poster-container">
+                        <div class="poster-placeholder disney"></div>
+                        <div class="poster-overlay"><span>Disney FR</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="rapfr">
+                    <div class="poster-container">
+                        <div class="poster-placeholder rapfr"></div>
+                        <div class="poster-overlay"><span>Rap FR</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="rapus">
+                    <div class="poster-container">
+                        <div class="poster-placeholder rapus"></div>
+                        <div class="poster-overlay"><span>Rap/R&B US</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="cartoons">
+                    <div class="poster-container">
+                        <div class="poster-placeholder cartoons"></div>
+                        <div class="poster-overlay"><span>Dessins Animés 📺</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="movies">
+                    <div class="poster-container">
+                        <div class="poster-placeholder movies"></div>
+                        <div class="poster-overlay"><span>Films 🎬</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="series">
+                    <div class="poster-container">
+                        <div class="poster-placeholder series"></div>
+                        <div class="poster-overlay"><span>Séries TV 🎞️</span></div>
+                    </div>
+                </div>
+                <div class="theme-card" data-theme="random">
+                    <div class="poster-container">
+                        <div class="poster-placeholder random-grad"></div>
+                        <div class="poster-overlay"><span>🎭 Aléatoire</span></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Screen Game -->
+        <section id="screen-game" class="screen">
+            <div class="game-ui">
+                <div class="now-playing">
+                    <div class="visualizer">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="game-header">
+                        <div id="modifier-badge" class="modifier-badge hidden">Surprise Bonus</div>
+                        <div id="countdown" class="timer">30</div>
+                    </div>
+
+                    <!-- La Roue du Destin (Slot Machine Effect) -->
+                    <div id="modal-wheel" class="modal-wheel hidden">
+                        <div class="wheel-overlay"></div>
+                        <div class="slot-machine">
+                            <h2 class="slot-title">LA ROUE DU DESTIN 🎡</h2>
+
+                            <div id="wheel-team-zone" class="wheel-team-zone">
+                                <p>C'est au tour de :</p>
+                                <div id="wheel-team-name" class="wheel-team-name">ÉQUIPE 1</div>
+                                <button id="btn-spin-wheel" class="main-btn spin-btn">LANCER LA ROUE ! 🎰</button>
+                            </div>
+
+                            <div id="slot-window" class="slot-window hidden">
+                                <div id="slot-reel" class="slot-reel">
+                                    <!-- Will be populated by JS -->
+                                </div>
+                            </div>
+                            <div class="slot-light left"></div>
+                            <div class="slot-light right"></div>
+                        </div>
+                    </div>
+
+                    <div id="reveal-card" class="reveal-card hidden">
+                        <div class="reveal-content-container">
+                            <div id="bravo-container" class="bravo-container"></div>
+                            <div class="reveal-content">
+                                <div class="mini-cover"></div>
+                                <div class="reveal-info">
+                                    <h3 id="reveal-artist">Artiste</h3>
+                                    <p id="reveal-title">Titre</p>
+                                </div>
+                            </div>
+                            <div id="validation-controls" class="validation-controls">
+                                <button id="btn-wrong" class="val-btn wrong">Mauvaise Réponse ❌</button>
+                                <button id="btn-correct" class="val-btn correct">Bonne Réponse ✅</button>
+                            </div>
+
+                            <button id="btn-next" class="main-btn next hidden">SUIVANT</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hints-container hidden" id="hints">
+                    <button class="hint-btn">Artiste 1</button>
+                    <button class="hint-btn">Artiste 2</button>
+                    <button class="hint-btn">Artiste 3</button>
+                    <button class="hint-btn">Artiste 4</button>
+                </div>
+
+                <div class="teams-action" id="teams-action">
+                    <!-- Dynamic Team Blocks -->
+                    <div class="team-block" id="block-team-1">
+                        <button class="team-btn" data-team="0">ÉQUIPE 1</button>
+                        <button id="joker-1" class="joker-btn" onclick="activateJoker(0)">QUITTE OU DOUBLE 🃏</button>
+                    </div>
+                    <div class="team-block" id="block-team-2">
+                        <button class="team-btn" data-team="1">ÉQUIPE 2</button>
+                        <button id="joker-2" class="joker-btn" onclick="activateJoker(1)">QUITTE OU DOUBLE 🃏</button>
+                    </div>
+                    <div class="team-block hidden" id="block-team-3">
+                        <button class="team-btn" data-team="2">ÉQUIPE 3</button>
+                        <button id="joker-3" class="joker-btn" onclick="activateJoker(2)">QUITTE OU DOUBLE 🃏</button>
+                    </div>
+                    <div class="team-block hidden" id="block-team-4">
+                        <button class="team-btn" data-team="3">ÉQUIPE 4</button>
+                        <button id="joker-4" class="joker-btn" onclick="activateJoker(3)">QUITTE OU DOUBLE 🃏</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Screen Player (Mobile Interface) -->
+        <section id="screen-player" class="screen">
+            <div id="player-lobby" class="player-lobby">
+                <h2 class="glow-text mini">Rejoindre</h2>
+                <input type="text" id="input-room-code" placeholder="CODE SALON (4 lettres)" maxlength="4"
+                    class="room-input">
+                <select id="select-team-join" class="team-select">
+                    <option value="0">ÉQUIPE 1</option>
+                    <option value="1">ÉQUIPE 2</option>
+                    <option value="2">ÉQUIPE 3</option>
+                    <option value="3">ÉQUIPE 4</option>
+                </select>
+                <button id="btn-join-room" class="main-btn primary">REJOINDRE LE JEU</button>
+            </div>
+
+            <div id="player-game" class="player-game hidden">
+                <div id="waiting-msg" class="waiting-msg">Attente de la musique...</div>
+
+                <button id="btn-player-buzz" class="huge-buzz-btn hidden">
+                    <span>BUZZ !</span>
+                </button>
+
+                <div id="player-choices" class="player-choices hidden">
+                    <button class="choice-btn" data-idx="0">A</button>
+                    <button class="choice-btn" data-idx="1">B</button>
+                    <button class="choice-btn" data-idx="2">C</button>
+                    <button class="choice-btn" data-idx="3">D</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results/Podium Screen -->
+        <section id="screen-results" class="screen hidden">
+            <div class="results-container glass">
+                <div class="trophy-glow"></div>
+                <div class="podium-header">
+                    <span class="winner-label">🏆 VICTOIRE 🏆</span>
+                    <h1 id="winner-name">NOM DE L'ÉQUIPE</h1>
+                    <p id="winner-message" class="winner-message">Félicitations pour cette performance incroyable !
+                    </p>
+                </div>
+
+                <div id="final-podium" class="final-podium">
+                    <!-- Sorted scores appear here -->
+                </div>
+
+                <div class="podium-comfort">
+                    <p id="comfort-message">Pas de soucis, l'important c'est de participer ! 😉</p>
+                </div>
+
+                <div class="results-actions">
+                    <button onclick="restartGame()" class="main-btn primary">REJOUER 🔄</button>
+                    <button onclick="window.location.reload()" class="nav-btn">ACCUEIL</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Team Creation -->
+    <div id="modal-teams" class="modal">
+        <div class="modal-content glass">
+            <h2>Configuration des Équipes</h2>
+            <div class="team-count-selector">
+                <label>Nombre d'équipes :</label>
+                <div class="count-btns">
+                    <button class="count-btn active" data-count="2">2</button>
+                    <button class="count-btn" data-count="3">3</button>
+                    <button class="count-btn" data-count="4">4</button>
+                </div>
+            </div>
+            <div class="team-inputs">
+                <input type="text" id="input-team-1" placeholder="Équipe 1..." value="Équipe 1">
+                <input type="text" id="input-team-2" placeholder="Équipe 2..." value="Équipe 2">
+                <input type="text" id="input-team-3" class="hidden" placeholder="Équipe 3..." value="Équipe 3">
+                <input type="text" id="input-team-4" class="hidden" placeholder="Équipe 4..." value="Équipe 4">
+            </div>
+            <button id="btn-start-game" class="main-btn primary">C'est parti !</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <script src="firebase-config.js"></script>
+    <script src="script.js?v=2026_multi_v8"></script>
+</body>
+
+</html>
