@@ -14,7 +14,7 @@
 const firebaseConfig = {
     apiKey: "AIzaSyBVM3z6mRZXYp7LtEXy-maLVGhtLjuW4ts",
     authDomain: "quizzgame2026.firebaseapp.com",
-    databaseURL: "https://quizzgame2026-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "https://quizzgame2026-default-rtdb.firebaseio.com",
     projectId: "quizzgame2026",
     storageBucket: "quizzgame2026.firebasestorage.app",
     messagingSenderId: "747687791729",
