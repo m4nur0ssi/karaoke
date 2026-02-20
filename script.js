@@ -269,8 +269,10 @@ btnRolePlayer.addEventListener('click', () => {
 inputRoomCode.addEventListener('input', () => {
     const code = inputRoomCode.value.trim().toUpperCase();
     if (code.length === 4 && window.firebase) {
-        const roomRef = firebase.database().ref('rooms/' + code);
-        roomRef.child('teams').once('value', (snapshot) => {
+        if (window.teamListener) window.teamListener.off(); // Clear previous
+        
+        window.teamListener = firebase.database().ref('rooms/' + code).child('teams');
+        window.teamListener.on('value', (snapshot) => {
             const teams = snapshot.val();
             if (teams && Array.isArray(teams)) {
                 selectTeamJoin.innerHTML = '';
@@ -280,7 +282,7 @@ inputRoomCode.addEventListener('input', () => {
                     opt.innerText = name.toUpperCase();
                     selectTeamJoin.appendChild(opt);
                 });
-                console.log("Teams loaded for room:", code);
+                console.log("Teams updated for room:", code);
             }
         });
     }
