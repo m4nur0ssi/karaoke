@@ -265,6 +265,28 @@ btnRolePlayer.addEventListener('click', () => {
 });
 
 // Join Room Logic
+// Auto-fetch Team Names when room code is entered
+inputRoomCode.addEventListener('input', () => {
+    const code = inputRoomCode.value.trim().toUpperCase();
+    if (code.length === 4 && window.firebase) {
+        const roomRef = firebase.database().ref('rooms/' + code);
+        roomRef.child('teams').once('value', (snapshot) => {
+            const teams = snapshot.val();
+            if (teams && Array.isArray(teams)) {
+                selectTeamJoin.innerHTML = '';
+                teams.forEach((name, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.innerText = name.toUpperCase();
+                    selectTeamJoin.appendChild(opt);
+                });
+                console.log("Teams loaded for room:", code);
+            }
+        });
+    }
+});
+
+// Join Room Logic
 btnJoinRoom.addEventListener('click', () => {
     const code = inputRoomCode.value.trim().toUpperCase();
     if (code.length !== 4) return alert("Code invalide");
@@ -284,6 +306,7 @@ btnJoinRoom.addEventListener('click', () => {
 
         playerLobby.classList.add('hidden');
         playerGame.classList.remove('hidden');
+        playTone(880, 'sine', 0.2);
     } else {
         alert("Firebase n'est pas configuré. Vérifiez firebase-config.js");
     }
@@ -293,7 +316,7 @@ function updatePlayerInterface(roomData) {
     waitingMsg.className = 'player-status-indicator';
 
     if (roomData.status === 'playing') {
-        waitingMsg.innerText = "👂 L'ÉCOUTE...";
+        waitingMsg.innerText = "À L'ÉCOUTE...";
         waitingMsg.classList.add('status-active');
         btnPlayerBuzz.classList.remove('hidden');
         playerChoices.classList.add('hidden');
@@ -312,8 +335,8 @@ function updatePlayerInterface(roomData) {
             btnPlayerBuzz.classList.add('hidden');
             playerChoices.classList.add('hidden');
         }
-    } else if (roomData.status === 'lobby') {
-        waitingMsg.innerText = "EN ATTENTE...";
+    } else {
+        waitingMsg.innerText = "PRÉPAREZ-VOUS...";
         waitingMsg.classList.add('status-waiting');
         btnPlayerBuzz.classList.add('hidden');
         playerChoices.classList.add('hidden');
@@ -340,12 +363,16 @@ function showPlayerChoices(choices) {
 }
 
 btnPlayerBuzz.addEventListener('click', () => {
-    if (state.roomRef) {
-        state.roomRef.child('buzz').set({
-            teamIdx: state.myTeamIdx,
-            timestamp: Date.now()
-        });
-    }
+    if (!state.roomRef) return;
+    
+    // Attempt to get the real name if possible
+    const myName = state.teams && state.teams[state.myTeamIdx] ? state.teams[state.myTeamIdx].name : `Équipe ${state.myTeamIdx + 1}`;
+    
+    state.roomRef.child('buzz').set({
+        teamIdx: state.myTeamIdx,
+        name: myName,
+        time: Date.now()
+    });
 });
 
 // Mode Selection Logic (Host)
@@ -404,13 +431,7 @@ function setup() {
     });
 
     btnStartGame.addEventListener('click', () => {
-        for (let i = 0; i < state.teamCount; i++) {
-            const val = document.getElementById(`input-team-${i + 1}`).value;
-            state.teams[i].name = val || `Équipe ${i + 1}`;
-        }
-        modalTeams.classList.remove('active');
-        updateScores();
-        showScreen('themes');
+        startGame();
     });
 
     themeCards.forEach(card => {
@@ -906,7 +927,7 @@ async function launchWheelOfFate(modifier) {
             { id: 'double', label: 'Doubles 🔥' },
             { id: 'mystery', label: 'Mystère 🌀' },
             { id: 'fast', label: 'Chrono ⏱️' },
-            { id: 'steal', label: 'Pirate 🏴‍☠️' },
+            { id: 'steal', label: 'Pirate 🏴‍C ️' },
             { id: 'bomb', label: 'Bombe 💣' }
         ];
 
@@ -1015,5 +1036,46 @@ function restartGame() {
     updateScores();
     showScreen('home');
 }
+
+const startGame = () => {
+    console.log("Démarrage avec", state.teamCount, "équipes");
+
+    const teamNames = [];
+    for (let i = 0; i < 4; i++) {
+        const val = document.getElementById(`input-team-${i + 1}`).value;
+        state.teams[i].name = val || `Équipe ${i + 1}`;
+        if (i < state.teamCount) teamNames.push(state.teams[i].name);
+
+        const scoreChip = document.getElementById(`score-team-${i + 1}`);
+        const teamBlock = document.getElementById(`block-team-${i + 1}`);
+
+        if (i < state.teamCount) {
+            if (scoreChip) scoreChip.classList.remove('hidden');
+            if (teamBlock) teamBlock.classList.remove('hidden');
+            const btn = teamBlock ? teamBlock.querySelector('.team-btn') : null;
+            if (btn) {
+                btn.innerText = state.teams[i].name;
+            }
+        } else {
+            if (scoreChip) scoreChip.classList.add('hidden');
+            if (teamBlock) teamBlock.classList.add('hidden');
+        }
+    }
+
+    // Sync team names with Firebase so players can see them
+    if (state.roomRef) {
+        state.roomRef.update({
+            teams: teamNames,
+            status: 'lobby',
+            timestamp: Date.now()
+        });
+    }
+
+    updateScores();
+    modalTeams.classList.remove('active');
+    initAudio();
+    if (audioContext) audioContext.resume();
+    showScreen('themes');
+};
 
 setup();
