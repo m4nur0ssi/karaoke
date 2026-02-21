@@ -874,13 +874,26 @@ input {
 }
 
 .role-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+#btn-role-host h3 {
+    color: var(--primary);
+    text-shadow: 0 0 15px rgba(244, 37, 175, 0.4);
+}
+
+#btn-role-player h3 {
+    color: var(--secondary);
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
 }
 
 .role-card p {
     color: var(--text-dim);
+    font-size: 1.1rem;
 }
+
 
 /* --- ROOM CODE TAG --- */
 .room-code-tag {
@@ -1475,9 +1488,9 @@ input {
 }
 
 /* Player Lobby Redesign Stitch 2026 */
-.player-lobby {
+.player-lobby,
+.role-lobby {
     width: 90vw;
-    max-width: 450px;
     padding: 40px 30px;
     border-radius: 40px;
     display: flex;
@@ -1488,6 +1501,14 @@ input {
     backdrop-filter: blur(20px);
     border: 2px solid var(--glass-border);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(244, 37, 175, 0.1);
+}
+
+.player-lobby {
+    max-width: 450px;
+}
+
+.role-lobby {
+    max-width: 700px;
 }
 
 .lobby-header {
