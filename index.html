@@ -26,10 +26,12 @@
     <main id="app-container">
         <!-- Screen Role Selection (STITCH 2026 Entry) -->
         <section id="screen-role" class="screen active">
-            <div class="hero">
-                <h1 class="glow-text">Musical Quiz</h1>
-                <p class="welcome-msg">Choisissez votre mode de jeu :</p>
-                <div class="role-selector">
+            <div class="role-lobby glass">
+                <div class="lobby-header">
+                    <h1 class="glow-text mini" style="font-size: 3rem;">Musical Quiz</h1>
+                    <p class="welcome-msg" style="margin-bottom: 20px; font-size: 1.2rem;">Choisissez votre mode :</p>
+                </div>
+                <div class="role-selector" style="width: 100%; margin-top: 0;">
                     <button id="btn-role-host" class="role-card">
                         <div class="role-icon">📺</div>
                         <h3>Écran Principal</h3>
@@ -220,7 +222,7 @@
         <section id="screen-player" class="screen">
             <div id="player-lobby" class="player-lobby glass">
                 <div class="lobby-header">
-                    <h2 class="glow-text mini">REJOINDRE</h2>
+                    <h2 class="glow-text mini" style="font-size: 2.5rem; letter-spacing: 2px;">Rejoindre</h2>
                 </div>
                 <div class="lobby-fields">
                     <div class="field-group">
@@ -326,7 +328,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
     <div id="debug-log"
-        style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: lime; font-family: monospace; font-size: 10px; z-index: 10000; pointer-events: none; max-height: 50px; overflow: hidden; padding: 2px;">
+        style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: lime; font-family: monospace; font-size: 10px; z-index: 10000; pointer-events: none; max-height: 50px; overflow: hidden; padding: 2px;">
     </div>
 
 
