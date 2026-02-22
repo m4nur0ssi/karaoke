@@ -923,6 +923,12 @@ input {
     font-size: 1.1rem;
 }
 
+.role-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* --- ROOM CODE TAG --- */
 .room-code-tag {
@@ -1235,6 +1241,10 @@ input {
     .role-card p {
         font-size: 1rem;
         margin: 0;
+    }
+
+    .role-text {
+        align-items: flex-start;
     }
 
     .nav-btn {
