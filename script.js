@@ -355,25 +355,33 @@ const state = {
             }
         ],
         'raphaly': [
-            { artist: 'La Rvfleuze', title: 'Argent Sale', hints: [] },
-            { artist: 'Ninho', title: 'Mamacita', hints: [] },
-            { artist: 'Ninho', title: 'Elle m\'a eu', hints: [] },
-            { artist: 'PNL', title: 'Menace', hints: [] },
-            { artist: 'R2', title: 'Ruinart', hints: [] },
-            { artist: 'La Mano', title: 'I\'m Sorry', hints: [] },
-            { artist: 'L2B', title: 'Overbooking', hints: [] },
-            { artist: 'Nono La Grinta', title: 'Love You', hints: [] },
-            { artist: 'Hamza', title: 'Kyky2Bondy', hints: [] },
-            { artist: 'Dadju', title: 'Bob Marley', hints: [] },
-            { artist: 'RNBoi', title: 'Avec Moi', hints: [] },
-            { artist: 'Zola', title: 'Amber', hints: [] },
-            { artist: 'Luigi', title: 'Système', hints: [] },
-            { artist: 'Aya Nakamura', title: 'Baddies', hints: [] },
-            { artist: 'Aupinard', title: 'Pénélope', hints: [] },
-            { artist: 'Jul', title: 'Madame', hints: [] },
-            { artist: 'A6el', title: 'J\'attends au Carrefour Market', hints: [] },
-            { artist: 'Orelsan', title: 'La Quête', hints: [] },
-            { artist: 'SDM', title: 'Pour Elle', hints: [] }
+            { artist: 'La Rvfleuze', title: 'Argent Sale', hints: ["Jul","Ninho","Gazo","SCH"] },
+            { artist: 'Ninho', title: 'Mamacita', hints: ["Gazo","Damso","Tiakola","SDM"] },
+            { artist: 'Ninho', title: 'Elle m\'a eu', hints: ["Jul","SCH","SDM","Gazo"] },
+            { artist: 'PNL', title: 'Menace', hints: ["DTF","Ademo","N.O.S","Ziak"] },
+            { artist: 'R2', title: 'Ruinart', hints: ["La Mano","L2B","Gazo","SDM"] },
+            { artist: 'La Mano', title: 'I\'m Sorry', hints: ["R2","L2B","SDM","Gazo"] },
+            { artist: 'L2B', title: 'Overbooking', hints: ["R2","La Mano","SDM","Gazo"] },
+            { artist: 'Nono La Grinta', title: 'Love You', hints: ["Zola","Koba LaD","Gazo","SDM"] },
+            { artist: 'Hamza', title: 'Kyky2Bondy', hints: ["SCH","Zola","SDM","Gazo"] },
+            { artist: 'Dadju', title: 'Bob Marley', hints: ["Gims","Tayc","Franglish","Ninho"] },
+            { artist: 'RNBoi', title: 'Avec Moi', hints: ["Hamza","Zola","SDM","Gazo"] },
+            { artist: 'Zola', title: 'Amber', hints: ["Gazo","Koba LaD","Maes","Ninho"] },
+            { artist: 'Luigi', title: 'Système', hints: ["Hamza","SDM","Gazo","SCH"] },
+            { artist: 'Aya Nakamura', title: 'Baddies', hints: ["Aya","Gazo","Damso","Tiakola"] },
+            { artist: 'Aupinard', title: 'Pénélope', hints: ["Aupinard","Lomepal","Orelsan","Vald"] },
+            { artist: 'Jul', title: 'Madame', hints: ["Jul","SCH","Naps","Alonzo"] },
+            { artist: 'A6el', title: 'J\'attends au Carrefour Market', hints: ["A6el","SDM","Gazo","SCH"] },
+            { artist: 'Orelsan', title: 'La Quête', hints: ["Vald","Lomepal","Nekfeu","Damso"] },
+            { artist: 'SDM', title: 'Pour Elle', hints: ["SDM","Gazo","Tiakola","Ninho"] },
+            { artist: 'Ninho', title: 'Lettre à une femme', hints: ["Gazo","Tiakola","Jul","Ninho"] },
+            { artist: 'Gazo', title: 'DIE', hints: ["Central Cee","Zola","Koba LaD","Gazo"] },
+            { artist: 'Tiakola', title: 'Meuda', hints: ["Niska","Hamza","Gazo","Tiakola"] },
+            { artist: 'Naps', title: 'La Kiffance', hints: ["Jul","Soso Maness","L'Algérino","Naps"] },
+            { artist: 'SCH', title: 'Bande Organisée', hints: ["Jul","Naps","Soso Maness","SCH"] },
+            { artist: 'PLK', title: 'Petrouchka', hints: ["Soso Maness","Oboy","Zola","PLK"] },
+            { artist: 'Tayc', title: 'Le Temps', hints: ["Dadju","Burnaboy","Wizkid","Tayc"] },
+            { artist: 'PNL', title: 'Au DD', hints: ["DTF","Ademo","N.O.S","PNL"] }
         ],
         'grungerock': [
             { artist: 'Nirvana', title: 'Smells Like Teen Spirit', hints: ['Nirvana', 'Pearl Jam', 'Soundgarden', 'Alice in Chains'] },
@@ -480,276 +488,56 @@ const state = {
             { brand: 'Coco', artist: 'Coco Cast', title: 'Un poco loco', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
         ],
         'rapfr': [
-            {
-                "artist": "Busta Flex",
-                "title": "Pourquoi ?",
-                "hints": [
-                    "Busta Flex",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Suprême NTM",
-                "title": "Ma Benz",
-                "hints": [
-                    "Suprême NTM",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Natty & Rohff",
-                "title": "Le son qui tue",
-                "hints": [
-                    "Natty & Rohff",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Rohff",
-                "title": "Sensation brave",
-                "hints": [
-                    "Rohff",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Ideal J",
-                "title": "Le combat continue",
-                "hints": [
-                    "Ideal J",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Jacky et Ben-J",
-                "title": "On fait les choses",
-                "hints": [
-                    "Jacky et Ben-J",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Oxmo Puccino",
-                "title": "Le jour où tu partiras",
-                "hints": [
-                    "Oxmo Puccino",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Zoxea",
-                "title": "La pression",
-                "hints": [
-                    "Zoxea",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Les Sages Poètes de la Rue",
-                "title": "On inonde les ondes",
-                "hints": [
-                    "Les Sages Poètes de la Rue",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Ol Kainry",
-                "title": "Lady",
-                "hints": [
-                    "Ol Kainry",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Doc Gynéco",
-                "title": "Dans ma rue",
-                "hints": [
-                    "Doc Gynéco",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Passi",
-                "title": "Le maton me guette",
-                "hints": [
-                    "Passi",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Diam's",
-                "title": "Suzy 2003",
-                "hints": [
-                    "Diam's",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Doc Gynéco",
-                "title": "Vanessa",
-                "hints": [
-                    "Doc Gynéco",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Sniper",
-                "title": "Gravé dans la roche",
-                "hints": [
-                    "Sniper",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "La Fouine",
-                "title": "Du ferme",
-                "hints": [
-                    "La Fouine",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Disiz",
-                "title": "J'pète les plombs",
-                "hints": [
-                    "Disiz",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Psy 4 de la Rime",
-                "title": "Le son des bandits",
-                "hints": [
-                    "Psy 4 de la Rime",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Soprano",
-                "title": "A la bien",
-                "hints": [
-                    "Soprano",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "113",
-                "title": "Tonton du bled",
-                "hints": [
-                    "113",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Fonky Family",
-                "title": "Art de rue",
-                "hints": [
-                    "Fonky Family",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Saïan Supa Crew",
-                "title": "Angela",
-                "hints": [
-                    "Saïan Supa Crew",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Oxmo Puccino",
-                "title": "Avoir des potes",
-                "hints": [
-                    "Oxmo Puccino",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Jacky ft. Assia",
-                "title": "5.9.1",
-                "hints": [
-                    "Jacky ft. Assia",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Kery James",
-                "title": "Hardcore",
-                "hints": [
-                    "Kery James",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "MC Solaar",
-                "title": "Caroline",
-                "hints": [
-                    "MC Solaar",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Neg' Marrons",
-                "title": "Le bilan",
-                "hints": [
-                    "Neg' Marrons",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "La Clinique",
-                "title": "Tout saigne",
-                "hints": [
-                    "La Clinique",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "Diam's",
-                "title": "Jeune demoiselle",
-                "hints": [
-                    "Diam's",
-                    "Rap FR",
-                    "Classique"
-                ]
-            },
-            {
-                "artist": "IAM",
-                "title": "Nés sous la même étoile",
-                "hints": [
-                    "IAM",
-                    "Rap FR",
-                    "Classique"
-                ]
-            }
+            { artist: 'Suprême NTM', title: 'La fièvre', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Fonky Family', title: 'Mystère et suspense', hints: ["Fonky Family","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Assassin', title: 'L\'odyssée suit son cours', hints: ["Assassin","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Oxmo Puccino ft. Dany Dan', title: 'A ton enterrement', hints: ["Oxmo Puccino ft. Dany Dan","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Fabe ft. Dany Dan', title: 'Rien ne change à part les saisons', hints: ["Fabe ft. Dany Dan","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Seine Saint Denis Style', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Assassin', title: 'Shoota Babylone', hints: ["Assassin","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Tandem', title: 'Les maux', hints: ["Tandem","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Daddy Lord C', title: 'Freaky flow', hints: ["Daddy Lord C","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Akhenaton', title: 'Au fin fond d\'une contrée', hints: ["Akhenaton","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Kery James', title: '28 décembre 1977', hints: ["Kery James","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Zoxea', title: 'Rap musique que j\'aime', hints: ["Zoxea","Rap FR","Classique","Années 90/00"] },
+            { artist: 'La Brigade ft. Lunatic', title: '16 rimes', hints: ["La Brigade ft. Lunatic","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Fabe', title: 'Aujourd\'hui', hints: ["Fabe","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Akhenaton ft. Fonky Family', title: 'Bad Boys de Marseille', hints: ["Akhenaton ft. Fonky Family","Rap FR","Classique","Années 90/00"] },
+            { artist: 'La Rumeur', title: 'La cuir usé d\'une valise', hints: ["La Rumeur","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Ideal J', title: 'Le ghetto français', hints: ["Ideal J","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Akhenaton', title: 'Mon texte le savon', hints: ["Akhenaton","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Lunatic ft. Jockey', title: 'Le silence n\'est pas un oubli', hints: ["Lunatic ft. Jockey","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Doc Gynéco', title: 'L\'homme qui ne valait pas dix centimes', hints: ["Doc Gynéco","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Shurik\'N', title: 'Lettre', hints: ["Shurik'N","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Casey', title: 'Chez moi', hints: ["Casey","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Les Sages Poètes de la Rue', title: 'Qu\'est-ce qui fait marcher les sages', hints: ["Les Sages Poètes de la Rue","Rap FR","Classique","Années 90/00"] },
+            { artist: 'La Rumeur', title: 'L\'ombre sur la mesure', hints: ["La Rumeur","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Booba', title: 'Le bitume avec une plume', hints: ["Booba","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Fonky Family', title: 'Sans rémission', hints: ["Fonky Family","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Kery James', title: '2 issues', hints: ["Kery James","Rap FR","Classique","Années 90/00"] },
+            { artist: 'La Cliqua', title: 'Un dernier jour sur Terre', hints: ["La Cliqua","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Fabe', title: 'Des durs, des boss... des dombis !', hints: ["Fabe","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Time Bomb', title: 'Les bidons veulent le guidon', hints: ["Time Bomb","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Tout n\'est pas si facile', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Rocé', title: 'On s\'habitue', hints: ["Rocé","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Doc Gynéco', title: 'Nirvana', hints: ["Doc Gynéco","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Rocca', title: 'Les jeunes de l\'univers', hints: ["Rocca","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Shurik\'N ft. Akhenaton', title: 'Manifeste', hints: ["Shurik'N ft. Akhenaton","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Ärsenik', title: 'Boxe avec les mots', hints: ["Ärsenik","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Shurik\'N', title: 'Samouraï', hints: ["Shurik'N","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Chiens de Paille', title: 'Comme un aimant', hints: ["Chiens de Paille","Rap FR","Classique","Années 90/00"] },
+            { artist: 'IAM', title: 'La fin de leur monde', hints: ["IAM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Lunatic', title: 'Civilisé', hints: ["Lunatic","Rap FR","Classique","Années 90/00"] },
+            { artist: 'IAM', title: 'Nés sous la même étoile', hints: ["IAM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'X-Men', title: 'Pendez-les, bandez-les, descendez-les', hints: ["X-Men","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Qu\'est-ce qu\'on attend ?', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Fabe', title: 'L\'impertinent', hints: ["Fabe","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Booba', title: 'Ma définition', hints: ["Booba","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Laisse pas traîner ton fils', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Booba', title: 'Repose en paix', hints: ["Booba","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Ékoué', title: 'Blessé dans mon égo', hints: ["Ékoué","Rap FR","Classique","Années 90/00"] },
+            { artist: 'Lunatic', title: 'la lettre', hints: ["Lunatic","Rap FR","Classique","Années 90/00"] },
+            { artist: 'IAM', title: 'Petit frère', hints: ["IAM","Rap FR","Classique","Années 90/00"] }
         ],
 
 
