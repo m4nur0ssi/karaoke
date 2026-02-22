@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v41.0');
+logDebug('Script loaded v2026_v44.0');
 logDebug('Diagnostic: ' + checkFirebase().msg);
 logDebug('User Agent: ' + navigator.userAgent);
 
@@ -24,7 +24,7 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     return false;
 };
 
-logDebug('Script initialized (v2026_v41.0)');
+logDebug('Script initialized (v2026_v44.0)');
 const state = {
     screen: 'home',
     teams: [
@@ -2645,7 +2645,7 @@ function startVoiceRecognition() {
             <div class='stylish-countdown-text'>RÉPONDEZ MAINTENANT !</div>
             <div class='stylish-countdown-circle' id='voice-countdown-timer'>${timeLeft}</div>
             <div class='stylish-transcript' id='voice-countdown-transcript'></div>
-            <button id='btn-send-vocal-now' style='margin-top:10px; padding:10px 20px; background:var(--primary); color:white; border:none; border-radius:30px; font-weight:bold; cursor:pointer;'>ENVOYER ✅</button>
+            <button id='btn-send-vocal-now' style='margin-top:10px; padding:10px 20px; background:var(--primary); color:white; border:none; border-radius:30px; font-weight:bold; cursor:pointer;'>ENVOYER</button>
             ${!isSupported ? "<div style='font-size:0.7rem; opacity:0.5; margin-top:10px;'>Hôte à l'écoute (Transcription indisponible)</div>" : ""}
         </div>
     `;
@@ -2674,7 +2674,7 @@ function startVoiceRecognition() {
             });
         }
 
-        waitingMsg.innerHTML = "✅<br><span style='font-size:1.5rem; color:var(--text-dim);'>PRÉSENTATION DU TITRE...</span>";
+        waitingMsg.innerHTML = "PRÉSENTATION DU TITRE...";
     };
 
     const updateDisplay = () => {
