@@ -1141,2738 +1141,1119 @@ const state = {
                 "hints": []
             }
         ],
-        'movies': [
-            {
-                "artist": "Soundtrack",
-                "title": "Goodfellas",
-                "brand": "Goodfellas",
-                "hints": [
-                    "Goodfellas",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Les Affranchis",
-                "brand": "Les Affranchis",
-                "hints": [
-                    "Les Affranchis",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Pulp Fiction",
-                "brand": "Pulp Fiction",
-                "hints": [
-                    "Pulp Fiction",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Reservoir Dogs",
-                "brand": "Reservoir Dogs",
-                "hints": [
-                    "Reservoir Dogs",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Fight Club",
-                "brand": "Fight Club",
-                "hints": [
-                    "Fight Club",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Seven",
-                "brand": "Seven",
-                "hints": [
-                    "Seven",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Usual Suspects",
-                "brand": "Usual Suspects",
-                "hints": [
-                    "Usual Suspects",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Matrix",
-                "brand": "Matrix",
-                "hints": [
-                    "Matrix",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Terminator 2: Le Jugement dernier",
-                "brand": "Terminator 2: Le Jugement dernier",
-                "hints": [
-                    "Terminator 2: Le Jugement dernier",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Jurassic Park",
-                "brand": "Jurassic Park",
-                "hints": [
-                    "Jurassic Park",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Titanic",
-                "brand": "Titanic",
-                "hints": [
-                    "Titanic",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Forrest Gump",
-                "brand": "Forrest Gump",
-                "hints": [
-                    "Forrest Gump",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Big Lebowski",
-                "brand": "The Big Lebowski",
-                "hints": [
-                    "The Big Lebowski",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Silence des agneaux",
-                "brand": "Le Silence des agneaux",
-                "hints": [
-                    "Le Silence des agneaux",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Heat",
-                "brand": "Heat",
-                "hints": [
-                    "Heat",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "L.A. Confidential",
-                "brand": "L.A. Confidential",
-                "hints": [
-                    "L.A. Confidential",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Braveheart",
-                "brand": "Braveheart",
-                "hints": [
-                    "Braveheart",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Roi Lion",
-                "brand": "Le Roi Lion",
-                "hints": [
-                    "Le Roi Lion",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Toy Story",
-                "brand": "Toy Story",
-                "hints": [
-                    "Toy Story",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Toy Story 2",
-                "brand": "Toy Story 2",
-                "hints": [
-                    "Toy Story 2",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Aladdin",
-                "brand": "Aladdin",
-                "hints": [
-                    "Aladdin",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Monde de Nemo",
-                "brand": "Le Monde de Nemo",
-                "hints": [
-                    "Le Monde de Nemo",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Monstres & Cie",
-                "brand": "Monstres & Cie",
-                "hints": [
-                    "Monstres & Cie",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Shrek",
-                "brand": "Shrek",
-                "hints": [
-                    "Shrek",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Shrek 2",
-                "brand": "Shrek 2",
-                "hints": [
-                    "Shrek 2",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "La Cité de la peur",
-                "brand": "La Cité de la peur",
-                "hints": [
-                    "La Cité de la peur",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Dîner de cons",
-                "brand": "Le Dîner de cons",
-                "hints": [
-                    "Le Dîner de cons",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Les Visiteurs",
-                "brand": "Les Visiteurs",
-                "hints": [
-                    "Les Visiteurs",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Les Trois Frères",
-                "brand": "Les Trois Frères",
-                "hints": [
-                    "Les Trois Frères",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Astérix et Obélix : Mission Cléopâtre",
-                "brand": "Astérix et Obélix : Mission Cléopâtre",
-                "hints": [
-                    "Astérix et Obélix : Mission Cléopâtre",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Fabuleux Destin d’Amélie Poulain",
-                "brand": "Le Fabuleux Destin d’Amélie Poulain",
-                "hints": [
-                    "Le Fabuleux Destin d’Amélie Poulain",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "La Haine",
-                "brand": "La Haine",
-                "hints": [
-                    "La Haine",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Leon",
-                "brand": "Leon",
-                "hints": [
-                    "Leon",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Trainspotting",
-                "brand": "Trainspotting",
-                "hints": [
-                    "Trainspotting",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "American Beauty",
-                "brand": "American Beauty",
-                "hints": [
-                    "American Beauty",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Truman Show",
-                "brand": "The Truman Show",
-                "hints": [
-                    "The Truman Show",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Groundhog Day (Un jour sans fin)",
-                "brand": "Groundhog Day (Un jour sans fin)",
-                "hints": [
-                    "Groundhog Day (Un jour sans fin)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Edward aux mains d’argent",
-                "brand": "Edward aux mains d’argent",
-                "hints": [
-                    "Edward aux mains d’argent",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Green Mile (La Ligne verte)",
-                "brand": "The Green Mile (La Ligne verte)",
-                "hints": [
-                    "The Green Mile (La Ligne verte)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Shawshank Redemption (Les Évadés)",
-                "brand": "The Shawshank Redemption (Les Évadés)",
-                "hints": [
-                    "The Shawshank Redemption (Les Évadés)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Gladiator",
-                "brand": "Gladiator",
-                "hints": [
-                    "Gladiator",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Memento",
-                "brand": "Memento",
-                "hints": [
-                    "Memento",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Requiem for a Dream",
-                "brand": "Requiem for a Dream",
-                "hints": [
-                    "Requiem for a Dream",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Mulholland Drive",
-                "brand": "Mulholland Drive",
-                "hints": [
-                    "Mulholland Drive",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Donnie Darko",
-                "brand": "Donnie Darko",
-                "hints": [
-                    "Donnie Darko",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Oldboy",
-                "brand": "Oldboy",
-                "hints": [
-                    "Oldboy",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Ring (Ringu)",
-                "brand": "Ring (Ringu)",
-                "hints": [
-                    "Ring (Ringu)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Cercle (The Ring)",
-                "brand": "Le Cercle (The Ring)",
-                "hints": [
-                    "Le Cercle (The Ring)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Projet Blair Witch",
-                "brand": "Le Projet Blair Witch",
-                "hints": [
-                    "Le Projet Blair Witch",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Scream",
-                "brand": "Scream",
-                "hints": [
-                    "Scream",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Alien 3",
-                "brand": "Alien 3",
-                "hints": [
-                    "Alien 3",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Alien: Resurrection",
-                "brand": "Alien: Resurrection",
-                "hints": [
-                    "Alien: Resurrection",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Mission: Impossible",
-                "brand": "Mission: Impossible",
-                "hints": [
-                    "Mission: Impossible",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Die Hard 3",
-                "brand": "Die Hard 3",
-                "hints": [
-                    "Die Hard 3",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Speed",
-                "brand": "Speed",
-                "hints": [
-                    "Speed",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Point Break",
-                "brand": "Point Break",
-                "hints": [
-                    "Point Break",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Heat",
-                "brand": "Heat",
-                "hints": [
-                    "Heat",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Saving Private Ryan (Il faut sauver le soldat Ryan)",
-                "brand": "Saving Private Ryan (Il faut sauver le soldat Ryan)",
-                "hints": [
-                    "Saving Private Ryan (Il faut sauver le soldat Ryan)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "La Ligne rouge",
-                "brand": "La Ligne rouge",
-                "hints": [
-                    "La Ligne rouge",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Thin Red Line",
-                "brand": "The Thin Red Line",
-                "hints": [
-                    "The Thin Red Line",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Full Metal Jacket",
-                "brand": "Full Metal Jacket",
-                "hints": [
-                    "Full Metal Jacket",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Big Short",
-                "brand": "The Big Short",
-                "hints": [
-                    "The Big Short",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Social Network",
-                "brand": "The Social Network",
-                "hints": [
-                    "The Social Network",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "No Country for Old Men",
-                "brand": "No Country for Old Men",
-                "hints": [
-                    "No Country for Old Men",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "There Will Be Blood",
-                "brand": "There Will Be Blood",
-                "hints": [
-                    "There Will Be Blood",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Kill Bill: Volume 1",
-                "brand": "Kill Bill: Volume 1",
-                "hints": [
-                    "Kill Bill: Volume 1",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Kill Bill: Volume 2",
-                "brand": "Kill Bill: Volume 2",
-                "hints": [
-                    "Kill Bill: Volume 2",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Inglourious Basterds",
-                "brand": "Inglourious Basterds",
-                "hints": [
-                    "Inglourious Basterds",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Jackie Brown",
-                "brand": "Jackie Brown",
-                "hints": [
-                    "Jackie Brown",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Snatch",
-                "brand": "Snatch",
-                "hints": [
-                    "Snatch",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Lock, Stock and Two Smoking Barrels",
-                "brand": "Lock, Stock and Two Smoking Barrels",
-                "hints": [
-                    "Lock, Stock and Two Smoking Barrels",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Wolf of Wall Street",
-                "brand": "The Wolf of Wall Street",
-                "hints": [
-                    "The Wolf of Wall Street",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Inception",
-                "brand": "Inception",
-                "hints": [
-                    "Inception",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Interstellar",
-                "brand": "Interstellar",
-                "hints": [
-                    "Interstellar",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Dark Knight",
-                "brand": "The Dark Knight",
-                "hints": [
-                    "The Dark Knight",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Batman Begins",
-                "brand": "Batman Begins",
-                "hints": [
-                    "Batman Begins",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Dark Knight Rises",
-                "brand": "The Dark Knight Rises",
-                "hints": [
-                    "The Dark Knight Rises",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Spider-Man (Raimi)",
-                "brand": "Spider-Man (Raimi)",
-                "hints": [
-                    "Spider-Man (Raimi)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Spider-Man 2",
-                "brand": "Spider-Man 2",
-                "hints": [
-                    "Spider-Man 2",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Spider-Man: No Way Home",
-                "brand": "Spider-Man: No Way Home",
-                "hints": [
-                    "Spider-Man: No Way Home",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Iron Man",
-                "brand": "Iron Man",
-                "hints": [
-                    "Iron Man",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Avengers",
-                "brand": "Avengers",
-                "hints": [
-                    "Avengers",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Avengers: Infinity War",
-                "brand": "Avengers: Infinity War",
-                "hints": [
-                    "Avengers: Infinity War",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Avengers: Endgame",
-                "brand": "Avengers: Endgame",
-                "hints": [
-                    "Avengers: Endgame",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Guardians of the Galaxy",
-                "brand": "Guardians of the Galaxy",
-                "hints": [
-                    "Guardians of the Galaxy",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Black Panther",
-                "brand": "Black Panther",
-                "hints": [
-                    "Black Panther",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Joker",
-                "brand": "Joker",
-                "hints": [
-                    "Joker",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Mad Max: Fury Road",
-                "brand": "Mad Max: Fury Road",
-                "hints": [
-                    "Mad Max: Fury Road",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "John Wick",
-                "brand": "John Wick",
-                "hints": [
-                    "John Wick",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "John Wick 2",
-                "brand": "John Wick 2",
-                "hints": [
-                    "John Wick 2",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Baby Driver",
-                "brand": "Baby Driver",
-                "hints": [
-                    "Baby Driver",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Whiplash",
-                "brand": "Whiplash",
-                "hints": [
-                    "Whiplash",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "La La Land",
-                "brand": "La La Land",
-                "hints": [
-                    "La La Land",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Drive",
-                "brand": "Drive",
-                "hints": [
-                    "Drive",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Her",
-                "brand": "Her",
-                "hints": [
-                    "Her",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Lost in Translation",
-                "brand": "Lost in Translation",
-                "hints": [
-                    "Lost in Translation",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Eternal Sunshine of the Spotless Mind",
-                "brand": "Eternal Sunshine of the Spotless Mind",
-                "hints": [
-                    "Eternal Sunshine of the Spotless Mind",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Seigneur des anneaux : La Communauté de l’anneau",
-                "brand": "Le Seigneur des anneaux : La Communauté de l’anneau",
-                "hints": [
-                    "Le Seigneur des anneaux : La Communauté de l’anneau",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Seigneur des anneaux : Les Deux Tours",
-                "brand": "Le Seigneur des anneaux : Les Deux Tours",
-                "hints": [
-                    "Le Seigneur des anneaux : Les Deux Tours",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Le Seigneur des anneaux : Le Retour du roi",
-                "brand": "Le Seigneur des anneaux : Le Retour du roi",
-                "hints": [
-                    "Le Seigneur des anneaux : Le Retour du roi",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Harry Potter à l’école des sorciers",
-                "brand": "Harry Potter à l’école des sorciers",
-                "hints": [
-                    "Harry Potter à l’école des sorciers",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Harry Potter et la Chambre des secrets",
-                "brand": "Harry Potter et la Chambre des secrets",
-                "hints": [
-                    "Harry Potter et la Chambre des secrets",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Harry Potter et le Prisonnier d’Azkaban",
-                "brand": "Harry Potter et le Prisonnier d’Azkaban",
-                "hints": [
-                    "Harry Potter et le Prisonnier d’Azkaban",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Matrix Reloaded",
-                "brand": "Matrix Reloaded",
-                "hints": [
-                    "Matrix Reloaded",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Matrix Revolutions",
-                "brand": "Matrix Revolutions",
-                "hints": [
-                    "Matrix Revolutions",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Gravity",
-                "brand": "Gravity",
-                "hints": [
-                    "Gravity",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Avatar",
-                "brand": "Avatar",
-                "hints": [
-                    "Avatar",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Avatar: La Voie de l’eau",
-                "brand": "Avatar: La Voie de l’eau",
-                "hints": [
-                    "Avatar: La Voie de l’eau",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Dune (2021)",
-                "brand": "Dune (2021)",
-                "hints": [
-                    "Dune (2021)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Dune: Part Two",
-                "brand": "Dune: Part Two",
-                "hints": [
-                    "Dune: Part Two",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Everything Everywhere All at Once",
-                "brand": "Everything Everywhere All at Once",
-                "hints": [
-                    "Everything Everywhere All at Once",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Parasite",
-                "brand": "Parasite",
-                "hints": [
-                    "Parasite",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Oldboy",
-                "brand": "Oldboy",
-                "hints": [
-                    "Oldboy",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Memories of Murder",
-                "brand": "Memories of Murder",
-                "hints": [
-                    "Memories of Murder",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Host",
-                "brand": "The Host",
-                "hints": [
-                    "The Host",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Spirited Away (Le Voyage de Chihiro)",
-                "brand": "Spirited Away (Le Voyage de Chihiro)",
-                "hints": [
-                    "Spirited Away (Le Voyage de Chihiro)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Princesse Mononoké",
-                "brand": "Princesse Mononoké",
-                "hints": [
-                    "Princesse Mononoké",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Your Name",
-                "brand": "Your Name",
-                "hints": [
-                    "Your Name",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Perfect Blue",
-                "brand": "Perfect Blue",
-                "hints": [
-                    "Perfect Blue",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Ghost in the Shell",
-                "brand": "Ghost in the Shell",
-                "hints": [
-                    "Ghost in the Shell",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "City of God (La Cité de Dieu)",
-                "brand": "City of God (La Cité de Dieu)",
-                "hints": [
-                    "City of God (La Cité de Dieu)",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Slumdog Millionaire",
-                "brand": "Slumdog Millionaire",
-                "hints": [
-                    "Slumdog Millionaire",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Million Dollar Baby",
-                "brand": "Million Dollar Baby",
-                "hints": [
-                    "Million Dollar Baby",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Gran Torino",
-                "brand": "Gran Torino",
-                "hints": [
-                    "Gran Torino",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Mystic River",
-                "brand": "Mystic River",
-                "hints": [
-                    "Mystic River",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Revenant",
-                "brand": "The Revenant",
-                "hints": [
-                    "The Revenant",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Birdman",
-                "brand": "Birdman",
-                "hints": [
-                    "Birdman",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "12 Years a Slave",
-                "brand": "12 Years a Slave",
-                "hints": [
-                    "12 Years a Slave",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Pianist",
-                "brand": "The Pianist",
-                "hints": [
-                    "The Pianist",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Requiem for a Dream",
-                "brand": "Requiem for a Dream",
-                "hints": [
-                    "Requiem for a Dream",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Black Swan",
-                "brand": "Black Swan",
-                "hints": [
-                    "Black Swan",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Get Out",
-                "brand": "Get Out",
-                "hints": [
-                    "Get Out",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Us",
-                "brand": "Us",
-                "hints": [
-                    "Us",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Conjuring",
-                "brand": "The Conjuring",
-                "hints": [
-                    "The Conjuring",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Insidious",
-                "brand": "Insidious",
-                "hints": [
-                    "Insidious",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Saw",
-                "brand": "Saw",
-                "hints": [
-                    "Saw",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Fast and Furious",
-                "brand": "Fast and Furious",
-                "hints": [
-                    "Fast and Furious",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Fast Five",
-                "brand": "Fast Five",
-                "hints": [
-                    "Fast Five",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Bourne Identity",
-                "brand": "The Bourne Identity",
-                "hints": [
-                    "The Bourne Identity",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Bourne Supremacy",
-                "brand": "The Bourne Supremacy",
-                "hints": [
-                    "The Bourne Supremacy",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "The Bourne Ultimatum",
-                "brand": "The Bourne Ultimatum",
-                "hints": [
-                    "The Bourne Ultimatum",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Casino Royale",
-                "brand": "Casino Royale",
-                "hints": [
-                    "Casino Royale",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Skyfall",
-                "brand": "Skyfall",
-                "hints": [
-                    "Skyfall",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Mission: Impossible – Fallout",
-                "brand": "Mission: Impossible – Fallout",
-                "hints": [
-                    "Mission: Impossible – Fallout",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Top Gun: Maverick",
-                "brand": "Top Gun: Maverick",
-                "hints": [
-                    "Top Gun: Maverick",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Barbie",
-                "brand": "Barbie",
-                "hints": [
-                    "Barbie",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            },
-            {
-                "artist": "Soundtrack",
-                "title": "Oppenheimer",
-                "brand": "Oppenheimer",
-                "hints": [
-                    "Oppenheimer",
-                    "Film Culte",
-                    "Cinéma",
-                    "Bande Originale"
-                ]
-            }
-        ],
-        'series': [
-            {
-                "artist": "Générique",
-                "title": "Friends",
-                "brand": "Friends",
-                "hints": [
-                    "Friends",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Urgences",
-                "brand": "Urgences",
-                "hints": [
-                    "Urgences",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "X-Files",
-                "brand": "X-Files",
-                "hints": [
-                    "X-Files",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Buffy contre les vampires",
-                "brand": "Buffy contre les vampires",
-                "hints": [
-                    "Buffy contre les vampires",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Dawson",
-                "brand": "Dawson",
-                "hints": [
-                    "Dawson",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Beverly Hills 90210",
-                "brand": "Beverly Hills 90210",
-                "hints": [
-                    "Beverly Hills 90210",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Melrose Place",
-                "brand": "Melrose Place",
-                "hints": [
-                    "Melrose Place",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Loïs et Clark",
-                "brand": "Loïs et Clark",
-                "hints": [
-                    "Loïs et Clark",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Charmed",
-                "brand": "Charmed",
-                "hints": [
-                    "Charmed",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Walker Texas Ranger",
-                "brand": "Walker Texas Ranger",
-                "hints": [
-                    "Walker Texas Ranger",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Le Rebelle (Renegade)",
-                "brand": "Le Rebelle (Renegade)",
-                "hints": [
-                    "Le Rebelle (Renegade)",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Sydney Fox, l’aventurière (Relic Hunter)",
-                "brand": "Sydney Fox, l’aventurière (Relic Hunter)",
-                "hints": [
-                    "Sydney Fox, l’aventurière (Relic Hunter)",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Alerte Cobra",
-                "brand": "Alerte Cobra",
-                "hints": [
-                    "Alerte Cobra",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Navarro",
-                "brand": "Navarro",
-                "hints": [
-                    "Navarro",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Julie Lescaut",
-                "brand": "Julie Lescaut",
-                "hints": [
-                    "Julie Lescaut",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Les Cordier, juge et flic",
-                "brand": "Les Cordier, juge et flic",
-                "hints": [
-                    "Les Cordier, juge et flic",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Sous le soleil",
-                "brand": "Sous le soleil",
-                "hints": [
-                    "Sous le soleil",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Stargate SG-1",
-                "brand": "Stargate SG-1",
-                "hints": [
-                    "Stargate SG-1",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Hercule Poirot",
-                "brand": "Hercule Poirot",
-                "hints": [
-                    "Hercule Poirot",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Une nounou d’enfer",
-                "brand": "Une nounou d’enfer",
-                "hints": [
-                    "Une nounou d’enfer",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Docteur Quinn, femme médecin",
-                "brand": "Docteur Quinn, femme médecin",
-                "hints": [
-                    "Docteur Quinn, femme médecin",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Star Trek: The Next Generation",
-                "brand": "Star Trek: The Next Generation",
-                "hints": [
-                    "Star Trek: The Next Generation",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Star Trek: Deep Space Nine",
-                "brand": "Star Trek: Deep Space Nine",
-                "hints": [
-                    "Star Trek: Deep Space Nine",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Star Trek: Voyager",
-                "brand": "Star Trek: Voyager",
-                "hints": [
-                    "Star Trek: Voyager",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Babylon 5",
-                "brand": "Babylon 5",
-                "hints": [
-                    "Babylon 5",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Sliders, les mondes parallèles",
-                "brand": "Sliders, les mondes parallèles",
-                "hints": [
-                    "Sliders, les mondes parallèles",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "La Fête à la maison",
-                "brand": "La Fête à la maison",
-                "hints": [
-                    "La Fête à la maison",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Le Prince de Bel-Air",
-                "brand": "Le Prince de Bel-Air",
-                "hints": [
-                    "Le Prince de Bel-Air",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Seinfeld",
-                "brand": "Seinfeld",
-                "hints": [
-                    "Seinfeld",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Frasier",
-                "brand": "Frasier",
-                "hints": [
-                    "Frasier",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Ally McBeal",
-                "brand": "Ally McBeal",
-                "hints": [
-                    "Ally McBeal",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Xena, la guerrière",
-                "brand": "Xena, la guerrière",
-                "hints": [
-                    "Xena, la guerrière",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Hercule",
-                "brand": "Hercule",
-                "hints": [
-                    "Hercule",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Highlander",
-                "brand": "Highlander",
-                "hints": [
-                    "Highlander",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Code Quantum",
-                "brand": "Code Quantum",
-                "hints": [
-                    "Code Quantum",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "MacGyver",
-                "brand": "MacGyver",
-                "hints": [
-                    "MacGyver",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "L’Agence tous risques",
-                "brand": "L’Agence tous risques",
-                "hints": [
-                    "L’Agence tous risques",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Alerte à Malibu",
-                "brand": "Alerte à Malibu",
-                "hints": [
-                    "Alerte à Malibu",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Hélène et les Garçons",
-                "brand": "Hélène et les Garçons",
-                "hints": [
-                    "Hélène et les Garçons",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Le Miel et les Abeilles",
-                "brand": "Le Miel et les Abeilles",
-                "hints": [
-                    "Le Miel et les Abeilles",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Premiers Baisers",
-                "brand": "Premiers Baisers",
-                "hints": [
-                    "Premiers Baisers",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Le Collège des Coeurs Brisés (Heartbreak High)",
-                "brand": "Le Collège des Coeurs Brisés (Heartbreak High)",
-                "hints": [
-                    "Le Collège des Coeurs Brisés (Heartbreak High)",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Hartley, coeurs à vif",
-                "brand": "Hartley, coeurs à vif",
-                "hints": [
-                    "Hartley, coeurs à vif",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "7 à la maison",
-                "brand": "7 à la maison",
-                "hints": [
-                    "7 à la maison",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "7 jours pour agir",
-                "brand": "7 jours pour agir",
-                "hints": [
-                    "7 jours pour agir",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Les Soprano",
-                "brand": "Les Soprano",
-                "hints": [
-                    "Les Soprano",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Six Feet Under",
-                "brand": "Six Feet Under",
-                "hints": [
-                    "Six Feet Under",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The West Wing (À la Maison Blanche)",
-                "brand": "The West Wing (À la Maison Blanche)",
-                "hints": [
-                    "The West Wing (À la Maison Blanche)",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Alias",
-                "brand": "Alias",
-                "hints": [
-                    "Alias",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "24 heures chrono",
-                "brand": "24 heures chrono",
-                "hints": [
-                    "24 heures chrono",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Lost: Les Disparus",
-                "brand": "Lost: Les Disparus",
-                "hints": [
-                    "Lost: Les Disparus",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Desperate Housewives",
-                "brand": "Desperate Housewives",
-                "hints": [
-                    "Desperate Housewives",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Grey’s Anatomy",
-                "brand": "Grey’s Anatomy",
-                "hints": [
-                    "Grey’s Anatomy",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Prison Break",
-                "brand": "Prison Break",
-                "hints": [
-                    "Prison Break",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "How I Met Your Mother",
-                "brand": "How I Met Your Mother",
-                "hints": [
-                    "How I Met Your Mother",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Big Bang Theory",
-                "brand": "The Big Bang Theory",
-                "hints": [
-                    "The Big Bang Theory",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Dexter",
-                "brand": "Dexter",
-                "hints": [
-                    "Dexter",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Breaking Bad",
-                "brand": "Breaking Bad",
-                "hints": [
-                    "Breaking Bad",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Mad Men",
-                "brand": "Mad Men",
-                "hints": [
-                    "Mad Men",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Game of Thrones",
-                "brand": "Game of Thrones",
-                "hints": [
-                    "Game of Thrones",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "True Blood",
-                "brand": "True Blood",
-                "hints": [
-                    "True Blood",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "True Detective",
-                "brand": "True Detective",
-                "hints": [
-                    "True Detective",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "House of Cards",
-                "brand": "House of Cards",
-                "hints": [
-                    "House of Cards",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Vikings",
-                "brand": "Vikings",
-                "hints": [
-                    "Vikings",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Sherlock",
-                "brand": "Sherlock",
-                "hints": [
-                    "Sherlock",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Doctor Who (nouvelle série 2005)",
-                "brand": "Doctor Who (nouvelle série 2005)",
-                "hints": [
-                    "Doctor Who (nouvelle série 2005)",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Skins",
-                "brand": "Skins",
-                "hints": [
-                    "Skins",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Misfits",
-                "brand": "Misfits",
-                "hints": [
-                    "Misfits",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Glee",
-                "brand": "Glee",
-                "hints": [
-                    "Glee",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Walking Dead",
-                "brand": "The Walking Dead",
-                "hints": [
-                    "The Walking Dead",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Homeland",
-                "brand": "Homeland",
-                "hints": [
-                    "Homeland",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Sons of Anarchy",
-                "brand": "Sons of Anarchy",
-                "hints": [
-                    "Sons of Anarchy",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Hannibal",
-                "brand": "Hannibal",
-                "hints": [
-                    "Hannibal",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Fargo",
-                "brand": "Fargo",
-                "hints": [
-                    "Fargo",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Mindhunter",
-                "brand": "Mindhunter",
-                "hints": [
-                    "Mindhunter",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Stranger Things",
-                "brand": "Stranger Things",
-                "hints": [
-                    "Stranger Things",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Narcos",
-                "brand": "Narcos",
-                "hints": [
-                    "Narcos",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Westworld",
-                "brand": "Westworld",
-                "hints": [
-                    "Westworld",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Crown",
-                "brand": "The Crown",
-                "hints": [
-                    "The Crown",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "La Casa de Papel",
-                "brand": "La Casa de Papel",
-                "hints": [
-                    "La Casa de Papel",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Peaky Blinders",
-                "brand": "Peaky Blinders",
-                "hints": [
-                    "Peaky Blinders",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Better Call Saul",
-                "brand": "Better Call Saul",
-                "hints": [
-                    "Better Call Saul",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Mr. Robot",
-                "brand": "Mr. Robot",
-                "hints": [
-                    "Mr. Robot",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Black Mirror",
-                "brand": "Black Mirror",
-                "hints": [
-                    "Black Mirror",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Mandalorian",
-                "brand": "The Mandalorian",
-                "hints": [
-                    "The Mandalorian",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Witcher",
-                "brand": "The Witcher",
-                "hints": [
-                    "The Witcher",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Dark",
-                "brand": "Dark",
-                "hints": [
-                    "Dark",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Umbrella Academy",
-                "brand": "Umbrella Academy",
-                "hints": [
-                    "Umbrella Academy",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Lupin",
-                "brand": "Lupin",
-                "hints": [
-                    "Lupin",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Emily in Paris",
-                "brand": "Emily in Paris",
-                "hints": [
-                    "Emily in Paris",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Squid Game",
-                "brand": "Squid Game",
-                "hints": [
-                    "Squid Game",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Last of Us",
-                "brand": "The Last of Us",
-                "hints": [
-                    "The Last of Us",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Wednesday",
-                "brand": "Wednesday",
-                "hints": [
-                    "Wednesday",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Boys",
-                "brand": "The Boys",
-                "hints": [
-                    "The Boys",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Chernobyl",
-                "brand": "Chernobyl",
-                "hints": [
-                    "Chernobyl",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Euphoria",
-                "brand": "Euphoria",
-                "hints": [
-                    "Euphoria",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "The Handmaid’s Tale",
-                "brand": "The Handmaid’s Tale",
-                "hints": [
-                    "The Handmaid’s Tale",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Succession",
-                "brand": "Succession",
-                "hints": [
-                    "Succession",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Ted Lasso",
-                "brand": "Ted Lasso",
-                "hints": [
-                    "Ted Lasso",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Only Murders in the Building",
-                "brand": "Only Murders in the Building",
-                "hints": [
-                    "Only Murders in the Building",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            },
-            {
-                "artist": "Générique",
-                "title": "Severance",
-                "brand": "Severance",
-                "hints": [
-                    "Severance",
-                    "Série TV",
-                    "Générique Série",
-                    "Culte"
-                ]
-            }
+'series': [
+    {
+        "artist": "Générique",
+        "title": "Friends",
+        "brand": "Friends",
+        "hints": [
+            "Friends",
+            "Série TV",
+            "Générique Série",
+            "Culte"
         ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Urgences",
+        "brand": "Urgences",
+        "hints": [
+            "Urgences",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "X-Files",
+        "brand": "X-Files",
+        "hints": [
+            "X-Files",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Buffy contre les vampires",
+        "brand": "Buffy contre les vampires",
+        "hints": [
+            "Buffy contre les vampires",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Dawson",
+        "brand": "Dawson",
+        "hints": [
+            "Dawson",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Beverly Hills 90210",
+        "brand": "Beverly Hills 90210",
+        "hints": [
+            "Beverly Hills 90210",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Melrose Place",
+        "brand": "Melrose Place",
+        "hints": [
+            "Melrose Place",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Loïs et Clark",
+        "brand": "Loïs et Clark",
+        "hints": [
+            "Loïs et Clark",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Charmed",
+        "brand": "Charmed",
+        "hints": [
+            "Charmed",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Walker Texas Ranger",
+        "brand": "Walker Texas Ranger",
+        "hints": [
+            "Walker Texas Ranger",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Le Rebelle (Renegade)",
+        "brand": "Le Rebelle (Renegade)",
+        "hints": [
+            "Le Rebelle (Renegade)",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Sydney Fox, l’aventurière (Relic Hunter)",
+        "brand": "Sydney Fox, l’aventurière (Relic Hunter)",
+        "hints": [
+            "Sydney Fox, l’aventurière (Relic Hunter)",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Alerte Cobra",
+        "brand": "Alerte Cobra",
+        "hints": [
+            "Alerte Cobra",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Navarro",
+        "brand": "Navarro",
+        "hints": [
+            "Navarro",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Julie Lescaut",
+        "brand": "Julie Lescaut",
+        "hints": [
+            "Julie Lescaut",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Les Cordier, juge et flic",
+        "brand": "Les Cordier, juge et flic",
+        "hints": [
+            "Les Cordier, juge et flic",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Sous le soleil",
+        "brand": "Sous le soleil",
+        "hints": [
+            "Sous le soleil",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Stargate SG-1",
+        "brand": "Stargate SG-1",
+        "hints": [
+            "Stargate SG-1",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Hercule Poirot",
+        "brand": "Hercule Poirot",
+        "hints": [
+            "Hercule Poirot",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Une nounou d’enfer",
+        "brand": "Une nounou d’enfer",
+        "hints": [
+            "Une nounou d’enfer",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Docteur Quinn, femme médecin",
+        "brand": "Docteur Quinn, femme médecin",
+        "hints": [
+            "Docteur Quinn, femme médecin",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Star Trek: The Next Generation",
+        "brand": "Star Trek: The Next Generation",
+        "hints": [
+            "Star Trek: The Next Generation",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Star Trek: Deep Space Nine",
+        "brand": "Star Trek: Deep Space Nine",
+        "hints": [
+            "Star Trek: Deep Space Nine",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Star Trek: Voyager",
+        "brand": "Star Trek: Voyager",
+        "hints": [
+            "Star Trek: Voyager",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Babylon 5",
+        "brand": "Babylon 5",
+        "hints": [
+            "Babylon 5",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Sliders, les mondes parallèles",
+        "brand": "Sliders, les mondes parallèles",
+        "hints": [
+            "Sliders, les mondes parallèles",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "La Fête à la maison",
+        "brand": "La Fête à la maison",
+        "hints": [
+            "La Fête à la maison",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Le Prince de Bel-Air",
+        "brand": "Le Prince de Bel-Air",
+        "hints": [
+            "Le Prince de Bel-Air",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Seinfeld",
+        "brand": "Seinfeld",
+        "hints": [
+            "Seinfeld",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Frasier",
+        "brand": "Frasier",
+        "hints": [
+            "Frasier",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Ally McBeal",
+        "brand": "Ally McBeal",
+        "hints": [
+            "Ally McBeal",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Xena, la guerrière",
+        "brand": "Xena, la guerrière",
+        "hints": [
+            "Xena, la guerrière",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Hercule",
+        "brand": "Hercule",
+        "hints": [
+            "Hercule",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Highlander",
+        "brand": "Highlander",
+        "hints": [
+            "Highlander",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Code Quantum",
+        "brand": "Code Quantum",
+        "hints": [
+            "Code Quantum",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "MacGyver",
+        "brand": "MacGyver",
+        "hints": [
+            "MacGyver",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "L’Agence tous risques",
+        "brand": "L’Agence tous risques",
+        "hints": [
+            "L’Agence tous risques",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Alerte à Malibu",
+        "brand": "Alerte à Malibu",
+        "hints": [
+            "Alerte à Malibu",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Hélène et les Garçons",
+        "brand": "Hélène et les Garçons",
+        "hints": [
+            "Hélène et les Garçons",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Le Miel et les Abeilles",
+        "brand": "Le Miel et les Abeilles",
+        "hints": [
+            "Le Miel et les Abeilles",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Premiers Baisers",
+        "brand": "Premiers Baisers",
+        "hints": [
+            "Premiers Baisers",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Le Collège des Coeurs Brisés (Heartbreak High)",
+        "brand": "Le Collège des Coeurs Brisés (Heartbreak High)",
+        "hints": [
+            "Le Collège des Coeurs Brisés (Heartbreak High)",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Hartley, coeurs à vif",
+        "brand": "Hartley, coeurs à vif",
+        "hints": [
+            "Hartley, coeurs à vif",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "7 à la maison",
+        "brand": "7 à la maison",
+        "hints": [
+            "7 à la maison",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "7 jours pour agir",
+        "brand": "7 jours pour agir",
+        "hints": [
+            "7 jours pour agir",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Les Soprano",
+        "brand": "Les Soprano",
+        "hints": [
+            "Les Soprano",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Six Feet Under",
+        "brand": "Six Feet Under",
+        "hints": [
+            "Six Feet Under",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The West Wing (À la Maison Blanche)",
+        "brand": "The West Wing (À la Maison Blanche)",
+        "hints": [
+            "The West Wing (À la Maison Blanche)",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Alias",
+        "brand": "Alias",
+        "hints": [
+            "Alias",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "24 heures chrono",
+        "brand": "24 heures chrono",
+        "hints": [
+            "24 heures chrono",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Lost: Les Disparus",
+        "brand": "Lost: Les Disparus",
+        "hints": [
+            "Lost: Les Disparus",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Desperate Housewives",
+        "brand": "Desperate Housewives",
+        "hints": [
+            "Desperate Housewives",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Grey’s Anatomy",
+        "brand": "Grey’s Anatomy",
+        "hints": [
+            "Grey’s Anatomy",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Prison Break",
+        "brand": "Prison Break",
+        "hints": [
+            "Prison Break",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "How I Met Your Mother",
+        "brand": "How I Met Your Mother",
+        "hints": [
+            "How I Met Your Mother",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Big Bang Theory",
+        "brand": "The Big Bang Theory",
+        "hints": [
+            "The Big Bang Theory",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Dexter",
+        "brand": "Dexter",
+        "hints": [
+            "Dexter",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Breaking Bad",
+        "brand": "Breaking Bad",
+        "hints": [
+            "Breaking Bad",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Mad Men",
+        "brand": "Mad Men",
+        "hints": [
+            "Mad Men",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Game of Thrones",
+        "brand": "Game of Thrones",
+        "hints": [
+            "Game of Thrones",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "True Blood",
+        "brand": "True Blood",
+        "hints": [
+            "True Blood",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "True Detective",
+        "brand": "True Detective",
+        "hints": [
+            "True Detective",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "House of Cards",
+        "brand": "House of Cards",
+        "hints": [
+            "House of Cards",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Vikings",
+        "brand": "Vikings",
+        "hints": [
+            "Vikings",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Sherlock",
+        "brand": "Sherlock",
+        "hints": [
+            "Sherlock",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Doctor Who (nouvelle série 2005)",
+        "brand": "Doctor Who (nouvelle série 2005)",
+        "hints": [
+            "Doctor Who (nouvelle série 2005)",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Skins",
+        "brand": "Skins",
+        "hints": [
+            "Skins",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Misfits",
+        "brand": "Misfits",
+        "hints": [
+            "Misfits",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Glee",
+        "brand": "Glee",
+        "hints": [
+            "Glee",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Walking Dead",
+        "brand": "The Walking Dead",
+        "hints": [
+            "The Walking Dead",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Homeland",
+        "brand": "Homeland",
+        "hints": [
+            "Homeland",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Sons of Anarchy",
+        "brand": "Sons of Anarchy",
+        "hints": [
+            "Sons of Anarchy",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Hannibal",
+        "brand": "Hannibal",
+        "hints": [
+            "Hannibal",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Fargo",
+        "brand": "Fargo",
+        "hints": [
+            "Fargo",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Mindhunter",
+        "brand": "Mindhunter",
+        "hints": [
+            "Mindhunter",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Stranger Things",
+        "brand": "Stranger Things",
+        "hints": [
+            "Stranger Things",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Narcos",
+        "brand": "Narcos",
+        "hints": [
+            "Narcos",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Westworld",
+        "brand": "Westworld",
+        "hints": [
+            "Westworld",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Crown",
+        "brand": "The Crown",
+        "hints": [
+            "The Crown",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "La Casa de Papel",
+        "brand": "La Casa de Papel",
+        "hints": [
+            "La Casa de Papel",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Peaky Blinders",
+        "brand": "Peaky Blinders",
+        "hints": [
+            "Peaky Blinders",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Better Call Saul",
+        "brand": "Better Call Saul",
+        "hints": [
+            "Better Call Saul",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Mr. Robot",
+        "brand": "Mr. Robot",
+        "hints": [
+            "Mr. Robot",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Black Mirror",
+        "brand": "Black Mirror",
+        "hints": [
+            "Black Mirror",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Mandalorian",
+        "brand": "The Mandalorian",
+        "hints": [
+            "The Mandalorian",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Witcher",
+        "brand": "The Witcher",
+        "hints": [
+            "The Witcher",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Dark",
+        "brand": "Dark",
+        "hints": [
+            "Dark",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Umbrella Academy",
+        "brand": "Umbrella Academy",
+        "hints": [
+            "Umbrella Academy",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Lupin",
+        "brand": "Lupin",
+        "hints": [
+            "Lupin",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Emily in Paris",
+        "brand": "Emily in Paris",
+        "hints": [
+            "Emily in Paris",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Squid Game",
+        "brand": "Squid Game",
+        "hints": [
+            "Squid Game",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Last of Us",
+        "brand": "The Last of Us",
+        "hints": [
+            "The Last of Us",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Wednesday",
+        "brand": "Wednesday",
+        "hints": [
+            "Wednesday",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Boys",
+        "brand": "The Boys",
+        "hints": [
+            "The Boys",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Chernobyl",
+        "brand": "Chernobyl",
+        "hints": [
+            "Chernobyl",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Euphoria",
+        "brand": "Euphoria",
+        "hints": [
+            "Euphoria",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "The Handmaid’s Tale",
+        "brand": "The Handmaid’s Tale",
+        "hints": [
+            "The Handmaid’s Tale",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Succession",
+        "brand": "Succession",
+        "hints": [
+            "Succession",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Ted Lasso",
+        "brand": "Ted Lasso",
+        "hints": [
+            "Ted Lasso",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Only Murders in the Building",
+        "brand": "Only Murders in the Building",
+        "hints": [
+            "Only Murders in the Building",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    },
+    {
+        "artist": "Générique",
+        "title": "Severance",
+        "brand": "Severance",
+        "hints": [
+            "Severance",
+            "Série TV",
+            "Générique Série",
+            "Culte"
+        ]
+    }
+]
     }
 };
 
@@ -4832,7 +3213,7 @@ async function fetchPreview(artist, title, theme, brand) {
     try {
         let queryStr = brand ? brand : `${artist} ${title}`;
         if (theme === 'disney' || theme === 'clubdorothee') queryStr += " French";
-        if (brand && (theme === 'movies' || theme === 'series')) queryStr += " soundtrack";
+        if (brand && theme === 'series') queryStr += " soundtrack";
         const query = queryStr.replace(/['"]/g, "");
 
         const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1${theme === 'disney' ? '&country=FR' : ''}`, {
