@@ -80,58 +80,1198 @@ const state = {
 
     songs: {
 
-        '80s': [
-            { artist: 'Michael Jackson', title: 'Billie Jean', hints: ['Prince', 'Michael Jackson', 'Lionel Richie', 'Rick James'] },
-            { artist: 'A-ha', title: 'Take On Me', hints: ['A-ha', 'Depeche Mode', 'Duran Duran', 'Erasure'] },
-            { artist: 'Madonna', title: 'Like a Virgin', hints: ['Madonna', 'Cyndi Lauper', 'Whitney Houston', 'Cher'] },
-            { artist: 'Queen', title: 'Another One Bites the Dust', hints: ['Queen', 'The Who', 'Pink Floyd', 'Yes'] },
-            { artist: 'Prince', title: 'Purple Rain', hints: ['Prince', 'Rick James', 'Morris Day', 'Michael Jackson'] },
-            { artist: 'Wham!', title: 'Wake Me Up Before You Go-Go', hints: ['Wham!', 'Culture Club', 'Spandau Ballet', 'Erasure'] },
-            { artist: 'Cyndi Lauper', title: 'Girls Just Want to Have Fun', hints: ['Cyndi Lauper', 'Madonna', 'The Go-Go\'s', 'Blondie'] },
-            { artist: 'Journey', title: 'Don\'t Stop Believin\'', hints: ['Journey', 'Foreigner', 'Boston', 'Styx'] },
-            { artist: 'Eurythmics', title: 'Sweet Dreams', hints: ['Eurythmics', 'Yazoo', 'Soft Cell', 'Depeche Mode'] },
-            { artist: 'The Police', title: 'Every Breath You Take', hints: ['The Police', 'U2', 'Sting', 'The Cars'] },
-            { artist: 'Bon Jovi', title: 'Livin\' on a Prayer', hints: ['Bon Jovi', 'Guns N\' Roses', 'Def Leppard', 'Poison'] },
-            { artist: 'Whitney Houston', title: 'I Wanna Dance with Somebody', hints: ['Whitney Houston', 'Tina Turner', 'Chaka Khan', 'Diana Ross'] },
-            { artist: 'Guns N\' Roses', title: 'Sweet Child O\' Mine', hints: ['Guns N\' Roses', 'Aerosmith', 'Metallica', 'Mötley Crüe'] },
-            { artist: 'Tears for Fears', title: 'Everybody Wants to Rule the World', hints: ['Tears for Fears', 'Simple Minds', 'The Cure', 'New Order'] },
-            { artist: 'U2', title: 'With or Without You', hints: ['U2', 'The Smiths', 'Echo & the Bunnymen', 'R.E.M.'] },
-            { artist: 'Lionel Richie', title: 'All Night Long', hints: ['Lionel Richie', 'Stevie Wonder', 'Kool & The Gang', 'Earth, Wind & Fire'] },
-            { artist: 'Simple Minds', title: 'Don\'t You (Forget About Me)', hints: ['Simple Minds', 'The Psychedelic Furs', 'Echo & the Bunnymen', 'The Cure'] },
-            { artist: 'Duran Duran', title: 'Hungry Like the Wolf', hints: ['Duran Duran', 'Spandau Ballet', 'The Human League', 'ABC'] },
-            { artist: 'Survivor', title: 'Eye of the Tiger', hints: ['Survivor', 'Europe', 'Van Halen', 'Asia'] },
-            { artist: 'Phil Collins', title: 'In the Air Tonight', hints: ['Phil Collins', 'Peter Gabriel', 'Genesis', 'Steve Winwood'] },
-            { artist: 'Bryan Adams', title: 'Summer of \'69', hints: ['Bryan Adams', 'Bruce Springsteen', 'John Mellencamp', 'Tom Petty'] },
-            { artist: 'Bruce Springsteen', title: 'Born in the U.S.A.', hints: ['Bruce Springsteen', 'Bob Seger', 'John Mellencamp', 'Billy Joel'] },
-            { artist: 'Dexys Midnight Runners', title: 'Come On Eileen', hints: ['Dexys Midnight Runners', 'The Specials', 'Madness', 'The Beat'] },
-            { artist: 'Culture Club', title: 'Karma Chameleon', hints: ['Culture Club', 'Wham!', 'Duran Duran', 'Thompson Twins'] },
-            { artist: 'Rick Astley', title: 'Never Gonna Give You Up', hints: ['Rick Astley', 'Kylie Minogue', 'Jason Donovan', 'Bananarama'] },
-            { artist: 'Van Halen', title: 'Jump', hints: ['Van Halen', 'Europe', 'Quiet Riot', 'Skid Row'] },
-            { artist: 'Kim Wilde', title: 'Kids in America', hints: ['Kim Wilde', 'Nena', 'Toyah', 'Hazel O\'Connor'] },
-            { artist: 'Talking Heads', title: 'Burning Down the House', hints: ['Talking Heads', 'The B-52\'s', 'Television', 'The Cars'] },
-            { artist: 'Bananarama', title: 'Cruel Summer', hints: ['Bananarama', 'The Bangles', 'Belle Stars', 'Go-Go\'s'] },
-            { artist: 'The Bangles', title: 'Walk Like an Egyptian', hints: ['The Bangles', 'The Go-Go\'s', 'Bananarama', 'The Waitresses'] },
-            { artist: 'Starship', title: 'We Built This City', hints: ['Starship', 'Jefferson Starship', 'REO Speedwagon', 'Heart'] },
-            { artist: 'Pet Shop Boys', title: 'West End Girls', hints: ['Pet Shop Boys', 'Erasure', 'The Communards', 'New Order'] },
-            { artist: 'Soft Cell', title: 'Tainted Love', hints: ['Soft Cell', 'Depeche Mode', 'Human League', 'Visage'] },
-            { artist: 'Spandau Ballet', title: 'True', hints: ['Spandau Ballet', 'Duran Duran', 'ABC', 'Ultravox'] },
-            { artist: 'George Michael', title: 'Careless Whisper', hints: ['George Michael', 'Sting', 'Boy George', 'Elton John'] },
-            { artist: 'Depeche Mode', title: 'Enjoy the Silence', hints: ['Depeche Mode', 'New Order', 'The Cure', 'Pet Shop Boys'] },
-            { artist: 'The Smiths', title: 'There Is a Light That Never Goes Out', hints: ['The Smiths', 'Morrissey', 'The Cure', 'Joy Division'] },
-            { artist: 'Modern Talking', title: 'You\'re My Heart, You\'re My Soul', hints: ['Modern Talking', 'Bad Boys Blue', 'C.C. Catch', 'Sandra'] },
-            { artist: 'Scorpions', title: 'Still Loving You', hints: ['Scorpions', 'Whitesnake', 'Deep Purple', 'Iron Maiden'] },
-            { artist: 'Alphaville', title: 'Forever Young', hints: ['Alphaville', 'Laura Branigan', 'Berlin', 'A-ha'] },
-            { artist: 'Europe', title: 'The Final Countdown', hints: ['Europe', 'Survivor', 'Asia', 'Boston'] },
-            { artist: 'Tina Turner', title: 'What\'s Love Got to Do with It', hints: ['Tina Turner', 'Aretha Franklin', 'Diana Ross', 'Gloria Gaynor'] },
-            { artist: 'ZZ Top', title: 'Gimme All Your Lovin\'', hints: ['ZZ Top', 'Van Halen', 'AC/DC', 'Def Leppard'] },
-            { artist: 'Katrina and the Waves', title: 'Walking on Sunshine', hints: ['Katrina and the Waves', 'Cyndi Lauper', 'Tiffany', 'Belinda Carlisle'] },
-            { artist: 'Berlin', title: 'Take My Breath Away', hints: ['Berlin', 'Heart', 'Roxette', 'Laura Branigan'] },
-            { artist: 'Foreigner', title: 'I Want to Know What Love Is', hints: ['Foreigner', 'Chicago', 'TOTO', 'REO Speedwagon'] },
-            { artist: 'Toto', title: 'Africa', hints: ['Toto', 'Asia', 'Genesis', 'Fleetwood Mac'] },
-            { artist: 'Michael Sembello', title: 'Maniac', hints: ['Michael Sembello', 'Irene Cara', 'Kenny Loggins', 'Giorgio Moroder'] },
-            { artist: 'Kenny Loggins', title: 'Footloose', hints: ['Kenny Loggins', 'Footloose', 'Flashdance', 'Dirty Dancing'] },
-            { artist: 'Billy Idol', title: 'Rebel Yell', hints: ['Billy Idol', 'Alice Cooper', 'Iggy Pop', 'David Bowie'] }
-        ],
+                '80s': [
+          {
+                    "artist": "Michael Jackson",
+                    "title": "Billie Jean",
+                    "hints": [
+                              "Michael Jackson",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Michael Jackson",
+                    "title": "Beat It",
+                    "hints": [
+                              "Michael Jackson",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Michael Jackson",
+                    "title": "Thriller",
+                    "hints": [
+                              "Michael Jackson",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Madonna",
+                    "title": "Like a Virgin",
+                    "hints": [
+                              "Madonna",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Madonna",
+                    "title": "Into the Groove",
+                    "hints": [
+                              "Madonna",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Cyndi Lauper",
+                    "title": "Girls Just Want to Have Fun",
+                    "hints": [
+                              "Cyndi Lauper",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Cyndi Lauper",
+                    "title": "Time After Time",
+                    "hints": [
+                              "Cyndi Lauper",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "a-ha",
+                    "title": "Take On Me",
+                    "hints": [
+                              "a-ha",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "a-ha",
+                    "title": "The Sun Always Shines on T.V.",
+                    "hints": [
+                              "a-ha",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Eurythmics",
+                    "title": "Sweet Dreams (Are Made of This)",
+                    "hints": [
+                              "Eurythmics",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Eurythmics",
+                    "title": "Here Comes the Rain Again",
+                    "hints": [
+                              "Eurythmics",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "U2",
+                    "title": "With or Without You",
+                    "hints": [
+                              "U2",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "U2",
+                    "title": "Where the Streets Have No Name",
+                    "hints": [
+                              "U2",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "The Police",
+                    "title": "Every Breath You Take",
+                    "hints": [
+                              "The Police",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "The Police",
+                    "title": "Message in a Bottle",
+                    "hints": [
+                              "The Police",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Toto",
+                    "title": "Africa",
+                    "hints": [
+                              "Toto",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Toto",
+                    "title": "Rosanna",
+                    "hints": [
+                              "Toto",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Survivor",
+                    "title": "Eye of the Tiger",
+                    "hints": [
+                              "Survivor",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "U2",
+                    "title": "I Still Haven’t Found What I’m Looking For",
+                    "hints": [
+                              "U2",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Soft Cell",
+                    "title": "Tainted Love",
+                    "hints": [
+                              "Soft Cell",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "The Human League",
+                    "title": "Don’t You Want Me",
+                    "hints": [
+                              "The Human League",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Frankie Goes to Hollywood",
+                    "title": "Relax",
+                    "hints": [
+                              "Frankie Goes to Hollywood",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "George Michael",
+                    "title": "Careless Whisper",
+                    "hints": [
+                              "George Michael",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Wham!",
+                    "title": "Wake Me Up Before You Go-Go",
+                    "hints": [
+                              "Wham!",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "George Michael",
+                    "title": "Faith",
+                    "hints": [
+                              "George Michael",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Phil Collins",
+                    "title": "In the Air Tonight",
+                    "hints": [
+                              "Phil Collins",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Phil Collins",
+                    "title": "Against All Odds",
+                    "hints": [
+                              "Phil Collins",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Queen",
+                    "title": "Another One Bites the Dust",
+                    "hints": [
+                              "Queen",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Queen",
+                    "title": "Radio Ga Ga",
+                    "hints": [
+                              "Queen",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Queen & David Bowie",
+                    "title": "Under Pressure",
+                    "hints": [
+                              "Queen & David Bowie",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "David Bowie",
+                    "title": "Let’s Dance",
+                    "hints": [
+                              "David Bowie",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "David Bowie",
+                    "title": "Modern Love",
+                    "hints": [
+                              "David Bowie",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Bryan Adams",
+                    "title": "Summer of ’69",
+                    "hints": [
+                              "Bryan Adams",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Bryan Adams",
+                    "title": "Heaven",
+                    "hints": [
+                              "Bryan Adams",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Bon Jovi",
+                    "title": "Livin’ on a Prayer",
+                    "hints": [
+                              "Bon Jovi",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Bon Jovi",
+                    "title": "You Give Love a Bad Name",
+                    "hints": [
+                              "Bon Jovi",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Bruce Springsteen",
+                    "title": "Born in the U.S.A.",
+                    "hints": [
+                              "Bruce Springsteen",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Bruce Springsteen",
+                    "title": "Dancing in the Dark",
+                    "hints": [
+                              "Bruce Springsteen",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "John Lennon",
+                    "title": "(Just Like) Starting Over",
+                    "hints": [
+                              "John Lennon",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Prince",
+                    "title": "Purple Rain",
+                    "hints": [
+                              "Prince",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Prince",
+                    "title": "When Doves Cry",
+                    "hints": [
+                              "Prince",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Prince",
+                    "title": "Kiss",
+                    "hints": [
+                              "Prince",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Prince",
+                    "title": "1999",
+                    "hints": [
+                              "Prince",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Whitney Houston",
+                    "title": "I Wanna Dance with Somebody",
+                    "hints": [
+                              "Whitney Houston",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Whitney Houston",
+                    "title": "How Will I Know",
+                    "hints": [
+                              "Whitney Houston",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Whitney Houston",
+                    "title": "Saving All My Love for You",
+                    "hints": [
+                              "Whitney Houston",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Irene Cara",
+                    "title": "Flashdance… What a Feeling",
+                    "hints": [
+                              "Irene Cara",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Irene Cara",
+                    "title": "Fame",
+                    "hints": [
+                              "Irene Cara",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Blondie",
+                    "title": "Call Me",
+                    "hints": [
+                              "Blondie",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Blondie",
+                    "title": "The Tide Is High",
+                    "hints": [
+                              "Blondie",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Duran Duran",
+                    "title": "Girls on Film",
+                    "hints": [
+                              "Duran Duran",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Duran Duran",
+                    "title": "Hungry Like the Wolf",
+                    "hints": [
+                              "Duran Duran",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Duran Duran",
+                    "title": "The Reflex",
+                    "hints": [
+                              "Duran Duran",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Spandau Ballet",
+                    "title": "True",
+                    "hints": [
+                              "Spandau Ballet",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Simple Minds",
+                    "title": "Don’t You (Forget About Me)",
+                    "hints": [
+                              "Simple Minds",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Simple Minds",
+                    "title": "Alive and Kicking",
+                    "hints": [
+                              "Simple Minds",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Tears for Fears",
+                    "title": "Everybody Wants to Rule the World",
+                    "hints": [
+                              "Tears for Fears",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Tears for Fears",
+                    "title": "Shout",
+                    "hints": [
+                              "Tears for Fears",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "The Cars",
+                    "title": "Drive",
+                    "hints": [
+                              "The Cars",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Berlin",
+                    "title": "Take My Breath Away",
+                    "hints": [
+                              "Berlin",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Rick Astley",
+                    "title": "Never Gonna Give You Up",
+                    "hints": [
+                              "Rick Astley",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Rick Astley",
+                    "title": "Together Forever",
+                    "hints": [
+                              "Rick Astley",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Berlin",
+                    "title": "Take My Breath Away",
+                    "hints": [
+                              "Berlin",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Kenny Loggins",
+                    "title": "Footloose",
+                    "hints": [
+                              "Kenny Loggins",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Kenny Loggins",
+                    "title": "Danger Zone",
+                    "hints": [
+                              "Kenny Loggins",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Michael Sembello",
+                    "title": "Maniac",
+                    "hints": [
+                              "Michael Sembello",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Starship",
+                    "title": "Nothing’s Gonna Stop Us Now",
+                    "hints": [
+                              "Starship",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Starship",
+                    "title": "We Built This City",
+                    "hints": [
+                              "Starship",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Guns N’ Roses",
+                    "title": "Sweet Child O’ Mine",
+                    "hints": [
+                              "Guns N’ Roses",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Guns N’ Roses",
+                    "title": "Paradise City",
+                    "hints": [
+                              "Guns N’ Roses",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Van Halen",
+                    "title": "Jump",
+                    "hints": [
+                              "Van Halen",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "The Clash",
+                    "title": "Should I Stay or Should I Go",
+                    "hints": [
+                              "The Clash",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "The Clash",
+                    "title": "London Calling",
+                    "hints": [
+                              "The Clash",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Public Enemy",
+                    "title": "Fight the Power",
+                    "hints": [
+                              "Public Enemy",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Run",
+                    "title": "It’s Tricky",
+                    "hints": [
+                              "Run",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Run",
+                    "title": "Walk This Way",
+                    "hints": [
+                              "Run",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Desireless",
+                    "title": "Voyage, voyage",
+                    "hints": [
+                              "Desireless",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Images",
+                    "title": "Les Démons de minuit",
+                    "hints": [
+                              "Images",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Début de Soirée",
+                    "title": "Nuit de folie",
+                    "hints": [
+                              "Début de Soirée",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Gold",
+                    "title": "Capitaine abandonné",
+                    "hints": [
+                              "Gold",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Gold",
+                    "title": "Plus près des étoiles",
+                    "hints": [
+                              "Gold",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jeanne Mas",
+                    "title": "En rouge et noir",
+                    "hints": [
+                              "Jeanne Mas",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jeanne Mas",
+                    "title": "Toute première fois",
+                    "hints": [
+                              "Jeanne Mas",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "France Gall",
+                    "title": "Ella, elle l’a",
+                    "hints": [
+                              "France Gall",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "France Gall",
+                    "title": "Il jouait du piano debout",
+                    "hints": [
+                              "France Gall",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "France Gall",
+                    "title": "Babacar",
+                    "hints": [
+                              "France Gall",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Vanessa Paradis",
+                    "title": "Joe le taxi",
+                    "hints": [
+                              "Vanessa Paradis",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Vanessa Paradis",
+                    "title": "Marilyn & John",
+                    "hints": [
+                              "Vanessa Paradis",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Caroline Loeb",
+                    "title": "C’est la ouate",
+                    "hints": [
+                              "Caroline Loeb",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "À Cause des Garçons",
+                    "title": "À cause des garçons",
+                    "hints": [
+                              "À Cause des Garçons",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Partenaire Particulier",
+                    "title": "Partenaire particulier",
+                    "hints": [
+                              "Partenaire Particulier",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Stéphanie",
+                    "title": "Ouragan",
+                    "hints": [
+                              "Stéphanie",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Indochine",
+                    "title": "L’aventurier",
+                    "hints": [
+                              "Indochine",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Indochine",
+                    "title": "Troisième sexe",
+                    "hints": [
+                              "Indochine",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Axel Bauer",
+                    "title": "Cargo",
+                    "hints": [
+                              "Axel Bauer",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean Schultheis",
+                    "title": "Confidence pour confidence",
+                    "hints": [
+                              "Jean Schultheis",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean-Jacques Goldman",
+                    "title": "Quand la musique est bonne",
+                    "hints": [
+                              "Jean-Jacques Goldman",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean-Jacques Goldman & Michael Jones",
+                    "title": "Je te donne",
+                    "hints": [
+                              "Jean-Jacques Goldman & Michael Jones",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean-Jacques Goldman",
+                    "title": "Je marche seul",
+                    "hints": [
+                              "Jean-Jacques Goldman",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean-Jacques Goldman",
+                    "title": "Envole-moi",
+                    "hints": [
+                              "Jean-Jacques Goldman",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean-Jacques Goldman",
+                    "title": "Comme toi",
+                    "hints": [
+                              "Jean-Jacques Goldman",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Jean-Jacques Goldman",
+                    "title": "Au bout de mes rêves",
+                    "hints": [
+                              "Jean-Jacques Goldman",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Daniel Balavoine",
+                    "title": "Sauver l’amour",
+                    "hints": [
+                              "Daniel Balavoine",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Daniel Balavoine",
+                    "title": "Mon fils ma bataille",
+                    "hints": [
+                              "Daniel Balavoine",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Daniel Balavoine",
+                    "title": "L’Aziza",
+                    "hints": [
+                              "Daniel Balavoine",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Alain Bashung",
+                    "title": "Vertige de l’amour",
+                    "hints": [
+                              "Alain Bashung",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Cookie Dingler",
+                    "title": "Femme libérée",
+                    "hints": [
+                              "Cookie Dingler",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Gilbert Montagné",
+                    "title": "On va s’aimer",
+                    "hints": [
+                              "Gilbert Montagné",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Rose Laurens",
+                    "title": "Africa",
+                    "hints": [
+                              "Rose Laurens",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Philippe Lavil",
+                    "title": "Il tape sur des bambous",
+                    "hints": [
+                              "Philippe Lavil",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Début de Soirée",
+                    "title": "La vie la nuit",
+                    "hints": [
+                              "Début de Soirée",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Herbert Léonard",
+                    "title": "Pour le plaisir",
+                    "hints": [
+                              "Herbert Léonard",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "François Feldman",
+                    "title": "Les valses de Vienne",
+                    "hints": [
+                              "François Feldman",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "François Feldman & Joniece Jamison",
+                    "title": "Joue pas",
+                    "hints": [
+                              "François Feldman & Joniece Jamison",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Roch Voisine",
+                    "title": "Hélène",
+                    "hints": [
+                              "Roch Voisine",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Johnny Hallyday",
+                    "title": "Je te promets",
+                    "hints": [
+                              "Johnny Hallyday",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Trust",
+                    "title": "Antisocial",
+                    "hints": [
+                              "Trust",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Téléphone",
+                    "title": "Ça c’est vraiment toi",
+                    "hints": [
+                              "Téléphone",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Téléphone",
+                    "title": "Argent trop cher",
+                    "hints": [
+                              "Téléphone",
+                              "Années 80",
+                              "Hit",
+                              "Culte"
+                    ]
+          }
+],
         'grungerock': [
             { artist: 'Nirvana', title: 'Smells Like Teen Spirit', hints: ['Nirvana', 'Pearl Jam', 'Soundgarden', 'Alice in Chains'] },
             { artist: 'Red Hot Chili Peppers', title: 'Californication', hints: ['RHCP', 'Foo Fighters', 'Incubus', 'Audioslave'] },
@@ -237,163 +1377,5181 @@ const state = {
             { artist: 'Coco Cast', title: 'Un poco loco', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
         ],
         'rapfr': [
-            { artist: 'NTM', title: 'La fièvre', hints: ['IAM', 'NTM', 'Assassin', 'Fabe'] },
-            { artist: 'Assassin', title: "L'odyssée suit son cours", hints: ['Assassin', 'Ministère A.M.E.R', 'Ideal J', 'Sages Poètes'] },
-            { artist: 'Fabe', title: 'Rien ne change', hints: ['Fabe', 'Koma', 'Scred Connexion', 'Oxmo Puccino'] },
-            { artist: 'Akhenaton', title: 'Métèque et mat', hints: ['Akhenaton', 'Shurik\'n', 'Freeman', 'IAM'] },
-            { artist: 'IAM', title: "L'École du micro d'argent", hints: ['IAM', 'NTM', 'Fonky Family', 'Sniper'] },
-            { artist: 'Oxmo Puccino', title: "L'enfant seul", hints: ['Oxmo', 'Booba', 'Lino', 'Pit Baccardi'] },
-            { artist: 'Lunatic', title: 'Mauvais Œil', hints: ['Booba', 'Ali', 'Lunatic', 'La Cliqua'] },
-            { artist: 'Ministère A.M.E.R.', title: 'Sacrifice de Poulet', hints: ['Passi', 'Stomy Bugsy', 'Gyneco', 'JoeyStarr'] },
-            { artist: 'Fonky Family', title: 'Mystère et suspense', hints: ['FF', 'IAM', '3ème Œil', 'Psy 4 de la Rime'] },
-            { artist: 'Kery James', title: "Si c'était à refaire...", hints: ['Kery James', 'Rohff', 'Diam\'s', 'Rim\'K'] },
-            { artist: 'Tandem', title: '93 Hardcore', hints: ['Mac Tyer', 'Mac Kregor', 'Booba', 'Rohff'] },
-            { artist: 'Booba', title: 'Destinée', hints: ['Booba', 'Kaaris', 'La Fouine', 'Sinik'] },
-            { artist: 'Rohff', title: 'En mode', hints: ['Rohff', 'Booba', 'Lafouine', 'Rim\'K'] },
-            { artist: 'Diam\'s', title: 'La Boulette', hints: ['Diam\'s', 'Vitaa', 'Shy\'m', 'Amel Bent'] },
-            { artist: 'La Fouine', title: 'Du ferme', hints: ['La Fouine', 'Rohff', 'Booba', 'Soprano'] },
-            { artist: 'Youssoupha', title: 'Éternel recommencement', hints: ['Youssoupha', 'Medine', 'Kery James', 'Disiz'] },
-            { artist: 'Sexion d\'Assaut', title: 'Désolé', hints: ['Gims', 'Black M', 'Lefa', 'Barack Adama'] },
-            { artist: 'Orelsan', title: 'La Terre est ronde', hints: ['Orelsan', 'Gringe', 'Casseurs Fluxters', 'Vald'] },
-            { artist: 'Nekfeu', title: 'On verra', hints: ['Nekfeu', 'Alpha Wann', 'Sneazzy', 'Lomepal'] },
-            { artist: 'Damso', title: 'Macarena', hints: ['Damso', 'Hamza', 'Shay', 'Niska'] },
-            { artist: 'Jul', title: 'Tchikita', hints: ['Jul', 'Naps', 'Alonzo', 'SCH'] },
-            { artist: 'PNL', title: 'Au DD', hints: ['PNL', 'Ademo', 'N.O.S', 'DTF'] },
-            { artist: 'Ninho', title: 'Lettre à une femme', hints: ['Ninho', 'Gazo', 'Tiakola', 'SDM'] },
-            { artist: 'Gazo', title: 'DIE', hints: ['Gazo', 'Central Cee', 'Zola', 'Koba LaD'] },
-            { artist: 'Vald', title: 'Désaccordé', hints: ['Vald', 'Orelsan', 'Lorenzo', 'Soolking'] },
-            { artist: 'Lomepal', title: 'Trop beau', hints: ['Lomepal', 'Romeo Elvis', 'Angèle', 'Eddy de Pretto'] },
-            { artist: 'Dinos', title: 'Helsinki', hints: ['Dinos', 'Laylow', 'Josman', 'Alpha Wann'] },
-            { artist: 'Alpha Wann', title: 'LE PIÈGE', hints: ['Alpha Wann', 'Nekfeu', 'Freeze Corleone', 'Infinit'] },
-            { artist: 'Freeze Corleone', title: 'Freeze Raël', hints: ['Freeze', 'Gazo', 'ASHE 22', 'Ziak'] },
-            { artist: 'SCH', title: 'A7', hints: ['SCH', 'Jul', 'Naps', 'Soso Maness'] },
-            { artist: 'Hamza', title: 'Fade Up', hints: ['Hamza', 'SCH', 'Zola', 'SDM'] },
-            { artist: 'SDM', title: 'Bolide Allemand', hints: ['SDM', 'Ninho', 'Booba', 'PLK'] },
-            { artist: 'PLK', title: 'Petrouchka', hints: ['PLK', 'Soso Maness', 'Landy', 'Maes'] },
-            { artist: 'Maes', title: 'Madrina', hints: ['Maes', 'Booba', 'Ninho', 'Lacrim'] },
-            { artist: 'Zola', title: 'Amber', hints: ['Zola', 'Gazo', 'Koba LaD', 'Gambi'] },
-            { artist: 'Tiakola', title: 'Meuda', hints: ['Tiakola', 'Gazo', 'Niska', 'Hamza'] },
-            { artist: 'Niska', title: 'Réseaux', hints: ['Niska', 'MHD', 'Gradur', 'Kalash'] },
-            { artist: 'Gradur', title: 'Sheguey 10', hints: ['Gradur', 'Niska', 'Ninho', 'Lacrim'] },
-            { artist: 'Lacrim', title: 'AWA', hints: ['Lacrim', 'SCH', 'Booba', 'Maes'] },
-            { artist: 'Sadek', title: 'Casanova', hints: ['Sadek', 'Ninho', 'Sch', 'Jul'] },
-            { artist: 'Werenoi', title: 'Chemin d\'or', hints: ['Werenoi', 'Ninho', 'PLK', 'Tiakola'] },
-            { artist: 'Laylow', title: 'Special', hints: ['Laylow', 'Nekfeu', 'Fousheé', 'Dinos'] },
-            { artist: 'Josman', title: 'Intro', hints: ['Josman', 'Dinos', 'Ziak', 'Vald'] },
-            { artist: 'Ziak', title: 'Fixette', hints: ['Ziak', 'Gazo', 'Freeze Corleone', 'Kerchak'] },
-            { artist: 'Kerchak', title: 'Peur', hints: ['Kerchak', 'Ziak', 'Favé', 'So La Lune'] },
-            { artist: 'Favé', title: 'Urus', hints: ['Favé', 'Kerchak', 'Gazo', 'Leto'] },
-            { artist: 'Leto', title: 'Macaroni', hints: ['Leto', 'Ninho', 'Guy2Bezbar', 'Tiakola'] },
-            { artist: 'Guy2Bezbar', title: 'Coco', hints: ['Guy2Bezbar', 'Tayc', 'Leto', 'Gazo'] },
-            { artist: 'Aya Nakamura', title: 'Djadja', hints: ['Aya', 'Wejdene', 'Tiakola', 'Tayc'] },
-            { artist: 'Rim\'K', title: 'Air Max', hints: ['Rim\'K', 'Ninho', '113', 'Rohff'] }
-        ],
-
+          {
+                    "artist": "Suprême NTM",
+                    "title": "La fièvre",
+                    "hints": [
+                              "Suprême NTM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Fonky Family",
+                    "title": "Mystère et suspense",
+                    "hints": [
+                              "Fonky Family",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Assassin",
+                    "title": "L'odyssée suit son cours",
+                    "hints": [
+                              "Assassin",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Oxmo Puccino ft. Dany Dan",
+                    "title": "A ton enterrement",
+                    "hints": [
+                              "Oxmo Puccino ft. Dany Dan",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Fabe ft. Dany Dan",
+                    "title": "Rien ne change à part les saisons",
+                    "hints": [
+                              "Fabe ft. Dany Dan",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Suprême NTM",
+                    "title": "Seine Saint Denis Style",
+                    "hints": [
+                              "Suprême NTM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Assassin",
+                    "title": "Shoota Babylone",
+                    "hints": [
+                              "Assassin",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Tandem",
+                    "title": "Les maux",
+                    "hints": [
+                              "Tandem",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Daddy Lord C",
+                    "title": "Freaky flow",
+                    "hints": [
+                              "Daddy Lord C",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Akhenaton",
+                    "title": "Au fin fond d'une contrée",
+                    "hints": [
+                              "Akhenaton",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Kery James",
+                    "title": "28 décembre 1977",
+                    "hints": [
+                              "Kery James",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Zoxea",
+                    "title": "Rap musique que j'aime",
+                    "hints": [
+                              "Zoxea",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "La Brigade ft. Lunatic",
+                    "title": "16 rimes",
+                    "hints": [
+                              "La Brigade ft. Lunatic",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Fabe",
+                    "title": "Aujourd'hui",
+                    "hints": [
+                              "Fabe",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Akhenaton ft. Fonky Family",
+                    "title": "Bad Boys de Marseille",
+                    "hints": [
+                              "Akhenaton ft. Fonky Family",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "La Rumeur",
+                    "title": "La cuir usé d'une valise",
+                    "hints": [
+                              "La Rumeur",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Ideal J",
+                    "title": "Le ghetto français",
+                    "hints": [
+                              "Ideal J",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Akhenaton",
+                    "title": "Mon texte le savon",
+                    "hints": [
+                              "Akhenaton",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Lunatic ft. Jockey",
+                    "title": "Le silence n'est pas un oubli",
+                    "hints": [
+                              "Lunatic ft. Jockey",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Doc Gynéco",
+                    "title": "L'homme qui ne valait pas dix centimes",
+                    "hints": [
+                              "Doc Gynéco",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Shurik'N",
+                    "title": "Lettre",
+                    "hints": [
+                              "Shurik'N",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Casey",
+                    "title": "Chez moi",
+                    "hints": [
+                              "Casey",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Les Sages Poètes de la Rue",
+                    "title": "Qu'est-ce qui fait marcher les sages",
+                    "hints": [
+                              "Les Sages Poètes de la Rue",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "La Rumeur",
+                    "title": "L'ombre sur la mesure",
+                    "hints": [
+                              "La Rumeur",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Booba",
+                    "title": "Le bitume avec une plume",
+                    "hints": [
+                              "Booba",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Fonky Family",
+                    "title": "Sans rémission",
+                    "hints": [
+                              "Fonky Family",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Kery James",
+                    "title": "2 issues",
+                    "hints": [
+                              "Kery James",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "La Cliqua",
+                    "title": "Un dernier jour sur Terre",
+                    "hints": [
+                              "La Cliqua",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Fabe",
+                    "title": "Des durs, des boss... des dombis !",
+                    "hints": [
+                              "Fabe",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Time Bomb",
+                    "title": "Les bidons veulent le guidon",
+                    "hints": [
+                              "Time Bomb",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Suprême NTM",
+                    "title": "Tout n'est pas si facile",
+                    "hints": [
+                              "Suprême NTM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Rocé",
+                    "title": "On s'habitue",
+                    "hints": [
+                              "Rocé",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Doc Gynéco",
+                    "title": "Nirvana",
+                    "hints": [
+                              "Doc Gynéco",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Rocca",
+                    "title": "Les jeunes de l'univers",
+                    "hints": [
+                              "Rocca",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Shurik'N ft. Akhenaton",
+                    "title": "Manifeste",
+                    "hints": [
+                              "Shurik'N ft. Akhenaton",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Ärsenik",
+                    "title": "Boxe avec les mots",
+                    "hints": [
+                              "Ärsenik",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Shurik'N",
+                    "title": "Samouraï",
+                    "hints": [
+                              "Shurik'N",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Chiens de Paille",
+                    "title": "Comme un aimant",
+                    "hints": [
+                              "Chiens de Paille",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "IAM",
+                    "title": "La fin de leur monde",
+                    "hints": [
+                              "IAM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Lunatic",
+                    "title": "Civilisé",
+                    "hints": [
+                              "Lunatic",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "IAM",
+                    "title": "Nés sous la même étoile",
+                    "hints": [
+                              "IAM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "X-Men",
+                    "title": "Pendez-les, bandez-les, descendez-les",
+                    "hints": [
+                              "X-Men",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Suprême NTM",
+                    "title": "Qu'est-ce qu'on attend ?",
+                    "hints": [
+                              "Suprême NTM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Fabe",
+                    "title": "L'impertinent",
+                    "hints": [
+                              "Fabe",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Booba",
+                    "title": "Ma définition",
+                    "hints": [
+                              "Booba",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Suprême NTM",
+                    "title": "Laisse pas traîner ton fils",
+                    "hints": [
+                              "Suprême NTM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Booba",
+                    "title": "Repose en paix",
+                    "hints": [
+                              "Booba",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Ékoué",
+                    "title": "Blessé dans mon égo",
+                    "hints": [
+                              "Ékoué",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "Lunatic",
+                    "title": "la lettre",
+                    "hints": [
+                              "Lunatic",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          },
+          {
+                    "artist": "IAM",
+                    "title": "Petit frère",
+                    "hints": [
+                              "IAM",
+                              "Rap FR",
+                              "Classique",
+                              "Années 90/00"
+                    ]
+          }
+],
         'rapus': [
-            { artist: 'Drake', title: 'God\'s Plan', hints: ['Drake', 'Kanye West', 'Kendrick Lamar', 'J. Cole'] },
-            { artist: 'Kendrick Lamar', title: 'HUMBLE.', hints: ['Kendrick', 'Drake', 'Future', 'A$AP Rocky'] },
-            { artist: 'Eminem', title: 'Lose Yourself', hints: ['Eminem', '50 Cent', 'Dr. Dre', 'Snoop Dogg'] },
-            { artist: 'The Weeknd', title: 'Blinding Lights', hints: ['The Weeknd', 'Bruno Mars', 'Justin Bieber', 'Post Malone'] },
-            { artist: 'Travis Scott', title: 'SICKO MODE', hints: ['Travis Scott', 'Drake', 'Young Thug', 'Quavo'] },
-            { artist: 'Post Malone', title: 'Rockstar', hints: ['Post Malone', '21 Savage', 'Ty Dolla $ign', 'Swae Lee'] },
-            { artist: 'Future', title: 'Mask Off', hints: ['Future', 'Young Thug', '21 Savage', 'Migos'] },
-            { artist: 'Young Thug', title: 'Go Crazy', hints: ['Young Thug', 'Chris Brown', 'Gunna', 'Lil Baby'] },
-            { artist: 'Lil Baby', title: 'Drip Too Hard', hints: ['Lil Baby', 'Gunna', 'Lil Durk', 'Roddy Ricch'] },
-            { artist: 'Roddy Ricch', title: 'The Box', hints: ['Roddy Ricch', 'Lil Baby', 'DaBaby', 'Megan Thee Stallion'] },
-            { artist: 'Cardi B', title: 'Bodak Yellow', hints: ['Cardi B', 'Nicki Minaj', 'Megan Thee Stallion', 'Doja Cat'] },
-            { artist: 'Nicki Minaj', title: 'Super Freaky Girl', hints: ['Nicki Minaj', 'Cardi B', 'Ice Spice', 'Latto'] },
-            { artist: 'Doja Cat', title: 'Say So', hints: ['Doja Cat', 'SZA', 'Ariana Grande', 'Lizzo'] },
-            { artist: 'SZA', title: 'Kill Bill', hints: ['SZA', 'Summer Walker', 'H.E.R.', 'Jhené Aiko'] },
-            { artist: 'Summer Walker', title: 'Girls Need Love', hints: ['Summer Walker', 'SZA', 'Kehlani', 'Teyana Taylor'] },
-            { artist: 'Chris Brown', title: 'No Guidance', hints: ['Chris Brown', 'Drake', 'Usher', 'Trey Songz'] },
-            { artist: 'Usher', title: 'Yeah!', hints: ['Usher', 'Chris Brown', 'Ne-Yo', 'Justin Timberlake'] },
-            { artist: 'Ne-Yo', title: 'Miss Independent', hints: ['Ne-Yo', 'Usher', 'T-Pain', 'Mario'] },
-            { artist: 'T-Pain', title: 'Buy U a Drank', hints: ['T-Pain', 'Akon', 'Lil Wayne', 'Kanye West'] },
-            { artist: 'Akon', title: 'Smack That', hints: ['Akon', 'T-Pain', '50 Cent', 'Eminem'] },
-            { artist: '50 Cent', title: 'In Da Club', hints: ['50 Cent', 'Eminem', 'Dr. Dre', 'The Game'] },
-            { artist: 'Dr. Dre', title: 'Still D.R.E.', hints: ['Dr. Dre', 'Snoop Dogg', 'Ice Cube', 'Tupac'] },
-            { artist: 'Snoop Dogg', title: 'Drop It Like It\'s Hot', hints: ['Snoop Dogg', 'Pharrell', 'Jay-Z', 'Nas'] },
-            { artist: 'Jay-Z', title: 'Empire State of Mind', hints: ['Jay-Z', 'Nas', 'Kanye West', 'Kendrick Lamar'] },
-            { artist: 'Kanye West', title: 'Gold Digger', hints: ['Kanye West', 'Jay-Z', 'Lil Wayne', 'Drake'] },
-            { artist: 'Lil Wayne', title: 'A Milli', hints: ['Lil Wayne', 'Drake', 'Nicki Minaj', '2 Chainz'] },
-            { artist: '2 Chainz', title: 'I\'m Different', hints: ['2 Chainz', 'Rick Ross', 'Gucci Mane', 'Quavo'] },
-            { artist: 'Migos', title: 'Bad and Boujee', hints: ['Migos', 'Future', 'Travis Scott', 'Young Thug'] },
-            { artist: 'Cardi B', title: 'WAP', hints: ['Cardi B', 'Megan Thee Stallion', 'Nicki Minaj', 'Ice Spice'] },
-
-            { artist: 'Pop Smoke', title: 'Dior', hints: ['Pop Smoke', 'Fivio Foreign', 'Lil Tjay', 'Polo G'] },
-            { artist: 'Juice WRLD', title: 'Lucid Dreams', hints: ['Juice WRLD', 'XXXTentacion', 'Lil Peep', 'Post Malone'] },
-            { artist: 'XXXTentacion', title: 'SAD!', hints: ['XXXTentacion', 'Juice WRLD', 'Lil Uzi Vert', 'Ski Mask'] },
-            { artist: 'Lil Uzi Vert', title: 'XO Tour Llif3', hints: ['Lil Uzi Vert', 'Playboi Carti', 'Young Thug', 'Gunna'] },
-            { artist: 'Playboi Carti', title: 'Magnolia', hints: ['Playboi Carti', 'Uzi', 'Rocky', 'Future'] },
-            { artist: 'A$AP Rocky', title: 'Praise the Lord', hints: ['Rocky', 'Tyler, The Creator', 'Schoolboy Q', 'Vince Staples'] },
-            { artist: 'Tyler, The Creator', title: 'EARFQUAKE', hints: ['Tyler', 'Frank Ocean', 'Earl Sweatshirt', 'Steve Lacy'] },
-            { artist: 'Frank Ocean', title: 'Pink + White', hints: ['Frank Ocean', 'Daniel Caesar', 'Brent Faiyaz', 'Giveon'] },
-            { artist: 'Brent Faiyaz', title: 'Trust', hints: ['Brent Faiyaz', 'SZA', 'Lucky Daye', 'SiR'] },
-            { artist: 'Daniel Caesar', title: 'Best Part', hints: ['Daniel Caesar', 'H.E.R.', 'Khalid', 'Joji'] },
-            { artist: 'Khalid', title: 'Location', hints: ['Khalid', 'Post Malone', 'Bazzi', 'Lauv'] },
-            { artist: 'Bruno Mars', title: '24K Magic', hints: ['Bruno Mars', 'Anderson .Paak', 'Silk Sonic', 'Pharrell'] },
-            { artist: 'Pharrell Williams', title: 'Happy', hints: ['Pharrell', 'Justin Timberlake', 'Daft Punk', 'The Weeknd'] },
-            { artist: 'Daft Punk', title: 'Get Lucky', hints: ['Daft Punk', 'The Weeknd', 'Pharrell', 'Justice'] },
-            { artist: 'Lizzo', title: 'About Damn Time', hints: ['Lizzo', 'Doja Cat', 'Megan Thee Stallion', 'Ice Spice'] },
-            { artist: 'Jack Harlow', title: 'First Class', hints: ['Jack Harlow', 'Lil Nas X', 'Post Malone', 'The Kid LAROI'] },
-            { artist: 'Lil Nas X', title: 'Industry Baby', hints: ['Lil Nas X', 'Jack Harlow', 'Doja Cat', 'Rosalía'] },
-            { artist: 'Gunna', title: 'fukumean', hints: ['Gunna', 'Young Thug', 'Lil Baby', 'Metro Boomin'] },
-            { artist: 'Metro Boomin', title: 'Creepin\'', hints: ['Metro Boomin', 'The Weeknd', '21 Savage', 'Travis Scott'] },
-            { artist: 'Bad Bunny', title: 'Monaco', hints: ['Bad Bunny', 'J Balvin', 'Rauw Alejandro', 'Karol G'] },
-            { artist: '21 Savage', title: 'Redrum', hints: ['21 Savage', 'Drake', 'Metro Boomin', 'Future'] }
-        ],
+          {
+                    "artist": "2Pac",
+                    "title": "California Love",
+                    "hints": [
+                              "2Pac",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "The Notorious B.I.G.",
+                    "title": "Hypnotize",
+                    "hints": [
+                              "The Notorious B.I.G.",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Dr. Dre",
+                    "title": "Still D.R.E.",
+                    "hints": [
+                              "Dr. Dre",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Snoop Dogg",
+                    "title": "Drop It Like It’s Hot",
+                    "hints": [
+                              "Snoop Dogg",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Jay-Z",
+                    "title": "Empire State of Mind",
+                    "hints": [
+                              "Jay-Z",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Nas",
+                    "title": "If I Ruled the World (Imagine That)",
+                    "hints": [
+                              "Nas",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Eminem",
+                    "title": "Lose Yourself",
+                    "hints": [
+                              "Eminem",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "50 Cent",
+                    "title": "In da Club",
+                    "hints": [
+                              "50 Cent",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Kanye West",
+                    "title": "Gold Digger",
+                    "hints": [
+                              "Kanye West",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Nelly",
+                    "title": "Hot in Herre",
+                    "hints": [
+                              "Nelly",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ludacris",
+                    "title": "Stand Up",
+                    "hints": [
+                              "Ludacris",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "DMX",
+                    "title": "Party Up (Up in Here)",
+                    "hints": [
+                              "DMX",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "OutKast",
+                    "title": "Hey Ya!",
+                    "hints": [
+                              "OutKast",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Missy Elliott",
+                    "title": "Work It",
+                    "hints": [
+                              "Missy Elliott",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Lauryn Hill",
+                    "title": "Doo Wop (That Thing)",
+                    "hints": [
+                              "Lauryn Hill",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Warren G",
+                    "title": "Regulate",
+                    "hints": [
+                              "Warren G",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Coolio",
+                    "title": "Gangsta’s Paradise",
+                    "hints": [
+                              "Coolio",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Bone Thugs-N-Harmony",
+                    "title": "Tha Crossroads",
+                    "hints": [
+                              "Bone Thugs-N-Harmony",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ice Cube",
+                    "title": "It Was a Good Day",
+                    "hints": [
+                              "Ice Cube",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "LL Cool J",
+                    "title": "Mama Said Knock You Out",
+                    "hints": [
+                              "LL Cool J",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Vanilla Ice",
+                    "title": "Ice Ice Baby",
+                    "hints": [
+                              "Vanilla Ice",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "MC Hammer",
+                    "title": "U Can’t Touch This",
+                    "hints": [
+                              "MC Hammer",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Bell Biv DeVoe",
+                    "title": "Poison",
+                    "hints": [
+                              "Bell Biv DeVoe",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Salt-N-Pepa",
+                    "title": "Shoop",
+                    "hints": [
+                              "Salt-N-Pepa",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "TLC",
+                    "title": "No Scrubs",
+                    "hints": [
+                              "TLC",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Destiny’s Child",
+                    "title": "Say My Name",
+                    "hints": [
+                              "Destiny’s Child",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Mary J. Blige",
+                    "title": "Family Affair",
+                    "hints": [
+                              "Mary J. Blige",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Aaliyah",
+                    "title": "Try Again",
+                    "hints": [
+                              "Aaliyah",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Usher",
+                    "title": "Yeah!",
+                    "hints": [
+                              "Usher",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "R. Kelly",
+                    "title": "Ignition (Remix)",
+                    "hints": [
+                              "R. Kelly",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Alicia Keys",
+                    "title": "Fallin’",
+                    "hints": [
+                              "Alicia Keys",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Brandy & Monica",
+                    "title": "The Boy Is Mine",
+                    "hints": [
+                              "Brandy & Monica",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ginuwine",
+                    "title": "Pony",
+                    "hints": [
+                              "Ginuwine",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Jagged Edge",
+                    "title": "Where the Party At",
+                    "hints": [
+                              "Jagged Edge",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ja Rule",
+                    "title": "Always on Time",
+                    "hints": [
+                              "Ja Rule",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ashanti",
+                    "title": "Foolish",
+                    "hints": [
+                              "Ashanti",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ciara",
+                    "title": "Goodies",
+                    "hints": [
+                              "Ciara",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "OutKast",
+                    "title": "Ms. Jackson",
+                    "hints": [
+                              "OutKast",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Fugees",
+                    "title": "Killing Me Softly",
+                    "hints": [
+                              "Fugees",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Wyclef Jean",
+                    "title": "Gone Till November",
+                    "hints": [
+                              "Wyclef Jean",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Busta Rhymes",
+                    "title": "Touch It",
+                    "hints": [
+                              "Busta Rhymes",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ja Rule",
+                    "title": "Livin’ It Up",
+                    "hints": [
+                              "Ja Rule",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "T.I.",
+                    "title": "Whatever You Like",
+                    "hints": [
+                              "T.I.",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Lil Wayne",
+                    "title": "Lollipop",
+                    "hints": [
+                              "Lil Wayne",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Rick Ross",
+                    "title": "Hustlin’",
+                    "hints": [
+                              "Rick Ross",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "The Game",
+                    "title": "How We Do",
+                    "hints": [
+                              "The Game",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Young Jeezy",
+                    "title": "Soul Survivor",
+                    "hints": [
+                              "Young Jeezy",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Soulja Boy Tell’em",
+                    "title": "Crank That (Soulja Boy)",
+                    "hints": [
+                              "Soulja Boy Tell’em",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Flo Rida",
+                    "title": "Low",
+                    "hints": [
+                              "Flo Rida",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "T-Pain",
+                    "title": "Buy U a Drank",
+                    "hints": [
+                              "T-Pain",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Akon",
+                    "title": "Smack That",
+                    "hints": [
+                              "Akon",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ne-Yo",
+                    "title": "So Sick",
+                    "hints": [
+                              "Ne-Yo",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Chris Brown",
+                    "title": "Run It!",
+                    "hints": [
+                              "Chris Brown",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Rihanna",
+                    "title": "Umbrella",
+                    "hints": [
+                              "Rihanna",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Beyoncé",
+                    "title": "Crazy in Love",
+                    "hints": [
+                              "Beyoncé",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "The Weeknd",
+                    "title": "Blinding Lights",
+                    "hints": [
+                              "The Weeknd",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Drake",
+                    "title": "God’s Plan",
+                    "hints": [
+                              "Drake",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Kendrick Lamar",
+                    "title": "HUMBLE.",
+                    "hints": [
+                              "Kendrick Lamar",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Travis Scott",
+                    "title": "Sicko Mode",
+                    "hints": [
+                              "Travis Scott",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Post Malone",
+                    "title": "Rockstar",
+                    "hints": [
+                              "Post Malone",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Future",
+                    "title": "Mask Off",
+                    "hints": [
+                              "Future",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Migos",
+                    "title": "Bad and Boujee",
+                    "hints": [
+                              "Migos",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Cardi B",
+                    "title": "Bodak Yellow",
+                    "hints": [
+                              "Cardi B",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Lizzo",
+                    "title": "Truth Hurts",
+                    "hints": [
+                              "Lizzo",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Doja Cat",
+                    "title": "Say So",
+                    "hints": [
+                              "Doja Cat",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Tyler, The Creator",
+                    "title": "Earfquake",
+                    "hints": [
+                              "Tyler, The Creator",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "J. Cole",
+                    "title": "No Role Modelz",
+                    "hints": [
+                              "J. Cole",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Nicki Minaj",
+                    "title": "Super Bass",
+                    "hints": [
+                              "Nicki Minaj",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Macklemore & Ryan Lewis",
+                    "title": "Thrift Shop",
+                    "hints": [
+                              "Macklemore & Ryan Lewis",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Black Eyed Peas",
+                    "title": "Boom Boom Pow",
+                    "hints": [
+                              "Black Eyed Peas",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "OutKast",
+                    "title": "Roses",
+                    "hints": [
+                              "OutKast",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Pharrell Williams",
+                    "title": "Frontin’",
+                    "hints": [
+                              "Pharrell Williams",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Jaheim",
+                    "title": "Put That Woman First",
+                    "hints": [
+                              "Jaheim",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Miguel",
+                    "title": "Adorn",
+                    "hints": [
+                              "Miguel",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Frank Ocean",
+                    "title": "Thinkin Bout You",
+                    "hints": [
+                              "Frank Ocean",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "SZA",
+                    "title": "The Weekend",
+                    "hints": [
+                              "SZA",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Bryson Tiller",
+                    "title": "Don’t",
+                    "hints": [
+                              "Bryson Tiller",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Trey Songz",
+                    "title": "Can’t Help But Wait",
+                    "hints": [
+                              "Trey Songz",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Timbaland",
+                    "title": "The Way I Are",
+                    "hints": [
+                              "Timbaland",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Fabolous",
+                    "title": "Into You",
+                    "hints": [
+                              "Fabolous",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Sean Paul",
+                    "title": "Get Busy",
+                    "hints": [
+                              "Sean Paul",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Jason Derulo",
+                    "title": "Whatcha Say",
+                    "hints": [
+                              "Jason Derulo",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Bruno Mars",
+                    "title": "That’s What I Like",
+                    "hints": [
+                              "Bruno Mars",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Childish Gambino",
+                    "title": "Redbone",
+                    "hints": [
+                              "Childish Gambino",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "Ty Dolla $ign",
+                    "title": "Or Nah",
+                    "hints": [
+                              "Ty Dolla $ign",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          },
+          {
+                    "artist": "DJ Khaled",
+                    "title": "I’m the One",
+                    "hints": [
+                              "DJ Khaled",
+                              "Rap US / RNB",
+                              "Hit",
+                              "Classique"
+                    ]
+          }
+],
         'cartoons': [
-            { artist: 'Noam Kaniel', title: 'Goldorak le grand', hints: ['Goldorak', 'Albator', 'Ulysse 31', 'Cobra'] },
-            { artist: 'Jean-Jacques Debout', title: 'Capitaine Flam', hints: ['Capitaine Flam', 'Albator', 'San Ku Kaï', 'Spectreman'] },
-            { artist: 'Jacques Cardona', title: 'Les Mystérieuses Cités d\'Or', hints: ['Cités d\'Or', 'Ulysse 31', 'Jayce', 'MASK'] },
-            { artist: 'Bernard Minet', title: 'Bioman', hints: ['Bioman', 'Flashman', 'X-Or', 'Jiraya'] },
-            { artist: 'Claude Valois', title: 'Inspecteur Gadget', hints: ['Gadget', 'Denver', 'Boumbo', 'Babar'] },
-            { artist: 'Ariane', title: 'Dragon Ball Z', hints: ['Dragon Ball Z', 'Pokemon', 'Naruto', 'One Piece'] },
-            { artist: 'Pokemon', title: 'Attrapez-les tous', hints: ['Pokemon', 'Digimon', 'Yu-Gi-Oh', 'Beyblade'] },
-            { artist: 'Totally Spies', title: 'Here We Go', hints: ['Totally Spies', 'Winx Club', 'WITCH', 'Kim Possible'] },
-            { artist: 'Code Lyoko', title: 'Un monde sans danger', hints: ['Code Lyoko', 'Winx Club', 'Totally Spies', 'Galactik Football'] },
-            { artist: 'Winx Club', title: 'Winx Club Theme', hints: ['Winx Club', 'WITCH', 'Totally Spies', 'Lolirock'] },
-            { artist: 'Jean-Pierre Savelli', title: 'X-Or', hints: ['X-Or', 'Bioman', 'San Ku Kaï', 'Sharivan'] },
-            { artist: 'Lionel Leroy', title: 'Ulysse 31', hints: ['Ulysse 31', 'Albator', 'Cobra', 'Jayce'] },
-            { artist: 'Shuki Levy', title: 'Jayce et les Conquérants de la Lumière', hints: ['Jayce', 'MASK', 'Transformers', 'GI Joe'] },
-            { artist: 'Noam', title: 'Les Entrechats', hints: ['Les Entrechats', 'Les Minikeums', 'Petit Ours Brun', 'Babar'] },
-            { artist: 'Minikeums', title: 'Ma Melissa', hints: ['Minikeums', 'Totally Spies', 'Pokemon', 'Digimon'] }
-        ],
+          {
+                    "artist": "Générique",
+                    "title": "Les Mystérieuses Cités d'Or",
+                    "brand": "Les Mystérieuses Cités d'Or",
+                    "hints": [
+                              "Les Mystérieuses Cités d'Or",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Ulysse 31",
+                    "brand": "Ulysse 31",
+                    "hints": [
+                              "Ulysse 31",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Cobra",
+                    "brand": "Cobra",
+                    "hints": [
+                              "Cobra",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Jayce et les Conquérants de la Lumière",
+                    "brand": "Jayce et les Conquérants de la Lumière",
+                    "hints": [
+                              "Jayce et les Conquérants de la Lumière",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Cat's Eye",
+                    "brand": "Cat's Eye",
+                    "hints": [
+                              "Cat's Eye",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Tom Sawyer",
+                    "brand": "Tom Sawyer",
+                    "hints": [
+                              "Tom Sawyer",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Inspecteur Gadget",
+                    "brand": "Inspecteur Gadget",
+                    "hints": [
+                              "Inspecteur Gadget",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Chevaliers du Zodiaque",
+                    "brand": "Les Chevaliers du Zodiaque",
+                    "hints": [
+                              "Les Chevaliers du Zodiaque",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Nicky Larson",
+                    "brand": "Nicky Larson",
+                    "hints": [
+                              "Nicky Larson",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Dragon Ball",
+                    "brand": "Dragon Ball",
+                    "hints": [
+                              "Dragon Ball",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Dragon Ball Z",
+                    "brand": "Dragon Ball Z",
+                    "hints": [
+                              "Dragon Ball Z",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Lucille, Amour et Rock'n'roll",
+                    "brand": "Lucille, Amour et Rock'n'roll",
+                    "hints": [
+                              "Lucille, Amour et Rock'n'roll",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Jeanne et Serge",
+                    "brand": "Jeanne et Serge",
+                    "hints": [
+                              "Jeanne et Serge",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Olive et Tom",
+                    "brand": "Olive et Tom",
+                    "hints": [
+                              "Olive et Tom",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Princesse Sarah",
+                    "brand": "Princesse Sarah",
+                    "hints": [
+                              "Princesse Sarah",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Clémentine",
+                    "brand": "Clémentine",
+                    "hints": [
+                              "Clémentine",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Cynthia ou le Rythme de la Vie",
+                    "brand": "Cynthia ou le Rythme de la Vie",
+                    "hints": [
+                              "Cynthia ou le Rythme de la Vie",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Emi Magique",
+                    "brand": "Emi Magique",
+                    "hints": [
+                              "Emi Magique",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Maîtres de l'Univers",
+                    "brand": "Les Maîtres de l'Univers",
+                    "hints": [
+                              "Les Maîtres de l'Univers",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "She-Ra",
+                    "brand": "She-Ra",
+                    "hints": [
+                              "She-Ra",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Cosmocats",
+                    "brand": "Cosmocats",
+                    "hints": [
+                              "Cosmocats",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Ranma 1/2",
+                    "brand": "Ranma 1/2",
+                    "hints": [
+                              "Ranma 1/2",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Mondes engloutis",
+                    "brand": "Les Mondes engloutis",
+                    "hints": [
+                              "Les Mondes engloutis",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Ken le Survivant",
+                    "brand": "Ken le Survivant",
+                    "hints": [
+                              "Ken le Survivant",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Collège fou fou fou",
+                    "brand": "Le Collège fou fou fou",
+                    "hints": [
+                              "Le Collège fou fou fou",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Juliette je t'aime",
+                    "brand": "Juliette je t'aime",
+                    "hints": [
+                              "Juliette je t'aime",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Lamu",
+                    "brand": "Lamu",
+                    "hints": [
+                              "Lamu",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Denver, le dernier dinosaure",
+                    "brand": "Denver, le dernier dinosaure",
+                    "hints": [
+                              "Denver, le dernier dinosaure",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "MASK",
+                    "brand": "MASK",
+                    "hints": [
+                              "MASK",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Capitaine Flam",
+                    "brand": "Capitaine Flam",
+                    "hints": [
+                              "Capitaine Flam",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Albator 78",
+                    "brand": "Albator 78",
+                    "hints": [
+                              "Albator 78",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Albator 84",
+                    "brand": "Albator 84",
+                    "hints": [
+                              "Albator 84",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Goldorak",
+                    "brand": "Goldorak",
+                    "hints": [
+                              "Goldorak",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Minipouss",
+                    "brand": "Les Minipouss",
+                    "hints": [
+                              "Les Minipouss",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Candy",
+                    "brand": "Candy",
+                    "hints": [
+                              "Candy",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Bouba",
+                    "brand": "Bouba",
+                    "hints": [
+                              "Bouba",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Snorky",
+                    "brand": "Les Snorky",
+                    "hints": [
+                              "Les Snorky",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Gummi",
+                    "brand": "Les Gummi",
+                    "hints": [
+                              "Les Gummi",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Tortues Ninja",
+                    "brand": "Les Tortues Ninja",
+                    "hints": [
+                              "Les Tortues Ninja",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Lucky Luke",
+                    "brand": "Lucky Luke",
+                    "hints": [
+                              "Lucky Luke",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Simpsons",
+                    "brand": "Les Simpsons",
+                    "hints": [
+                              "Les Simpsons",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Pingu",
+                    "brand": "Pingu",
+                    "hints": [
+                              "Pingu",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Merveilleux Voyage de Nils Holgersson",
+                    "brand": "Le Merveilleux Voyage de Nils Holgersson",
+                    "hints": [
+                              "Le Merveilleux Voyage de Nils Holgersson",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Aventures de Galaxy Rangers",
+                    "brand": "Les Aventures de Galaxy Rangers",
+                    "hints": [
+                              "Les Aventures de Galaxy Rangers",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "G.I. Joe : Héros sans frontières",
+                    "brand": "G.I. Joe : Héros sans frontières",
+                    "hints": [
+                              "G.I. Joe : Héros sans frontières",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Yakari",
+                    "brand": "Yakari",
+                    "hints": [
+                              "Yakari",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Diplodo",
+                    "brand": "Diplodo",
+                    "hints": [
+                              "Diplodo",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Boumbo",
+                    "brand": "Boumbo",
+                    "hints": [
+                              "Boumbo",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Quatre Filles du Docteur March",
+                    "brand": "Les Quatre Filles du Docteur March",
+                    "hints": [
+                              "Les Quatre Filles du Docteur March",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Nils Holgersson",
+                    "brand": "Nils Holgersson",
+                    "hints": [
+                              "Nils Holgersson",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Bouli",
+                    "brand": "Bouli",
+                    "hints": [
+                              "Bouli",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sailor Moon",
+                    "brand": "Sailor Moon",
+                    "hints": [
+                              "Sailor Moon",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Mondes Engloutis",
+                    "brand": "Les Mondes Engloutis",
+                    "hints": [
+                              "Les Mondes Engloutis",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Dare Dare Motus",
+                    "brand": "Dare Dare Motus",
+                    "hints": [
+                              "Dare Dare Motus",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Moi Renart",
+                    "brand": "Moi Renart",
+                    "hints": [
+                              "Moi Renart",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Super Durand",
+                    "brand": "Super Durand",
+                    "hints": [
+                              "Super Durand",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "SOS Fantômes",
+                    "brand": "SOS Fantômes",
+                    "hints": [
+                              "SOS Fantômes",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Cités d'Or (autre générique version Club Dorothée)",
+                    "brand": "Les Cités d'Or (autre générique version Club Dorothée)",
+                    "hints": [
+                              "Les Cités d'Or (autre générique version Club Dorothée)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Minikeums (générique)",
+                    "brand": "Les Minikeums (générique)",
+                    "hints": [
+                              "Les Minikeums (générique)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Club Dorothée (générique)",
+                    "brand": "Club Dorothée (générique)",
+                    "hints": [
+                              "Club Dorothée (générique)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Récré A2 (générique)",
+                    "brand": "Récré A2 (générique)",
+                    "hints": [
+                              "Récré A2 (générique)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Animaniacs",
+                    "brand": "Les Animaniacs",
+                    "hints": [
+                              "Les Animaniacs",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Tiny Toons",
+                    "brand": "Les Tiny Toons",
+                    "hints": [
+                              "Les Tiny Toons",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Batman la série animée",
+                    "brand": "Batman la série animée",
+                    "hints": [
+                              "Batman la série animée",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "X-Men (série animée 90s)",
+                    "brand": "X-Men (série animée 90s)",
+                    "hints": [
+                              "X-Men (série animée 90s)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Tortues Ninja (version 90s)",
+                    "brand": "Les Tortues Ninja (version 90s)",
+                    "hints": [
+                              "Les Tortues Ninja (version 90s)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Razmoket",
+                    "brand": "Les Razmoket",
+                    "hints": [
+                              "Les Razmoket",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Doug",
+                    "brand": "Doug",
+                    "hints": [
+                              "Doug",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "La Bande à Picsou",
+                    "brand": "La Bande à Picsou",
+                    "hints": [
+                              "La Bande à Picsou",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Mighty Max",
+                    "brand": "Mighty Max",
+                    "hints": [
+                              "Mighty Max",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Gargoyles",
+                    "brand": "Les Gargoyles",
+                    "hints": [
+                              "Les Gargoyles",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Schtroumpfs",
+                    "brand": "Les Schtroumpfs",
+                    "hints": [
+                              "Les Schtroumpfs",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Bisounours",
+                    "brand": "Les Bisounours",
+                    "hints": [
+                              "Les Bisounours",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Il était une fois... la Vie",
+                    "brand": "Il était une fois... la Vie",
+                    "hints": [
+                              "Il était une fois... la Vie",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Il était une fois... l'Homme",
+                    "brand": "Il était une fois... l'Homme",
+                    "hints": [
+                              "Il était une fois... l'Homme",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Il était une fois... l'Espace",
+                    "brand": "Il était une fois... l'Espace",
+                    "hints": [
+                              "Il était une fois... l'Espace",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Il était une fois... les Découvreurs",
+                    "brand": "Il était une fois... les Découvreurs",
+                    "hints": [
+                              "Il était une fois... les Découvreurs",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Il était une fois... les Explorateurs",
+                    "brand": "Il était une fois... les Explorateurs",
+                    "hints": [
+                              "Il était une fois... les Explorateurs",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Bus Magique",
+                    "brand": "Le Bus Magique",
+                    "hints": [
+                              "Le Bus Magique",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Zinzins de l'Espace",
+                    "brand": "Les Zinzins de l'Espace",
+                    "hints": [
+                              "Les Zinzins de l'Espace",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Oggy et les Cafards",
+                    "brand": "Oggy et les Cafards",
+                    "hints": [
+                              "Oggy et les Cafards",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Freaky Stories",
+                    "brand": "Les Freaky Stories",
+                    "hints": [
+                              "Les Freaky Stories",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "La Famille Delajungle",
+                    "brand": "La Famille Delajungle",
+                    "hints": [
+                              "La Famille Delajungle",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Hé Arnold !",
+                    "brand": "Hé Arnold !",
+                    "hints": [
+                              "Hé Arnold !",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Rocket Power",
+                    "brand": "Rocket Power",
+                    "hints": [
+                              "Rocket Power",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Titeuf",
+                    "brand": "Titeuf",
+                    "hints": [
+                              "Titeuf",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Totally Spies",
+                    "brand": "Totally Spies",
+                    "hints": [
+                              "Totally Spies",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Code Lyoko",
+                    "brand": "Code Lyoko",
+                    "hints": [
+                              "Code Lyoko",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Foot 2 Rue",
+                    "brand": "Foot 2 Rue",
+                    "hints": [
+                              "Foot 2 Rue",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Kim Possible",
+                    "brand": "Kim Possible",
+                    "hints": [
+                              "Kim Possible",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Digimon",
+                    "brand": "Digimon",
+                    "hints": [
+                              "Digimon",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Yu-Gi-Oh!",
+                    "brand": "Yu-Gi-Oh!",
+                    "hints": [
+                              "Yu-Gi-Oh!",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Pokémon",
+                    "brand": "Pokémon",
+                    "hints": [
+                              "Pokémon",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Card Captor Sakura",
+                    "brand": "Card Captor Sakura",
+                    "hints": [
+                              "Card Captor Sakura",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sakura, chasseuse de cartes (VF)",
+                    "brand": "Sakura, chasseuse de cartes (VF)",
+                    "hints": [
+                              "Sakura, chasseuse de cartes (VF)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Malheurs de Sophie (dessin animé)",
+                    "brand": "Les Malheurs de Sophie (dessin animé)",
+                    "hints": [
+                              "Les Malheurs de Sophie (dessin animé)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Heidi (version 80s)",
+                    "brand": "Heidi (version 80s)",
+                    "hints": [
+                              "Heidi (version 80s)",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Belle et Sébastien",
+                    "brand": "Belle et Sébastien",
+                    "hints": [
+                              "Belle et Sébastien",
+                              "Cartoons",
+                              "Années 80/90",
+                              "Nostalgie"
+                    ]
+          }
+],
         'movies': [
-            { artist: 'John Williams', title: 'Star Wars Main Title', brand: 'Star Wars', hints: ['Star Wars', 'Indiana Jones', 'Superman', 'E.T.'] },
-            { artist: 'Hans Zimmer', title: 'He\'s a Pirate', brand: 'Pirates des Caraïbes', hints: ['Pirates des Caraïbes', 'Gladiator', 'Inception', 'The Dark Knight'] },
-            { artist: 'Celine Dion', title: 'My Heart Will Go On', brand: 'Titanic', hints: ['Titanic', 'Avatar', 'Bodyguard', 'Leon'] },
-            { artist: 'Bill Conti', title: 'Gonna Fly Now', brand: 'Rocky', hints: ['Rocky', 'Rambo', 'Top Gun', 'Creed'] },
-            { artist: 'Ray Parker Jr.', title: 'Ghostbusters', brand: 'S.O.S. Fantômes', hints: ['Ghostbusters', 'Gremlins', 'The Goonies', 'E.T.'] },
-            { artist: 'Harold Faltermeyer', title: 'Axel F', brand: 'Le Flic de Beverly Hills', hints: ['Le Flic de Beverly Hills', 'Top Gun', 'Cocktail', 'Footloose'] },
-            { artist: 'Survivor', title: 'Eye of the Tiger', brand: 'Rocky III', hints: ['Rocky III', 'Rambo II', 'Karate Kid', 'Over the Top'] },
-            { artist: 'Kenny Loggins', title: 'Danger Zone', brand: 'Top Gun', hints: ['Top Gun', 'Footloose', 'Caddyshack', 'Over the Top'] },
-            { artist: 'Dick Dale', title: 'Misirlou', brand: 'Pulp Fiction', hints: ['Pulp Fiction', 'Kill Bill', 'Reservoir Dogs', 'Taxi'] },
-            { artist: 'Chuck Berry', title: 'You Never Can Tell', brand: 'Pulp Fiction', hints: ['Pulp Fiction', 'Kill Bill', 'Grease', 'Dirty Dancing'] },
-            { artist: 'Lalo Schifrin', title: 'Mission: Impossible Theme', brand: 'Mission: Impossible', hints: ['Mission: Impossible', 'James Bond', 'Jason Bourne', 'Speed'] },
-            { artist: 'Monty Norman', title: 'James Bond Theme', brand: 'James Bond', hints: ['James Bond', 'Mission: Impossible', 'Kingsman', 'Austin Powers'] },
-            { artist: 'Danny Elfman', title: 'Batman Theme', brand: 'Batman', hints: ['Batman', 'Spider-Man', 'Superman', 'Avengers'] },
-            { artist: 'Alan Silvestri', title: 'Back to the Future Theme', brand: 'Retour vers le futur', hints: ['Retour vers le futur', 'Goonies', 'E.T.', 'Indiana Jones'] },
-            { artist: 'Brad Fiedel', title: 'Terminator Theme', brand: 'Terminator', hints: ['Terminator', 'Robocop', 'Alien', 'Predator'] }
-        ],
+          {
+                    "artist": "Soundtrack",
+                    "title": "Goodfellas",
+                    "brand": "Goodfellas",
+                    "hints": [
+                              "Goodfellas",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Les Affranchis",
+                    "brand": "Les Affranchis",
+                    "hints": [
+                              "Les Affranchis",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Pulp Fiction",
+                    "brand": "Pulp Fiction",
+                    "hints": [
+                              "Pulp Fiction",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Reservoir Dogs",
+                    "brand": "Reservoir Dogs",
+                    "hints": [
+                              "Reservoir Dogs",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Fight Club",
+                    "brand": "Fight Club",
+                    "hints": [
+                              "Fight Club",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Seven",
+                    "brand": "Seven",
+                    "hints": [
+                              "Seven",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Usual Suspects",
+                    "brand": "Usual Suspects",
+                    "hints": [
+                              "Usual Suspects",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Matrix",
+                    "brand": "Matrix",
+                    "hints": [
+                              "Matrix",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Terminator 2: Le Jugement dernier",
+                    "brand": "Terminator 2: Le Jugement dernier",
+                    "hints": [
+                              "Terminator 2: Le Jugement dernier",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Jurassic Park",
+                    "brand": "Jurassic Park",
+                    "hints": [
+                              "Jurassic Park",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Titanic",
+                    "brand": "Titanic",
+                    "hints": [
+                              "Titanic",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Forrest Gump",
+                    "brand": "Forrest Gump",
+                    "hints": [
+                              "Forrest Gump",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Big Lebowski",
+                    "brand": "The Big Lebowski",
+                    "hints": [
+                              "The Big Lebowski",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Silence des agneaux",
+                    "brand": "Le Silence des agneaux",
+                    "hints": [
+                              "Le Silence des agneaux",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Heat",
+                    "brand": "Heat",
+                    "hints": [
+                              "Heat",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "L.A. Confidential",
+                    "brand": "L.A. Confidential",
+                    "hints": [
+                              "L.A. Confidential",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Braveheart",
+                    "brand": "Braveheart",
+                    "hints": [
+                              "Braveheart",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Roi Lion",
+                    "brand": "Le Roi Lion",
+                    "hints": [
+                              "Le Roi Lion",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Toy Story",
+                    "brand": "Toy Story",
+                    "hints": [
+                              "Toy Story",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Toy Story 2",
+                    "brand": "Toy Story 2",
+                    "hints": [
+                              "Toy Story 2",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Aladdin",
+                    "brand": "Aladdin",
+                    "hints": [
+                              "Aladdin",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Monde de Nemo",
+                    "brand": "Le Monde de Nemo",
+                    "hints": [
+                              "Le Monde de Nemo",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Monstres & Cie",
+                    "brand": "Monstres & Cie",
+                    "hints": [
+                              "Monstres & Cie",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Shrek",
+                    "brand": "Shrek",
+                    "hints": [
+                              "Shrek",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Shrek 2",
+                    "brand": "Shrek 2",
+                    "hints": [
+                              "Shrek 2",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "La Cité de la peur",
+                    "brand": "La Cité de la peur",
+                    "hints": [
+                              "La Cité de la peur",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Dîner de cons",
+                    "brand": "Le Dîner de cons",
+                    "hints": [
+                              "Le Dîner de cons",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Les Visiteurs",
+                    "brand": "Les Visiteurs",
+                    "hints": [
+                              "Les Visiteurs",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Les Trois Frères",
+                    "brand": "Les Trois Frères",
+                    "hints": [
+                              "Les Trois Frères",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Astérix et Obélix : Mission Cléopâtre",
+                    "brand": "Astérix et Obélix : Mission Cléopâtre",
+                    "hints": [
+                              "Astérix et Obélix : Mission Cléopâtre",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Fabuleux Destin d’Amélie Poulain",
+                    "brand": "Le Fabuleux Destin d’Amélie Poulain",
+                    "hints": [
+                              "Le Fabuleux Destin d’Amélie Poulain",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "La Haine",
+                    "brand": "La Haine",
+                    "hints": [
+                              "La Haine",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Leon",
+                    "brand": "Leon",
+                    "hints": [
+                              "Leon",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Trainspotting",
+                    "brand": "Trainspotting",
+                    "hints": [
+                              "Trainspotting",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "American Beauty",
+                    "brand": "American Beauty",
+                    "hints": [
+                              "American Beauty",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Truman Show",
+                    "brand": "The Truman Show",
+                    "hints": [
+                              "The Truman Show",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Groundhog Day (Un jour sans fin)",
+                    "brand": "Groundhog Day (Un jour sans fin)",
+                    "hints": [
+                              "Groundhog Day (Un jour sans fin)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Edward aux mains d’argent",
+                    "brand": "Edward aux mains d’argent",
+                    "hints": [
+                              "Edward aux mains d’argent",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Green Mile (La Ligne verte)",
+                    "brand": "The Green Mile (La Ligne verte)",
+                    "hints": [
+                              "The Green Mile (La Ligne verte)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Shawshank Redemption (Les Évadés)",
+                    "brand": "The Shawshank Redemption (Les Évadés)",
+                    "hints": [
+                              "The Shawshank Redemption (Les Évadés)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Gladiator",
+                    "brand": "Gladiator",
+                    "hints": [
+                              "Gladiator",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Memento",
+                    "brand": "Memento",
+                    "hints": [
+                              "Memento",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Requiem for a Dream",
+                    "brand": "Requiem for a Dream",
+                    "hints": [
+                              "Requiem for a Dream",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Mulholland Drive",
+                    "brand": "Mulholland Drive",
+                    "hints": [
+                              "Mulholland Drive",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Donnie Darko",
+                    "brand": "Donnie Darko",
+                    "hints": [
+                              "Donnie Darko",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Oldboy",
+                    "brand": "Oldboy",
+                    "hints": [
+                              "Oldboy",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Ring (Ringu)",
+                    "brand": "Ring (Ringu)",
+                    "hints": [
+                              "Ring (Ringu)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Cercle (The Ring)",
+                    "brand": "Le Cercle (The Ring)",
+                    "hints": [
+                              "Le Cercle (The Ring)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Projet Blair Witch",
+                    "brand": "Le Projet Blair Witch",
+                    "hints": [
+                              "Le Projet Blair Witch",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Scream",
+                    "brand": "Scream",
+                    "hints": [
+                              "Scream",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Alien 3",
+                    "brand": "Alien 3",
+                    "hints": [
+                              "Alien 3",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Alien: Resurrection",
+                    "brand": "Alien: Resurrection",
+                    "hints": [
+                              "Alien: Resurrection",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Mission: Impossible",
+                    "brand": "Mission: Impossible",
+                    "hints": [
+                              "Mission: Impossible",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Die Hard 3",
+                    "brand": "Die Hard 3",
+                    "hints": [
+                              "Die Hard 3",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Speed",
+                    "brand": "Speed",
+                    "hints": [
+                              "Speed",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Point Break",
+                    "brand": "Point Break",
+                    "hints": [
+                              "Point Break",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Heat",
+                    "brand": "Heat",
+                    "hints": [
+                              "Heat",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Saving Private Ryan (Il faut sauver le soldat Ryan)",
+                    "brand": "Saving Private Ryan (Il faut sauver le soldat Ryan)",
+                    "hints": [
+                              "Saving Private Ryan (Il faut sauver le soldat Ryan)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "La Ligne rouge",
+                    "brand": "La Ligne rouge",
+                    "hints": [
+                              "La Ligne rouge",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Thin Red Line",
+                    "brand": "The Thin Red Line",
+                    "hints": [
+                              "The Thin Red Line",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Full Metal Jacket",
+                    "brand": "Full Metal Jacket",
+                    "hints": [
+                              "Full Metal Jacket",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Big Short",
+                    "brand": "The Big Short",
+                    "hints": [
+                              "The Big Short",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Social Network",
+                    "brand": "The Social Network",
+                    "hints": [
+                              "The Social Network",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "No Country for Old Men",
+                    "brand": "No Country for Old Men",
+                    "hints": [
+                              "No Country for Old Men",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "There Will Be Blood",
+                    "brand": "There Will Be Blood",
+                    "hints": [
+                              "There Will Be Blood",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Kill Bill: Volume 1",
+                    "brand": "Kill Bill: Volume 1",
+                    "hints": [
+                              "Kill Bill: Volume 1",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Kill Bill: Volume 2",
+                    "brand": "Kill Bill: Volume 2",
+                    "hints": [
+                              "Kill Bill: Volume 2",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Inglourious Basterds",
+                    "brand": "Inglourious Basterds",
+                    "hints": [
+                              "Inglourious Basterds",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Jackie Brown",
+                    "brand": "Jackie Brown",
+                    "hints": [
+                              "Jackie Brown",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Snatch",
+                    "brand": "Snatch",
+                    "hints": [
+                              "Snatch",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Lock, Stock and Two Smoking Barrels",
+                    "brand": "Lock, Stock and Two Smoking Barrels",
+                    "hints": [
+                              "Lock, Stock and Two Smoking Barrels",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Wolf of Wall Street",
+                    "brand": "The Wolf of Wall Street",
+                    "hints": [
+                              "The Wolf of Wall Street",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Inception",
+                    "brand": "Inception",
+                    "hints": [
+                              "Inception",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Interstellar",
+                    "brand": "Interstellar",
+                    "hints": [
+                              "Interstellar",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Dark Knight",
+                    "brand": "The Dark Knight",
+                    "hints": [
+                              "The Dark Knight",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Batman Begins",
+                    "brand": "Batman Begins",
+                    "hints": [
+                              "Batman Begins",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Dark Knight Rises",
+                    "brand": "The Dark Knight Rises",
+                    "hints": [
+                              "The Dark Knight Rises",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Spider-Man (Raimi)",
+                    "brand": "Spider-Man (Raimi)",
+                    "hints": [
+                              "Spider-Man (Raimi)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Spider-Man 2",
+                    "brand": "Spider-Man 2",
+                    "hints": [
+                              "Spider-Man 2",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Spider-Man: No Way Home",
+                    "brand": "Spider-Man: No Way Home",
+                    "hints": [
+                              "Spider-Man: No Way Home",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Iron Man",
+                    "brand": "Iron Man",
+                    "hints": [
+                              "Iron Man",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Avengers",
+                    "brand": "Avengers",
+                    "hints": [
+                              "Avengers",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Avengers: Infinity War",
+                    "brand": "Avengers: Infinity War",
+                    "hints": [
+                              "Avengers: Infinity War",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Avengers: Endgame",
+                    "brand": "Avengers: Endgame",
+                    "hints": [
+                              "Avengers: Endgame",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Guardians of the Galaxy",
+                    "brand": "Guardians of the Galaxy",
+                    "hints": [
+                              "Guardians of the Galaxy",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Black Panther",
+                    "brand": "Black Panther",
+                    "hints": [
+                              "Black Panther",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Joker",
+                    "brand": "Joker",
+                    "hints": [
+                              "Joker",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Mad Max: Fury Road",
+                    "brand": "Mad Max: Fury Road",
+                    "hints": [
+                              "Mad Max: Fury Road",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "John Wick",
+                    "brand": "John Wick",
+                    "hints": [
+                              "John Wick",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "John Wick 2",
+                    "brand": "John Wick 2",
+                    "hints": [
+                              "John Wick 2",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Baby Driver",
+                    "brand": "Baby Driver",
+                    "hints": [
+                              "Baby Driver",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Whiplash",
+                    "brand": "Whiplash",
+                    "hints": [
+                              "Whiplash",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "La La Land",
+                    "brand": "La La Land",
+                    "hints": [
+                              "La La Land",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Drive",
+                    "brand": "Drive",
+                    "hints": [
+                              "Drive",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Her",
+                    "brand": "Her",
+                    "hints": [
+                              "Her",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Lost in Translation",
+                    "brand": "Lost in Translation",
+                    "hints": [
+                              "Lost in Translation",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Eternal Sunshine of the Spotless Mind",
+                    "brand": "Eternal Sunshine of the Spotless Mind",
+                    "hints": [
+                              "Eternal Sunshine of the Spotless Mind",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Seigneur des anneaux : La Communauté de l’anneau",
+                    "brand": "Le Seigneur des anneaux : La Communauté de l’anneau",
+                    "hints": [
+                              "Le Seigneur des anneaux : La Communauté de l’anneau",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Seigneur des anneaux : Les Deux Tours",
+                    "brand": "Le Seigneur des anneaux : Les Deux Tours",
+                    "hints": [
+                              "Le Seigneur des anneaux : Les Deux Tours",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Le Seigneur des anneaux : Le Retour du roi",
+                    "brand": "Le Seigneur des anneaux : Le Retour du roi",
+                    "hints": [
+                              "Le Seigneur des anneaux : Le Retour du roi",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Harry Potter à l’école des sorciers",
+                    "brand": "Harry Potter à l’école des sorciers",
+                    "hints": [
+                              "Harry Potter à l’école des sorciers",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Harry Potter et la Chambre des secrets",
+                    "brand": "Harry Potter et la Chambre des secrets",
+                    "hints": [
+                              "Harry Potter et la Chambre des secrets",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Harry Potter et le Prisonnier d’Azkaban",
+                    "brand": "Harry Potter et le Prisonnier d’Azkaban",
+                    "hints": [
+                              "Harry Potter et le Prisonnier d’Azkaban",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Matrix Reloaded",
+                    "brand": "Matrix Reloaded",
+                    "hints": [
+                              "Matrix Reloaded",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Matrix Revolutions",
+                    "brand": "Matrix Revolutions",
+                    "hints": [
+                              "Matrix Revolutions",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Gravity",
+                    "brand": "Gravity",
+                    "hints": [
+                              "Gravity",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Avatar",
+                    "brand": "Avatar",
+                    "hints": [
+                              "Avatar",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Avatar: La Voie de l’eau",
+                    "brand": "Avatar: La Voie de l’eau",
+                    "hints": [
+                              "Avatar: La Voie de l’eau",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Dune (2021)",
+                    "brand": "Dune (2021)",
+                    "hints": [
+                              "Dune (2021)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Dune: Part Two",
+                    "brand": "Dune: Part Two",
+                    "hints": [
+                              "Dune: Part Two",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Everything Everywhere All at Once",
+                    "brand": "Everything Everywhere All at Once",
+                    "hints": [
+                              "Everything Everywhere All at Once",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Parasite",
+                    "brand": "Parasite",
+                    "hints": [
+                              "Parasite",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Oldboy",
+                    "brand": "Oldboy",
+                    "hints": [
+                              "Oldboy",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Memories of Murder",
+                    "brand": "Memories of Murder",
+                    "hints": [
+                              "Memories of Murder",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Host",
+                    "brand": "The Host",
+                    "hints": [
+                              "The Host",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Spirited Away (Le Voyage de Chihiro)",
+                    "brand": "Spirited Away (Le Voyage de Chihiro)",
+                    "hints": [
+                              "Spirited Away (Le Voyage de Chihiro)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Princesse Mononoké",
+                    "brand": "Princesse Mononoké",
+                    "hints": [
+                              "Princesse Mononoké",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Your Name",
+                    "brand": "Your Name",
+                    "hints": [
+                              "Your Name",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Perfect Blue",
+                    "brand": "Perfect Blue",
+                    "hints": [
+                              "Perfect Blue",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Ghost in the Shell",
+                    "brand": "Ghost in the Shell",
+                    "hints": [
+                              "Ghost in the Shell",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "City of God (La Cité de Dieu)",
+                    "brand": "City of God (La Cité de Dieu)",
+                    "hints": [
+                              "City of God (La Cité de Dieu)",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Slumdog Millionaire",
+                    "brand": "Slumdog Millionaire",
+                    "hints": [
+                              "Slumdog Millionaire",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Million Dollar Baby",
+                    "brand": "Million Dollar Baby",
+                    "hints": [
+                              "Million Dollar Baby",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Gran Torino",
+                    "brand": "Gran Torino",
+                    "hints": [
+                              "Gran Torino",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Mystic River",
+                    "brand": "Mystic River",
+                    "hints": [
+                              "Mystic River",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Revenant",
+                    "brand": "The Revenant",
+                    "hints": [
+                              "The Revenant",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Birdman",
+                    "brand": "Birdman",
+                    "hints": [
+                              "Birdman",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "12 Years a Slave",
+                    "brand": "12 Years a Slave",
+                    "hints": [
+                              "12 Years a Slave",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Pianist",
+                    "brand": "The Pianist",
+                    "hints": [
+                              "The Pianist",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Requiem for a Dream",
+                    "brand": "Requiem for a Dream",
+                    "hints": [
+                              "Requiem for a Dream",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Black Swan",
+                    "brand": "Black Swan",
+                    "hints": [
+                              "Black Swan",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Get Out",
+                    "brand": "Get Out",
+                    "hints": [
+                              "Get Out",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Us",
+                    "brand": "Us",
+                    "hints": [
+                              "Us",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Conjuring",
+                    "brand": "The Conjuring",
+                    "hints": [
+                              "The Conjuring",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Insidious",
+                    "brand": "Insidious",
+                    "hints": [
+                              "Insidious",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Saw",
+                    "brand": "Saw",
+                    "hints": [
+                              "Saw",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Fast and Furious",
+                    "brand": "Fast and Furious",
+                    "hints": [
+                              "Fast and Furious",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Fast Five",
+                    "brand": "Fast Five",
+                    "hints": [
+                              "Fast Five",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Bourne Identity",
+                    "brand": "The Bourne Identity",
+                    "hints": [
+                              "The Bourne Identity",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Bourne Supremacy",
+                    "brand": "The Bourne Supremacy",
+                    "hints": [
+                              "The Bourne Supremacy",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "The Bourne Ultimatum",
+                    "brand": "The Bourne Ultimatum",
+                    "hints": [
+                              "The Bourne Ultimatum",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Casino Royale",
+                    "brand": "Casino Royale",
+                    "hints": [
+                              "Casino Royale",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Skyfall",
+                    "brand": "Skyfall",
+                    "hints": [
+                              "Skyfall",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Mission: Impossible – Fallout",
+                    "brand": "Mission: Impossible – Fallout",
+                    "hints": [
+                              "Mission: Impossible – Fallout",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Top Gun: Maverick",
+                    "brand": "Top Gun: Maverick",
+                    "hints": [
+                              "Top Gun: Maverick",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Barbie",
+                    "brand": "Barbie",
+                    "hints": [
+                              "Barbie",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          },
+          {
+                    "artist": "Soundtrack",
+                    "title": "Oppenheimer",
+                    "brand": "Oppenheimer",
+                    "hints": [
+                              "Oppenheimer",
+                              "Film Culte",
+                              "Cinéma",
+                              "Bande Originale"
+                    ]
+          }
+],
         'series': [
-            { artist: 'Ramin Djawadi', title: 'Game of Thrones Main Title', brand: 'Game of Thrones', hints: ['Game of Thrones', 'The Witcher', 'Vikings', 'House of the Dragon'] },
-            { artist: 'The Rembrandts', title: 'I\'ll Be There for You', brand: 'Friends', hints: ['Friends', 'How I Met Your Mother', 'Seinfeld', 'Modern Family'] },
-            { artist: 'Cecilia Krull', title: 'My Life Is Going On', brand: 'La Casa de Papel', hints: ['La Casa de Papel', 'Elite', 'Vis a Vis', 'Lupin'] },
-            { artist: 'Lazerhawk', title: 'Stranger Things Main Title', brand: 'Stranger Things', hints: ['Stranger Things', 'Dark', 'Black Mirror', '1899'] },
-            { artist: 'Massive Attack', title: 'Teardrop', brand: 'Dr House', hints: ['Dr House', 'Grey\'s Anatomy', 'ER', 'Good Doctor'] },
-            { artist: 'The Who', title: 'Won\'t Get Fooled Again', brand: 'Les Experts : Miami', hints: ['CSI: Miami', 'CSI', 'NCIS', 'Bones'] },
-            { artist: 'Bear McCreary', title: 'The Walking Dead', brand: 'The Walking Dead', hints: ['The Walking Dead', 'Fear TWD', 'The Last of Us', 'American Horror Story'] },
-            { artist: 'Frou Frou', title: 'Let Go', brand: 'Scrubs', hints: ['Scrubs', 'Grey\'s Anatomy', 'OC', 'Gossip Girl'] },
-            { artist: 'Phantom Planet', title: 'California', brand: 'Newport Beach', hints: ['Newport Beach', 'Gossip Girl', '90210', 'One Tree Hill'] },
-            { artist: 'Remy Zero', title: 'Save Me', brand: 'Smallville', hints: ['Smallville', 'Arrow', 'Flash', 'Supergirl'] },
-            { artist: 'Lazlo Bane', title: 'Superman', brand: 'Scrubs', hints: ['Scrubs', 'Friends', 'The Office', 'Community'] },
-            { artist: 'Alabama 3', title: 'Woke Up This Morning', brand: 'Les Soprano', hints: ['Les Soprano', 'The Wire', 'Boardwalk Empire', 'Oz'] },
-            { artist: 'Nick Cave', title: 'Red Right Hand', brand: 'Peaky Blinders', hints: ['Peaky Blinders', 'Sons of Anarchy', 'Vikings', 'Sherlock'] },
-            { artist: 'The Heights', title: 'How Do You Talk To An Angel', brand: 'Beverly Hills 90210', hints: ['Melrose Place', 'Beverly Hills', 'Dawson', 'Charmed'] },
-            { artist: 'Paula Cole', title: 'I Don\'t Want to Wait', brand: 'Dawson', hints: ['Dawson', 'Felicity', 'Everwood', 'Buffy'] }
-        ]
-
+          {
+                    "artist": "Générique",
+                    "title": "Friends",
+                    "brand": "Friends",
+                    "hints": [
+                              "Friends",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Urgences",
+                    "brand": "Urgences",
+                    "hints": [
+                              "Urgences",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "X-Files",
+                    "brand": "X-Files",
+                    "hints": [
+                              "X-Files",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Buffy contre les vampires",
+                    "brand": "Buffy contre les vampires",
+                    "hints": [
+                              "Buffy contre les vampires",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Dawson",
+                    "brand": "Dawson",
+                    "hints": [
+                              "Dawson",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Beverly Hills 90210",
+                    "brand": "Beverly Hills 90210",
+                    "hints": [
+                              "Beverly Hills 90210",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Melrose Place",
+                    "brand": "Melrose Place",
+                    "hints": [
+                              "Melrose Place",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Loïs et Clark",
+                    "brand": "Loïs et Clark",
+                    "hints": [
+                              "Loïs et Clark",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Charmed",
+                    "brand": "Charmed",
+                    "hints": [
+                              "Charmed",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Walker Texas Ranger",
+                    "brand": "Walker Texas Ranger",
+                    "hints": [
+                              "Walker Texas Ranger",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Rebelle (Renegade)",
+                    "brand": "Le Rebelle (Renegade)",
+                    "hints": [
+                              "Le Rebelle (Renegade)",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sydney Fox, l’aventurière (Relic Hunter)",
+                    "brand": "Sydney Fox, l’aventurière (Relic Hunter)",
+                    "hints": [
+                              "Sydney Fox, l’aventurière (Relic Hunter)",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Alerte Cobra",
+                    "brand": "Alerte Cobra",
+                    "hints": [
+                              "Alerte Cobra",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Navarro",
+                    "brand": "Navarro",
+                    "hints": [
+                              "Navarro",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Julie Lescaut",
+                    "brand": "Julie Lescaut",
+                    "hints": [
+                              "Julie Lescaut",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Cordier, juge et flic",
+                    "brand": "Les Cordier, juge et flic",
+                    "hints": [
+                              "Les Cordier, juge et flic",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sous le soleil",
+                    "brand": "Sous le soleil",
+                    "hints": [
+                              "Sous le soleil",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Stargate SG-1",
+                    "brand": "Stargate SG-1",
+                    "hints": [
+                              "Stargate SG-1",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Hercule Poirot",
+                    "brand": "Hercule Poirot",
+                    "hints": [
+                              "Hercule Poirot",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Une nounou d’enfer",
+                    "brand": "Une nounou d’enfer",
+                    "hints": [
+                              "Une nounou d’enfer",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Docteur Quinn, femme médecin",
+                    "brand": "Docteur Quinn, femme médecin",
+                    "hints": [
+                              "Docteur Quinn, femme médecin",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Star Trek: The Next Generation",
+                    "brand": "Star Trek: The Next Generation",
+                    "hints": [
+                              "Star Trek: The Next Generation",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Star Trek: Deep Space Nine",
+                    "brand": "Star Trek: Deep Space Nine",
+                    "hints": [
+                              "Star Trek: Deep Space Nine",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Star Trek: Voyager",
+                    "brand": "Star Trek: Voyager",
+                    "hints": [
+                              "Star Trek: Voyager",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Babylon 5",
+                    "brand": "Babylon 5",
+                    "hints": [
+                              "Babylon 5",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sliders, les mondes parallèles",
+                    "brand": "Sliders, les mondes parallèles",
+                    "hints": [
+                              "Sliders, les mondes parallèles",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "La Fête à la maison",
+                    "brand": "La Fête à la maison",
+                    "hints": [
+                              "La Fête à la maison",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Prince de Bel-Air",
+                    "brand": "Le Prince de Bel-Air",
+                    "hints": [
+                              "Le Prince de Bel-Air",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Seinfeld",
+                    "brand": "Seinfeld",
+                    "hints": [
+                              "Seinfeld",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Frasier",
+                    "brand": "Frasier",
+                    "hints": [
+                              "Frasier",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Ally McBeal",
+                    "brand": "Ally McBeal",
+                    "hints": [
+                              "Ally McBeal",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Xena, la guerrière",
+                    "brand": "Xena, la guerrière",
+                    "hints": [
+                              "Xena, la guerrière",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Hercule",
+                    "brand": "Hercule",
+                    "hints": [
+                              "Hercule",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Highlander",
+                    "brand": "Highlander",
+                    "hints": [
+                              "Highlander",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Code Quantum",
+                    "brand": "Code Quantum",
+                    "hints": [
+                              "Code Quantum",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "MacGyver",
+                    "brand": "MacGyver",
+                    "hints": [
+                              "MacGyver",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "L’Agence tous risques",
+                    "brand": "L’Agence tous risques",
+                    "hints": [
+                              "L’Agence tous risques",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Alerte à Malibu",
+                    "brand": "Alerte à Malibu",
+                    "hints": [
+                              "Alerte à Malibu",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Hélène et les Garçons",
+                    "brand": "Hélène et les Garçons",
+                    "hints": [
+                              "Hélène et les Garçons",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Miel et les Abeilles",
+                    "brand": "Le Miel et les Abeilles",
+                    "hints": [
+                              "Le Miel et les Abeilles",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Premiers Baisers",
+                    "brand": "Premiers Baisers",
+                    "hints": [
+                              "Premiers Baisers",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Le Collège des Coeurs Brisés (Heartbreak High)",
+                    "brand": "Le Collège des Coeurs Brisés (Heartbreak High)",
+                    "hints": [
+                              "Le Collège des Coeurs Brisés (Heartbreak High)",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Hartley, coeurs à vif",
+                    "brand": "Hartley, coeurs à vif",
+                    "hints": [
+                              "Hartley, coeurs à vif",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "7 à la maison",
+                    "brand": "7 à la maison",
+                    "hints": [
+                              "7 à la maison",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "7 jours pour agir",
+                    "brand": "7 jours pour agir",
+                    "hints": [
+                              "7 jours pour agir",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Les Soprano",
+                    "brand": "Les Soprano",
+                    "hints": [
+                              "Les Soprano",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Six Feet Under",
+                    "brand": "Six Feet Under",
+                    "hints": [
+                              "Six Feet Under",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The West Wing (À la Maison Blanche)",
+                    "brand": "The West Wing (À la Maison Blanche)",
+                    "hints": [
+                              "The West Wing (À la Maison Blanche)",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Alias",
+                    "brand": "Alias",
+                    "hints": [
+                              "Alias",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "24 heures chrono",
+                    "brand": "24 heures chrono",
+                    "hints": [
+                              "24 heures chrono",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Lost: Les Disparus",
+                    "brand": "Lost: Les Disparus",
+                    "hints": [
+                              "Lost: Les Disparus",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Desperate Housewives",
+                    "brand": "Desperate Housewives",
+                    "hints": [
+                              "Desperate Housewives",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Grey’s Anatomy",
+                    "brand": "Grey’s Anatomy",
+                    "hints": [
+                              "Grey’s Anatomy",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Prison Break",
+                    "brand": "Prison Break",
+                    "hints": [
+                              "Prison Break",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "How I Met Your Mother",
+                    "brand": "How I Met Your Mother",
+                    "hints": [
+                              "How I Met Your Mother",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Big Bang Theory",
+                    "brand": "The Big Bang Theory",
+                    "hints": [
+                              "The Big Bang Theory",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Dexter",
+                    "brand": "Dexter",
+                    "hints": [
+                              "Dexter",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Breaking Bad",
+                    "brand": "Breaking Bad",
+                    "hints": [
+                              "Breaking Bad",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Mad Men",
+                    "brand": "Mad Men",
+                    "hints": [
+                              "Mad Men",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Game of Thrones",
+                    "brand": "Game of Thrones",
+                    "hints": [
+                              "Game of Thrones",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "True Blood",
+                    "brand": "True Blood",
+                    "hints": [
+                              "True Blood",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "True Detective",
+                    "brand": "True Detective",
+                    "hints": [
+                              "True Detective",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "House of Cards",
+                    "brand": "House of Cards",
+                    "hints": [
+                              "House of Cards",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Vikings",
+                    "brand": "Vikings",
+                    "hints": [
+                              "Vikings",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sherlock",
+                    "brand": "Sherlock",
+                    "hints": [
+                              "Sherlock",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Doctor Who (nouvelle série 2005)",
+                    "brand": "Doctor Who (nouvelle série 2005)",
+                    "hints": [
+                              "Doctor Who (nouvelle série 2005)",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Skins",
+                    "brand": "Skins",
+                    "hints": [
+                              "Skins",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Misfits",
+                    "brand": "Misfits",
+                    "hints": [
+                              "Misfits",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Glee",
+                    "brand": "Glee",
+                    "hints": [
+                              "Glee",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Walking Dead",
+                    "brand": "The Walking Dead",
+                    "hints": [
+                              "The Walking Dead",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Homeland",
+                    "brand": "Homeland",
+                    "hints": [
+                              "Homeland",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Sons of Anarchy",
+                    "brand": "Sons of Anarchy",
+                    "hints": [
+                              "Sons of Anarchy",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Hannibal",
+                    "brand": "Hannibal",
+                    "hints": [
+                              "Hannibal",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Fargo",
+                    "brand": "Fargo",
+                    "hints": [
+                              "Fargo",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Mindhunter",
+                    "brand": "Mindhunter",
+                    "hints": [
+                              "Mindhunter",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Stranger Things",
+                    "brand": "Stranger Things",
+                    "hints": [
+                              "Stranger Things",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Narcos",
+                    "brand": "Narcos",
+                    "hints": [
+                              "Narcos",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Westworld",
+                    "brand": "Westworld",
+                    "hints": [
+                              "Westworld",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Crown",
+                    "brand": "The Crown",
+                    "hints": [
+                              "The Crown",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "La Casa de Papel",
+                    "brand": "La Casa de Papel",
+                    "hints": [
+                              "La Casa de Papel",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Peaky Blinders",
+                    "brand": "Peaky Blinders",
+                    "hints": [
+                              "Peaky Blinders",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Better Call Saul",
+                    "brand": "Better Call Saul",
+                    "hints": [
+                              "Better Call Saul",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Mr. Robot",
+                    "brand": "Mr. Robot",
+                    "hints": [
+                              "Mr. Robot",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Black Mirror",
+                    "brand": "Black Mirror",
+                    "hints": [
+                              "Black Mirror",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Mandalorian",
+                    "brand": "The Mandalorian",
+                    "hints": [
+                              "The Mandalorian",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Witcher",
+                    "brand": "The Witcher",
+                    "hints": [
+                              "The Witcher",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Dark",
+                    "brand": "Dark",
+                    "hints": [
+                              "Dark",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Umbrella Academy",
+                    "brand": "Umbrella Academy",
+                    "hints": [
+                              "Umbrella Academy",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Lupin",
+                    "brand": "Lupin",
+                    "hints": [
+                              "Lupin",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Emily in Paris",
+                    "brand": "Emily in Paris",
+                    "hints": [
+                              "Emily in Paris",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Squid Game",
+                    "brand": "Squid Game",
+                    "hints": [
+                              "Squid Game",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Last of Us",
+                    "brand": "The Last of Us",
+                    "hints": [
+                              "The Last of Us",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Wednesday",
+                    "brand": "Wednesday",
+                    "hints": [
+                              "Wednesday",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Boys",
+                    "brand": "The Boys",
+                    "hints": [
+                              "The Boys",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Chernobyl",
+                    "brand": "Chernobyl",
+                    "hints": [
+                              "Chernobyl",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Euphoria",
+                    "brand": "Euphoria",
+                    "hints": [
+                              "Euphoria",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "The Handmaid’s Tale",
+                    "brand": "The Handmaid’s Tale",
+                    "hints": [
+                              "The Handmaid’s Tale",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Succession",
+                    "brand": "Succession",
+                    "hints": [
+                              "Succession",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Ted Lasso",
+                    "brand": "Ted Lasso",
+                    "hints": [
+                              "Ted Lasso",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Only Murders in the Building",
+                    "brand": "Only Murders in the Building",
+                    "hints": [
+                              "Only Murders in the Building",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          },
+          {
+                    "artist": "Générique",
+                    "title": "Severance",
+                    "brand": "Severance",
+                    "hints": [
+                              "Severance",
+                              "Série TV",
+                              "Générique Série",
+                              "Culte"
+                    ]
+          }
+]
     }
 };
 
@@ -1672,13 +7830,28 @@ function handleRemoteBuzz(teamIdx) {
     }
 }
 
+function isCorrectAnswer(choice, song) {
+    if (choice === song.artist) return true;
+    if (song.brand && choice === song.brand) return true;
+
+    // Pour les cas où l'artiste et le brand font défaut dans hints (ex: séries, disney, cartoons)
+    // On valide hints[0] si ni l'artiste ni le brand ne font partie des hints d'origine
+    const artistInHints = song.hints.includes(song.artist);
+    const brandInHints = song.brand && song.hints.includes(song.brand);
+
+    if (!artistInHints && !brandInHints) {
+        if (choice === song.hints[0]) return true;
+    }
+    return false;
+}
+
 function handleRemoteAnswer(answerData) {
     if (state.role !== 'host') return;
 
     // Prise de main automatique ou sélection directe par hint (Mode Oral)
     if (state.gameMode === 'oral' && state.isPlaying) {
         // En mode oral, si on clique sur un hint, c'est une victoire directe (ou défaite)
-        if (answerData.choice === state.currentSong.artist) {
+        if (isCorrectAnswer(answerData.choice, state.currentSong)) {
             lastBuzzedTeam = answerData.teamIdx;
             state.roomRef.child('answer').set(null);
             victory();
@@ -1703,7 +7876,7 @@ function handleRemoteAnswer(answerData) {
     // Clear the answer in Firebase to avoid loops
     state.roomRef.child('answer').set(null);
 
-    if (answerData.choice === state.currentSong.artist) {
+    if (isCorrectAnswer(answerData.choice, state.currentSong)) {
         lastBuzzedTeam = answerData.teamIdx;
 
         // v46: On déclenche le bouton "Correct" (qui gère points + feedback + victory)
@@ -1816,7 +7989,7 @@ function showHints() {
 
 
 function selectArtist(name) {
-    if (name === state.currentSong.artist) {
+    if (isCorrectAnswer(name, state.currentSong)) {
         victory();
     } else {
         playTone(110, 'sawtooth', 0.3);
