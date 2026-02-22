@@ -20,7 +20,7 @@
         }
     </style>
     <title>Musical Quiz 2026</title>
-    <link rel="stylesheet" href="style.css?v=2026_v43.0">
+    <link rel="stylesheet" href="style.css?v=2026_v44.0">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
@@ -44,12 +44,12 @@
                 <p class="welcome-msg">Choisissez votre mode de jeu :</p>
                 <div class="role-selector">
                     <button id="btn-role-host" class="role-card">
-                        <div class="role-icon">📺</div>
+                        <div class="role-icon"></div>
                         <h3>Écran Principal</h3>
                         <p>iPad / TV (Hôte)</p>
                     </button>
                     <button id="btn-role-player" class="role-card">
-                        <div class="role-icon">📱</div>
+                        <div class="role-icon"></div>
                         <h3>Buzzer Téléphone</h3>
                         <p>Joueur (Manette)</p>
                     </button>
@@ -65,8 +65,8 @@
                     <div class="setup-group">
                         <label>Mode de Réponse :</label>
                         <div class="mode-btns">
-                            <button class="mode-btn active" data-mode="oral">🎤 VOIX HAUTE</button>
-                            <button class="mode-btn" data-mode="buttons">🔘 4 BOUTONS</button>
+                            <button class="mode-btn active" data-mode="oral">VOIX HAUTE</button>
+                            <button class="mode-btn" data-mode="buttons">4 BOUTONS</button>
                         </div>
                     </div>
                 </div>
@@ -118,6 +118,12 @@
                         <div class="poster-overlay"><span>Rap/R&B US</span></div>
                     </div>
                 </div>
+                <div class="theme-card" data-theme="movies">
+                    <div class="poster-container">
+                        <div class="poster-placeholder movies"></div>
+                        <div class="poster-overlay"><span>Films</span></div>
+                    </div>
+                </div>
                 <div class="theme-card" data-theme="clubdorothee">
                     <div class="poster-container">
                         <div class="poster-placeholder club-dorothee"></div>
@@ -161,12 +167,12 @@
                     <div id="modal-wheel" class="modal-wheel hidden">
                         <div class="wheel-overlay"></div>
                         <div class="slot-machine">
-                            <h2 class="slot-title">LA ROUE DU DESTIN 🎡</h2>
+                            <h2 class="slot-title">LA ROUE DU DESTIN</h2>
 
                             <div id="wheel-team-zone" class="wheel-team-zone">
                                 <p>C'est au tour de :</p>
                                 <div id="wheel-team-name" class="wheel-team-name">ÉQUIPE 1</div>
-                                <button id="btn-spin-wheel" class="main-btn spin-btn">LANCER LA ROUE ! 🎰</button>
+                                <button id="btn-spin-wheel" class="main-btn spin-btn">LANCER LA ROUE !</button>
                             </div>
 
                             <div id="slot-window" class="slot-window hidden">
@@ -191,8 +197,8 @@
                                 </div>
                             </div>
                             <div id="validation-controls" class="validation-controls">
-                                <button id="btn-wrong" class="val-btn wrong">Mauvaise Réponse ❌</button>
-                                <button id="btn-correct" class="val-btn correct">Bonne Réponse ✅</button>
+                                <button id="btn-wrong" class="val-btn wrong">Mauvaise Réponse</button>
+                                <button id="btn-correct" class="val-btn correct">Bonne Réponse</button>
                             </div>
 
                             <button id="btn-next" class="main-btn next hidden">SUIVANT</button>
@@ -212,19 +218,19 @@
                     <!-- Dynamic Team Blocks -->
                     <div class="team-block" id="block-team-1">
                         <button class="team-btn" data-team="0">ÉQUIPE 1</button>
-                        <button id="joker-1" class="joker-btn" onclick="activateJoker(0)">QUITTE OU DOUBLE 🃏</button>
+                        <button id="joker-1" class="joker-btn" onclick="activateJoker(0)">QUITTE OU DOUBLE</button>
                     </div>
                     <div class="team-block" id="block-team-2">
                         <button class="team-btn" data-team="1">ÉQUIPE 2</button>
-                        <button id="joker-2" class="joker-btn" onclick="activateJoker(1)">QUITTE OU DOUBLE 🃏</button>
+                        <button id="joker-2" class="joker-btn" onclick="activateJoker(1)">QUITTE OU DOUBLE</button>
                     </div>
                     <div class="team-block hidden" id="block-team-3">
                         <button class="team-btn" data-team="2">ÉQUIPE 3</button>
-                        <button id="joker-3" class="joker-btn" onclick="activateJoker(2)">QUITTE OU DOUBLE 🃏</button>
+                        <button id="joker-3" class="joker-btn" onclick="activateJoker(2)">QUITTE OU DOUBLE</button>
                     </div>
                     <div class="team-block hidden" id="block-team-4">
                         <button class="team-btn" data-team="3">ÉQUIPE 4</button>
-                        <button id="joker-4" class="joker-btn" onclick="activateJoker(3)">QUITTE OU DOUBLE 🃏</button>
+                        <button id="joker-4" class="joker-btn" onclick="activateJoker(3)">QUITTE OU DOUBLE</button>
                     </div>
                 </div>
             </div>
@@ -274,7 +280,7 @@
             <div class="results-container glass">
                 <div class="trophy-glow"></div>
                 <div class="podium-header">
-                    <span class="winner-label">🏆 VICTOIRE 🏆</span>
+                    <span class="winner-label">VICTOIRE</span>
                     <h1 id="winner-name">NOM DE L'ÉQUIPE</h1>
                     <p id="winner-message" class="winner-message">Félicitations pour cette performance incroyable !
                     </p>
@@ -285,11 +291,11 @@
                 </div>
 
                 <div class="podium-comfort">
-                    <p id="comfort-message">Pas de soucis, l'important c'est de participer ! 😉</p>
+                    <p id="comfort-message">Pas de soucis, l'important c'est de participer !</p>
                 </div>
 
                 <div class="results-actions">
-                    <button onclick="restartGame()" class="main-btn primary">REJOUER 🔄</button>
+                    <button onclick="restartGame()" class="main-btn primary">REJOUER</button>
                     <button onclick="window.location.reload()" class="nav-btn">ACCUEIL</button>
                 </div>
             </div>
@@ -330,10 +336,10 @@
 
     <div id="version-tag"
         style="position: fixed; bottom: 5px; right: 5px; font-size: 8px; opacity: 0.3; color: white; pointer-events: none;">
-        v43.0</div>
+        v44.0</div>
 
-    <script src="firebase-config.js?v=2026_v43.0"></script>
-    <script src="script.js?v=2026_v43.0"></script>
+    <script src="firebase-config.js?v=2026_v44.0"></script>
+    <script src="script.js?v=2026_v44.0"></script>
 </body>
 
 </html>
