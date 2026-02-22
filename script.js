@@ -7938,24 +7938,56 @@ function applyWrongPenalty(teamIdx) {
 function handleRemoteVocal(data) {
     if (state.role !== 'host') return;
 
-    // Do not show the speech to text transcript
     const vocalDisplay = document.getElementById('vocal-answer-display');
     if (vocalDisplay) {
-        vocalDisplay.classList.add('hidden');
+        vocalDisplay.innerText = `L'équipe dit : "${data.text}"`;
+        vocalDisplay.classList.remove('hidden');
     }
 
-    // Now reveal the card and true answer in a STYLISH 2026 way!
-    revealArtist.innerText = state.currentSong.artist || "Artiste inconnu";
-    revealTitle.innerText = state.currentSong.title || "Titre inconnu";
+    if (!state.currentSong || !data.text) return;
 
-    revealCard.classList.remove('hidden');
-    revealCard.classList.add('stitch-reveal-anim'); // CSS Anim
-
-    if (lastBuzzedTeam !== null) {
-        validationControls.classList.remove('hidden');
+    const transcript = data.text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    
+    let targets = [];
+    if (state.currentSong.artist && state.currentSong.artist !== "Générique" && state.currentSong.artist !== "Soundtrack") {
+        targets.push(state.currentSong.artist);
+    }
+    if (state.currentSong.brand) {
+        targets.push(state.currentSong.brand);
+    }
+    if (state.currentSong.title) {
+        targets.push(state.currentSong.title);
+    }
+    if (state.currentSong.hints && state.currentSong.hints.length) {
+        targets.push(state.currentSong.hints[0]);
+    }
+    
+    targets = targets.map(t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+    
+    let isCorrect = false;
+    for (let target of targets) {
+        let cleanTarget = target.replace(/[^a-z0-9]/g, "");
+        let cleanTranscript = transcript.replace(/[^a-z0-9]/g, "");
+        if (cleanTarget.length > 2 && cleanTranscript.includes(cleanTarget)) {
+            isCorrect = true;
+            break;
+        }
     }
 
-    displayFeedback("À VOUS DE VALIDER !", "feedback-bravo");
+    lastBuzzedTeam = data.teamIdx;
+
+    if (isCorrect) {
+        revealArtist.innerText = state.currentSong.artist || "Artiste inconnu";
+        revealTitle.innerText = state.currentSong.title || "Titre inconnu";
+        revealCard.classList.remove('hidden');
+        revealCard.classList.add('stitch-reveal-anim');
+        btnCorrect.click();
+    } else {
+        btnWrong.click();
+        setTimeout(() => {
+            if (vocalDisplay) vocalDisplay.classList.add('hidden');
+        }, 3000);
+    }
 }
 
 function shuffle(array) {
