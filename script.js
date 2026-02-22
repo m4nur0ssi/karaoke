@@ -7692,7 +7692,16 @@ async function nextSong() {
 
         if (result && result.audio) {
             state.playedSongs.push(state.currentSong.title);
-            // ... (rest of the logic stays same)
+
+            // Gérer les 4 propositions proprement (1 bonne, 3 mauvaises au hasard dans le même thème)
+            const getDisplayTarget = (s) => s.brand || (s.artist === "Générique" || s.artist === "Soundtrack" ? s.title : s.artist);
+            let correctChoice = getDisplayTarget(state.currentSong);
+            let pool = Array.from(new Set(themeSongs.map(s => getDisplayTarget(s))));
+            pool = pool.filter(c => c !== correctChoice);
+            pool.sort(() => Math.random() - 0.5);
+            let choices = [correctChoice, ...pool.slice(0, 3)].sort(() => Math.random() - 0.5);
+            state.currentSong.hints = choices;
+
             audioPlayer.src = result.audio;
             audioPlayer.load();
 
@@ -7831,17 +7840,11 @@ function handleRemoteBuzz(teamIdx) {
 }
 
 function isCorrectAnswer(choice, song) {
-    if (choice === song.artist) return true;
+    if (song.artist && choice === song.artist) return true;
     if (song.brand && choice === song.brand) return true;
+    if (song.title && choice === song.title) return true;
 
-    // Pour les cas où l'artiste et le brand font défaut dans hints (ex: séries, disney, cartoons)
-    // On valide hints[0] si ni l'artiste ni le brand ne font partie des hints d'origine
-    const artistInHints = song.hints.includes(song.artist);
-    const brandInHints = song.brand && song.hints.includes(song.brand);
-
-    if (!artistInHints && !brandInHints) {
-        if (choice === song.hints[0]) return true;
-    }
+    // On n'utilise plus hints[0] puisque hints est maintenant mis au hasard (les 4 propositions).
     return false;
 }
 
@@ -8421,6 +8424,9 @@ async function launchWheelOfFate(modifier) {
 
         playTone(440, 'sine', 0.2);
 
+        const wheelExplanation = document.getElementById('wheel-explanation');
+        if (wheelExplanation) wheelExplanation.classList.add('hidden');
+
         // Interaction
         spinBtn.onclick = () => {
             playTone(880, 'sine', 0.1);
@@ -8435,10 +8441,28 @@ async function launchWheelOfFate(modifier) {
 
             setTimeout(() => {
                 playTone(880, 'sine', 0.5); // Victory sound
+                
+                // Show explanation
+                if (wheelExplanation) {
+                    let text = "";
+                    switch(modifier) {
+                        case 'bonus1': text = "Le gagnant gagne +1 Point Bonus !"; break;
+                        case 'bonus3': text = "INCROYABLE ! Le gagnant remporte +3 Points Bonus !"; break;
+                        case 'double': text = "Points Doublés pour cette chanson !"; break;
+                        case 'mystery': text = "La vitesse de la chanson est modifiée au hasard !"; break;
+                        case 'fast': text = "Chrono de la mort ! Seulement 10 secondes pour trouver !"; break;
+                        case 'steal': text = "Le gagnant vole 1 point à CHAQUE équipe ! 🏴‍☠️"; break;
+                        case 'bomb': text = "BOMBE ! Une mauvaise réponse fait perdre -3 Points ! 💣"; break;
+                    }
+                    wheelExplanation.innerText = text;
+                    wheelExplanation.classList.remove('hidden');
+                }
+
                 setTimeout(() => {
                     modal.classList.add('hidden');
+                    if (wheelExplanation) wheelExplanation.classList.add('hidden');
                     resolve();
-                }, 1500);
+                }, 4000); // Laisse l'explication visible plus longtemps (4s au lieu de 1.5s)
             }, 2700);
         };
     });
