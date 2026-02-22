@@ -265,12 +265,12 @@ body::before {
 }
 
 .poster-placeholder.raphaly {
-    background: linear-gradient(135deg, #FFD700, #FF1493, #8B00FF);
+    background-image: url('theme_raphaly.png');
 }
 
 
 .poster-placeholder.grungerock {
-    background: linear-gradient(135deg, #e63946, #48cae4);
+    background-image: url('theme_grungerock.png');
 }
 
 .poster-placeholder.disney {
@@ -282,11 +282,11 @@ body::before {
 }
 
 .poster-placeholder.rapus {
-    background: linear-gradient(135deg, #7209b7, #f72585);
+    background-image: url('theme_rapus.png');
 }
 
 .poster-placeholder.club-dorothee {
-    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    background-image: url('theme_clubdorothee.png');
 }
 
 .poster-placeholder.movies {
@@ -294,14 +294,12 @@ body::before {
 }
 
 .poster-placeholder.series {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background-image: url('theme_series.png');
 }
 
 
 .poster-placeholder.random-grad {
-    background: linear-gradient(45deg, #f425af, #00f2ff, #7000ff, #f425af);
-    background-size: 400% 400%;
-    animation: gradientFlow 5s ease infinite;
+    background-image: url('theme_random.png');
 }
 
 @keyframes gradientFlow {
