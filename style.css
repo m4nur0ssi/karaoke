@@ -264,6 +264,10 @@ body::before {
     background: linear-gradient(135deg, #ff00cc, #00ffff);
 }
 
+.poster-placeholder.raphaly {
+    background: linear-gradient(135deg, #FFD700, #FF1493, #8B00FF);
+}
+
 
 .poster-placeholder.grungerock {
     background: linear-gradient(135deg, #e63946, #48cae4);
