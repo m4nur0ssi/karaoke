@@ -354,6 +354,27 @@ const state = {
                 "hints": []
             }
         ],
+        'raphaly': [
+            { artist: 'La Rvfleuze', title: 'Argent Sale', hints: [] },
+            { artist: 'Ninho', title: 'Mamacita', hints: [] },
+            { artist: 'Ninho', title: 'Elle m\'a eu', hints: [] },
+            { artist: 'PNL', title: 'Menace', hints: [] },
+            { artist: 'R2', title: 'Ruinart', hints: [] },
+            { artist: 'La Mano', title: 'I\'m Sorry', hints: [] },
+            { artist: 'L2B', title: 'Overbooking', hints: [] },
+            { artist: 'Nono La Grinta', title: 'Love You', hints: [] },
+            { artist: 'Hamza', title: 'Kyky2Bondy', hints: [] },
+            { artist: 'Dadju', title: 'Bob Marley', hints: [] },
+            { artist: 'RNBoi', title: 'Avec Moi', hints: [] },
+            { artist: 'Zola', title: 'Amber', hints: [] },
+            { artist: 'Luigi', title: 'Système', hints: [] },
+            { artist: 'Aya Nakamura', title: 'Baddies', hints: [] },
+            { artist: 'Aupinard', title: 'Pénélope', hints: [] },
+            { artist: 'Jul', title: 'Madame', hints: [] },
+            { artist: 'A6el', title: 'J\'attends au Carrefour Market', hints: [] },
+            { artist: 'Orelsan', title: 'La Quête', hints: [] },
+            { artist: 'SDM', title: 'Pour Elle', hints: [] }
+        ],
         'grungerock': [
             { artist: 'Nirvana', title: 'Smells Like Teen Spirit', hints: ['Nirvana', 'Pearl Jam', 'Soundgarden', 'Alice in Chains'] },
             { artist: 'Red Hot Chili Peppers', title: 'Californication', hints: ['RHCP', 'Foo Fighters', 'Incubus', 'Audioslave'] },
