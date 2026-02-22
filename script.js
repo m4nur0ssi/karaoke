@@ -7965,13 +7965,66 @@ function handleRemoteVocal(data) {
     targets = targets.map(t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
     
     let isCorrect = false;
+
+    const normalizePhonetic = (str) => {
+        return str.replace(/ph/g, "f")
+                  .replace(/th/g, "z")
+                  .replace(/ea/g, "i")
+                  .replace(/oo/g, "ou")
+                  .replace(/y/g, "i")
+                  .replace(/c/g, "k")
+                  .replace(/sh/g, "ch")
+                  .replace(/x/g, "ks")
+                  .replace(/w/g, "ou")
+                  .replace(/(.)\1/g, "$1"); 
+    };
+
     for (let target of targets) {
         let cleanTarget = target.replace(/[^a-z0-9]/g, "");
         let cleanTranscript = transcript.replace(/[^a-z0-9]/g, "");
-        if (cleanTarget.length > 2 && cleanTranscript.includes(cleanTarget)) {
+        if (cleanTarget.length < 3) continue;
+        
+        if (cleanTranscript.includes(cleanTarget)) {
             isCorrect = true;
             break;
         }
+
+        let phTarget = normalizePhonetic(cleanTarget);
+        let phTranscript = normalizePhonetic(cleanTranscript);
+
+        if (phTranscript.includes(phTarget)) {
+            isCorrect = true; break;
+        }
+
+        let targetWords = phTarget.split(' ').filter(x => x.length > 2);
+        
+        let distThreshold = Math.max(1, Math.floor(phTarget.length / 4));
+        if (phTarget.length < 4) distThreshold = 0;
+
+        for (let i = 0; i <= phTranscript.length - phTarget.length + distThreshold; i++) {
+            for (let lenOffset = -distThreshold; lenOffset <= distThreshold; lenOffset++) {
+                let subLen = phTarget.length + lenOffset;
+                if (subLen <= 0 || i + subLen > phTranscript.length) continue;
+                let sub = phTranscript.substring(i, i + subLen);
+                
+                let a = phTarget, b = sub;
+                let matrix = [];
+                for(let k = 0; k <= b.length; k++){ matrix[k] = [k]; }
+                for(let k = 0; k <= a.length; k++){ matrix[0][k] = k; }
+                for(let m = 1; m <= b.length; m++){
+                    for(let n = 1; n <= a.length; n++){
+                        if(b.charAt(m-1) == a.charAt(n-1)) matrix[m][n] = matrix[m-1][n-1];
+                        else matrix[m][n] = Math.min(matrix[m-1][n-1] + 1, Math.min(matrix[m][n-1] + 1, matrix[m-1][n] + 1));
+                    }
+                }
+                
+                if (matrix[b.length][a.length] <= distThreshold) {
+                    isCorrect = true; break;
+                }
+            }
+            if (isCorrect) break;
+        }
+        if (isCorrect) break;
     }
 
     lastBuzzedTeam = data.teamIdx;
@@ -7984,9 +8037,6 @@ function handleRemoteVocal(data) {
         btnCorrect.click();
     } else {
         btnWrong.click();
-        setTimeout(() => {
-            if (vocalDisplay) vocalDisplay.classList.add('hidden');
-        }, 3000);
     }
 }
 
@@ -8154,36 +8204,32 @@ btnWrong.addEventListener('click', () => {
         applyWrongPenalty(teamIdx);
     }
 
-    if (state.gameMode === 'buttons') {
-        displayFeedback("MAUVAISE RÉPONSE ! ON CONTINUE...", "feedback-dommage");
-        playTone(220, 'sawtooth', 0.2);
+    displayFeedback("MAUVAISE RÉPONSE ! QUELQU'UN D'AUTRE A UNE IDÉE ?", "feedback-dommage");
+    playTone(220, 'sawtooth', 0.2);
 
-        // On ne finit pas le tour, on reprend
-        setTimeout(() => {
-            if (state.roomRef) {
-                state.roomRef.update({
-                    status: 'playing',
-                    buzzerTeam: null,
-                    buzzerName: null,
-                    answer: null,
-                    buzz: null
-                });
-            }
-            lastBuzzedTeam = null;
-            audioPlayer.play().then(() => {
-                state.isPlaying = true;
-                startTimer();
+    validationControls.classList.add('hidden'); 
+    revealCard.classList.add('hidden'); 
+    const vocalDisplay = document.getElementById('vocal-answer-display');
+    if (vocalDisplay) vocalDisplay.classList.add('hidden');
+
+    // On ne finit pas le tour, on reprend
+    setTimeout(() => {
+        if (state.roomRef) {
+            state.roomRef.update({
+                status: 'playing',
+                buzzerTeam: null,
+                buzzerName: null,
+                answer: null,
+                vocalAnswer: null,
+                buzz: null
             });
-        }, 1500);
-    } else {
-        // En mode Oral, on finit quand même le tour (Révélation)
+        }
         lastBuzzedTeam = null;
-        validationControls.classList.add('hidden');
-        btnNext.classList.remove('hidden');
-        displayFeedback('DOMMAGE...', 'feedback-dommage');
-        victory(); // On révèle la réponse en mode oral même si raté
-        playTone(220, 'sawtooth', 0.2);
-    }
+        audioPlayer.play().then(() => {
+            state.isPlaying = true;
+            startTimer();
+        });
+    }, 2000);
 });
 
 
