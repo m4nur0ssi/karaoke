@@ -260,8 +260,8 @@ body::before {
     transition: transform 0.8s ease;
 }
 
-.poster-placeholder.theme-80s {
-    background: linear-gradient(135deg, #ff00cc, #3333ff);
+.poster-placeholder.theme-8090 {
+    background: linear-gradient(135deg, #ff00cc, #00ffff);
 }
 
 
@@ -364,6 +364,13 @@ body::before {
     justify-content: center;
     gap: 30px;
     /* Space between logo and timer */
+}
+
+/* Hide now-playing background when wheel is active */
+.now-playing:has(.modal-wheel:not(.hidden)) {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
 }
 
 
@@ -2143,21 +2150,4 @@ body {
 
 .club-dorothee {
     background: url('https://img.buzzfeed.com/buzzfeed-static/static/2021-08/17/10/asset/fb99bde56475/sub-buzz-4340-1629202159-4.jpg') center/cover;
-}
-
-.poster-placeholder.theme-90s {
-    background: linear-gradient(135deg, #ff00ff, #00ffff);
-    position: relative;
-}
-
-.poster-placeholder.theme-90s::after {
-    content: '90';
-    font-size: 3rem;
-    font-weight: 900;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
