@@ -62,7 +62,7 @@ const state = {
 
     songs: {
 
-        '80s': [
+        '8090': [
             {
                 "artist": "Indochine",
                 "title": "L’Aventurier",
@@ -207,9 +207,7 @@ const state = {
                 "artist": "Jacques Higelin",
                 "title": "Tombé du ciel",
                 "hints": []
-            }
-        ],
-        '90s': [
+            },
             {
                 "artist": "Mylène Farmer",
                 "title": "Désenchantée",
