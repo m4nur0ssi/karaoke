@@ -290,7 +290,7 @@ body::before {
 }
 
 .poster-placeholder.movies {
-    background: linear-gradient(135deg, #232526, #414345);
+    background-image: url('theme_movies.png');
 }
 
 .poster-placeholder.series {
