@@ -2515,6 +2515,8 @@ function updatePlayerInterface(roomData) {
             waitingMsg.classList.add('status-active');
             btnPlayerBuzz.classList.remove('hidden');
             btnPlayerBuzz.disabled = false;
+            btnPlayerBuzz.style.opacity = "1";
+            btnPlayerBuzz.style.filter = "none";
 
             // v45: Mode direct 4 boutons : On peut cliquer directement
             if (roomData.mode === 'buttons' && roomData.choices) {
@@ -2555,7 +2557,14 @@ function updatePlayerInterface(roomData) {
         } else {
             waitingMsg.innerText = (roomData.buzzerName || "Quelqu'un") + " a buzzé !";
             waitingMsg.classList.add('status-buzzed');
-            btnPlayerBuzz.classList.add('hidden');
+
+            // v42: On affiche le buzzer mais on le grise (grisé et non disponible)
+            btnPlayerBuzz.classList.remove('hidden');
+            btnPlayerBuzz.classList.remove('mini-buzz');
+            btnPlayerBuzz.disabled = true;
+            btnPlayerBuzz.style.opacity = "0.3";
+            btnPlayerBuzz.style.filter = "grayscale(1)";
+
             playerChoices.classList.add('hidden');
         }
     } else if (roomData.status === 'finished_song') {
