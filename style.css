@@ -1656,6 +1656,10 @@ input {
     background-repeat: no-repeat;
     -webkit-appearance: none;
     appearance: none;
+    text-align: center;
+    text-align-last: center;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .lobby-input::placeholder {
