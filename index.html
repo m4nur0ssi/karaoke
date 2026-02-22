@@ -3,29 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Musical Quiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        body,
-        html {
-            background-color: var(--bg-dark);
-            /* Ensure no white bounds */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f0c29;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
         }
     </style>
     <title>Musical Quiz 2026</title>
-    <link rel="stylesheet" href="style.css?v=2026_v40.0">
+    <link rel="stylesheet" href="style.css?v=2026_v41.0">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body class="dark-mode">
     <nav class="menu-bar">
-        <button id="nav-home" class="nav-btn" onclick="window.location.reload();">Accueil</button>
-        <div id="room-code-display" class="room-code-tag hidden">CODE: <span id="current-room-id">----</span> <span
-                id="rest-push-status" style="font-size: 10px; opacity: 0.5; display:none;"></span></div>
-        <div id="firebase-status" style="display:none;">Connexion DB...</div>
+        <button id="nav-home" class="nav-btn">Accueil</button>
+        <div id="room-code-display" class="room-code-tag hidden">ROOM: <span id="current-room-id">----</span></div>
         <div class="team-scores">
             <span id="score-team-1" class="score-chip"></span>
             <span id="score-team-2" class="score-chip"></span>
@@ -37,25 +39,19 @@
     <main id="app-container">
         <!-- Screen Role Selection (STITCH 2026 Entry) -->
         <section id="screen-role" class="screen active">
-            <div class="role-lobby glass">
-                <div class="lobby-header">
-                    <h1 class="glow-text mini" style="font-size: 3rem;">Musical Quiz</h1>
-                    <p class="welcome-msg" style="margin-bottom: 20px; font-size: 1.2rem;">Choisissez votre mode :</p>
-                </div>
-                <div class="role-selector" style="width: 100%; margin-top: 0;">
+            <div class="hero">
+                <h1 class="glow-text">Musical Quiz</h1>
+                <p class="welcome-msg">Choisissez votre mode de jeu :</p>
+                <div class="role-selector">
                     <button id="btn-role-host" class="role-card">
                         <div class="role-icon">📺</div>
-                        <div class="role-text">
-                            <h3>Écran Principal</h3>
-                            <p>iPad / TV (Hôte)</p>
-                        </div>
+                        <h3>Écran Principal</h3>
+                        <p>iPad / TV (Hôte)</p>
                     </button>
                     <button id="btn-role-player" class="role-card">
                         <div class="role-icon">📱</div>
-                        <div class="role-text">
-                            <h3>Buzzer Téléphone</h3>
-                            <p>Joueur (Manette)</p>
-                        </div>
+                        <h3>Buzzer Téléphone</h3>
+                        <p>Joueur (Manette)</p>
                     </button>
                 </div>
             </div>
@@ -178,13 +174,9 @@
                                     <!-- Will be populated by JS -->
                                 </div>
                             </div>
-                            <!-- V48: Explication du bonus -->
-                            <div id="wheel-explanation" class="wheel-explanation hidden"
-                                style="margin-top: 20px; font-weight: bold; font-size: 1.2rem; text-align: center; color: var(--text-bright); background: rgba(0,0,0,0.5); padding: 15px; border-radius: 12px; border: 2px solid var(--accent-gold);">
-                                Explication du malus/bonus ici...
-                            </div>
                             <div class="slot-light left"></div>
                             <div class="slot-light right"></div>
+                            <div id="wheel-explanation" class="wheel-explanation-text hidden"></div>
                         </div>
                     </div>
 
@@ -197,9 +189,6 @@
                                     <h3 id="reveal-artist">Artiste</h3>
                                     <p id="reveal-title">Titre</p>
                                 </div>
-                            </div>
-                            <div id="vocal-answer-display" class="vocal-answer hidden">
-                                🎤 L'équipe a dit : <strong>...</strong>
                             </div>
                             <div id="validation-controls" class="validation-controls">
                                 <button id="btn-wrong" class="val-btn wrong">Mauvaise Réponse ❌</button>
@@ -223,17 +212,20 @@
                     <!-- Dynamic Team Blocks -->
                     <div class="team-block" id="block-team-1">
                         <button class="team-btn" data-team="0">ÉQUIPE 1</button>
+                        <button id="joker-1" class="joker-btn" onclick="activateJoker(0)">QUITTE OU DOUBLE 🃏</button>
                     </div>
                     <div class="team-block" id="block-team-2">
                         <button class="team-btn" data-team="1">ÉQUIPE 2</button>
+                        <button id="joker-2" class="joker-btn" onclick="activateJoker(1)">QUITTE OU DOUBLE 🃏</button>
                     </div>
                     <div class="team-block hidden" id="block-team-3">
                         <button class="team-btn" data-team="2">ÉQUIPE 3</button>
+                        <button id="joker-3" class="joker-btn" onclick="activateJoker(2)">QUITTE OU DOUBLE 🃏</button>
                     </div>
                     <div class="team-block hidden" id="block-team-4">
                         <button class="team-btn" data-team="3">ÉQUIPE 4</button>
+                        <button id="joker-4" class="joker-btn" onclick="activateJoker(3)">QUITTE OU DOUBLE 🃏</button>
                     </div>
-
                 </div>
             </div>
 
@@ -241,39 +233,32 @@
 
         <!-- Screen Player (Mobile Interface) -->
         <section id="screen-player" class="screen">
-            <div id="player-lobby" class="player-lobby glass">
-                <div class="lobby-header">
-                    <h2 class="glow-text mini" style="font-size: 2.5rem; letter-spacing: 2px;">Rejoindre</h2>
+            <div id="player-lobby" class="player-lobby">
+                <h2 class="glow-text mini">Rejoindre</h2>
+                <div class="join-form glass">
+                    <input type="text" id="input-room-code" placeholder="CODE SALON (4 lettres)" maxlength="4"
+                        class="room-input">
+                    <select id="select-team-join" class="lobby-select">
+                        <option value="0">ÉQUIPE 1</option>
+                        <option value="1">ÉQUIPE 2</option>
+                        <option value="2">ÉQUIPE 3</option>
+                        <option value="3">ÉQUIPE 4</option>
+                    </select>
+                    <button id="btn-join-room" class="main-btn primary large-mobile">REJOINDRE LE JEU</button>
                 </div>
-                <div class="lobby-fields">
-                    <div class="field-group">
-                        <label class="field-label">CODE DU SALON</label>
-                        <input type="text" id="input-room-code" placeholder="----" class="lobby-input"
-                            autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" maxlength="4">
-                    </div>
-
-                    <div class="field-group">
-                        <label class="field-label">CHOISIR L'ÉQUIPE</label>
-                        <select id="select-team-join" class="lobby-select">
-                            <option value="">RECHERCHE DU SALON...</option>
-                        </select>
-                    </div>
-
-                    <div id="rest-push-status"></div>
-
-                    <button id="btn-join-room" class="lobby-btn main-btn primary" disabled>C'EST PARTI !</button>
-                </div>
-            </div> <!-- FERMETURE DE PLAYER-LOBBY -->
+                <div id="player-status-msg" class="player-status-msg"></div>
+            </div>
 
             <div id="player-game" class="player-game hidden">
-                <div id="player-room-badge"
-                    style="position:fixed; top:10px; right:10px; background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:100px; font-size:12px; pointer-events:none; border:1px solid rgba(255,255,255,0.2);">
-                    ROOM: --</div>
                 <div id="waiting-msg" class="waiting-msg">Attente de la musique...</div>
 
                 <button id="btn-player-buzz" class="huge-buzz-btn hidden">
                     <span>BUZZ !</span>
                 </button>
+
+                <!-- Joker button for Mobile Player -->
+                <button id="btn-player-joker" class="main-btn secondary joker-mobile hidden"
+                    onclick="handlePlayerJoker()">🃏 JOKER !</button>
 
                 <div id="player-choices" class="player-choices hidden">
                     <button class="choice-btn" data-idx="0">A</button>
@@ -281,13 +266,6 @@
                     <button class="choice-btn" data-idx="2">C</button>
                     <button class="choice-btn" data-idx="3">D</button>
                 </div>
-
-                <div class="player-actions" style="margin-top: 20px;">
-                    <button id="btn-player-joker" class="joker-btn hidden" onclick="handlePlayerJoker()">
-                        QUITTE OU DOUBLE 🃏
-                    </button>
-                </div>
-
             </div>
         </section>
 
@@ -338,9 +316,6 @@
                 <input type="text" id="input-team-4" class="hidden" placeholder="Équipe 4..." value="Équipe 4">
             </div>
             <button id="btn-start-game" class="main-btn primary">C'est parti !</button>
-            <button onclick="syncHostTeams()"
-                style="background:none; border:none; color:rgba(255,255,255,0.2); font-size:10px; cursor:pointer; margin-top:10px;">Forcer
-                Sync (v38)</button>
         </div>
     </div>
 
@@ -349,16 +324,16 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
     <div id="debug-log"
-        style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: lime; font-family: monospace; font-size: 10px; z-index: 10000; pointer-events: none; max-height: 50px; overflow: hidden; padding: 2px;">
+        style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: lime; font-family: monospace; font-size: 10px; z-index: 10000; pointer-events: none; max-height: 50px; overflow: hidden; padding: 2px;">
     </div>
 
 
     <div id="version-tag"
         style="position: fixed; bottom: 5px; right: 5px; font-size: 8px; opacity: 0.3; color: white; pointer-events: none;">
-        v40.0</div>
+        v41.0</div>
 
-    <script src="firebase-config.js?v=2026_v40.0"></script>
-    <script src="script.js?v=2026_v40.0"></script>
+    <script src="firebase-config.js?v=2026_v41.0"></script>
+    <script src="script.js?v=2026_v41.0"></script>
 </body>
 
 </html>
