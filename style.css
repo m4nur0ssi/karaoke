@@ -261,7 +261,7 @@ body::before {
 }
 
 .poster-placeholder.theme-8090 {
-    background: linear-gradient(135deg, #ff00cc, #00ffff);
+    background-image: url('theme_8090.png');
 }
 
 .poster-placeholder.raphaly {
@@ -274,11 +274,11 @@ body::before {
 }
 
 .poster-placeholder.disney {
-    background: linear-gradient(135deg, #ffb703, #fb8500);
+    background-image: url('theme_disney.png');
 }
 
 .poster-placeholder.rapfr {
-    background: linear-gradient(135deg, #2b9348, #80b918);
+    background-image: url('theme_rapfr.png');
 }
 
 .poster-placeholder.rapus {
