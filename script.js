@@ -355,33 +355,24 @@ const state = {
             }
         ],
         'raphaly': [
-            { artist: 'La Rvfleuze', title: 'Argent Sale', hints: ["Jul","Ninho","Gazo","SCH"] },
-            { artist: 'Ninho', title: 'Mamacita', hints: ["Gazo","Damso","Tiakola","SDM"] },
-            { artist: 'Ninho', title: 'Elle m\'a eu', hints: ["Jul","SCH","SDM","Gazo"] },
-            { artist: 'PNL', title: 'Menace', hints: ["DTF","Ademo","N.O.S","Ziak"] },
-            { artist: 'R2', title: 'Ruinart', hints: ["La Mano","L2B","Gazo","SDM"] },
-            { artist: 'La Mano', title: 'I\'m Sorry', hints: ["R2","L2B","SDM","Gazo"] },
-            { artist: 'L2B', title: 'Overbooking', hints: ["R2","La Mano","SDM","Gazo"] },
-            { artist: 'Nono La Grinta', title: 'Love You', hints: ["Zola","Koba LaD","Gazo","SDM"] },
-            { artist: 'Hamza', title: 'Kyky2Bondy', hints: ["SCH","Zola","SDM","Gazo"] },
-            { artist: 'Dadju', title: 'Bob Marley', hints: ["Gims","Tayc","Franglish","Ninho"] },
-            { artist: 'RNBoi', title: 'Avec Moi', hints: ["Hamza","Zola","SDM","Gazo"] },
-            { artist: 'Zola', title: 'Amber', hints: ["Gazo","Koba LaD","Maes","Ninho"] },
-            { artist: 'Luigi', title: 'Système', hints: ["Hamza","SDM","Gazo","SCH"] },
-            { artist: 'Aya Nakamura', title: 'Baddies', hints: ["Aya","Gazo","Damso","Tiakola"] },
-            { artist: 'Aupinard', title: 'Pénélope', hints: ["Aupinard","Lomepal","Orelsan","Vald"] },
-            { artist: 'Jul', title: 'Madame', hints: ["Jul","SCH","Naps","Alonzo"] },
-            { artist: 'A6el', title: 'J\'attends au Carrefour Market', hints: ["A6el","SDM","Gazo","SCH"] },
-            { artist: 'Orelsan', title: 'La Quête', hints: ["Vald","Lomepal","Nekfeu","Damso"] },
-            { artist: 'SDM', title: 'Pour Elle', hints: ["SDM","Gazo","Tiakola","Ninho"] },
-            { artist: 'Ninho', title: 'Lettre à une femme', hints: ["Gazo","Tiakola","Jul","Ninho"] },
-            { artist: 'Gazo', title: 'DIE', hints: ["Central Cee","Zola","Koba LaD","Gazo"] },
-            { artist: 'Tiakola', title: 'Meuda', hints: ["Niska","Hamza","Gazo","Tiakola"] },
-            { artist: 'Naps', title: 'La Kiffance', hints: ["Jul","Soso Maness","L'Algérino","Naps"] },
-            { artist: 'SCH', title: 'Bande Organisée', hints: ["Jul","Naps","Soso Maness","SCH"] },
-            { artist: 'PLK', title: 'Petrouchka', hints: ["Soso Maness","Oboy","Zola","PLK"] },
-            { artist: 'Tayc', title: 'Le Temps', hints: ["Dadju","Burnaboy","Wizkid","Tayc"] },
-            { artist: 'PNL', title: 'Au DD', hints: ["DTF","Ademo","N.O.S","PNL"] }
+            { artist: 'Ninho', title: 'Mamacita', hints: ["Gazo", "Damso", "Tiakola", "SDM"] },
+            { artist: 'Ninho', title: 'Elle m\'a eu', hints: ["Jul", "SCH", "SDM", "Gazo"] },
+            { artist: 'PNL', title: 'Menace', hints: ["DTF", "Ademo", "N.O.S", "Ziak"] },
+            { artist: 'Hamza', title: 'Kyky2Bondy', hints: ["SCH", "Zola", "SDM", "Gazo"] },
+            { artist: 'Dadju', title: 'Bob Marley', hints: ["Gims", "Tayc", "Franglish", "Ninho"] },
+            { artist: 'Zola', title: 'Amber', hints: ["Gazo", "Koba LaD", "Maes", "Ninho"] },
+            { artist: 'Aya Nakamura', title: 'Baddies', hints: ["Aya", "Gazo", "Damso", "Tiakola"] },
+            { artist: 'Jul', title: 'Madame', hints: ["Jul", "SCH", "Naps", "Alonzo"] },
+            { artist: 'Orelsan', title: 'La Quête', hints: ["Vald", "Lomepal", "Nekfeu", "Damso"] },
+            { artist: 'SDM', title: 'Pour Elle', hints: ["SDM", "Gazo", "Tiakola", "Ninho"] },
+            { artist: 'Ninho', title: 'Lettre à une femme', hints: ["Gazo", "Tiakola", "Jul", "Ninho"] },
+            { artist: 'Gazo', title: 'DIE', hints: ["Central Cee", "Zola", "Koba LaD", "Gazo"] },
+            { artist: 'Tiakola', title: 'Meuda', hints: ["Niska", "Hamza", "Gazo", "Tiakola"] },
+            { artist: 'Naps', title: 'La Kiffance', hints: ["Jul", "Soso Maness", "L'Algérino", "Naps"] },
+            { artist: 'SCH', title: 'Bande Organisée', hints: ["Jul", "Naps", "Soso Maness", "SCH"] },
+            { artist: 'PLK', title: 'Petrouchka', hints: ["Soso Maness", "Oboy", "Zola", "PLK"] },
+            { artist: 'Tayc', title: 'Le Temps', hints: ["Dadju", "Burnaboy", "Wizkid", "Tayc"] },
+            { artist: 'PNL', title: 'Au DD', hints: ["DTF", "Ademo", "N.O.S", "PNL"] }
         ],
         'grungerock': [
             { artist: 'Nirvana', title: 'Smells Like Teen Spirit', hints: ['Nirvana', 'Pearl Jam', 'Soundgarden', 'Alice in Chains'] },
@@ -488,56 +479,56 @@ const state = {
             { brand: 'Coco', artist: 'Coco Cast', title: 'Un poco loco', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
         ],
         'rapfr': [
-            { artist: 'Suprême NTM', title: 'La fièvre', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Fonky Family', title: 'Mystère et suspense', hints: ["Fonky Family","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Assassin', title: 'L\'odyssée suit son cours', hints: ["Assassin","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Oxmo Puccino ft. Dany Dan', title: 'A ton enterrement', hints: ["Oxmo Puccino ft. Dany Dan","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Fabe ft. Dany Dan', title: 'Rien ne change à part les saisons', hints: ["Fabe ft. Dany Dan","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Suprême NTM', title: 'Seine Saint Denis Style', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Assassin', title: 'Shoota Babylone', hints: ["Assassin","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Tandem', title: 'Les maux', hints: ["Tandem","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Daddy Lord C', title: 'Freaky flow', hints: ["Daddy Lord C","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Akhenaton', title: 'Au fin fond d\'une contrée', hints: ["Akhenaton","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Kery James', title: '28 décembre 1977', hints: ["Kery James","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Zoxea', title: 'Rap musique que j\'aime', hints: ["Zoxea","Rap FR","Classique","Années 90/00"] },
-            { artist: 'La Brigade ft. Lunatic', title: '16 rimes', hints: ["La Brigade ft. Lunatic","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Fabe', title: 'Aujourd\'hui', hints: ["Fabe","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Akhenaton ft. Fonky Family', title: 'Bad Boys de Marseille', hints: ["Akhenaton ft. Fonky Family","Rap FR","Classique","Années 90/00"] },
-            { artist: 'La Rumeur', title: 'La cuir usé d\'une valise', hints: ["La Rumeur","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Ideal J', title: 'Le ghetto français', hints: ["Ideal J","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Akhenaton', title: 'Mon texte le savon', hints: ["Akhenaton","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Lunatic ft. Jockey', title: 'Le silence n\'est pas un oubli', hints: ["Lunatic ft. Jockey","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Doc Gynéco', title: 'L\'homme qui ne valait pas dix centimes', hints: ["Doc Gynéco","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Shurik\'N', title: 'Lettre', hints: ["Shurik'N","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Casey', title: 'Chez moi', hints: ["Casey","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Les Sages Poètes de la Rue', title: 'Qu\'est-ce qui fait marcher les sages', hints: ["Les Sages Poètes de la Rue","Rap FR","Classique","Années 90/00"] },
-            { artist: 'La Rumeur', title: 'L\'ombre sur la mesure', hints: ["La Rumeur","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Booba', title: 'Le bitume avec une plume', hints: ["Booba","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Fonky Family', title: 'Sans rémission', hints: ["Fonky Family","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Kery James', title: '2 issues', hints: ["Kery James","Rap FR","Classique","Années 90/00"] },
-            { artist: 'La Cliqua', title: 'Un dernier jour sur Terre', hints: ["La Cliqua","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Fabe', title: 'Des durs, des boss... des dombis !', hints: ["Fabe","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Time Bomb', title: 'Les bidons veulent le guidon', hints: ["Time Bomb","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Suprême NTM', title: 'Tout n\'est pas si facile', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Rocé', title: 'On s\'habitue', hints: ["Rocé","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Doc Gynéco', title: 'Nirvana', hints: ["Doc Gynéco","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Rocca', title: 'Les jeunes de l\'univers', hints: ["Rocca","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Shurik\'N ft. Akhenaton', title: 'Manifeste', hints: ["Shurik'N ft. Akhenaton","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Ärsenik', title: 'Boxe avec les mots', hints: ["Ärsenik","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Shurik\'N', title: 'Samouraï', hints: ["Shurik'N","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Chiens de Paille', title: 'Comme un aimant', hints: ["Chiens de Paille","Rap FR","Classique","Années 90/00"] },
-            { artist: 'IAM', title: 'La fin de leur monde', hints: ["IAM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Lunatic', title: 'Civilisé', hints: ["Lunatic","Rap FR","Classique","Années 90/00"] },
-            { artist: 'IAM', title: 'Nés sous la même étoile', hints: ["IAM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'X-Men', title: 'Pendez-les, bandez-les, descendez-les', hints: ["X-Men","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Suprême NTM', title: 'Qu\'est-ce qu\'on attend ?', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Fabe', title: 'L\'impertinent', hints: ["Fabe","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Booba', title: 'Ma définition', hints: ["Booba","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Suprême NTM', title: 'Laisse pas traîner ton fils', hints: ["Suprême NTM","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Booba', title: 'Repose en paix', hints: ["Booba","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Ékoué', title: 'Blessé dans mon égo', hints: ["Ékoué","Rap FR","Classique","Années 90/00"] },
-            { artist: 'Lunatic', title: 'la lettre', hints: ["Lunatic","Rap FR","Classique","Années 90/00"] },
-            { artist: 'IAM', title: 'Petit frère', hints: ["IAM","Rap FR","Classique","Années 90/00"] }
+            { artist: 'Suprême NTM', title: 'La fièvre', hints: ["Suprême NTM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Fonky Family', title: 'Mystère et suspense', hints: ["Fonky Family", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Assassin', title: 'L\'odyssée suit son cours', hints: ["Assassin", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Oxmo Puccino ft. Dany Dan', title: 'A ton enterrement', hints: ["Oxmo Puccino ft. Dany Dan", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Fabe ft. Dany Dan', title: 'Rien ne change à part les saisons', hints: ["Fabe ft. Dany Dan", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Seine Saint Denis Style', hints: ["Suprême NTM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Assassin', title: 'Shoota Babylone', hints: ["Assassin", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Tandem', title: 'Les maux', hints: ["Tandem", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Daddy Lord C', title: 'Freaky flow', hints: ["Daddy Lord C", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Akhenaton', title: 'Au fin fond d\'une contrée', hints: ["Akhenaton", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Kery James', title: '28 décembre 1977', hints: ["Kery James", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Zoxea', title: 'Rap musique que j\'aime', hints: ["Zoxea", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'La Brigade ft. Lunatic', title: '16 rimes', hints: ["La Brigade ft. Lunatic", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Fabe', title: 'Aujourd\'hui', hints: ["Fabe", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Akhenaton ft. Fonky Family', title: 'Bad Boys de Marseille', hints: ["Akhenaton ft. Fonky Family", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'La Rumeur', title: 'La cuir usé d\'une valise', hints: ["La Rumeur", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Ideal J', title: 'Le ghetto français', hints: ["Ideal J", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Akhenaton', title: 'Mon texte le savon', hints: ["Akhenaton", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Lunatic ft. Jockey', title: 'Le silence n\'est pas un oubli', hints: ["Lunatic ft. Jockey", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Doc Gynéco', title: 'L\'homme qui ne valait pas dix centimes', hints: ["Doc Gynéco", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Shurik\'N', title: 'Lettre', hints: ["Shurik'N", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Casey', title: 'Chez moi', hints: ["Casey", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Les Sages Poètes de la Rue', title: 'Qu\'est-ce qui fait marcher les sages', hints: ["Les Sages Poètes de la Rue", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'La Rumeur', title: 'L\'ombre sur la mesure', hints: ["La Rumeur", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Booba', title: 'Le bitume avec une plume', hints: ["Booba", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Fonky Family', title: 'Sans rémission', hints: ["Fonky Family", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Kery James', title: '2 issues', hints: ["Kery James", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'La Cliqua', title: 'Un dernier jour sur Terre', hints: ["La Cliqua", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Fabe', title: 'Des durs, des boss... des dombis !', hints: ["Fabe", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Time Bomb', title: 'Les bidons veulent le guidon', hints: ["Time Bomb", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Tout n\'est pas si facile', hints: ["Suprême NTM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Rocé', title: 'On s\'habitue', hints: ["Rocé", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Doc Gynéco', title: 'Nirvana', hints: ["Doc Gynéco", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Rocca', title: 'Les jeunes de l\'univers', hints: ["Rocca", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Shurik\'N ft. Akhenaton', title: 'Manifeste', hints: ["Shurik'N ft. Akhenaton", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Ärsenik', title: 'Boxe avec les mots', hints: ["Ärsenik", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Shurik\'N', title: 'Samouraï', hints: ["Shurik'N", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Chiens de Paille', title: 'Comme un aimant', hints: ["Chiens de Paille", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'IAM', title: 'La fin de leur monde', hints: ["IAM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Lunatic', title: 'Civilisé', hints: ["Lunatic", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'IAM', title: 'Nés sous la même étoile', hints: ["IAM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'X-Men', title: 'Pendez-les, bandez-les, descendez-les', hints: ["X-Men", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Qu\'est-ce qu\'on attend ?', hints: ["Suprême NTM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Fabe', title: 'L\'impertinent', hints: ["Fabe", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Booba', title: 'Ma définition', hints: ["Booba", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Suprême NTM', title: 'Laisse pas traîner ton fils', hints: ["Suprême NTM", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Booba', title: 'Repose en paix', hints: ["Booba", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Ékoué', title: 'Blessé dans mon égo', hints: ["Ékoué", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'Lunatic', title: 'la lettre', hints: ["Lunatic", "Rap FR", "Classique", "Années 90/00"] },
+            { artist: 'IAM', title: 'Petit frère', hints: ["IAM", "Rap FR", "Classique", "Années 90/00"] }
         ],
 
 
@@ -929,1119 +920,1119 @@ const state = {
                 "hints": []
             }
         ],
-'series': [
-    {
-        "artist": "Générique",
-        "title": "Friends",
-        "brand": "Friends",
-        "hints": [
-            "Friends",
-            "Série TV",
-            "Générique Série",
-            "Culte"
+        'series': [
+            {
+                "artist": "Générique",
+                "title": "Friends",
+                "brand": "Friends",
+                "hints": [
+                    "Friends",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Urgences",
+                "brand": "Urgences",
+                "hints": [
+                    "Urgences",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "X-Files",
+                "brand": "X-Files",
+                "hints": [
+                    "X-Files",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Buffy contre les vampires",
+                "brand": "Buffy contre les vampires",
+                "hints": [
+                    "Buffy contre les vampires",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Dawson",
+                "brand": "Dawson",
+                "hints": [
+                    "Dawson",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Beverly Hills 90210",
+                "brand": "Beverly Hills 90210",
+                "hints": [
+                    "Beverly Hills 90210",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Melrose Place",
+                "brand": "Melrose Place",
+                "hints": [
+                    "Melrose Place",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Loïs et Clark",
+                "brand": "Loïs et Clark",
+                "hints": [
+                    "Loïs et Clark",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Charmed",
+                "brand": "Charmed",
+                "hints": [
+                    "Charmed",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Walker Texas Ranger",
+                "brand": "Walker Texas Ranger",
+                "hints": [
+                    "Walker Texas Ranger",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Le Rebelle (Renegade)",
+                "brand": "Le Rebelle (Renegade)",
+                "hints": [
+                    "Le Rebelle (Renegade)",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Sydney Fox, l’aventurière (Relic Hunter)",
+                "brand": "Sydney Fox, l’aventurière (Relic Hunter)",
+                "hints": [
+                    "Sydney Fox, l’aventurière (Relic Hunter)",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Alerte Cobra",
+                "brand": "Alerte Cobra",
+                "hints": [
+                    "Alerte Cobra",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Navarro",
+                "brand": "Navarro",
+                "hints": [
+                    "Navarro",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Julie Lescaut",
+                "brand": "Julie Lescaut",
+                "hints": [
+                    "Julie Lescaut",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Les Cordier, juge et flic",
+                "brand": "Les Cordier, juge et flic",
+                "hints": [
+                    "Les Cordier, juge et flic",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Sous le soleil",
+                "brand": "Sous le soleil",
+                "hints": [
+                    "Sous le soleil",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Stargate SG-1",
+                "brand": "Stargate SG-1",
+                "hints": [
+                    "Stargate SG-1",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Hercule Poirot",
+                "brand": "Hercule Poirot",
+                "hints": [
+                    "Hercule Poirot",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Une nounou d’enfer",
+                "brand": "Une nounou d’enfer",
+                "hints": [
+                    "Une nounou d’enfer",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Docteur Quinn, femme médecin",
+                "brand": "Docteur Quinn, femme médecin",
+                "hints": [
+                    "Docteur Quinn, femme médecin",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Star Trek: The Next Generation",
+                "brand": "Star Trek: The Next Generation",
+                "hints": [
+                    "Star Trek: The Next Generation",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Star Trek: Deep Space Nine",
+                "brand": "Star Trek: Deep Space Nine",
+                "hints": [
+                    "Star Trek: Deep Space Nine",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Star Trek: Voyager",
+                "brand": "Star Trek: Voyager",
+                "hints": [
+                    "Star Trek: Voyager",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Babylon 5",
+                "brand": "Babylon 5",
+                "hints": [
+                    "Babylon 5",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Sliders, les mondes parallèles",
+                "brand": "Sliders, les mondes parallèles",
+                "hints": [
+                    "Sliders, les mondes parallèles",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "La Fête à la maison",
+                "brand": "La Fête à la maison",
+                "hints": [
+                    "La Fête à la maison",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Le Prince de Bel-Air",
+                "brand": "Le Prince de Bel-Air",
+                "hints": [
+                    "Le Prince de Bel-Air",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Seinfeld",
+                "brand": "Seinfeld",
+                "hints": [
+                    "Seinfeld",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Frasier",
+                "brand": "Frasier",
+                "hints": [
+                    "Frasier",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Ally McBeal",
+                "brand": "Ally McBeal",
+                "hints": [
+                    "Ally McBeal",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Xena, la guerrière",
+                "brand": "Xena, la guerrière",
+                "hints": [
+                    "Xena, la guerrière",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Hercule",
+                "brand": "Hercule",
+                "hints": [
+                    "Hercule",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Highlander",
+                "brand": "Highlander",
+                "hints": [
+                    "Highlander",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Code Quantum",
+                "brand": "Code Quantum",
+                "hints": [
+                    "Code Quantum",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "MacGyver",
+                "brand": "MacGyver",
+                "hints": [
+                    "MacGyver",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "L’Agence tous risques",
+                "brand": "L’Agence tous risques",
+                "hints": [
+                    "L’Agence tous risques",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Alerte à Malibu",
+                "brand": "Alerte à Malibu",
+                "hints": [
+                    "Alerte à Malibu",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Hélène et les Garçons",
+                "brand": "Hélène et les Garçons",
+                "hints": [
+                    "Hélène et les Garçons",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Le Miel et les Abeilles",
+                "brand": "Le Miel et les Abeilles",
+                "hints": [
+                    "Le Miel et les Abeilles",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Premiers Baisers",
+                "brand": "Premiers Baisers",
+                "hints": [
+                    "Premiers Baisers",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Le Collège des Coeurs Brisés (Heartbreak High)",
+                "brand": "Le Collège des Coeurs Brisés (Heartbreak High)",
+                "hints": [
+                    "Le Collège des Coeurs Brisés (Heartbreak High)",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Hartley, coeurs à vif",
+                "brand": "Hartley, coeurs à vif",
+                "hints": [
+                    "Hartley, coeurs à vif",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "7 à la maison",
+                "brand": "7 à la maison",
+                "hints": [
+                    "7 à la maison",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "7 jours pour agir",
+                "brand": "7 jours pour agir",
+                "hints": [
+                    "7 jours pour agir",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Les Soprano",
+                "brand": "Les Soprano",
+                "hints": [
+                    "Les Soprano",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Six Feet Under",
+                "brand": "Six Feet Under",
+                "hints": [
+                    "Six Feet Under",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The West Wing (À la Maison Blanche)",
+                "brand": "The West Wing (À la Maison Blanche)",
+                "hints": [
+                    "The West Wing (À la Maison Blanche)",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Alias",
+                "brand": "Alias",
+                "hints": [
+                    "Alias",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "24 heures chrono",
+                "brand": "24 heures chrono",
+                "hints": [
+                    "24 heures chrono",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Lost: Les Disparus",
+                "brand": "Lost: Les Disparus",
+                "hints": [
+                    "Lost: Les Disparus",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Desperate Housewives",
+                "brand": "Desperate Housewives",
+                "hints": [
+                    "Desperate Housewives",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Grey’s Anatomy",
+                "brand": "Grey’s Anatomy",
+                "hints": [
+                    "Grey’s Anatomy",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Prison Break",
+                "brand": "Prison Break",
+                "hints": [
+                    "Prison Break",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "How I Met Your Mother",
+                "brand": "How I Met Your Mother",
+                "hints": [
+                    "How I Met Your Mother",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Big Bang Theory",
+                "brand": "The Big Bang Theory",
+                "hints": [
+                    "The Big Bang Theory",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Dexter",
+                "brand": "Dexter",
+                "hints": [
+                    "Dexter",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Breaking Bad",
+                "brand": "Breaking Bad",
+                "hints": [
+                    "Breaking Bad",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Mad Men",
+                "brand": "Mad Men",
+                "hints": [
+                    "Mad Men",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Game of Thrones",
+                "brand": "Game of Thrones",
+                "hints": [
+                    "Game of Thrones",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "True Blood",
+                "brand": "True Blood",
+                "hints": [
+                    "True Blood",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "True Detective",
+                "brand": "True Detective",
+                "hints": [
+                    "True Detective",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "House of Cards",
+                "brand": "House of Cards",
+                "hints": [
+                    "House of Cards",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Vikings",
+                "brand": "Vikings",
+                "hints": [
+                    "Vikings",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Sherlock",
+                "brand": "Sherlock",
+                "hints": [
+                    "Sherlock",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Doctor Who (nouvelle série 2005)",
+                "brand": "Doctor Who (nouvelle série 2005)",
+                "hints": [
+                    "Doctor Who (nouvelle série 2005)",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Skins",
+                "brand": "Skins",
+                "hints": [
+                    "Skins",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Misfits",
+                "brand": "Misfits",
+                "hints": [
+                    "Misfits",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Glee",
+                "brand": "Glee",
+                "hints": [
+                    "Glee",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Walking Dead",
+                "brand": "The Walking Dead",
+                "hints": [
+                    "The Walking Dead",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Homeland",
+                "brand": "Homeland",
+                "hints": [
+                    "Homeland",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Sons of Anarchy",
+                "brand": "Sons of Anarchy",
+                "hints": [
+                    "Sons of Anarchy",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Hannibal",
+                "brand": "Hannibal",
+                "hints": [
+                    "Hannibal",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Fargo",
+                "brand": "Fargo",
+                "hints": [
+                    "Fargo",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Mindhunter",
+                "brand": "Mindhunter",
+                "hints": [
+                    "Mindhunter",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Stranger Things",
+                "brand": "Stranger Things",
+                "hints": [
+                    "Stranger Things",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Narcos",
+                "brand": "Narcos",
+                "hints": [
+                    "Narcos",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Westworld",
+                "brand": "Westworld",
+                "hints": [
+                    "Westworld",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Crown",
+                "brand": "The Crown",
+                "hints": [
+                    "The Crown",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "La Casa de Papel",
+                "brand": "La Casa de Papel",
+                "hints": [
+                    "La Casa de Papel",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Peaky Blinders",
+                "brand": "Peaky Blinders",
+                "hints": [
+                    "Peaky Blinders",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Better Call Saul",
+                "brand": "Better Call Saul",
+                "hints": [
+                    "Better Call Saul",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Mr. Robot",
+                "brand": "Mr. Robot",
+                "hints": [
+                    "Mr. Robot",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Black Mirror",
+                "brand": "Black Mirror",
+                "hints": [
+                    "Black Mirror",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Mandalorian",
+                "brand": "The Mandalorian",
+                "hints": [
+                    "The Mandalorian",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Witcher",
+                "brand": "The Witcher",
+                "hints": [
+                    "The Witcher",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Dark",
+                "brand": "Dark",
+                "hints": [
+                    "Dark",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Umbrella Academy",
+                "brand": "Umbrella Academy",
+                "hints": [
+                    "Umbrella Academy",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Lupin",
+                "brand": "Lupin",
+                "hints": [
+                    "Lupin",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Emily in Paris",
+                "brand": "Emily in Paris",
+                "hints": [
+                    "Emily in Paris",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Squid Game",
+                "brand": "Squid Game",
+                "hints": [
+                    "Squid Game",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Last of Us",
+                "brand": "The Last of Us",
+                "hints": [
+                    "The Last of Us",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Wednesday",
+                "brand": "Wednesday",
+                "hints": [
+                    "Wednesday",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Boys",
+                "brand": "The Boys",
+                "hints": [
+                    "The Boys",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Chernobyl",
+                "brand": "Chernobyl",
+                "hints": [
+                    "Chernobyl",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Euphoria",
+                "brand": "Euphoria",
+                "hints": [
+                    "Euphoria",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "The Handmaid’s Tale",
+                "brand": "The Handmaid’s Tale",
+                "hints": [
+                    "The Handmaid’s Tale",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Succession",
+                "brand": "Succession",
+                "hints": [
+                    "Succession",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Ted Lasso",
+                "brand": "Ted Lasso",
+                "hints": [
+                    "Ted Lasso",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Only Murders in the Building",
+                "brand": "Only Murders in the Building",
+                "hints": [
+                    "Only Murders in the Building",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            },
+            {
+                "artist": "Générique",
+                "title": "Severance",
+                "brand": "Severance",
+                "hints": [
+                    "Severance",
+                    "Série TV",
+                    "Générique Série",
+                    "Culte"
+                ]
+            }
         ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Urgences",
-        "brand": "Urgences",
-        "hints": [
-            "Urgences",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "X-Files",
-        "brand": "X-Files",
-        "hints": [
-            "X-Files",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Buffy contre les vampires",
-        "brand": "Buffy contre les vampires",
-        "hints": [
-            "Buffy contre les vampires",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Dawson",
-        "brand": "Dawson",
-        "hints": [
-            "Dawson",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Beverly Hills 90210",
-        "brand": "Beverly Hills 90210",
-        "hints": [
-            "Beverly Hills 90210",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Melrose Place",
-        "brand": "Melrose Place",
-        "hints": [
-            "Melrose Place",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Loïs et Clark",
-        "brand": "Loïs et Clark",
-        "hints": [
-            "Loïs et Clark",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Charmed",
-        "brand": "Charmed",
-        "hints": [
-            "Charmed",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Walker Texas Ranger",
-        "brand": "Walker Texas Ranger",
-        "hints": [
-            "Walker Texas Ranger",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Le Rebelle (Renegade)",
-        "brand": "Le Rebelle (Renegade)",
-        "hints": [
-            "Le Rebelle (Renegade)",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Sydney Fox, l’aventurière (Relic Hunter)",
-        "brand": "Sydney Fox, l’aventurière (Relic Hunter)",
-        "hints": [
-            "Sydney Fox, l’aventurière (Relic Hunter)",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Alerte Cobra",
-        "brand": "Alerte Cobra",
-        "hints": [
-            "Alerte Cobra",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Navarro",
-        "brand": "Navarro",
-        "hints": [
-            "Navarro",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Julie Lescaut",
-        "brand": "Julie Lescaut",
-        "hints": [
-            "Julie Lescaut",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Les Cordier, juge et flic",
-        "brand": "Les Cordier, juge et flic",
-        "hints": [
-            "Les Cordier, juge et flic",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Sous le soleil",
-        "brand": "Sous le soleil",
-        "hints": [
-            "Sous le soleil",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Stargate SG-1",
-        "brand": "Stargate SG-1",
-        "hints": [
-            "Stargate SG-1",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Hercule Poirot",
-        "brand": "Hercule Poirot",
-        "hints": [
-            "Hercule Poirot",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Une nounou d’enfer",
-        "brand": "Une nounou d’enfer",
-        "hints": [
-            "Une nounou d’enfer",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Docteur Quinn, femme médecin",
-        "brand": "Docteur Quinn, femme médecin",
-        "hints": [
-            "Docteur Quinn, femme médecin",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Star Trek: The Next Generation",
-        "brand": "Star Trek: The Next Generation",
-        "hints": [
-            "Star Trek: The Next Generation",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Star Trek: Deep Space Nine",
-        "brand": "Star Trek: Deep Space Nine",
-        "hints": [
-            "Star Trek: Deep Space Nine",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Star Trek: Voyager",
-        "brand": "Star Trek: Voyager",
-        "hints": [
-            "Star Trek: Voyager",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Babylon 5",
-        "brand": "Babylon 5",
-        "hints": [
-            "Babylon 5",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Sliders, les mondes parallèles",
-        "brand": "Sliders, les mondes parallèles",
-        "hints": [
-            "Sliders, les mondes parallèles",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "La Fête à la maison",
-        "brand": "La Fête à la maison",
-        "hints": [
-            "La Fête à la maison",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Le Prince de Bel-Air",
-        "brand": "Le Prince de Bel-Air",
-        "hints": [
-            "Le Prince de Bel-Air",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Seinfeld",
-        "brand": "Seinfeld",
-        "hints": [
-            "Seinfeld",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Frasier",
-        "brand": "Frasier",
-        "hints": [
-            "Frasier",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Ally McBeal",
-        "brand": "Ally McBeal",
-        "hints": [
-            "Ally McBeal",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Xena, la guerrière",
-        "brand": "Xena, la guerrière",
-        "hints": [
-            "Xena, la guerrière",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Hercule",
-        "brand": "Hercule",
-        "hints": [
-            "Hercule",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Highlander",
-        "brand": "Highlander",
-        "hints": [
-            "Highlander",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Code Quantum",
-        "brand": "Code Quantum",
-        "hints": [
-            "Code Quantum",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "MacGyver",
-        "brand": "MacGyver",
-        "hints": [
-            "MacGyver",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "L’Agence tous risques",
-        "brand": "L’Agence tous risques",
-        "hints": [
-            "L’Agence tous risques",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Alerte à Malibu",
-        "brand": "Alerte à Malibu",
-        "hints": [
-            "Alerte à Malibu",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Hélène et les Garçons",
-        "brand": "Hélène et les Garçons",
-        "hints": [
-            "Hélène et les Garçons",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Le Miel et les Abeilles",
-        "brand": "Le Miel et les Abeilles",
-        "hints": [
-            "Le Miel et les Abeilles",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Premiers Baisers",
-        "brand": "Premiers Baisers",
-        "hints": [
-            "Premiers Baisers",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Le Collège des Coeurs Brisés (Heartbreak High)",
-        "brand": "Le Collège des Coeurs Brisés (Heartbreak High)",
-        "hints": [
-            "Le Collège des Coeurs Brisés (Heartbreak High)",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Hartley, coeurs à vif",
-        "brand": "Hartley, coeurs à vif",
-        "hints": [
-            "Hartley, coeurs à vif",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "7 à la maison",
-        "brand": "7 à la maison",
-        "hints": [
-            "7 à la maison",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "7 jours pour agir",
-        "brand": "7 jours pour agir",
-        "hints": [
-            "7 jours pour agir",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Les Soprano",
-        "brand": "Les Soprano",
-        "hints": [
-            "Les Soprano",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Six Feet Under",
-        "brand": "Six Feet Under",
-        "hints": [
-            "Six Feet Under",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The West Wing (À la Maison Blanche)",
-        "brand": "The West Wing (À la Maison Blanche)",
-        "hints": [
-            "The West Wing (À la Maison Blanche)",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Alias",
-        "brand": "Alias",
-        "hints": [
-            "Alias",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "24 heures chrono",
-        "brand": "24 heures chrono",
-        "hints": [
-            "24 heures chrono",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Lost: Les Disparus",
-        "brand": "Lost: Les Disparus",
-        "hints": [
-            "Lost: Les Disparus",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Desperate Housewives",
-        "brand": "Desperate Housewives",
-        "hints": [
-            "Desperate Housewives",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Grey’s Anatomy",
-        "brand": "Grey’s Anatomy",
-        "hints": [
-            "Grey’s Anatomy",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Prison Break",
-        "brand": "Prison Break",
-        "hints": [
-            "Prison Break",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "How I Met Your Mother",
-        "brand": "How I Met Your Mother",
-        "hints": [
-            "How I Met Your Mother",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Big Bang Theory",
-        "brand": "The Big Bang Theory",
-        "hints": [
-            "The Big Bang Theory",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Dexter",
-        "brand": "Dexter",
-        "hints": [
-            "Dexter",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Breaking Bad",
-        "brand": "Breaking Bad",
-        "hints": [
-            "Breaking Bad",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Mad Men",
-        "brand": "Mad Men",
-        "hints": [
-            "Mad Men",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Game of Thrones",
-        "brand": "Game of Thrones",
-        "hints": [
-            "Game of Thrones",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "True Blood",
-        "brand": "True Blood",
-        "hints": [
-            "True Blood",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "True Detective",
-        "brand": "True Detective",
-        "hints": [
-            "True Detective",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "House of Cards",
-        "brand": "House of Cards",
-        "hints": [
-            "House of Cards",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Vikings",
-        "brand": "Vikings",
-        "hints": [
-            "Vikings",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Sherlock",
-        "brand": "Sherlock",
-        "hints": [
-            "Sherlock",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Doctor Who (nouvelle série 2005)",
-        "brand": "Doctor Who (nouvelle série 2005)",
-        "hints": [
-            "Doctor Who (nouvelle série 2005)",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Skins",
-        "brand": "Skins",
-        "hints": [
-            "Skins",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Misfits",
-        "brand": "Misfits",
-        "hints": [
-            "Misfits",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Glee",
-        "brand": "Glee",
-        "hints": [
-            "Glee",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Walking Dead",
-        "brand": "The Walking Dead",
-        "hints": [
-            "The Walking Dead",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Homeland",
-        "brand": "Homeland",
-        "hints": [
-            "Homeland",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Sons of Anarchy",
-        "brand": "Sons of Anarchy",
-        "hints": [
-            "Sons of Anarchy",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Hannibal",
-        "brand": "Hannibal",
-        "hints": [
-            "Hannibal",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Fargo",
-        "brand": "Fargo",
-        "hints": [
-            "Fargo",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Mindhunter",
-        "brand": "Mindhunter",
-        "hints": [
-            "Mindhunter",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Stranger Things",
-        "brand": "Stranger Things",
-        "hints": [
-            "Stranger Things",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Narcos",
-        "brand": "Narcos",
-        "hints": [
-            "Narcos",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Westworld",
-        "brand": "Westworld",
-        "hints": [
-            "Westworld",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Crown",
-        "brand": "The Crown",
-        "hints": [
-            "The Crown",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "La Casa de Papel",
-        "brand": "La Casa de Papel",
-        "hints": [
-            "La Casa de Papel",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Peaky Blinders",
-        "brand": "Peaky Blinders",
-        "hints": [
-            "Peaky Blinders",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Better Call Saul",
-        "brand": "Better Call Saul",
-        "hints": [
-            "Better Call Saul",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Mr. Robot",
-        "brand": "Mr. Robot",
-        "hints": [
-            "Mr. Robot",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Black Mirror",
-        "brand": "Black Mirror",
-        "hints": [
-            "Black Mirror",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Mandalorian",
-        "brand": "The Mandalorian",
-        "hints": [
-            "The Mandalorian",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Witcher",
-        "brand": "The Witcher",
-        "hints": [
-            "The Witcher",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Dark",
-        "brand": "Dark",
-        "hints": [
-            "Dark",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Umbrella Academy",
-        "brand": "Umbrella Academy",
-        "hints": [
-            "Umbrella Academy",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Lupin",
-        "brand": "Lupin",
-        "hints": [
-            "Lupin",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Emily in Paris",
-        "brand": "Emily in Paris",
-        "hints": [
-            "Emily in Paris",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Squid Game",
-        "brand": "Squid Game",
-        "hints": [
-            "Squid Game",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Last of Us",
-        "brand": "The Last of Us",
-        "hints": [
-            "The Last of Us",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Wednesday",
-        "brand": "Wednesday",
-        "hints": [
-            "Wednesday",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Boys",
-        "brand": "The Boys",
-        "hints": [
-            "The Boys",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Chernobyl",
-        "brand": "Chernobyl",
-        "hints": [
-            "Chernobyl",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Euphoria",
-        "brand": "Euphoria",
-        "hints": [
-            "Euphoria",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "The Handmaid’s Tale",
-        "brand": "The Handmaid’s Tale",
-        "hints": [
-            "The Handmaid’s Tale",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Succession",
-        "brand": "Succession",
-        "hints": [
-            "Succession",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Ted Lasso",
-        "brand": "Ted Lasso",
-        "hints": [
-            "Ted Lasso",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Only Murders in the Building",
-        "brand": "Only Murders in the Building",
-        "hints": [
-            "Only Murders in the Building",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    },
-    {
-        "artist": "Générique",
-        "title": "Severance",
-        "brand": "Severance",
-        "hints": [
-            "Severance",
-            "Série TV",
-            "Générique Série",
-            "Culte"
-        ]
-    }
-]
     }
 };
 
@@ -2645,12 +2636,37 @@ function startVoiceRecognition() {
             <div class='stylish-countdown-text'>RÉPONDEZ MAINTENANT !</div>
             <div class='stylish-countdown-circle' id='voice-countdown-timer'>${timeLeft}</div>
             <div class='stylish-transcript' id='voice-countdown-transcript'></div>
+            <button id='btn-send-vocal-now' style='margin-top:10px; padding:10px 20px; background:var(--primary); color:white; border:none; border-radius:30px; font-weight:bold; cursor:pointer;'>ENVOYER ✅</button>
             ${!isSupported ? "<div style='font-size:0.7rem; opacity:0.5; margin-top:10px;'>Hôte à l'écoute (Transcription indisponible)</div>" : ""}
         </div>
     `;
 
     const timerSpan = document.getElementById('voice-countdown-timer');
     const transcriptSpan = document.getElementById('voice-countdown-transcript');
+    const sendNowBtn = document.getElementById('btn-send-vocal-now');
+
+    const finishAndSend = () => {
+        if (voiceRecognition) {
+            try { voiceRecognition.stop(); } catch (e) { }
+        }
+        if (voiceAnswerTimeout) clearTimeout(voiceAnswerTimeout);
+        if (voiceCountdownInterval) clearInterval(voiceCountdownInterval);
+
+        let textToSend = finalTranscript.trim();
+        if (textToSend === "") {
+            textToSend = isSupported ? "(Silence / Incompris)" : "(Réponse vocale transmise)";
+        }
+
+        if (state.roomRef) {
+            state.roomRef.child('vocalAnswer').set({
+                teamIdx: state.myTeamIdx,
+                text: textToSend,
+                timestamp: Date.now()
+            });
+        }
+
+        waitingMsg.innerHTML = "✅<br><span style='font-size:1.5rem; color:var(--text-dim);'>PRÉSENTATION DU TITRE...</span>";
+    };
 
     const updateDisplay = () => {
         if (timerSpan) timerSpan.innerText = timeLeft;
@@ -2658,6 +2674,10 @@ function startVoiceRecognition() {
             transcriptSpan.innerText = finalTranscript ? `« ${finalTranscript} »` : "";
         }
     };
+
+    if (sendNowBtn) {
+        sendNowBtn.onclick = finishAndSend;
+    }
 
     if (isSupported) {
         voiceRecognition = new SpeechRecognition();
@@ -2695,26 +2715,7 @@ function startVoiceRecognition() {
         }
     }, 1000);
 
-    voiceAnswerTimeout = setTimeout(() => {
-        if (voiceRecognition) {
-            try { voiceRecognition.stop(); } catch (e) { }
-        }
-
-        let textToSend = finalTranscript.trim();
-        if (textToSend === "") {
-            textToSend = isSupported ? "(Silence / Incompris)" : "(Réponse vocale transmise)";
-        }
-
-        if (state.roomRef) {
-            state.roomRef.child('vocalAnswer').set({
-                teamIdx: state.myTeamIdx,
-                text: textToSend,
-                timestamp: Date.now()
-            });
-        }
-
-        waitingMsg.innerHTML = "✅<br><span style='font-size:1.5rem; color:var(--text-dim);'>PRÉSENTATION DU TITRE...</span>";
-    }, 5000);
+    voiceAnswerTimeout = setTimeout(finishAndSend, 5000);
 }
 
 const handleBuzzClick = () => {
@@ -3624,10 +3625,10 @@ function selectArtist(name) {
     }
 }
 
-function victory() {
+function victory(keepPlaying = false) {
     state.isPlaying = false;
     clearInterval(state.interval);
-    audioPlayer.pause();
+    if (!keepPlaying) audioPlayer.pause();
 
     if (!state.currentSong) {
         logDebug("Victory called but no song loaded!");
@@ -3734,7 +3735,8 @@ btnCorrect.addEventListener('click', () => {
         displayFeedback(feedbackMsg, 'feedback-bravo');
 
         // v46: On révèle les infos de la chanson
-        victory();
+        victory(true);
+        audioPlayer.play(); // Reprendre la musique
 
         lastBuzzedTeam = null;
         validationControls.classList.add('hidden');
