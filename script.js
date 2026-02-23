@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v51.4');
+logDebug('Script loaded v2026_v51.5');
 
 // Tentative de synchronisation immédiate
 setTimeout(() => {
