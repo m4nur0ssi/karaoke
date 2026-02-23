@@ -1265,17 +1265,22 @@ function updatePlayerInterface(roomData) {
         playerChoices.classList.add('hidden');
     }
 
-    // Round info overlay
+    // Round info overlay — Design Premium
     if (roomData.round) {
         let roundInfo = document.getElementById('player-round-info');
         if (!roundInfo) {
             roundInfo = document.createElement('div');
             roundInfo.id = 'player-round-info';
-            roundInfo.className = 'round-info';
             playerGame.prepend(roundInfo);
         }
-        roundInfo.innerText = `Round ${roomData.round}`;
+        roundInfo.innerHTML = `
+            <div class="player-round-badge">
+                <span class="round-label">🎵 MANCHE</span>
+                <span class="round-number">${roomData.round}</span>
+            </div>
+        `;
     }
+
 }
 
 let voiceRecognition = null;
@@ -2695,19 +2700,25 @@ async function launchWheelOfFate(modifier) {
                 playTone(880, 'sine', 0.5);
 
                 if (wheelExplanation) {
-                    let text = "";
-                    switch (modifier) {
-                        case 'bonus1': text = "Le gagnant gagne +1 Point Bonus !"; break;
-                        case 'bonus3': text = "INCROYABLE ! Le gagnant remporte +3 Points Bonus !"; break;
-                        case 'double': text = "Points Doublés pour cette chanson !"; break;
-                        case 'mystery': text = "La vitesse de la chanson est modifiée au hasard !"; break;
-                        case 'fast': text = "Chrono de la mort ! Seulement 10 secondes pour trouver !"; break;
-                        case 'steal': text = "Le gagnant vole 1 point à CHAQUE équipe ! 🏴‍☠️"; break;
-                        case 'bomb': text = "BOMBE ! Une mauvaise réponse fait perdre -3 Points ! 💣"; break;
-                    }
-                    wheelExplanation.innerText = text;
+                    const modifierData = {
+                        bonus1: { emoji: '🎁', title: '+1 POINT BONUS', desc: 'Le gagnant de cette manche reçoit 1 point supplémentaire !', cls: 'wheel-expl-bonus1' },
+                        bonus3: { emoji: '💎', title: 'ULTRA BONUS +3 PTS', desc: 'INCROYABLE ! Le vainqueur remporte 3 points en prime !', cls: 'wheel-expl-bonus3' },
+                        double: { emoji: '🔥', title: 'POINTS DOUBLÉS', desc: 'Les points de cette manche sont multipliés par 2 !', cls: 'wheel-expl-double' },
+                        mystery: { emoji: '🌀', title: 'MYSTÈRE SONORE', desc: 'La chanson sera jouée à vitesse modifiée… Bonne chance !', cls: 'wheel-expl-mystery' },
+                        fast: { emoji: '⏱️', title: 'CHRONO DE LA MORT', desc: 'Seulement 10 secondes pour trouver ! Réfléchissez vite !', cls: 'wheel-expl-fast' },
+                        steal: { emoji: '🏴‍☠️', title: 'MODE PIRATE', desc: 'Le gagnant vole 1 point à chaque autre équipe !', cls: 'wheel-expl-steal' },
+                        bomb: { emoji: '💣', title: 'LA BOMBE', desc: 'Danger ! Une mauvaise réponse fait perdre 3 points !', cls: 'wheel-expl-bomb' }
+                    };
+                    const md = modifierData[modifier] || { emoji: '🎲', title: modifier.toUpperCase(), desc: '', cls: '' };
+                    wheelExplanation.className = `wheel-explanation-text ${md.cls}`;
+                    wheelExplanation.innerHTML = `
+                        <div class="wheel-expl-emoji">${md.emoji}</div>
+                        <div class="wheel-expl-title">${md.title}</div>
+                        <div class="wheel-expl-desc">${md.desc}</div>
+                    `;
                     wheelExplanation.classList.remove('hidden');
                 }
+
 
                 setTimeout(() => {
                     modal.classList.add('hidden');
