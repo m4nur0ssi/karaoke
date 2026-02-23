@@ -461,7 +461,11 @@ window.updatePlayerInterface = (roomData) => {
             btnPlayerBuzz.classList.add('hidden');
         }
 
-        playerChoices.classList.add('hidden');
+        if (isPlaying && roomData.showHintsToPlayer && roomData.choices) {
+            showPlayerChoices(roomData.choices);
+        } else {
+            playerChoices.classList.add('hidden');
+        }
 
         // Remote Audio Sync
         if (isRemote && isPlaying && roomData.audioUrl) {
