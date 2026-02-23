@@ -812,7 +812,7 @@ btnWrong.addEventListener('click', () => {
     setTimeout(() => {
         if (state.roomRef) {
             state.roomRef.update({
-                status: 'loading', // Set to loading to clear player screen
+                status: 'playing', // Set to playing to allow players to buzz again
                 buzzerTeam: null,
                 buzzerName: null,
                 answer: null,
@@ -821,8 +821,16 @@ btnWrong.addEventListener('click', () => {
             });
         }
         lastBuzzedTeam = null;
+        bravoContainer.innerHTML = ''; // Effacer le message de feedback
         audioPlayer.play().then(() => {
             state.isPlaying = true;
+
+            // Restore host UI elements hidden during buzz
+            countdownEl.classList.remove('hidden');
+            if (state.timer <= 15) {
+                showHints(); // This will unhide hintsEl or update Firebase for players
+            }
+
             if (modifierBadge && state.currentModifier !== 'normal') modifierBadge.classList.remove('hidden');
             startTimer();
         });
