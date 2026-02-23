@@ -12,7 +12,12 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v51.2');
+logDebug('Script loaded v2026_v51.3');
+
+// Tentative de synchronisation immédiate
+setTimeout(() => {
+    if (window.syncSongs) window.syncSongs();
+}, 100);
 
 // Global Error Handler for remote debugging
 window.onerror = function (msg, url, lineNo, columnNo, error) {
@@ -56,9 +61,18 @@ const state = {
     roomRef: null,
     songsUntilWheel: 0,
 
-    // Loaded from songs-data.js
-    songs: typeof SONG_DATABASE !== 'undefined' ? SONG_DATABASE : {}
+    songs: {}
 };
+
+// Initialisation différée pour s'assurer que SONG_DATABASE est chargé
+function syncSongs() {
+    if (typeof SONG_DATABASE !== 'undefined' && Object.keys(state.songs).length === 0) {
+        state.songs = SONG_DATABASE;
+        logDebug("Database synchronisée : " + Object.keys(state.songs).length + " thèmes.");
+        return true;
+    }
+    return Object.keys(state.songs).length > 0;
+}
 
 // UI Elements
 const screens = {
@@ -224,4 +238,4 @@ btnRoleHost.addEventListener('click', () => {
     showScreen('home');
 });
 
-logDebug('Script initialized (v2026_v51.0)');
+logDebug('Script initialized (v2026_v51.2)');
