@@ -126,13 +126,16 @@ async function nextSong() {
         if (state.interval) clearInterval(state.interval);
 
         // UI states - CACHE TOUT AU DÉBUT
-        countdownEl.innerText = "Chargement...";
-        countdownEl.style.fontSize = "8rem"; // Reset size
-        countdownEl.classList.remove('hidden');
+        countdownEl.innerText = "";
+        countdownEl.classList.add('hidden');
         hintsEl.classList.add('hidden');
         revealCard.classList.add('hidden');
         btnNext.classList.add('hidden'); // Caché par défaut au début du chargement
-        validationControls.classList.add('hidden');
+        bravoContainer.innerHTML = '';
+        if (typeof vocalDisplay !== 'undefined' && vocalDisplay) {
+            vocalDisplay.innerText = '';
+            vocalDisplay.classList.add('hidden');
+        }
         if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.add('hidden');
 
         // Sync loading status to players & Reset states
@@ -151,7 +154,7 @@ async function nextSong() {
         // Sécurité : Si le chargement prend trop de temps (timeout réseau), on affiche un moyen de passer
         // Sécurité chargement (pas de message moche)
         const loadingSafetyTimeout = setTimeout(() => {
-            if (countdownEl.innerText === "Chargement...") {
+            if (countdownEl.classList.contains('hidden')) {
                 btnNext.innerText = "PASSER CE TITRE";
                 btnNext.classList.remove('hidden');
             }
@@ -924,8 +927,13 @@ if (teamsAction) {
         if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
             // En solo oral, on déclenche le micro de l'hôte
             if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.add('hidden');
-            displayFeedback("ÉCOUTE EN COURS...", "feedback-bravo", true);
-            if (window.startVoiceRecognition) window.startVoiceRecognition();
+            displayFeedback("PRÉPARATION DU MICRO...", "feedback-bravo", true);
+
+            // Délai pour laisser l'audio se couper proprement sur mobile
+            setTimeout(() => {
+                displayFeedback("PARLEZ MAINTENANT !", "feedback-bravo", true);
+                if (window.startVoiceRecognition) window.startVoiceRecognition();
+            }, 800);
             // On laisse handleRemoteVocal gérer la suite
         } else {
             // Mode normal ou buttons
