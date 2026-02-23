@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v51.1');
+logDebug('Script loaded v2026_v51.2');
 
 // Global Error Handler for remote debugging
 window.onerror = function (msg, url, lineNo, columnNo, error) {
@@ -173,7 +173,7 @@ btnRoleHost.addEventListener('click', () => {
             status: 'initiating',
             timestamp: Date.now(),
             hostActive: true,
-            version: 'v51.1',
+            version: 'v51.2',
             teams: state.teams.slice(0, state.teamCount).map(t => t.name)
         };
 
