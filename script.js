@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v51.3');
+logDebug('Script loaded v2026_v51.4');
 
 // Tentative de synchronisation immédiate
 setTimeout(() => {
@@ -116,6 +116,8 @@ const btnWrong = document.getElementById('btn-wrong');
 const validationControls = document.getElementById('validation-controls');
 const bravoContainer = document.getElementById('bravo-container');
 const modifierBadge = document.getElementById('modifier-badge');
+const btnSoloBuzz = document.getElementById('btn-solo-buzz');
+const soloBuzzContainer = document.getElementById('solo-buzz-container');
 
 let lastBuzzedTeam = null;
 
