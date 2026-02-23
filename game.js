@@ -17,6 +17,13 @@ themeCards.forEach(card => {
 });
 
 function startTheme(theme) {
+    if (window.syncSongs) window.syncSongs();
+
+    // Anti-blocage mobile : geste utilisateur ici pour débloquer le player
+    if (typeof audioPlayer !== 'undefined') {
+        audioPlayer.play().then(() => audioPlayer.pause()).catch(() => { });
+    }
+
     state.currentTheme = theme;
     showScreen('game');
     nextSong();
@@ -120,6 +127,7 @@ async function nextSong() {
 
         // UI states - CACHE TOUT AU DÉBUT
         countdownEl.innerText = "Chargement...";
+        countdownEl.style.fontSize = "8rem"; // Reset size
         countdownEl.classList.remove('hidden');
         hintsEl.classList.add('hidden');
         revealCard.classList.add('hidden');
@@ -334,6 +342,7 @@ async function nextSong() {
                 console.warn("Auto-play blocked:", e);
                 // Safari iPad fallback
                 countdownEl.innerText = "CLIQUEZ POUR JOUER";
+                countdownEl.style.fontSize = "2.5rem"; // Taille réduite pour le texte long
                 btnNext.innerText = "LANCER LE SON";
                 btnNext.classList.remove('hidden');
                 state.isPlaying = false;
@@ -897,9 +906,17 @@ if (teamsAction) {
         lastBuzzedTeam = idx;
         if (state.timer > 25) state.speedBonusActive = true;
 
-        setTimeout(() => {
-            victory();
-        }, 1200);
+        if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
+            // En solo oral, on déclenche le micro de l'hôte
+            displayFeedback("ÉCOUTE EN COURS...", "feedback-bravo", true);
+            if (window.startVoiceRecognition) window.startVoiceRecognition();
+            // On laisse handleRemoteVocal gérer la suite
+        } else {
+            // Mode normal ou buttons
+            setTimeout(() => {
+                victory();
+            }, 1200);
+        }
         playTone(440, 'triangle', 0.3);
     };
 
@@ -950,6 +967,7 @@ const handleNextOrPlay = () => {
     if (btnNext.innerText === "LANCER LE SON") {
         btnNext.classList.add('hidden');
         countdownEl.innerText = state.timer;
+        countdownEl.style.fontSize = "8rem"; // Reset size
         audioPlayer.play().then(() => {
             state.isPlaying = true;
             startTimer();
