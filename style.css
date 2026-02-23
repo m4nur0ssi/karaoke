@@ -2218,6 +2218,88 @@ body {
 }
 
 /* ========================================
+   MODE SOLO — STITCH 2026
+   ======================================== */
+.team-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 460px;
+    margin-top: 30px;
+}
+
+.solo-separator {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin: 20px 0 16px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.solo-separator::before,
+.solo-separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.solo-zone {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.solo-name-input {
+    width: 100%;
+    padding: 16px 24px !important;
+    border-radius: 100px !important;
+    border: 1.5px solid rgba(112, 0, 255, 0.5) !important;
+    background: rgba(112, 0, 255, 0.1) !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.solo-name-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.solo-name-input:focus {
+    border-color: rgba(112, 0, 255, 0.9) !important;
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.35);
+}
+
+.solo-btn {
+    background: linear-gradient(135deg, #7000ff, #00f2ff) !important;
+    color: white !important;
+    width: 100%;
+    letter-spacing: 2px;
+    box-shadow: 0 0 30px rgba(112, 0, 255, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.solo-btn:hover {
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 0 50px rgba(112, 0, 255, 0.65), 0 10px 30px rgba(0, 242, 255, 0.3);
+}
+
+
+
+/* ========================================
    ROUND BADGE — CLIENT PREMIUM STITCH 2026
    ======================================== */
 #player-round-info {
