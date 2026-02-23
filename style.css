@@ -2216,3 +2216,182 @@ body {
 .club-dorothee {
     background: url('https://img.buzzfeed.com/buzzfeed-static/static/2021-08/17/10/asset/fb99bde56475/sub-buzz-4340-1629202159-4.jpg') center/cover;
 }
+
+/* ========================================
+   ROUND BADGE — CLIENT PREMIUM STITCH 2026
+   ======================================== */
+#player-round-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.player-round-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(0, 242, 255, 0.12), rgba(112, 0, 255, 0.18));
+    border: 1.5px solid rgba(0, 242, 255, 0.35);
+    border-radius: 100px;
+    padding: 8px 22px 8px 16px;
+    box-shadow: 0 0 18px rgba(0, 242, 255, 0.18), inset 0 0 10px rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    animation: roundBadgePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes roundBadgePop {
+    0% {
+        transform: scale(0.6) translateY(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.round-label {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: rgba(0, 242, 255, 0.75);
+    text-transform: uppercase;
+}
+
+.round-number {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 12px rgba(0, 242, 255, 0.6);
+    line-height: 1;
+    min-width: 28px;
+    text-align: center;
+}
+
+/* ========================================
+   WHEEL EXPLANATION — STITCH 2026
+   ======================================== */
+.wheel-explanation-text {
+    margin-top: 22px;
+    padding: 20px 28px;
+    border-radius: 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    animation: wheelExplPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 480px;
+}
+
+@keyframes wheelExplPop {
+    0% {
+        transform: scale(0.7) translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.wheel-expl-emoji {
+    font-size: 3rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 16px currentColor);
+}
+
+.wheel-expl-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.wheel-expl-desc {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 320px;
+    line-height: 1.4;
+}
+
+/* Couleurs par modificateur */
+.wheel-expl-bonus1 {
+    border-color: #00b09b;
+    box-shadow: 0 0 30px rgba(0, 176, 155, 0.35);
+}
+
+.wheel-expl-bonus1 .wheel-expl-title {
+    color: #00f2b0;
+    text-shadow: 0 0 12px #00b09b;
+}
+
+.wheel-expl-bonus3 {
+    border-color: #4facfe;
+    box-shadow: 0 0 40px rgba(79, 172, 254, 0.5);
+}
+
+.wheel-expl-bonus3 .wheel-expl-title {
+    color: #4facfe;
+    text-shadow: 0 0 16px #4facfe;
+}
+
+.wheel-expl-double {
+    border-color: #ff00cc;
+    box-shadow: 0 0 40px rgba(255, 0, 204, 0.45);
+}
+
+.wheel-expl-double .wheel-expl-title {
+    color: #ff00cc;
+    text-shadow: 0 0 16px #ff00cc;
+}
+
+.wheel-expl-mystery {
+    border-color: #ffeb3b;
+    box-shadow: 0 0 30px rgba(255, 235, 59, 0.35);
+}
+
+.wheel-expl-mystery .wheel-expl-title {
+    color: #ffeb3b;
+    text-shadow: 0 0 12px #ffeb3b;
+}
+
+.wheel-expl-fast {
+    border-color: #ff4757;
+    box-shadow: 0 0 30px rgba(255, 71, 87, 0.45);
+    animation: wheelExplPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), shake 0.4s infinite;
+}
+
+.wheel-expl-fast .wheel-expl-title {
+    color: #ff4757;
+    text-shadow: 0 0 12px #ff4757;
+}
+
+.wheel-expl-steal {
+    border-color: #ffa502;
+    box-shadow: 0 0 30px rgba(255, 165, 2, 0.35);
+}
+
+.wheel-expl-steal .wheel-expl-title {
+    color: #ffa502;
+    text-shadow: 0 0 12px #ffa502;
+}
+
+.wheel-expl-bomb {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 40px rgba(255, 107, 107, 0.5);
+}
+
+.wheel-expl-bomb .wheel-expl-title {
+    color: #ff6b6b;
+    text-shadow: 0 0 16px #ff6b6b;
+}
