@@ -428,56 +428,38 @@ const state = {
         ],
         'disney': [
             { brand: 'Le Roi Lion', artist: 'Debbie Davis', title: 'L\'histoire de la vie', hints: ['Le Roi Lion', 'Aladdin', 'Tarzan', 'Mulan'] },
-            { brand: 'Aladdin', artist: 'Karine Costa', title: 'Ce rêve bleu', hints: ['Aladdin', 'Cendrillon', 'La Belle au bois dormant', 'Hercule'] },
+            { brand: 'Aladdin', artist: 'Paolo Domingo & Karine Costa', title: 'Ce rêve bleu', hints: ['Aladdin', 'Cendrillon', 'La Belle au bois dormant', 'Hercule'] },
             { brand: 'La Petite Sirène', artist: 'Henri Salvador', title: 'Sous l\'océan', hints: ['La Petite Sirène', 'Pinocchio', 'Peter Pan', 'Dumbo'] },
             { brand: 'Pocahontas', artist: 'Laura Mayne', title: 'L\'air du vent', hints: ['Pocahontas', 'Mulan', 'La Princesse et la Grenouille', 'Vaiana'] },
-            { brand: 'La Belle et la Bête', artist: 'Lucie Dolène', title: 'Histoire éternelle', hints: ['La Belle et la Bête', 'Blanche-Neige', 'Cendrillon', 'Bambi'] },
+            { brand: 'La Belle et la Bête', artist: 'Charles Aznavour & Liane Foly', title: 'Histoire éternelle', hints: ['La Belle et la Bête', 'Blanche-Neige', 'Cendrillon', 'Bambi'] },
             { brand: 'Aladdin', artist: 'Richard Darbois', title: 'Prince Ali', hints: ['Aladdin', 'Hercule', 'Le Génie', 'Mulan'] },
-            { brand: 'Aladdin', artist: 'Anthony Kavanagh', title: 'Je suis ton meilleur ami', hints: ['Aladdin', 'Toy Story', 'Hercule', 'Tarzan'] },
+            { brand: 'Aladdin', artist: 'Richard Darbois', title: 'Je suis ton meilleur ami', hints: ['Aladdin', 'Toy Story', 'Hercule', 'Tarzan'] },
             { brand: 'Le Roi Lion', artist: 'Dimitri Rougeul', title: 'Je voudrais déjà être roi', hints: ['Le Roi Lion', 'Bambi', 'Pinocchio', 'Peter Pan'] },
             { brand: 'Frère des Ours', artist: 'Phil Collins', title: 'Je m\'en vais', hints: ['Frère des Ours', 'Tarzan', 'Le Roi Lion', 'Atlantide'] },
             { brand: 'La Reine des Neiges', artist: 'Anaïs Delva', title: 'Libérée, délivrée', hints: ['La Reine des Neiges', 'Raiponce', 'Vaiana', 'Rebelle'] },
             { brand: 'Raiponce', artist: 'Maeva Méline', title: 'Où est la vraie vie ?', hints: ['Raiponce', 'La Reine des Neiges', 'Cendrillon', 'Mulan'] },
             { brand: 'Vaiana', artist: 'Cerise Calixte', title: 'Le Bleu lumière', hints: ['Vaiana', 'Pocahontas', 'Mulan', 'Tarzan'] },
-            { brand: 'Hercule', artist: 'Hercule Cast', title: 'De zéro en héros', hints: ['Hercule', 'Mulan', 'Tarzan', 'Aladdin'] },
-            { brand: 'Toy Story', artist: 'Jean-Philippe Puymartin', title: 'Je suis ton ami', hints: ['Toy Story', 'Monstres & Cie', 'Cars', 'Ratatouille'] },
-            { brand: 'Mulan', artist: 'Lauri Mayne', title: 'Comme un homme', hints: ['Mulan', 'Pocahontas', 'Hercule', 'Tarzan'] },
-            { brand: 'Hercule', artist: 'Emmanuel Dahl', title: 'Je n\'ai pas d\'amour', hints: ['Hercule', 'Aladdin', 'Le Roi Lion', 'La Belle et la Bête'] },
-            { brand: 'Le Roi Lion', artist: 'Hakuna Matata', title: 'Hakuna Matata', hints: ['Le Roi Lion', 'Bambi', 'Peter Pan', 'Aladdin'] },
+            { brand: 'Hercule', artist: 'Emmanuel Dahl', title: 'De zéro en héros', hints: ['Hercule', 'Mulan', 'Tarzan', 'Aladdin'] },
+            { brand: 'Toy Story', artist: 'Charlélie Couture', title: 'Je suis ton ami', hints: ['Toy Story', 'Monstres & Cie', 'Cars', 'Ratatouille'] },
+            { brand: 'Mulan', artist: 'Patrick Fiori', title: 'Comme un homme', hints: ['Mulan', 'Pocahontas', 'Hercule', 'Tarzan'] },
+            { brand: 'Hercule', artist: 'Mimi Félixine', title: 'Jamais je n\'avouerai', hints: ['Hercule', 'Aladdin', 'Le Roi Lion', 'La Belle et la Bête'] },
+            { brand: 'Le Roi Lion', artist: 'Jean Piat', title: 'Soyez prêtes', hints: ['Le Roi Lion', 'Hercule', 'Aladdin', 'Pinocchio'] },
+            { brand: 'Le Roi Lion', artist: 'Emmanuel Curtil', title: 'Hakuna Matata', hints: ['Le Roi Lion', 'Bambi', 'Peter Pan', 'Aladdin'] },
             { brand: 'Le Bossu de Notre-Dame', artist: 'Francis Lalanne', title: 'Rien qu\'un jour', hints: ['Le Bossu de Notre-Dame', 'Hercule', 'Tarzan', 'Mulan'] },
-            { brand: 'Hercule', artist: 'Mimi Félixine', title: 'Jamais je n\'avouerai', hints: ['Hercule', 'Mulan', 'La Belle et la Bête', 'Aladdin'] },
             { brand: 'Le Livre de la Jungle', artist: 'Jean Stout', title: 'Il en faut peu pour être heureux', hints: ['Le Livre de la Jungle', 'Le Roi Lion', 'Robin des Bois', 'Dumbo'] },
-            { brand: 'Disney Noël', artist: 'Claude Bertrand', title: 'Petit-papa Noël', hints: ['Disney Noël', 'Mickey', 'Donald', 'Dingo'] },
             { brand: 'Les Aristochats', artist: 'José Bartel', title: 'Tout le monde veut devenir un cat', hints: ['Les Aristochats', 'Le Livre de la Jungle', 'Les 101 Dalmatiens', 'Dumbo'] },
             { brand: 'Blanche-Neige', artist: 'Rachel Pignot', title: 'Un jour mon prince viendra', hints: ['Blanche-Neige', 'Cendrillon', 'La Belle au bois dormant', 'Bambi'] },
-            { brand: 'Alice au pays des merveilles', artist: 'Dominique Poulain', title: 'Au pays d\'Alice', hints: ['Alice au pays des merveilles', 'Cendrillon', 'Pinocchio', 'Bambi'] },
-            { brand: 'Pinocchio', artist: 'Christiane Legrand', title: 'Quand on prie la bonne étoile', hints: ['Pinocchio', 'Peter Pan', 'Alice', 'Dumbo'] },
-            { brand: 'Mary Poppins', artist: 'Michel Roux', title: 'Supercalifragilistic', hints: ['Mary Poppins', 'Le Livre de la Jungle', 'Alice', 'Peter Pan'] },
             { brand: 'Les 101 Dalmatiens', artist: 'Roger Carel', title: 'Cruella d\'enfer', hints: ['Les 101 Dalmatiens', 'Les Aristochats', 'Robin des Bois', 'Bambi'] },
-            { brand: 'Les Aristochats', artist: 'Gérard Rinaldi', title: 'Des gammes et des arpèges', hints: ['Les Aristochats', 'La Belle au bois dormant', 'Cendrillon', 'Bambi'] },
             { brand: 'La Princesse et la Grenouille', artist: 'China Moses', title: 'Au bout du rêve', hints: ['La Princesse et la Grenouille', 'Vaiana', 'Mulan', 'Vaïana'] },
             { brand: 'Vaiana', artist: 'Anthony Kavanagh', title: 'Bling-Bling', hints: ['Vaiana', 'Zootopie', 'Cars', 'Volt'] },
             { brand: 'La Reine des Neiges 2', artist: 'Charlotte Hervieux', title: 'Dans un autre monde', hints: ['La Reine des Neiges 2', 'Vaiana', 'Rebelle', 'Coco'] },
             { brand: 'La Reine des Neiges', artist: 'Dany Boon', title: 'En été', hints: ['La Reine des Neiges', 'Toy Story', 'Cars', 'Zootopie'] },
             { brand: 'Le Roi Lion', artist: 'Michel Prudhomme', title: 'L\'amour brille sous les étoiles', hints: ['Le Roi Lion', 'Bambi', 'La Belle au bois dormant', 'Cendrillon'] },
-            { brand: 'La Petite Sirène', artist: 'Sébastien Cast', title: 'Embrasse-la', hints: ['La Petite Sirène', 'Aladdin', 'Hercule', 'Tarzan'] },
-            { brand: 'Pocahontas', artist: 'Patrick Fiori', title: 'L\'air du vent (Duo)', hints: ['Pocahontas', 'Mulan', 'Vaiana', 'Kuzco'] },
-            { brand: 'Le Livre de la Jungle 2', artist: 'Hocine', title: 'Être un homme comme vous', hints: ['Le Livre de la Jungle 2', 'Le Roi Lion', 'Tarzan', 'Hercule'] },
-            { brand: 'La Reine des Neiges 2', artist: 'Prisca Demarez', title: 'Où t\'en vas-tu ?', hints: ['La Reine des Neiges 2', 'Vaiana', 'Mulan', 'Pocahontas'] },
-            { brand: 'Raiponce la série', artist: 'Camille Lou', title: 'L\'empire des ombres', hints: ['Raiponce la série', 'La Reine des Neiges', 'Mulan', 'Brave'] },
-            { brand: 'La Reine des Neiges 2', artist: 'Olaf Cast', title: 'Quand je serai plus grand', hints: ['La Reine des Neiges 2', 'Zootopie', 'Toy Story', 'Cars'] },
-            { brand: 'Hercule', artist: 'Hercule Muse', title: 'Le monde qui est le mien', hints: ['Hercule', 'Mulan', 'Aladdin', 'Tarzan'] },
-            { brand: 'Tarzan', artist: 'Tarzan Cast', title: 'Entre deux mondes', hints: ['Tarzan', 'Le Roi Lion', 'Frère des ours', 'Dinausore'] },
-            { brand: 'Tarzan', artist: 'Phil Collins', title: 'Enfant de l\'homme', hints: ['Tarzan', 'Kuzco', 'Atlantide', 'Treasure Planet'] },
-            { brand: 'Kuzco', artist: 'Kuzco Cast', title: 'Un monde parfait', hints: ['Kuzco', 'Hercule', 'Aladdin', 'Mulan'] },
-            { brand: 'Hercule', artist: 'Megara Cast', title: 'Jamais je n\'avouerai (Solo)', hints: ['Hercule', 'Aladdin', 'Mulan', 'Tarzan'] },
-            { brand: 'Le Roi Lion', artist: 'Nala Cast', title: 'Soyez prêtes', hints: ['Le Roi Lion', 'Hercule', 'Aladdin', 'Pinocchio'] },
-            { brand: 'La Petite Sirène', artist: 'Ursula Cast', title: 'Pauvres âmes en perdition', hints: ['La Petite Sirène', 'Blanche-Neige', 'Cendrillon', 'Bambi'] },
-            { brand: 'La Belle et la Bête', artist: 'Gaston Cast', title: 'Gaston', hints: ['La Belle et la Bête', 'Hercule', 'Tarzan', 'Aladdin'] },
-            { brand: 'Vaiana', artist: 'Vaiana Choers', title: 'Logo Te Pate', hints: ['Vaiana', 'Lilo & Stitch', 'Le Roi Lion', 'Tarzan'] },
-            { brand: 'Vaiana', artist: 'Maui Cast', title: 'Pour les hommes', hints: ['Vaiana', 'Hercule', 'Tarzan', 'Zootopie'] },
-            { brand: 'Coco', artist: 'Coco Cast', title: 'Un poco loco', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
+            { brand: 'La Petite Sirène', artist: 'Jacques Deschamps', title: 'Embrasse-la', hints: ['La Petite Sirène', 'Aladdin', 'Hercule', 'Tarzan'] },
+            { brand: 'Le Livre de la Jungle 2', artist: 'Richard Darbois', title: 'Être un homme comme vous', hints: ['Le Livre de la Jungle 2', 'Le Roi Lion', 'Tarzan', 'Hercule'] },
+            { brand: 'Coco', artist: 'Andrea Santamaria', title: 'Ne m\'oublie pas', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
         ],
+
         'rapfr': [
             { artist: 'Suprême NTM', title: 'La fièvre', hints: ["Suprême NTM", "Rap FR", "Classique", "Années 90/00"] },
             { artist: 'Fonky Family', title: 'Mystère et suspense', hints: ["Fonky Family", "Rap FR", "Classique", "Années 90/00"] },
@@ -595,8 +577,16 @@ const state = {
             { brand: 'Sailor Moon', artist: 'Bernard Minet', title: 'Sailor Moon', hints: ['Sailor Moon', 'Cardcaptor Sakura', 'Lucile Amour et Rock\'n Roll', 'Gigi'] },
             { brand: 'Denver le dernier dinosaure', artist: 'Carlos Lipesker', title: 'Denver le dernier dinosaure', hints: ['Denver le dernier dinosaure', 'Inspecteur Gadget', 'Les Tortues Ninja', 'Les Snorky'] },
             { brand: 'Les Mystérieuses Cités d\'Or', artist: 'Jacques Cardona', title: 'Les Mystérieuses Cités d\'Or', hints: ['Les Mystérieuses Cités d\'Or', 'Ulysse 31', 'Tom Sawyer', 'Rémi sans famille'] },
-            { brand: 'Signé Cat\'s Eyes', artist: 'Isabelle Ganot', title: 'Signé Cat\'s Eyes', hints: ['Signé Cat\'s Eyes', 'Nicky Larson', 'Juliette je t\'aime', 'Cobra'] }
+            { brand: 'Signé Cat\'s Eyes', artist: 'Isabelle Ganot', title: 'Signé Cat\'s Eyes', hints: ['Signé Cat\'s Eyes', 'Nicky Larson', 'Juliette je t\'aime', 'Cobra'] },
+            { brand: 'Princesse Sarah', artist: 'Cristina D\'Avena', title: 'Princesse Sarah', hints: ['Princesse Sarah', 'Heidi', 'Candy', 'Pollyanna'] },
+            { brand: 'Juliette je t\'aime', artist: 'Isabelle Ganot', title: 'Juliette je t\'aime', hints: ['Juliette je t\'aime', 'Lucile Amour et Rock\'n Roll', 'Max et Compagnie', 'Signé Cat\'s Eyes'] },
+            { brand: 'Lucile Amour et Rock\'n Roll', artist: 'Isabelle Ganot', title: 'Lucile Amour et Rock\'n Roll', hints: ['Lucile Amour et Rock\'n Roll', 'Juliette je t\'aime', 'Max et Compagnie', 'Creamy'] },
+            { brand: 'Max et Compagnie', artist: 'Claude Lombard', title: 'Max et Compagnie', hints: ['Max et Compagnie', 'Lucile Amour et Rock\'n Roll', 'Juliette je t\'aime', 'Théo ou la Batte de la Victoire'] },
+            { brand: 'Cat\'s Eyes', artist: 'Isabelle Ganot', title: 'Signé Cat\'s Eyes', hints: ['Cat\'s Eyes', 'Nicky Larson', 'Cobra', 'Sherlock Holmes'] },
+            { brand: 'Transformers', artist: 'Theme', title: 'Transformers', hints: ['Transformers', 'MASK', 'GI Joe', 'GoBots'] },
+            { brand: 'MASK', artist: 'Noam Kaniel', title: 'MASK', hints: ['MASK', 'Transformers', 'Jayce et les Conquérants de la Lumière', 'GI Joe'] }
         ],
+
 
         'series': [
             { brand: 'Friends', artist: 'The Rembrandts', title: 'I\'ll Be There For You', hints: ['Friends', 'How I Met Your Mother', 'The Big Bang Theory', 'Scrubs'] },
@@ -1589,6 +1579,7 @@ async function fetchPreview(artist, title, theme, brand) {
     try {
         let queryStr = `${artist} ${title}`;
         if (artist === "Générique" || artist === "Soundtrack") queryStr = brand ? `${brand} ${title}` : title;
+        if (theme === "disney") queryStr = brand ? `${brand} French Disney` : `${title} French Disney`;
         if (theme === 'clubdorothee') queryStr += " French";
         const query = queryStr.replace(/['"]/g, "");
 
