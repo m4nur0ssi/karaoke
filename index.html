@@ -20,7 +20,7 @@
         }
     </style>
     <title>Musical Quiz 2026</title>
-    <link rel="stylesheet" href="style.css?v=2026_v46.0">
+    <link rel="stylesheet" href="style.css?v=2026_v50.0">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
@@ -65,8 +65,8 @@
                     <div class="setup-group">
                         <label>Mode de Réponse :</label>
                         <div class="mode-btns">
-                            <button class="mode-btn active" data-mode="oral">VOIX HAUTE</button>
-                            <button class="mode-btn" data-mode="buttons">4 BOUTONS</button>
+                            <button class="mode-btn active" data-mode="oral">⚡ FLASH QUIZZ</button>
+                            <button class="mode-btn" data-mode="buttons">🕹️ MODE ARCADE</button>
                         </div>
                     </div>
                 </div>
@@ -76,6 +76,10 @@
                     <div class="solo-zone">
                         <input type="text" id="input-solo-name" placeholder="Votre prénom..." maxlength="16"
                             class="solo-name-input" />
+                        <div class="solo-mode-selector">
+                            <button class="solo-mode-btn active" data-solo-mode="oral">⚡ Flash Quizz</button>
+                            <button class="solo-mode-btn" data-solo-mode="buttons">🕹️ Mode Arcade</button>
+                        </div>
                         <button id="btn-solo-mode" class="main-btn solo-btn">🎧 JOUER EN SOLO</button>
                     </div>
                 </div>
@@ -342,10 +346,10 @@
 
     <div id="version-tag"
         style="position: fixed; bottom: 5px; right: 5px; font-size: 8px; opacity: 0.3; color: white; pointer-events: none;">
-        v46.0</div>
+        v50.0</div>
 
-    <script src="firebase-config.js?v=2026_v46.0"></script>
-    <script src="script.js?v=2026_v46.0"></script>
+    <script src="firebase-config.js?v=2026_v50.0"></script>
+    <script src="script.js?v=2026_v50.0"></script>
 </body>
 
 </html>
