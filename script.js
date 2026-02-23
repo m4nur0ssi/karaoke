@@ -804,6 +804,17 @@ btnRoleHost.addEventListener('touchstart', (e) => {
 btnRolePlayer.addEventListener('click', () => {
     state.role = 'player';
     showScreen('player');
+    // Fix : vider le champ et placer le curseur dedans automatiquement
+    if (inputRoomCode) {
+        inputRoomCode.value = '';
+        // reset etat entree de code
+        lastFetchedCode = '';
+        selectTeamJoin.innerHTML = '<option value="">ENTREZ LE CODE...</option>';
+        btnJoinRoom.disabled = true;
+        btnJoinRoom.innerText = 'REJOINDRE LE JEU';
+        // Autofocus après le rendu (délai court pour iOS)
+        setTimeout(() => inputRoomCode.focus(), 150);
+    }
 });
 
 btnRolePlayer.addEventListener('touchstart', (e) => {
@@ -2809,10 +2820,7 @@ window.handlePlayerJoker = handlePlayerJoker;
 window.activateJoker = activateJoker;
 
 window.addEventListener('load', () => {
-    const lastRoom = localStorage.getItem("lastRoomId");
-    if (lastRoom && lastRoom.length === 4) {
-        if (document.getElementById('input-room-code')) {
-            document.getElementById('input-room-code').value = lastRoom;
-        }
-    }
+    // NE PAS re-remplir le code du dernier salon : l'utilisateur veut un champ vide avec curseur déjà dedans
+    // (ancienne logique localStorage supprimée intentionnellement)
 });
+
