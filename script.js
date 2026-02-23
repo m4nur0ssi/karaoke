@@ -890,6 +890,12 @@ if (btnSoloMode) {
         const inputSoloName = document.getElementById('input-solo-name');
         const soloName = (inputSoloName && inputSoloName.value.trim()) ? inputSoloName.value.trim() : 'SOLO';
 
+        // v47: Lire le mode choisi par les boutons solo-mode-btn
+        const activeSoloModeBtn = document.querySelector('.solo-mode-btn.active');
+        if (activeSoloModeBtn) {
+            state.gameMode = activeSoloModeBtn.getAttribute('data-solo-mode');
+        }
+
         state.soloMode = true;
         state.role = 'host';
         state.teamCount = 1;
@@ -906,7 +912,7 @@ if (btnSoloMode) {
         // Mettre à jour les boutons équipe dans le jeu
         const block1 = document.getElementById('block-team-1');
         const btn1 = block1 ? block1.querySelector('.team-btn') : null;
-        if (btn1) btn1.innerText = soloName.toUpperCase();
+        if (btn1) btn1.innerText = "JE SAIS !";
         ['block-team-2', 'block-team-3', 'block-team-4'].forEach(id => {
             const b = document.getElementById(id); if (b) b.classList.add('hidden');
         });
@@ -939,8 +945,22 @@ if (btnSoloMode) {
     btnSoloMode.addEventListener('touchstart', (e) => { e.preventDefault(); launchSolo(); }, { passive: false });
 }
 
-
-
+// --- SOLO MODE SELECTOR (Flash Quizz / Mode Arcade) ---
+const soloModeBtns = document.querySelectorAll('.solo-mode-btn');
+soloModeBtns.forEach(btn => {
+    const handleSoloModeClick = () => {
+        soloModeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.gameMode = btn.getAttribute('data-solo-mode');
+        // Synchroniser aussi les boutons hôte pour cohérence visuelle
+        modeButtons.forEach(b => {
+            b.classList.toggle('active', b.getAttribute('data-mode') === state.gameMode);
+        });
+        console.log('Mode solo sélectionné:', state.gameMode);
+    };
+    btn.addEventListener('click', handleSoloModeClick);
+    btn.addEventListener('touchstart', (e) => { e.preventDefault(); handleSoloModeClick(); }, { passive: false });
+});
 // Improved Team Fetching for Player
 let lastFetchedCode = "";
 function fetchTeams(code) {
@@ -2667,14 +2687,21 @@ function handlePlayerJoker() {
 
 
 
-btnNext.addEventListener('click', () => {
+const handleNextOrPlay = () => {
+    if (btnNext.innerText === "LANCER LE SON") {
+        btnNext.classList.add('hidden');
+        countdownEl.innerText = state.timer;
+        audioPlayer.play().then(() => {
+            state.isPlaying = true;
+            startTimer();
+        }).catch(err => console.error("Still blocked:", err));
+        return;
+    }
     nextSong();
-});
+};
 
-btnNext.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    nextSong();
-}, { passive: false });
+btnNext.addEventListener('click', handleNextOrPlay);
+btnNext.addEventListener('touchstart', (e) => { e.preventDefault(); handleNextOrPlay(); }, { passive: false });
 
 function stopGame() {
     state.isPlaying = false;
