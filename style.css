@@ -2671,3 +2671,11 @@ input:checked+.slider-premium:before {
 .remote-sync-visualizer .bar:nth-child(5) {
     animation-delay: 0.35s;
 }
+
+.solo-buzz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
