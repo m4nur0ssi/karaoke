@@ -114,8 +114,16 @@ if (btnSoloMode) {
         const roomCodeDisplay = document.getElementById('room-code-display');
         if (roomCodeDisplay) roomCodeDisplay.classList.add('hidden');
 
+        if (window.syncSongs) window.syncSongs();
+
         initAudio();
         if (audioContext) audioContext.resume().catch(() => { });
+
+        // Anti-blocage mobile : "primer" le player sur ce geste utilisateur
+        if (typeof audioPlayer !== 'undefined') {
+            audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFVZmIBAAwAACIAAAAhQAAQAEAgAMEFBMUEjMDADf/f/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/y/+7/";
+            audioPlayer.play().then(() => audioPlayer.pause()).catch(() => { });
+        }
 
         showScreen('themes');
     };
@@ -633,10 +641,17 @@ if (SpeechRecognition) {
 
         if (state.roomRef) {
             state.roomRef.child('vocalAnswer').set({
-                teamIdx: state.myTeamIdx,
+                teamIdx: state.myTeamIdx !== null ? state.myTeamIdx : 0,
                 text: transcript,
                 isFinal: isFinal,
                 timestamp: Date.now()
+            });
+        } else if (state.soloMode && window.handleRemoteVocal) {
+            // Mode Solo : On appelle directement le handler de l'hôte
+            window.handleRemoteVocal({
+                teamIdx: 0,
+                text: transcript,
+                isFinal: isFinal
             });
         }
 
@@ -663,6 +678,7 @@ function startVoiceRecognition() {
         console.error("Failed to start recognition:", e);
     }
 }
+window.startVoiceRecognition = startVoiceRecognition;
 
 function syncRemoteAudio(url, rate, serverTime) {
     if (playerAudio && playerAudio.src === url) return;
