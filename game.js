@@ -133,6 +133,7 @@ async function nextSong() {
         revealCard.classList.add('hidden');
         btnNext.classList.add('hidden'); // Caché par défaut au début du chargement
         validationControls.classList.add('hidden');
+        if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.add('hidden');
 
         // Sync loading status to players & Reset states
         if (state.roomRef) {
@@ -337,6 +338,15 @@ async function nextSong() {
 
                 state.timer = (state.currentModifier === 'fast') ? 10 : 30;
                 countdownEl.innerText = state.timer;
+
+                if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
+                    if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.remove('hidden');
+                }
+
+                if (state.soloMode && state.gameMode === 'buttons') {
+                    showHints();
+                }
+
                 startTimer();
             }).catch(e => {
                 console.warn("Auto-play blocked:", e);
@@ -688,11 +698,16 @@ function handleTimeout() {
 function showHints() {
     if (state.gameMode === 'buttons') {
         hintsEl.classList.remove('hidden');
-    } else if (state.gameMode === 'oral' && state.roomRef) {
-        state.roomRef.update({
-            showHintsToPlayer: true,
-            choices: shuffle([...state.currentSong.hints])
-        });
+    } else if (state.gameMode === 'oral') {
+        if (state.roomRef) {
+            state.roomRef.update({
+                showHintsToPlayer: true,
+                choices: shuffle([...state.currentSong.hints])
+            });
+        } else if (state.soloMode) {
+            // En solo oral, on affiche aussi les propositions sur l'écran si on veut (Optionnel mais demandé indirectly)
+            hintsEl.classList.remove('hidden');
+        }
     }
 }
 
@@ -908,6 +923,7 @@ if (teamsAction) {
 
         if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
             // En solo oral, on déclenche le micro de l'hôte
+            if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.add('hidden');
             displayFeedback("ÉCOUTE EN COURS...", "feedback-bravo", true);
             if (window.startVoiceRecognition) window.startVoiceRecognition();
             // On laisse handleRemoteVocal gérer la suite
@@ -919,6 +935,14 @@ if (teamsAction) {
         }
         playTone(440, 'triangle', 0.3);
     };
+
+    if (typeof btnSoloBuzz !== 'undefined' && btnSoloBuzz) {
+        btnSoloBuzz.onclick = () => handleBuzz(0);
+        btnSoloBuzz.ontouchstart = (e) => {
+            e.preventDefault();
+            handleBuzz(0);
+        };
+    }
 
     teamsAction.addEventListener('click', (e) => {
         const btn = e.target.closest('.team-btn');
