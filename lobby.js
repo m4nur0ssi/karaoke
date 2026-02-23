@@ -671,12 +671,22 @@ if (SpeechRecognition) {
 
 function startVoiceRecognition() {
     if (!recognition) return console.warn("SpeechRecognition non supporté");
-    if (isRecognizing) return;
+
+    // Si déjà en train de reconnaître, on coupe proprement avant de relancer
     try {
-        recognition.start();
-    } catch (e) {
-        console.error("Failed to start recognition:", e);
-    }
+        if (isRecognizing) recognition.stop();
+    } catch (e) { }
+
+    setTimeout(() => {
+        try {
+            recognition.start();
+            logDebug("Microphone activé");
+        } catch (e) {
+            console.error("Failed to start recognition:", e);
+            // Tentative de réinitialisation si erreur fatale
+            isRecognizing = false;
+        }
+    }, 100);
 }
 window.startVoiceRecognition = startVoiceRecognition;
 
