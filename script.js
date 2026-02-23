@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v46.0');
+logDebug('Script loaded v2026_v44.0');
 logDebug('Diagnostic: ' + checkFirebase().msg);
 logDebug('User Agent: ' + navigator.userAgent);
 
@@ -24,7 +24,7 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     return false;
 };
 
-logDebug('Script initialized (v2026_v46.0)');
+logDebug('Script initialized (v2026_v44.0)');
 const state = {
     screen: 'home',
     teams: [
@@ -586,7 +586,6 @@ const state = {
             { brand: 'Transformers', artist: 'Bernard Minet', title: 'Transformers pour un monde meilleur', hints: ['Transformers', 'MASK', 'GI Joe', 'GoBots'] },
             { brand: 'MASK', artist: 'Noam Kaniel', title: 'MASK', hints: ['MASK', 'Transformers', 'Jayce et les Conquérants de la Lumière', 'GI Joe'] }
         ],
-
 
         'series': [
             { brand: 'Friends', artist: 'The Rembrandts', title: 'I\'ll Be There For You', hints: ['Friends', 'How I Met Your Mother', 'The Big Bang Theory', 'Scrubs'] },
@@ -1580,8 +1579,9 @@ async function fetchPreview(artist, title, theme, brand) {
     try {
         let queryStr = `${artist} ${title}`;
         if (artist === "Générique" || artist === "Soundtrack") queryStr = brand ? `${brand} ${title}` : title;
-        if (theme === "disney") queryStr = brand ? `${brand} French Disney` : `${title} French Disney`;
         if (theme === 'clubdorothee') queryStr += " French";
+        if (theme === 'disney') queryStr += " French Disney";
+        if (brand && theme === 'series') queryStr += " soundtrack";
         const query = queryStr.replace(/['"]/g, "");
 
         const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1&country=FR`, {
