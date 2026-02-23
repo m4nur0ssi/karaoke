@@ -1265,7 +1265,7 @@ function updatePlayerInterface(roomData) {
         playerChoices.classList.add('hidden');
     }
 
-    // Round info overlay — Design Premium
+    // Round info overlay — Design Premium (ne re-génère que si la manche change)
     if (roomData.round) {
         let roundInfo = document.getElementById('player-round-info');
         if (!roundInfo) {
@@ -1273,13 +1273,18 @@ function updatePlayerInterface(roomData) {
             roundInfo.id = 'player-round-info';
             playerGame.prepend(roundInfo);
         }
-        roundInfo.innerHTML = `
-            <div class="player-round-badge">
-                <span class="round-label">🎵 MANCHE</span>
-                <span class="round-number">${roomData.round}</span>
-            </div>
-        `;
+        // Ne mettre à jour que si le numéro a changé (évite la ré-animation à chaque tick du timer)
+        if (roundInfo.dataset.round !== String(roomData.round)) {
+            roundInfo.dataset.round = roomData.round;
+            roundInfo.innerHTML = `
+                <div class="player-round-badge">
+                    <span class="round-label">🎵 MANCHE</span>
+                    <span class="round-number">${roomData.round}</span>
+                </div>
+            `;
+        }
     }
+
 
 }
 
