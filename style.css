@@ -2679,3 +2679,15 @@ input:checked+.slider-premium:before {
     width: 100%;
     padding: 20px;
 }
+
+.vocal-answer-display {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    text-shadow: 0 0 10px var(--secondary);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
