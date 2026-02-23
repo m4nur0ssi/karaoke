@@ -112,17 +112,25 @@ body::before {
 
 .team-scores {
     display: flex;
-    gap: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 50%;
 }
 
 .score-chip {
-    padding: 12px 25px;
+    padding: 8px 18px;
     border-radius: 100px;
     background: var(--glass);
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border: 2px solid var(--glass-border);
     color: var(--secondary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 200px;
 }
 
 
@@ -1278,13 +1286,39 @@ input {
     }
 
     .nav-btn {
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 8px 14px;
+        font-size: 0.9rem;
     }
 
     .room-code-tag {
         margin-right: 10px;
         font-size: 0.8rem;
+    }
+
+    .team-scores {
+        gap: 5px;
+        max-width: 55%;
+    }
+
+    .score-chip {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+        max-width: 130px;
+        border-width: 1px;
+    }
+}
+
+/* Tablette (iPad) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .score-chip {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        max-width: 180px;
+    }
+
+    .team-scores {
+        gap: 8px;
+        max-width: 50%;
     }
 }
 
