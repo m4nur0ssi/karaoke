@@ -446,16 +446,16 @@ const state = {
             { brand: 'Le Roi Lion', artist: 'Jean Piat', title: 'Soyez prêtes', hints: ['Le Roi Lion', 'Hercule', 'Aladdin', 'Pinocchio'] },
             { brand: 'Le Roi Lion', artist: 'Emmanuel Curtil', title: 'Hakuna Matata', hints: ['Le Roi Lion', 'Bambi', 'Peter Pan', 'Aladdin'] },
             { brand: 'Le Bossu de Notre-Dame', artist: 'Francis Lalanne', title: 'Rien qu\'un jour', hints: ['Le Bossu de Notre-Dame', 'Hercule', 'Tarzan', 'Mulan'] },
-            { brand: 'Le Livre de la Jungle', artist: 'Jean Stout', title: 'Il en faut peu pour être heureux', hints: ['Le Livre de la Jungle', 'Le Roi Lion', 'Robin des Bois', 'Dumbo'] },
+            
             { brand: 'Les Aristochats', artist: 'José Bartel', title: 'Tout le monde veut devenir un cat', hints: ['Les Aristochats', 'Le Livre de la Jungle', 'Les 101 Dalmatiens', 'Dumbo'] },
-            { brand: 'Blanche-Neige', artist: 'Rachel Pignot', title: 'Un jour mon prince viendra', hints: ['Blanche-Neige', 'Cendrillon', 'La Belle au bois dormant', 'Bambi'] },
-            { brand: 'Les 101 Dalmatiens', artist: 'Roger Carel', title: 'Cruella d\'enfer', hints: ['Les 101 Dalmatiens', 'Les Aristochats', 'Robin des Bois', 'Bambi'] },
+            
+            
             { brand: 'La Princesse et la Grenouille', artist: 'China Moses', title: 'Au bout du rêve', hints: ['La Princesse et la Grenouille', 'Vaiana', 'Mulan', 'Vaïana'] },
-            { brand: 'Vaiana', artist: 'Anthony Kavanagh', title: 'Bling-Bling', hints: ['Vaiana', 'Zootopie', 'Cars', 'Volt'] },
+            
             { brand: 'La Reine des Neiges 2', artist: 'Charlotte Hervieux', title: 'Dans un autre monde', hints: ['La Reine des Neiges 2', 'Vaiana', 'Rebelle', 'Coco'] },
             { brand: 'La Reine des Neiges', artist: 'Dany Boon', title: 'En été', hints: ['La Reine des Neiges', 'Toy Story', 'Cars', 'Zootopie'] },
-            { brand: 'Le Roi Lion', artist: 'Michel Prudhomme', title: 'L\'amour brille sous les étoiles', hints: ['Le Roi Lion', 'Bambi', 'La Belle au bois dormant', 'Cendrillon'] },
-            { brand: 'La Petite Sirène', artist: 'Jacques Deschamps', title: 'Embrasse-la', hints: ['La Petite Sirène', 'Aladdin', 'Hercule', 'Tarzan'] },
+            
+            
             { brand: 'Le Livre de la Jungle 2', artist: 'Richard Darbois', title: 'Être un homme comme vous', hints: ['Le Livre de la Jungle 2', 'Le Roi Lion', 'Tarzan', 'Hercule'] },
             { brand: 'Coco', artist: 'Andrea Santamaria', title: 'Ne m\'oublie pas', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
         ],
@@ -1143,7 +1143,7 @@ function updatePlayerInterface(roomData) {
         playerChoices.classList.add('hidden');
 
     } else if (roomData.status === 'finished') {
-        waitingMsg.innerHTML = "<div style='color:var(--accent-gold); font-size:1.5rem; font-weight:900;'>PARTIE TERMINÉE !</div>";
+        waitingMsg.innerHTML = `<div style="font-size: 3rem; font-weight: 900; background: linear-gradient(45deg, var(--accent-cyan), var(--primary)); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 20px rgba(0,255,255,0.5);">STITCH 2026</div><div style="font-size: 2rem; color: white;">ROUND ${roomData.round || 50}</div><div style='color:var(--accent-gold); font-size:1.5rem; font-weight:900; margin-top: 15px;'>PARTIE TERMINÉE !</div>`;
         if (roomData.scores) {
             const sorted = [...roomData.scores].sort((a, b) => b.score - a.score);
             let podiumHtm = "<div style='margin-top:20px; text-align:left; background:rgba(255,255,255,0.05); padding:15px; border-radius:15px;'>";
@@ -2635,12 +2635,12 @@ function showResults() {
     const podiumContainer = document.getElementById('final-podium');
 
     // Winner Display
+    // Affichage spécifique demandé par l'utilisateur "stitch 2026, round 50, partie terminée"
+    winnerNameEl.innerHTML = `<div style="font-size: 1.2em; font-weight: 900; background: linear-gradient(45deg, var(--accent-cyan), var(--primary)); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 20px rgba(0,255,255,0.5);">STITCH 2026</div><div style="font-size: 0.8em; color: white;">ROUND ${state.round}</div>`;
     if (sorted.length > 1 && sorted[0].score === sorted[1].score) {
-        winnerNameEl.innerText = "ÉGALITÉ !";
-        winnerMsgEl.innerText = "Quel match serré ! Vous êtes tous des champions.";
+        winnerMsgEl.innerHTML = `<div style="font-size: 1.5em; margin-top: 10px;">PARTIE TERMINÉE !</div>Quel match serré ! Vous êtes tous des champions.`;
     } else {
-        winnerNameEl.innerText = winner.name;
-        winnerMsgEl.innerText = "Félicitations pour cette victoire écrasante ! 🎉";
+        winnerMsgEl.innerHTML = `<div style="font-size: 1.5em; margin-top: 10px;">PARTIE TERMINÉE !</div>Félicitations pour cette victoire écrasante ! 🎉`;
     }
 
     // Dynamic Podium
