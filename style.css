@@ -273,7 +273,7 @@ body::before {
     background-image: url('theme_grungerock.png');
 }
 
-.poster-placeholder.disney {
+.poster-placeholder.disney {\n    background-size: contain;\n    background-repeat: no-repeat;
     background-image: url('theme_disney.png');
 }
 
@@ -281,7 +281,7 @@ body::before {
     background-image: url('theme_rapfr.png');
 }
 
-.poster-placeholder.rapus {
+.poster-placeholder.rapus {\n    background-size: contain;\n    background-repeat: no-repeat;
     background-image: url('theme_rapus.png');
 }
 
