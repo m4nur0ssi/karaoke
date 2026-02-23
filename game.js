@@ -374,7 +374,7 @@ function startTimer() {
             state.roomRef.update({ timer: state.timer });
         }
 
-        if (state.timer === 15) {
+        if (state.timer === 10) {
             showHints();
         }
 
@@ -515,8 +515,16 @@ function handleRemoteAnswer(answerData) {
                 });
             }
             lastBuzzedTeam = null; // Important : Permet à nouveau de prendre la main
+            bravoContainer.innerHTML = '';
             audioPlayer.play().then(() => {
                 state.isPlaying = true;
+
+                // Restore host UI elements hidden during buzz
+                countdownEl.classList.remove('hidden');
+                if (state.timer <= 10) {
+                    showHints();
+                }
+
                 startTimer();
             });
         }, 1500);
@@ -827,7 +835,7 @@ btnWrong.addEventListener('click', () => {
 
             // Restore host UI elements hidden during buzz
             countdownEl.classList.remove('hidden');
-            if (state.timer <= 15) {
+            if (state.timer <= 10) {
                 showHints(); // This will unhide hintsEl or update Firebase for players
             }
 
