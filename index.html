@@ -71,7 +71,13 @@
                     </div>
                 </div>
                 <div class="team-setup">
-                    <button id="btn-create-teams" class="main-btn primary">Configurer le Salon</button>
+                    <button id="btn-create-teams" class="main-btn primary">🎮 Configurer le Salon</button>
+                    <div class="solo-separator"><span>ou</span></div>
+                    <div class="solo-zone">
+                        <input type="text" id="input-solo-name" placeholder="Votre prénom..." maxlength="16"
+                            class="solo-name-input" />
+                        <button id="btn-solo-mode" class="main-btn solo-btn">🎧 JOUER EN SOLO</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -296,7 +302,7 @@
 
                 <div class="results-actions">
                     <button onclick="restartGame()" class="main-btn primary">REJOUER</button>
-                    <button onclick="window.location.reload()" class="nav-btn">ACCUEIL</button>
+                    <button onclick="window.goHome()" class="nav-btn">ACCUEIL</button>
                 </div>
             </div>
         </section>
