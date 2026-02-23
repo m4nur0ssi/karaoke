@@ -583,7 +583,7 @@ const state = {
             { brand: 'Lucile Amour et Rock\'n Roll', artist: 'Isabelle Ganot', title: 'Lucile Amour et Rock\'n Roll', hints: ['Lucile Amour et Rock\'n Roll', 'Juliette je t\'aime', 'Max et Compagnie', 'Creamy'] },
             { brand: 'Max et Compagnie', artist: 'Claude Lombard', title: 'Max et Compagnie', hints: ['Max et Compagnie', 'Lucile Amour et Rock\'n Roll', 'Juliette je t\'aime', 'Théo ou la Batte de la Victoire'] },
             { brand: 'Cat\'s Eyes', artist: 'Isabelle Ganot', title: 'Signé Cat\'s Eyes', hints: ['Cat\'s Eyes', 'Nicky Larson', 'Cobra', 'Sherlock Holmes'] },
-            { brand: 'Transformers', artist: 'Theme', title: 'Transformers', hints: ['Transformers', 'MASK', 'GI Joe', 'GoBots'] },
+            { brand: 'Transformers', artist: 'Bernard Minet', title: 'Transformers pour un monde meilleur', hints: ['Transformers', 'MASK', 'GI Joe', 'GoBots'] },
             { brand: 'MASK', artist: 'Noam Kaniel', title: 'MASK', hints: ['MASK', 'Transformers', 'Jayce et les Conquérants de la Lumière', 'GI Joe'] }
         ],
 
@@ -601,7 +601,8 @@ const state = {
             { brand: 'Le Prince de Bel-Air', artist: 'DJ Jazzy Jeff', title: 'The Fresh Prince of Bel-Air', hints: ['Le Prince de Bel-Air', 'Ma Famille d\'Abord', 'Cosby Show', 'Kenan et Kel'] },
             { brand: 'Alerte à Malibu', artist: 'Jimi Jamison', title: 'I\'m Always Here', hints: ['Alerte à Malibu', 'Magnum', 'K2000', 'MacGyver'] },
             { brand: 'MacGyver', artist: 'Randy Edelman', title: 'MacGyver Theme', hints: ['MacGyver', 'L\'Agence Tous Risques', 'K2000', 'Magnum'] }
-        ]}
+        ]
+    }
 };
 
 // Firebase Connection Monitor v33 (ROBUST)
@@ -1610,7 +1611,7 @@ async function fetchPreview(artist, title, theme, brand) {
                             coverUrl = movData.results[0].artworkUrl100.replace('100x100bb', '600x600bb');
                         }
                     }
-                } catch(e) {}
+                } catch (e) { }
             }
 
             return {
