@@ -42,7 +42,7 @@ const state = {
     round: 0,
     maxRounds: 50,
     playedSongs: [],
-    failedSongs: [], // Track broken links to avoid them
+    failedSongs: [],
     streakTeam: null,
     streakCount: 0,
     currentModifier: null,
@@ -51,6 +51,7 @@ const state = {
     winningTeam: null,
     jokers: [true, true, true, true],
     activeJoker: null,
+    soloMode: false, // Mode solo : 1 joueur, pas de salon multijoueur
 
     // Multiplayer State
     role: null, // 'host' or 'player'
@@ -656,24 +657,34 @@ const modeButtons = document.querySelectorAll('.mode-btn');
 const navHome = document.getElementById('nav-home');
 const btnCreateTeams = document.getElementById('btn-create-teams');
 
-// Fix: Bouton Accueil fonctionne depuis n'importe quel écran (y compris « Rejoindre »)
+// ---- goHome : fonction globale (utilisée aussi par le bouton ACCUEIL de l'écran résultats) ----
+function goHome() {
+    // Nettoyage joueur
+    if (state.role === 'player') {
+        if (state.roomRef) state.roomRef.off();
+        if (window.teamListener) window.teamListener.off();
+        state.role = null;
+        state.roomId = null;
+        state.roomRef = null;
+        state.myTeamIdx = null;
+        if (playerLobby) playerLobby.classList.remove('hidden');
+        if (playerGame) playerGame.classList.add('hidden');
+        if (btnJoinRoom) { btnJoinRoom.innerText = 'REJOINDRE LE JEU'; btnJoinRoom.disabled = false; }
+    }
+    // Nettoyage hôte sans réinitialiser les scores
+    if (state.role === 'host') {
+        state.isPlaying = false;
+        audioPlayer.pause();
+        if (state.interval) clearInterval(state.interval);
+        // On NE remet PAS les scores à 0 ici intentionnellement
+    }
+    // Réinitialisation partielle de l'état
+    state.soloMode = false;
+    showScreen('role');
+}
+window.goHome = goHome;
+
 if (navHome) {
-    const goHome = () => {
-        // Nettoyage de l'état joueur si on était côté player
-        if (state.role === 'player') {
-            if (state.roomRef) state.roomRef.off();
-            if (window.teamListener) window.teamListener.off();
-            state.role = null;
-            state.roomId = null;
-            state.roomRef = null;
-            state.myTeamIdx = null;
-            // Remettre l'interface lobby
-            if (playerLobby) playerLobby.classList.remove('hidden');
-            if (playerGame) playerGame.classList.add('hidden');
-            if (btnJoinRoom) { btnJoinRoom.innerText = 'REJOINDRE LE JEU'; btnJoinRoom.disabled = false; }
-        }
-        showScreen('role');
-    };
     navHome.addEventListener('click', goHome);
     navHome.addEventListener('touchstart', (e) => { e.preventDefault(); goHome(); }, { passive: false });
 }
@@ -871,6 +882,64 @@ window.populateTeams = (teams) => {
         }
     }
 };
+
+// --- MODE SOLO ---
+const btnSoloMode = document.getElementById('btn-solo-mode');
+if (btnSoloMode) {
+    const launchSolo = () => {
+        const inputSoloName = document.getElementById('input-solo-name');
+        const soloName = (inputSoloName && inputSoloName.value.trim()) ? inputSoloName.value.trim() : 'SOLO';
+
+        state.soloMode = true;
+        state.role = 'host';
+        state.teamCount = 1;
+        state.teams[0].name = soloName;
+        state.teams[0].score = 0;
+        // Masquer équipes inutiles
+        for (let i = 1; i < 4; i++) state.teams[i].score = 0;
+        state.round = 0;
+        state.playedSongs = [];
+        state.failedSongs = [];
+        state.jokers = [true, true, true, true];
+        state.activeJoker = null;
+
+        // Mettre à jour les boutons équipe dans le jeu
+        const block1 = document.getElementById('block-team-1');
+        const btn1 = block1 ? block1.querySelector('.team-btn') : null;
+        if (btn1) btn1.innerText = soloName.toUpperCase();
+        ['block-team-2', 'block-team-3', 'block-team-4'].forEach(id => {
+            const b = document.getElementById(id); if (b) b.classList.add('hidden');
+        });
+        if (block1) block1.classList.remove('hidden');
+
+        // Score chips
+        const chip1 = document.getElementById('score-team-1');
+        if (chip1) { chip1.classList.remove('hidden'); chip1.innerText = `${soloName}: 0`; }
+        ['score-team-2', 'score-team-3', 'score-team-4'].forEach(id => {
+            const c = document.getElementById(id); if (c) c.classList.add('hidden');
+        });
+
+        // Jokers : cacher dans le jeu (pas utile en solo)
+        document.querySelectorAll('.joker-btn').forEach(b => b.classList.add('hidden'));
+
+        // Pas de Firebase en solo
+        state.roomRef = null;
+        state.roomId = null;
+
+        // Afficher code salle vide en solo
+        const roomCodeDisplay = document.getElementById('room-code-display');
+        if (roomCodeDisplay) roomCodeDisplay.classList.add('hidden');
+
+        initAudio();
+        if (audioContext) audioContext.resume().catch(() => { });
+
+        showScreen('themes');
+    };
+    btnSoloMode.addEventListener('click', launchSolo);
+    btnSoloMode.addEventListener('touchstart', (e) => { e.preventDefault(); launchSolo(); }, { passive: false });
+}
+
+
 
 // Improved Team Fetching for Player
 let lastFetchedCode = "";
