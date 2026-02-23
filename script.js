@@ -410,37 +410,56 @@ const state = {
             { artist: "Last Train", title: "Scars", hints: [] }
         ],
         'disney': [
-            { brand: 'Le Roi Lion', artist: 'Debbie Davis', title: 'L\'histoire de la vie', hints: ['Le Roi Lion', 'Aladdin', 'Tarzan', 'Mulan'] },
-            { brand: 'Aladdin', artist: 'Paolo Domingo & Karine Costa', title: 'Ce rêve bleu', hints: ['Aladdin', 'Cendrillon', 'La Belle au bois dormant', 'Hercule'] },
-            { brand: 'La Petite Sirène', artist: 'Henri Salvador', title: 'Sous l\'océan', hints: ['La Petite Sirène', 'Pinocchio', 'Peter Pan', 'Dumbo'] },
-            { brand: 'Pocahontas', artist: 'Laura Mayne', title: 'L\'air du vent', hints: ['Pocahontas', 'Mulan', 'La Princesse et la Grenouille', 'Vaiana'] },
-            { brand: 'La Belle et la Bête', artist: 'Charles Aznavour & Liane Foly', title: 'Histoire éternelle', hints: ['La Belle et la Bête', 'Blanche-Neige', 'Cendrillon', 'Bambi'] },
-            { brand: 'Aladdin', artist: 'Richard Darbois', title: 'Prince Ali', hints: ['Aladdin', 'Hercule', 'Le Génie', 'Mulan'] },
-            { brand: 'Aladdin', artist: 'Richard Darbois', title: 'Je suis ton meilleur ami', hints: ['Aladdin', 'Toy Story', 'Hercule', 'Tarzan'] },
-            { brand: 'Le Roi Lion', artist: 'Dimitri Rougeul', title: 'Je voudrais déjà être roi', hints: ['Le Roi Lion', 'Bambi', 'Pinocchio', 'Peter Pan'] },
-            { brand: 'Frère des Ours', artist: 'Phil Collins', title: 'Je m\'en vais', hints: ['Frère des Ours', 'Tarzan', 'Le Roi Lion', 'Atlantide'] },
-            { brand: 'La Reine des Neiges', artist: 'Anaïs Delva', title: 'Libérée, délivrée', hints: ['La Reine des Neiges', 'Raiponce', 'Vaiana', 'Rebelle'] },
-            { brand: 'Raiponce', artist: 'Maeva Méline', title: 'Où est la vraie vie ?', hints: ['Raiponce', 'La Reine des Neiges', 'Cendrillon', 'Mulan'] },
-            { brand: 'Vaiana', artist: 'Cerise Calixte', title: 'Le Bleu lumière', hints: ['Vaiana', 'Pocahontas', 'Mulan', 'Tarzan'] },
-            { brand: 'Hercule', artist: 'Emmanuel Dahl', title: 'De zéro en héros', hints: ['Hercule', 'Mulan', 'Tarzan', 'Aladdin'] },
-            { brand: 'Toy Story', artist: 'Charlélie Couture', title: 'Je suis ton ami', hints: ['Toy Story', 'Monstres & Cie', 'Cars', 'Ratatouille'] },
-            { brand: 'Mulan', artist: 'Patrick Fiori', title: 'Comme un homme', hints: ['Mulan', 'Pocahontas', 'Hercule', 'Tarzan'] },
-            { brand: 'Hercule', artist: 'Mimi Félixine', title: 'Jamais je n\'avouerai', hints: ['Hercule', 'Aladdin', 'Le Roi Lion', 'La Belle et la Bête'] },
-            { brand: 'Le Roi Lion', artist: 'Jean Piat', title: 'Soyez prêtes', hints: ['Le Roi Lion', 'Hercule', 'Aladdin', 'Pinocchio'] },
-            { brand: 'Le Roi Lion', artist: 'Emmanuel Curtil', title: 'Hakuna Matata', hints: ['Le Roi Lion', 'Bambi', 'Peter Pan', 'Aladdin'] },
-            { brand: 'Le Bossu de Notre-Dame', artist: 'Francis Lalanne', title: 'Rien qu\'un jour', hints: ['Le Bossu de Notre-Dame', 'Hercule', 'Tarzan', 'Mulan'] },
-
-            { brand: 'Les Aristochats', artist: 'José Bartel', title: 'Tout le monde veut devenir un cat', hints: ['Les Aristochats', 'Le Livre de la Jungle', 'Les 101 Dalmatiens', 'Dumbo'] },
-
-
-            { brand: 'La Princesse et la Grenouille', artist: 'China Moses', title: 'Au bout du rêve', hints: ['La Princesse et la Grenouille', 'Vaiana', 'Mulan', 'Vaïana'] },
-
-            { brand: 'La Reine des Neiges 2', artist: 'Charlotte Hervieux', title: 'Dans un autre monde', hints: ['La Reine des Neiges 2', 'Vaiana', 'Rebelle', 'Coco'] },
-            { brand: 'La Reine des Neiges', artist: 'Dany Boon', title: 'En été', hints: ['La Reine des Neiges', 'Toy Story', 'Cars', 'Zootopie'] },
-
-
-            { brand: 'Le Livre de la Jungle 2', artist: 'Richard Darbois', title: 'Être un homme comme vous', hints: ['Le Livre de la Jungle 2', 'Le Roi Lion', 'Tarzan', 'Hercule'] },
-            { brand: 'Coco', artist: 'Andrea Santamaria', title: 'Ne m\'oublie pas', hints: ['Coco', 'Encanto', 'Ratatouille', 'Luca'] }
+            { brand: 'Le Roi Lion', artist: 'Debbie Davis', title: 'L\'histoire de la vie' },
+            { brand: 'Le Roi Lion', artist: 'Emmanuel Curtil', title: 'Je voudrais déjà être roi' },
+            { brand: 'Le Roi Lion', artist: 'Emmanuel Curtil', title: 'Hakuna Matata' },
+            { brand: 'Le Roi Lion', artist: 'Maeva Méline', title: 'L\'amour brille sous les étoiles' },
+            { brand: 'Aladdin', artist: 'Paolo Domingo', title: 'Ce rêve bleu' },
+            { brand: 'Aladdin', artist: 'Richard Darbois', title: 'Prince Ali' },
+            { brand: 'Aladdin', artist: 'Richard Darbois', title: 'Je suis ton meilleur ami' },
+            { brand: 'Aladdin', artist: 'Paolo Domingo', title: 'Nuits d\'Arabie' },
+            { brand: 'La Petite Sirène', artist: 'Henri Salvador', title: 'Sous l\'océan' },
+            { brand: 'La Petite Sirène', artist: 'Claire Guyot', title: 'Partir là-bas' },
+            { brand: 'La Petite Sirène', artist: 'Gérard Rinaldi', title: 'Embrasse-la' },
+            { brand: 'La Belle et la Bête', artist: 'Liane Foly', title: 'Histoire éternelle' },
+            { brand: 'La Belle et la Bête', artist: 'Lucie Dolène', title: 'C\'est la fête' },
+            { brand: 'La Belle et la Bête', artist: 'Bénédicte Lécroart', title: 'Belle' },
+            { brand: 'Pocahontas', artist: 'Laura Mayne', title: 'L\'air du vent' },
+            { brand: 'Pocahontas', artist: 'Karine Costa', title: 'Des sauvages' },
+            { brand: 'Mulan', artist: 'Patrick Fiori', title: 'Comme un homme' },
+            { brand: 'Mulan', artist: 'Marie Galey', title: 'Réflexion' },
+            { brand: 'Hercule', artist: 'Emmanuel Dahl', title: 'De zéro en héros' },
+            { brand: 'Hercule', artist: 'Mimi Félixine', title: 'Jamais je n\'avouerai' },
+            { brand: 'Tarzan', artist: 'Phil Collins', title: 'Je veux savoir' },
+            { brand: 'Tarzan', artist: 'Phil Collins', title: 'Entre deux mondes' },
+            { brand: 'Toy Story', artist: 'Charlélie Couture', title: 'Je suis ton ami' },
+            { brand: 'La Reine des Neiges', artist: 'Anaïs Delva', title: 'Libérée, délivrée' },
+            { brand: 'La Reine des Neiges', artist: 'Emmylou Homs', title: 'Le renouveau' },
+            { brand: 'Raiponce', artist: 'Maeva Méline', title: 'Où est la vraie vie ?' },
+            { brand: 'Raiponce', artist: 'Maeva Méline', title: 'Je veux y croire' },
+            { brand: 'Vaiana', artist: 'Cerise Calixte', title: 'Le Bleu lumière' },
+            { brand: 'Vaiana', artist: 'Anthony Kavanagh', title: 'Pour les hommes' },
+            { brand: 'Vaiana', artist: 'Jean-Luc Guizonne', title: 'L\'explorateur' },
+            { brand: 'Le Livre de la Jungle', artist: 'Jean Stout', title: 'Il en faut peu pour être heureux' },
+            { brand: 'Le Livre de la Jungle', artist: 'José Bartel', title: 'Être un homme comme vous' },
+            { brand: 'Les Aristochats', artist: 'José Bartel', title: 'Tout le monde veut devenir un cat' },
+            { brand: 'Robin des Bois', artist: 'Gilles Guillot', title: 'Quel beau jour vraiment' },
+            { brand: 'Peter Pan', artist: 'Générique', title: 'Tu t\'envoles' },
+            { brand: 'Pinocchio', artist: 'Générique', title: 'Quand on prie la bonne étoile' },
+            { brand: 'Cendrillon', artist: 'Générique', title: 'Tendre rêve' },
+            { brand: 'Blanche-Neige', artist: 'Générique', title: 'Un jour mon prince viendra' },
+            { brand: 'La Princesse et la Grenouille', artist: 'China Moses', title: 'Au bout du rêve' },
+            { brand: 'Mary Poppins', artist: 'Générique', title: 'Supercalifragilisticexpialidocious' },
+            { brand: 'Les 101 Dalmatiens', artist: 'Générique', title: 'Cruella d\'Enfer' },
+            { brand: 'Frère des Ours', artist: 'Phil Collins', title: 'Je m\'en vais' },
+            { brand: 'Coco', artist: 'Andrea Santamaria', title: 'Ne m\'oublie pas' },
+            { brand: 'Coco', artist: 'Andrea Santamaria', title: 'Un poco loco' },
+            { brand: 'Encanto', artist: 'Générique', title: 'Ne parlons pas de Bruno' },
+            { brand: 'Le Monde de Nemo', artist: 'Générique', title: 'Au-delà du récif' },
+            { brand: 'Le Bossu de Notre-Dame', artist: 'Francis Lalanne', title: 'Rien qu\'un jour' },
+            { brand: 'La Planète au Trésor', artist: 'David Hallyday', title: 'Un homme libre' },
+            { brand: 'Frère des Ours', artist: 'Phil Collins', title: 'Regarde dans mes yeux' },
+            { brand: 'Cars', artist: 'Rascal Flatts', title: 'Life is a Highway' }
         ],
 
         'rapfr': [
@@ -636,6 +655,28 @@ const modeButtons = document.querySelectorAll('.mode-btn');
 
 const navHome = document.getElementById('nav-home');
 const btnCreateTeams = document.getElementById('btn-create-teams');
+
+// Fix: Bouton Accueil fonctionne depuis n'importe quel écran (y compris « Rejoindre »)
+if (navHome) {
+    const goHome = () => {
+        // Nettoyage de l'état joueur si on était côté player
+        if (state.role === 'player') {
+            if (state.roomRef) state.roomRef.off();
+            if (window.teamListener) window.teamListener.off();
+            state.role = null;
+            state.roomId = null;
+            state.roomRef = null;
+            state.myTeamIdx = null;
+            // Remettre l'interface lobby
+            if (playerLobby) playerLobby.classList.remove('hidden');
+            if (playerGame) playerGame.classList.add('hidden');
+            if (btnJoinRoom) { btnJoinRoom.innerText = 'REJOINDRE LE JEU'; btnJoinRoom.disabled = false; }
+        }
+        showScreen('role');
+    };
+    navHome.addEventListener('click', goHome);
+    navHome.addEventListener('touchstart', (e) => { e.preventDefault(); goHome(); }, { passive: false });
+}
 const modalTeams = document.getElementById('modal-teams');
 const btnStartGame = document.getElementById('btn-start-game');
 const themeCards = document.querySelectorAll('.theme-card');
@@ -1005,6 +1046,52 @@ function updatePlayerInterface(roomData) {
     // cela évite que Firebase ne réinitialise les 5s du joueur
     if (document.getElementById('voice-countdown-timer')) return;
 
+    // --- Gestion de la Roue du Destin côté client ---
+    if (roomData.status === 'wheel_waiting') {
+        // Cacher les éléments de jeu normaux
+        btnPlayerBuzz.classList.add('hidden');
+        playerChoices.classList.add('hidden');
+        waitingMsg.className = 'waiting-msg player-status-indicator';
+
+        if (roomData.wheelTeamIdx === state.myTeamIdx) {
+            // C'est MON équipe qui doit lancer la roue !
+            waitingMsg.innerHTML = `
+                <div style="font-size:1.2rem; font-weight:800; color:var(--secondary); margin-bottom:16px;">
+                    🎰 C'EST TON TOUR !
+                </div>
+                <button id="btn-player-spin-wheel" style="
+                    display:block; width:100%; padding:24px 20px;
+                    font-size:1.6rem; font-weight:900; letter-spacing:2px;
+                    background: linear-gradient(135deg, #f800d8, #7b2ff7);
+                    color:white; border:none; border-radius:24px;
+                    box-shadow: 0 0 30px rgba(248,0,216,0.6);
+                    cursor:pointer; animation: pulse 1s infinite alternate;
+                ">🎰 LANCER LA ROUE !</button>
+            `;
+            const spinPlayerBtn = document.getElementById('btn-player-spin-wheel');
+            if (spinPlayerBtn) {
+                const doPlayerSpin = () => {
+                    if (spinPlayerBtn.disabled) return;
+                    spinPlayerBtn.disabled = true;
+                    spinPlayerBtn.innerText = '⏳ En cours...';
+                    if (state.roomRef) {
+                        state.roomRef.update({ wheelSpin: true });
+                    }
+                };
+                spinPlayerBtn.onclick = doPlayerSpin;
+                spinPlayerBtn.ontouchstart = (e) => { e.preventDefault(); doPlayerSpin(); };
+            }
+        } else {
+            // Autre équipe : on attend
+            const wheelTeamName = roomData.wheelTeamName || `Équipe ${(roomData.wheelTeamIdx || 0) + 1}`;
+            waitingMsg.innerHTML = `
+                <div style="font-size:1.1rem; color:var(--secondary); font-weight:700;">🎰 ROUE DU DESTIN</div>
+                <div style="margin-top:8px; opacity:0.8;">${wheelTeamName.toUpperCase()} lance la roue...</div>
+            `;
+        }
+        return; // Ne pas exécuter le reste de la fonction pour ce statut
+    }
+
     // Sync state for players
     if (roomData.activeJoker !== undefined) state.activeJoker = roomData.activeJoker;
     if (roomData.jokers) state.jokers = roomData.jokers;
@@ -1126,7 +1213,15 @@ function updatePlayerInterface(roomData) {
         playerChoices.classList.add('hidden');
 
     } else if (roomData.status === 'finished') {
-        waitingMsg.innerHTML = `<div style="font-size: 3rem; font-weight: 900; background: linear-gradient(45deg, var(--accent-cyan), var(--primary)); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 20px rgba(0,255,255,0.5);">STITCH 2026</div><div style="font-size: 2rem; color: white;">ROUND ${roomData.round || 50}</div><div style='color:var(--accent-gold); font-size:1.5rem; font-weight:900; margin-top: 15px;'>PARTIE TERMINÉE !</div>`;
+        const sorted = roomData.scores ? [...roomData.scores].sort((a, b) => b.score - a.score) : [];
+        const winnerName = sorted[0] ? sorted[0].name.toUpperCase() : "BRAVO";
+
+        waitingMsg.innerHTML = `
+            <div class="results-stitch-tag">STITCH 2026</div>
+            <div class="results-round-info">FIN DE SESSION</div>
+            <div style='font-size: 2.2rem; font-weight: 900; color: white; margin-top: 10px;'>FÉLICITATIONS !</div>
+            <div style='font-size: 1.8rem; color: var(--secondary); margin-bottom: 10px;'>${winnerName}</div>
+        `;
         if (roomData.scores) {
             const sorted = [...roomData.scores].sort((a, b) => b.score - a.score);
             let podiumHtm = "<div style='margin-top:20px; text-align:left; background:rgba(255,255,255,0.05); padding:15px; border-radius:15px;'>";
@@ -1581,14 +1676,17 @@ async function fetchPreview(artist, title, theme, brand) {
             // Override cover for Series / Movies / Cartoons using the Brand name to get a Poster
             if (['series', 'clubdorothee', 'disney', 'cartoons', 'movies'].includes(theme) && brand) {
                 try {
+                    let searchBrand = brand;
+                    if (theme === 'disney') searchBrand += " Disney Pixar Animation";
+
                     // Try tvSeason first
-                    let tvResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(brand)}&entity=tvSeason&limit=1&country=FR`);
+                    let tvResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(searchBrand)}&entity=tvSeason&limit=1&country=FR`);
                     let tvData = await tvResponse.json();
                     if (tvData.results && tvData.results.length > 0) {
                         coverUrl = tvData.results[0].artworkUrl100.replace('100x100bb', '600x600bb');
                     } else {
                         // Fallback to movie
-                        let movResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(brand)}&entity=movie&limit=1&country=FR`);
+                        let movResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(searchBrand)}&entity=movie&limit=1&country=FR`);
                         let movData = await movResponse.json();
                         if (movData.results && movData.results.length > 0) {
                             coverUrl = movData.results[0].artworkUrl100.replace('100x100bb', '600x600bb');
@@ -1638,12 +1736,15 @@ async function nextSong() {
         btnNext.classList.add('hidden'); // Caché par défaut au début du chargement
         validationControls.classList.add('hidden');
 
-        // Sync loading status to players
+        // Sync loading status to players & Reset states
         if (state.roomRef) {
             state.roomRef.update({
                 status: 'loading',
                 buzzerTeam: null,
                 vocalAnswer: null,
+                buzz: null,
+                answer: null,
+                activeJoker: null,
                 showHintsToPlayer: false
             });
         }
@@ -1765,15 +1866,10 @@ async function nextSong() {
         // Filter out already played OR blacklisted songs
         let availableSongs = themeSongs.filter(s => !state.playedSongs.includes(s.title) && !state.failedSongs.includes(s.title));
 
-        // If no songs left, reset history but keep blacklist
+        // If no songs left in this theme, the game ends
         if (availableSongs.length === 0) {
-            state.playedSongs = [];
-            availableSongs = themeSongs.filter(s => !state.failedSongs.includes(s.title));
-            // If even after reset nothing is left, we must clear blacklist (emergency)
-            if (availableSongs.length === 0) {
-                state.failedSongs = [];
-                availableSongs = themeSongs;
-            }
+            showResults();
+            return;
         }
 
         while (!result && attempts < 10) { // Increased to 10 attempts
@@ -2521,7 +2617,8 @@ async function launchWheelOfFate(modifier) {
 
         // Pick a random team to spin the wheel
         const luckyTeamIdx = Math.floor(Math.random() * state.teamCount);
-        teamNameEl.innerText = state.teams[luckyTeamIdx].name.toUpperCase();
+        const luckyTeamName = state.teams[luckyTeamIdx].name;
+        teamNameEl.innerText = luckyTeamName.toUpperCase();
 
         const items = [
             { id: 'bonus1', label: 'Surprise +1 🎁' },
@@ -2536,7 +2633,6 @@ async function launchWheelOfFate(modifier) {
         // Populate reel with many items for the spinning effect
         let strip = [];
         for (let i = 0; i < 20; i++) {
-            // Randomize the "visuals" during spin
             const randItem = items[Math.floor(Math.random() * items.length)];
             strip.push(randItem);
         }
@@ -2547,9 +2643,11 @@ async function launchWheelOfFate(modifier) {
         reel.style.transition = 'none';
         reel.style.transform = 'translateY(0)';
 
-        // Show modal and team zone
+        // Show modal and team zone (hôte voit la roue mais PAS le bouton spin)
         slotWindow.classList.add('hidden');
         teamZone.classList.remove('hidden');
+        // On cache le bouton spin côté hôte : c'est le joueur qui déclenche
+        spinBtn.classList.add('hidden');
         modal.classList.remove('hidden');
 
         playTone(440, 'sine', 0.2);
@@ -2557,11 +2655,24 @@ async function launchWheelOfFate(modifier) {
         const wheelExplanation = document.getElementById('wheel-explanation');
         if (wheelExplanation) wheelExplanation.classList.add('hidden');
 
-        // Interaction
-        spinBtn.onclick = () => {
+        // --- Publier sur Firebase pour que le client de la bonne équipe voit le bouton ---
+        if (state.roomRef) {
+            state.roomRef.update({
+                status: 'wheel_waiting',
+                wheelTeamIdx: luckyTeamIdx,
+                wheelTeamName: luckyTeamName,
+                wheelSpin: null   // reset spin signal
+            });
+        }
+
+        // Fonction qui déclenche l'animation de la roue (appelée dès que le client appuie)
+        const doSpin = () => {
             playTone(880, 'sine', 0.1);
             teamZone.classList.add('hidden');
             slotWindow.classList.remove('hidden');
+
+            // Remettre le bouton dans son état normal pour les prochains tours
+            spinBtn.classList.remove('hidden');
 
             setTimeout(() => {
                 reel.style.transition = 'transform 2.5s cubic-bezier(0.1, 0, 0.1, 1)';
@@ -2570,9 +2681,8 @@ async function launchWheelOfFate(modifier) {
             }, 50);
 
             setTimeout(() => {
-                playTone(880, 'sine', 0.5); // Victory sound
+                playTone(880, 'sine', 0.5);
 
-                // Show explanation
                 if (wheelExplanation) {
                     let text = "";
                     switch (modifier) {
@@ -2591,10 +2701,34 @@ async function launchWheelOfFate(modifier) {
                 setTimeout(() => {
                     modal.classList.add('hidden');
                     if (wheelExplanation) wheelExplanation.classList.add('hidden');
+                    // Nettoyer l'état wheel sur Firebase
+                    if (state.roomRef) {
+                        state.roomRef.update({ status: 'loading', wheelTeamIdx: null, wheelTeamName: null, wheelSpin: null });
+                    }
+                    // Retirer le listener de spin
+                    if (state.roomRef) state.roomRef.child('wheelSpin').off('value', wheelSpinListener);
                     resolve();
-                }, 4000); // Laisse l'explication visible plus longtemps (4s au lieu de 1.5s)
+                }, 4000);
             }, 2700);
         };
+
+        // L'hôte écoute le signal de spin envoyé par le client
+        const wheelSpinListener = (snap) => {
+            if (snap.val() === true) {
+                state.roomRef.child('wheelSpin').off('value', wheelSpinListener);
+                doSpin();
+            }
+        };
+        if (state.roomRef) {
+            state.roomRef.child('wheelSpin').on('value', wheelSpinListener);
+        } else {
+            // Pas de Firebase : le bouton spin reste côté hôte comme avant
+            spinBtn.classList.remove('hidden');
+            spinBtn.onclick = () => {
+                state.roomRef && state.roomRef.child('wheelSpin').off('value', wheelSpinListener);
+                doSpin();
+            };
+        }
     });
 }
 
@@ -2618,13 +2752,12 @@ function showResults() {
     const podiumContainer = document.getElementById('final-podium');
 
     // Winner Display
-    // Affichage spécifique demandé par l'utilisateur "stitch 2026, round 50, partie terminée"
-    winnerNameEl.innerHTML = `<div style="font-size: 1.2em; font-weight: 900; background: linear-gradient(45deg, var(--accent-cyan), var(--primary)); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 20px rgba(0,255,255,0.5);">STITCH 2026</div><div style="font-size: 0.8em; color: white;">ROUND ${state.round}</div>`;
-    if (sorted.length > 1 && sorted[0].score === sorted[1].score) {
-        winnerMsgEl.innerHTML = `<div style="font-size: 1.5em; margin-top: 10px;">PARTIE TERMINÉE !</div>Quel match serré ! Vous êtes tous des champions.`;
-    } else {
-        winnerMsgEl.innerHTML = `<div style="font-size: 1.5em; margin-top: 10px;">PARTIE TERMINÉE !</div>Félicitations pour cette victoire écrasante ! 🎉`;
-    }
+    winnerNameEl.innerHTML = `
+        <div class="results-stitch-tag">STITCH 2026</div>
+        <div class="results-round-info">FIN DE SESSION</div>
+        <h2 style="font-size: 4rem; color: white; margin-top: 20px;">${winner.name.toUpperCase()}</h2>
+    `;
+    winnerMsgEl.innerHTML = `<div style="font-size: 2.5rem; font-weight: 900; color: white;">FÉLICITATIONS !</div>`;
 
     // Dynamic Podium
     podiumContainer.innerHTML = '';
