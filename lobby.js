@@ -155,7 +155,7 @@ if (btnSoloMode) {
 
         // Anti-blocage mobile : "primer" le player sur ce geste utilisateur
         if (typeof audioPlayer !== 'undefined') {
-            audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFVZmIBAAwAACIAAAAhQAAQAEAgAMEFBMUEjMDADf/f/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/y/+7/";
+            audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFRZmIBAAwAACIAAAAhQAAQAEAgAMEFBMUEjMDADf/f/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/y/+7/";
             audioPlayer.play().then(() => audioPlayer.pause()).catch(() => { });
         }
 
@@ -518,11 +518,17 @@ function updateScores() {
 window.updatePlayerInterface = (roomData) => {
     if (!roomData) return;
 
-    // UI Update
+    // UI Elements
     const waitingMsg = document.getElementById('waiting-msg');
     const btnPlayerBuzz = document.getElementById('btn-player-buzz');
     const playerChoices = document.getElementById('player-choices');
     const btnPlayerJoker = document.getElementById('btn-player-joker');
+    const playerModifierZone = document.getElementById('player-modifier-zone');
+    const playerModifierBadge = document.getElementById('player-modifier-badge');
+    const playerWheelZone = document.getElementById('player-wheel-zone');
+    const playerWheelMsg = document.getElementById('player-wheel-msg');
+    const playerWheelExpl = document.getElementById('player-wheel-expl');
+    const playerViz = document.getElementById('player-viz');
 
     if (!waitingMsg) return;
 
@@ -535,28 +541,73 @@ window.updatePlayerInterface = (roomData) => {
         state.isRemote = localStorage.getItem("isRemote") === "true";
     }
     const isRemote = state.isRemote;
-    if (roomData.status === 'playing' && roomData.audioUrl) {
-        logDebug("📡 Mode Distance: " + (isRemote ? "OUI" : "NON"));
+
+    // Helper map for modifiers
+    const modifierMap = {
+        bonus1: { emoji: '🎁', title: '+1 PT', desc: 'Bonus surprise !', cls: 'modifier-bonus1' },
+        bonus3: { emoji: '💎', title: 'ULTRA +3', desc: 'Bonus massif !', cls: 'modifier-bonus3' },
+        double: { emoji: '🔥', title: 'DOUBLES', desc: 'Points x2 !', cls: 'modifier-double' },
+        mystery: { emoji: '🌀', title: 'MYSTÈRE', desc: 'Vitesse modifiée !', cls: 'modifier-mystery' },
+        fast: { emoji: '⏱️', title: 'CHRONO', desc: '10 secondes !', cls: 'modifier-fast' },
+        steal: { emoji: '🏴‍☠️', title: 'PIRATE', desc: 'Vol de points !', cls: 'modifier-steal' },
+        bomb: { emoji: '💣', title: 'BOMBE', desc: '-3 si erreur !', cls: 'modifier-fast' }
+    };
+
+    // 1. Sync Modifier
+    if (playerModifierZone && playerModifierBadge) {
+        if (roomData.currentModifier && roomData.currentModifier !== 'normal' && modifierMap[roomData.currentModifier]) {
+            const mod = modifierMap[roomData.currentModifier];
+            playerModifierBadge.innerText = `${mod.emoji} ${mod.title}`;
+            playerModifierBadge.className = `modifier-badge ${mod.cls}`;
+            playerModifierZone.classList.remove('hidden');
+        } else {
+            playerModifierZone.classList.add('hidden');
+        }
     }
 
-    // Helper to clear existing classes
+    // 2. Sync Wheel
+    if (playerWheelZone) {
+        if (roomData.status === 'wheel_waiting' || roomData.status === 'wheel_spinning') {
+            playerWheelZone.classList.remove('hidden');
+
+            const isSpinning = roomData.status === 'wheel_spinning';
+            playerWheelMsg.innerText = isSpinning ? "LA ROUE TOURNE..." : (roomData.wheelTeamName || "L'ÉQUIPE").toUpperCase() + " LANCE LA ROUE...";
+
+            // Find current modifier details
+            if (roomData.currentModifier && roomData.currentModifier !== 'normal' && modifierMap[roomData.currentModifier]) {
+                const mod = modifierMap[roomData.currentModifier];
+                playerWheelExpl.innerHTML = `
+                    <div class="wheel-expl-emoji">${mod.emoji}</div>
+                    <div class="wheel-expl-title">${mod.title}</div>
+                    <div class="wheel-expl-desc" style="font-size:0.9rem; opacity:0.8; margin-top:5px;">${mod.desc}</div>
+                `;
+                playerWheelExpl.classList.toggle('hidden', !isSpinning && !roomData.status.includes('wheel'));
+
+                // If we are spinning, maybe wait before showing explanation, but for sync it's better to show it
+                if (isSpinning) playerWheelExpl.classList.remove('hidden');
+            } else {
+                playerWheelExpl.classList.add('hidden');
+            }
+        } else {
+            playerWheelZone.classList.add('hidden');
+        }
+    }
+
+    // 3. Main Status Handling
     waitingMsg.className = 'player-status-indicator';
 
     if (roomData.status === 'playing' || roomData.status === 'loading') {
         const isPlaying = roomData.status === 'playing';
-        // NE PAS ÉCRASER SI LE BOUTON DE DÉBLOCAGE SON EST PRÉSENT
+
+        // Only update text if not showing unlock button
         if (!document.getElementById('btn-unlock-audio')) {
-            waitingMsg.innerText = isPlaying ? "À L'ÉCOUTE..." : "CHARGEMENT DU TITRE...";
+            waitingMsg.innerText = isPlaying ? "À L'ÉCOUTE..." : "CHARGEMENT...";
         }
         waitingMsg.classList.add(isPlaying ? 'status-active' : 'status-waiting');
 
-        // Safari stabilization: only stop if actually recognizing
-        if (isRecognizing && recognition) {
-            try { recognition.stop(); } catch (e) { }
-        }
-
         const isArcade = roomData.mode === 'buttons';
         const showHints = isPlaying && (roomData.showHintsToPlayer || isArcade) && roomData.choices;
+
         if (isPlaying && !showHints && !isArcade) {
             btnPlayerBuzz.classList.remove('hidden');
             btnPlayerBuzz.disabled = false;
@@ -564,78 +615,45 @@ window.updatePlayerInterface = (roomData) => {
             btnPlayerBuzz.classList.add('hidden');
         }
 
-        if (showHints) {
-            showPlayerChoices(roomData.choices);
-        } else {
-            playerChoices.classList.add('hidden');
-        }
+        if (showHints) showPlayerChoices(roomData.choices);
+        else playerChoices.classList.add('hidden');
 
-        // Remote Audio Sync
+        // Audio Sync
         if (isRemote && isPlaying && roomData.audioUrl) {
             syncRemoteAudio(roomData.audioUrl, roomData.mysteryRate || 1.0, roomData.timestamp);
         } else if (!isPlaying && playerAudio) {
-            // Au lieu de mettre en pause, on repasse sur le silence pour ne pas perdre le flux iOS
             if (playerAudio.src !== SILENCE_SRC) {
                 playerAudio.src = SILENCE_SRC;
                 playerAudio.loop = true;
                 playerAudio.play().catch(() => { });
             }
-            // Hide visualizer
-            const viz = document.getElementById('player-viz');
-            if (viz) viz.classList.add('hidden');
+            if (playerViz) playerViz.classList.add('hidden');
         }
+
     } else if (roomData.status === 'buzzed' || roomData.status === 'feedback') {
+        // Stop audio if playing
         if (playerAudio && playerAudio.src !== SILENCE_SRC) {
             playerAudio.src = SILENCE_SRC;
             playerAudio.loop = true;
             playerAudio.play().catch(() => { });
         }
-        const viz = document.getElementById('player-viz');
-        if (viz) viz.classList.add('hidden');
+        if (playerViz) playerViz.classList.add('hidden');
 
         const isMyTurn = (roomData.buzzerTeam === state.myTeamIdx);
-        const isOral = (roomData.mode === 'oral' || !roomData.mode);
-
-        btnPlayerBuzz.disabled = true;
         btnPlayerBuzz.classList.add('hidden');
 
         if (isMyTurn) {
             waitingMsg.innerText = roomData.status === 'feedback' ? (roomData.feedbackMsg || "VÉRIFICATION...") : "C'EST À VOUS !";
             waitingMsg.classList.add('status-active');
-
-            if (isOral) {
-                // Ensure recognition is running
-                startVoiceRecognition();
-                // FALLBACK: Show choices after a delay in oral mode
-                if (roomData.status === 'buzzed' && roomData.choices && !oralFallbackTimeout && playerChoices.classList.contains('hidden')) {
-                    oralFallbackTimeout = setTimeout(() => {
-                        if (state.roomRef) {
-                            // Re-verify we are still in buzzed state and it's our turn
-                            state.roomRef.once('value', (snap) => {
-                                const d = snap.val();
-                                if (d && d.status === 'buzzed' && d.buzzerTeam === state.myTeamIdx) {
-                                    showPlayerChoices(d.choices);
-                                }
-                            });
-                        }
-                        oralFallbackTimeout = null;
-                    }, 5000); // 5 seconds delay
-                }
-            } else {
-                if (isRecognizing && recognition) recognition.stop();
-                if (roomData.status === 'buzzed' && roomData.choices) {
-                    showPlayerChoices(roomData.choices);
-                }
-            }
+            if (roomData.mode === 'oral' || !roomData.mode) startVoiceRecognition();
+            if (roomData.choices) showPlayerChoices(roomData.choices);
         } else {
-            if (isRecognizing && recognition) recognition.stop();
             waitingMsg.innerText = roomData.status === 'feedback' ? (roomData.feedbackMsg || "VÉRIFICATION...") : (roomData.buzzerName || "Quelqu'un") + " a buzzé !";
             waitingMsg.classList.add('status-buzzed');
             playerChoices.classList.add('hidden');
         }
+
     } else if (roomData.status === 'finished_song') {
-        if (oralFallbackTimeout) { clearTimeout(oralFallbackTimeout); oralFallbackTimeout = null; }
-        if (isRecognizing && recognition) recognition.stop();
         if (playerAudio && playerAudio.src !== SILENCE_SRC) {
             playerAudio.src = SILENCE_SRC;
             playerAudio.loop = true;
@@ -643,89 +661,55 @@ window.updatePlayerInterface = (roomData) => {
         }
 
         const isWinner = (roomData.winnerTeam === state.myTeamIdx);
-        const titleLine = isWinner ? "BRAVO ! 🎉" : (roomData.winnerTeam !== null ? "DOMMAGE ! ⏳" : "FIN DU TEMPS ! ⌛");
-        const pointsLine = roomData.feedbackMsg || "";
+        const titleLine = isWinner ? "BRAVO ! 🎉" : (roomData.winnerTeam !== null ? "DOMMAGE ! ⏳" : "TEMPS ÉCOULÉ ! ⌛");
         const songLine = `${roomData.revealedArtist || "?"} - ${roomData.revealedTitle || "?"}`;
         const coverImg = roomData.revealedCover ? `<img src="${roomData.revealedCover}" class="player-result-cover">` : "";
 
+        // Build score list for sync
+        let scoresHtm = "<div class='player-scores-list'>";
+        if (roomData.scores) {
+            [...roomData.scores].sort((a, b) => b.score - a.score).forEach((t, i) => {
+                scoresHtm += `<div class="player-score-item ${i === 0 ? 'gold' : ''}"><span>${t.name}</span><span>${t.score} PTS</span></div>`;
+            });
+        }
+        scoresHtm += "</div>";
+
         waitingMsg.innerHTML = `
             ${coverImg}
-            <div class="player-result-title" style="color:${isWinner ? 'var(--primary)' : 'var(--secondary)'}">${titleLine}</div>
-            <div class="player-result-points">${pointsLine}</div>
-            <div style="font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;">C'était :</div>
-            <div style="font-size:1.3rem; font-weight:950; color:white; margin-top:5px; text-shadow:0 0 10px rgba(255,255,255,0.3)">${songLine.toUpperCase()}</div>
+            <div class="player-result-title" style="color:${isWinner ? 'var(--secondary)' : 'var(--primary)'}">${titleLine}</div>
+            <div style="font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; margin-top:10px;">C'était :</div>
+            <div style="font-size:1.2rem; font-weight:900; color:white; margin:5px 0 20px;">${songLine.toUpperCase()}</div>
+            ${scoresHtm}
         `;
-        waitingMsg.style.padding = "40px 20px";
-
         waitingMsg.classList.add('status-active');
         btnPlayerBuzz.classList.add('hidden');
         playerChoices.classList.add('hidden');
-        if (btnPlayerJoker) btnPlayerJoker.classList.add('hidden');
 
     } else if (roomData.status === 'finished') {
-        if (isRecognizing && recognition) recognition.stop();
-        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
-            playerAudio.src = SILENCE_SRC;
-            playerAudio.loop = true;
-            playerAudio.play().catch(() => { });
-        }
-        waitingMsg.innerHTML = "<div style='color:var(--secondary); font-size:1.5rem; font-weight:900;'>PARTIE TERMINÉE !</div>";
+        waitingMsg.innerHTML = "<div class='player-result-title'>PARTIE TERMINÉE !</div>";
         if (roomData.scores) {
-            const sorted = [...roomData.scores].sort((a, b) => b.score - a.score);
-            let podiumHtm = "<div style='margin-top:20px; text-align:left; background:rgba(255,255,255,0.05); padding:15px; border-radius:15px; font-size: 0.9rem;'>";
-            sorted.forEach((team, idx) => {
-                const color = idx === 0 ? "gold" : (idx === 1 ? "silver" : (idx === 2 ? "#cd7f32" : "white"));
-                podiumHtm += `<div style='display:flex; justify-content:space-between; margin-bottom:8px; color:${color}; font-weight:bold;'>
-                    <span>#${idx + 1} ${team.name}</span>
-                    <span>${team.score} PTS</span>
-                </div>`;
+            let podiumHtm = "<div class='player-scores-list' style='margin-top:20pxScale;'>";
+            [...roomData.scores].sort((a, b) => b.score - a.score).forEach((t, i) => {
+                podiumHtm += `<div class="player-score-item ${i === 0 ? 'gold' : ''}"><span>#${i + 1} ${t.name}</span><span>${t.score} PTS</span></div>`;
             });
             podiumHtm += "</div>";
             waitingMsg.innerHTML += podiumHtm;
         }
-        waitingMsg.classList.add('status-active');
-        btnPlayerBuzz.classList.add('hidden');
-        playerChoices.classList.add('hidden');
-    } else {
-        if (isRecognizing && recognition) recognition.stop();
-        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
-            playerAudio.src = SILENCE_SRC;
-            playerAudio.loop = true;
-            playerAudio.play().catch(() => { });
-        }
-        waitingMsg.innerText = "EN ATTENTE...";
-        waitingMsg.classList.add('status-waiting');
-        btnPlayerBuzz.classList.add('hidden');
-        playerChoices.classList.add('hidden');
+        showScreen('player');
     }
 
-    // Refresh Joker Button
+    // Joker button visibility
     if (btnPlayerJoker) {
         const isJokerUsed = roomData.jokers && roomData.jokers[state.myTeamIdx] === false;
-        const isOral = roomData.mode === 'oral' || !roomData.mode;
-        // Joker Rare : Uniquement si jokerAvailableThisRound est vrai (en mode Flash Quizz)
-        const showJoker = !isJokerUsed && roomData.status === 'playing' && (!isOral || roomData.jokerAvailableThisRound);
+        const showJoker = !isJokerUsed && roomData.status === 'playing' && (roomData.mode === 'buttons' || roomData.jokerAvailableThisRound);
         btnPlayerJoker.classList.toggle('hidden', !showJoker);
     }
 
-    // Wheel of Fate Handling
+    // Spin button visibility
     const btnPlayerSpin = document.getElementById('btn-player-spin');
     if (btnPlayerSpin) {
-        if (roomData.status === 'wheel_waiting') {
-            const isMyTurnToSpin = (roomData.wheelTeamIdx === state.myTeamIdx);
-            btnPlayerSpin.classList.toggle('hidden', !isMyTurnToSpin);
-
-            if (isMyTurnToSpin) {
-                waitingMsg.innerText = "À VOUS DE LANCER LA ROUE !";
-                waitingMsg.classList.add('status-active');
-                btnPlayerBuzz.classList.add('hidden');
-            } else {
-                waitingMsg.innerText = "L'ÉQUIPE " + (roomData.wheelTeamName || "").toUpperCase() + " LANCE LA ROUE...";
-                waitingMsg.classList.add('status-waiting');
-            }
-        } else {
-            btnPlayerSpin.classList.add('hidden');
-        }
+        const isMyTurnToSpin = (roomData.status === 'wheel_waiting' && roomData.wheelTeamIdx === state.myTeamIdx);
+        btnPlayerSpin.classList.toggle('hidden', !isMyTurnToSpin);
     }
 };
 

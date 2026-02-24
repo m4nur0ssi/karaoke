@@ -256,16 +256,24 @@
         <!-- Screen Player (Mobile Interface) -->
         <section id="screen-player" class="screen">
             <div id="player-lobby" class="player-lobby">
-                <h2 class="glow-text mini">Rejoindre</h2>
-                <div class="join-form glass">
-                    <input type="text" id="input-room-code" placeholder="CODE SALON (4 lettres)" maxlength="4"
-                        class="room-input">
-                    <select id="select-team-join" class="lobby-select">
-                        <option value="0">ÉQUIPE 1</option>
-                        <option value="1">ÉQUIPE 2</option>
-                        <option value="2">ÉQUIPE 3</option>
-                        <option value="3">ÉQUIPE 4</option>
-                    </select>
+                <h2 class="glow-text mini">REJOINDRE LE JEU</h2>
+                <div class="join-form">
+                    <div class="field-group">
+                        <label class="field-label">CODE DU SALON</label>
+                        <input type="text" id="input-room-code" placeholder="----" maxlength="4"
+                            class="room-input lobby-input">
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">VOTRE ÉQUIPE</label>
+                        <select id="select-team-join" class="lobby-select">
+                            <option value="0">ÉQUIPE 1</option>
+                            <option value="1">ÉQUIPE 2</option>
+                            <option value="2">ÉQUIPE 3</option>
+                            <option value="3">ÉQUIPE 4</option>
+                        </select>
+                    </div>
+
                     <div class="remote-mode-toggle">
                         <label class="switch-premium">
                             <input type="checkbox" id="check-remote-audio">
@@ -273,14 +281,33 @@
                         </label>
                         <span class="toggle-label">MODE DISTANCE (SON LOCAL)</span>
                     </div>
-                    <button id="btn-join-room" class="main-btn primary large-mobile">REJOINDRE LE JEU</button>
+
+                    <button id="btn-join-room" class="main-btn primary large-mobile"
+                        style="height: 80px; font-size: 1.6rem; border-radius: 40px; margin-top: 20px;">
+                        PRÊT À CHANTER !
+                    </button>
                 </div>
                 <div id="player-status-msg" class="player-status-msg"></div>
             </div>
 
             <div id="player-game" class="player-game hidden">
                 <div id="player-room-badge" class="player-room-badge">ROOM: ----</div>
+
+                <!-- NEW: Remote Modifier Display -->
+                <div id="player-modifier-zone" class="player-modifier-zone hidden">
+                    <div id="player-modifier-badge" class="modifier-badge"></div>
+                </div>
+
                 <div id="waiting-msg" class="waiting-msg">Attente de la musique...</div>
+
+                <!-- NEW: Remote Wheel Display -->
+                <div id="player-wheel-zone" class="player-wheel-zone hidden">
+                    <div class="slot-machine mini">
+                        <h2 class="slot-title">LA ROUE DU DESTIN</h2>
+                        <div id="player-wheel-msg" class="wheel-team-name">...</div>
+                        <div id="player-wheel-expl" class="wheel-explanation-text"></div>
+                    </div>
+                </div>
 
                 <div id="player-viz" class="remote-sync-visualizer hidden">
                     <div class="bar"></div>
