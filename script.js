@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v53.9');
+logDebug('Script loaded v2026_v54.0');
 
 // Tentative de synchronisation immédiate
 setTimeout(() => {
@@ -240,4 +240,4 @@ btnRoleHost.addEventListener('click', () => {
     showScreen('home');
 });
 
-logDebug('Script initialized (v2026_v51.2)');
+logDebug('Script initialized (v2026_v54.0)');
