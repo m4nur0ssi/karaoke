@@ -293,6 +293,7 @@ const handleJoinRoom = () => {
     // Store remote preference
     const checkRemote = document.getElementById('check-remote-audio');
     state.isRemote = checkRemote ? checkRemote.checked : false;
+    localStorage.setItem("isRemote", state.isRemote);
 
     btnJoinRoom.innerText = "CONNEXION EN COURS...";
     btnJoinRoom.disabled = true;
@@ -522,14 +523,27 @@ window.updatePlayerInterface = (roomData) => {
     if (!waitingMsg) return;
 
     // Mode Distance Logic
+    const remoteCheckEl = document.getElementById('check-remote-audio');
+    if (remoteCheckEl) {
+        state.isRemote = remoteCheckEl.checked;
+        localStorage.setItem("isRemote", state.isRemote);
+    } else if (state.isRemote === undefined) {
+        state.isRemote = localStorage.getItem("isRemote") === "true";
+    }
     const isRemote = state.isRemote;
+    if (roomData.status === 'playing' && roomData.audioUrl) {
+        logDebug("📡 Mode Distance: " + (isRemote ? "OUI" : "NON"));
+    }
 
     // Helper to clear existing classes
     waitingMsg.className = 'player-status-indicator';
 
     if (roomData.status === 'playing' || roomData.status === 'loading') {
         const isPlaying = roomData.status === 'playing';
-        waitingMsg.innerText = isPlaying ? "À L'ÉCOUTE..." : "CHARGEMENT DU TITRE...";
+        // NE PAS ÉCRASER SI LE BOUTON DE DÉBLOCAGE SON EST PRÉSENT
+        if (!document.getElementById('btn-unlock-audio')) {
+            waitingMsg.innerText = isPlaying ? "À L'ÉCOUTE..." : "CHARGEMENT DU TITRE...";
+        }
         waitingMsg.classList.add(isPlaying ? 'status-active' : 'status-waiting');
 
         // Safari stabilization: only stop if actually recognizing
@@ -557,7 +571,7 @@ window.updatePlayerInterface = (roomData) => {
             syncRemoteAudio(roomData.audioUrl, roomData.mysteryRate || 1.0, roomData.timestamp);
         } else if (!isPlaying && playerAudio) {
             playerAudio.pause();
-            playerAudio = null;
+            // Important: Don't set playerAudio to null on iOS/Safari, reuse the object
             // Remove visualizer if any
             const viz = document.getElementById('player-viz');
             if (viz) viz.classList.add('hidden');
