@@ -820,8 +820,9 @@ function selectArtist(name) {
         lastBuzzedTeam = 0; // Forced for solo/arcade feedback rewards
         btnCorrect.click();
     } else {
+        const penalty = state.currentModifier === 'bomb' ? 3 : 1;
         playTone(110, 'sawtooth', 0.3);
-        displayFeedback("MAUVAISE RÉPONSE ! ❌", "feedback-dommage");
+        displayFeedback(`MAUVAISE RÉPONSE ! -${penalty} PTS ❌`, "feedback-dommage");
         applyWrongPenalty(0); // Penalty for solo error
         setTimeout(() => {
             if (bravoContainer.innerText.includes("MAUVAISE")) {
@@ -845,13 +846,18 @@ function victory(keepPlaying = false) {
     revealTitle.innerText = state.currentSong.brand ? `${state.currentSong.artist} - ${state.currentSong.title}` : state.currentSong.title;
 
     if (state.roomRef) {
-        state.roomRef.update({
+        const updateData = {
             status: 'finished_song',
             winnerTeam: lastBuzzedTeam,
             winnerName: lastBuzzedTeam !== null ? state.teams[lastBuzzedTeam].name : null,
             revealedArtist: state.currentSong.artist,
             revealedTitle: state.currentSong.title
-        });
+        };
+        // Optionnellement, passer le message de feedback au player
+        const bravoText = document.querySelector('.feedback-text');
+        if (bravoText) updateData.feedbackMsg = bravoText.innerText;
+
+        state.roomRef.update(updateData);
     }
 
     revealCard.classList.remove('hidden');
@@ -941,11 +947,14 @@ btnCorrect.addEventListener('click', () => {
 
 btnWrong.addEventListener('click', () => {
     const teamIdx = lastBuzzedTeam;
+    let penalty = 1;
+    if (state.currentModifier === 'bomb') penalty = 3;
+
     if (teamIdx !== null) {
         applyWrongPenalty(teamIdx);
     }
 
-    displayFeedback("MAUVAISE RÉPONSE ! QUELQU'UN D'AUTRE A UNE IDÉE ?", "feedback-dommage");
+    displayFeedback(`MAUVAISE RÉPONSE ! -${penalty} PTS ❌`, "feedback-dommage");
     playTone(220, 'sawtooth', 0.2);
 
     validationControls.classList.add('hidden');
