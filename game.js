@@ -850,8 +850,9 @@ function victory(keepPlaying = false) {
             status: 'finished_song',
             winnerTeam: lastBuzzedTeam,
             winnerName: lastBuzzedTeam !== null ? state.teams[lastBuzzedTeam].name : null,
-            revealedArtist: state.currentSong.artist,
-            revealedTitle: state.currentSong.title
+            revealedArtist: state.currentSong.brand ? state.currentSong.brand : state.currentSong.artist,
+            revealedTitle: state.currentSong.title,
+            revealedCover: state.currentSong.cover
         };
         // Optionnellement, passer le message de feedback au player
         const bravoText = document.querySelector('.feedback-text');
