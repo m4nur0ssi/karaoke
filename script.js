@@ -122,7 +122,11 @@ const soloBuzzContainer = document.getElementById('solo-buzz-container');
 let lastBuzzedTeam = null;
 
 // Firebase Connection Monitor
+let serverTimeOffset = 0;
 if (typeof firebase !== 'undefined') {
+    firebase.database().ref('.info/serverTimeOffset').on('value', (snap) => {
+        serverTimeOffset = snap.val() || 0;
+    });
     firebase.database().ref('.info/connected').on('value', (snap) => {
         const connected = snap.val();
         state.dbConnected = connected;
