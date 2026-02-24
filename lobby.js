@@ -1,6 +1,7 @@
 /**
  * LOBBY & TEAM MANAGEMENT - STITCH 2026
  */
+let oralFallbackTimeout = null;
 
 btnRoleHost.addEventListener('touchstart', (e) => {
     e.preventDefault();
@@ -523,14 +524,15 @@ window.updatePlayerInterface = (roomData) => {
             try { recognition.stop(); } catch (e) { }
         }
 
-        if (isPlaying) {
+        const showHints = isPlaying && roomData.showHintsToPlayer && roomData.choices;
+        if (isPlaying && !showHints) {
             btnPlayerBuzz.classList.remove('hidden');
             btnPlayerBuzz.disabled = false;
         } else {
             btnPlayerBuzz.classList.add('hidden');
         }
 
-        if (isPlaying && roomData.showHintsToPlayer && roomData.choices) {
+        if (showHints) {
             showPlayerChoices(roomData.choices);
         } else {
             playerChoices.classList.add('hidden');
@@ -564,9 +566,20 @@ window.updatePlayerInterface = (roomData) => {
             if (isOral) {
                 // Ensure recognition is running
                 startVoiceRecognition();
-                // FALLBACK: Show choices even in oral mode so user can click if mic fails
-                if (roomData.status === 'buzzed' && roomData.choices) {
-                    showPlayerChoices(roomData.choices);
+                // FALLBACK: Show choices after a delay in oral mode
+                if (roomData.status === 'buzzed' && roomData.choices && !oralFallbackTimeout && playerChoices.classList.contains('hidden')) {
+                    oralFallbackTimeout = setTimeout(() => {
+                        if (state.roomRef) {
+                            // Re-verify we are still in buzzed state and it's our turn
+                            state.roomRef.once('value', (snap) => {
+                                const d = snap.val();
+                                if (d && d.status === 'buzzed' && d.buzzerTeam === state.myTeamIdx) {
+                                    showPlayerChoices(d.choices);
+                                }
+                            });
+                        }
+                        oralFallbackTimeout = null;
+                    }, 5000); // 5 seconds delay
                 }
             } else {
                 if (isRecognizing && recognition) recognition.stop();
@@ -580,7 +593,8 @@ window.updatePlayerInterface = (roomData) => {
             waitingMsg.classList.add('status-buzzed');
             playerChoices.classList.add('hidden');
         }
-    } else if (roomData.status === 'finished_song') {
+    } else if (roomData.status === 'finished_song' || roomData.status === 'finished') {
+        if (oralFallbackTimeout) { clearTimeout(oralFallbackTimeout); oralFallbackTimeout = null; }
         if (isRecognizing && recognition) recognition.stop();
         if (playerAudio) playerAudio.pause();
         waitingMsg.innerText = "FIN DU TITRE";
