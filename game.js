@@ -161,10 +161,13 @@ async function nextSong() {
 
         if (soloBuzzContainer) soloBuzzContainer.classList.add('hidden');
 
-        if (state.soloMode && state.gameMode === 'buttons') {
+        // Unhide visualizer and show animation at start of song
+        const viz = document.querySelector('.visualizer');
+        if (viz) viz.classList.remove('hidden');
+
+        if (state.soloMode) {
+            // In solo mode, hide the teams action area (Team 1 button is redundant with huge BUZZ)
             if (teamsActionArea) teamsActionArea.classList.add('hidden');
-        } else if (state.soloMode) {
-            if (teamsActionArea) teamsActionArea.classList.remove('hidden');
         }
 
         // Sync loading status to players & Reset states
@@ -363,9 +366,10 @@ async function nextSong() {
                     round: state.round,
                     theme: activeTheme,
                     timer: (state.currentModifier === 'fast') ? 10 : 30,
-                    choices: state.gameMode === 'buttons' ? shuffle([...state.currentSong.hints]) : [],
+                    choices: shuffle([...state.currentSong.hints]),
                     jokers: state.jokers,
                     activeJoker: null,
+                    showHintsToPlayer: false,
                     timestamp: Date.now()
                 });
             }
@@ -811,9 +815,17 @@ function showHints() {
 
 function selectArtist(name) {
     if (isCorrectAnswer(name, state.currentSong)) {
-        victory();
+        lastBuzzedTeam = 0; // Forced for solo/arcade feedback rewards
+        btnCorrect.click();
     } else {
         playTone(110, 'sawtooth', 0.3);
+        displayFeedback("MAUVAISE RÉPONSE ! ❌", "feedback-dommage");
+        applyWrongPenalty(0); // Penalty for solo error
+        setTimeout(() => {
+            if (bravoContainer.innerText.includes("MAUVAISE")) {
+                bravoContainer.innerHTML = '';
+            }
+        }, 1500);
     }
 }
 
@@ -939,19 +951,30 @@ btnWrong.addEventListener('click', () => {
     const vocalDisplay = document.getElementById('vocal-answer-display');
     if (vocalDisplay) vocalDisplay.classList.add('hidden');
 
+    // Restore UI for retry
+    const viz = document.querySelector('.visualizer');
+    if (viz) viz.classList.remove('hidden');
+
     setTimeout(() => {
         if (state.roomRef) {
             state.roomRef.update({
-                status: 'playing', // Set to playing to allow players to buzz again
+                status: 'playing',
                 buzzerTeam: null,
                 buzzerName: null,
                 answer: null,
                 vocalAnswer: null,
-                buzz: null
+                buzz: null,
+                showHintsToPlayer: state.timer <= 10
             });
         }
         lastBuzzedTeam = null;
         bravoContainer.innerHTML = ''; // Effacer le message de feedback
+
+        // SOLO: Hide hints if they were shown as fallback and timer > 10
+        if (state.soloMode && hintsEl && state.timer > 10) {
+            hintsEl.classList.add('hidden');
+        }
+
         audioPlayer.play().then(() => {
             state.isPlaying = true;
 
@@ -959,6 +982,12 @@ btnWrong.addEventListener('click', () => {
             countdownEl.classList.remove('hidden');
             if (state.timer <= 10) {
                 showHints(); // This will unhide hintsEl or update Firebase for players
+            }
+
+            // Re-show solo buzz if it was hidden
+            if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
+                const soloBuzz = document.getElementById('solo-buzz-container');
+                if (soloBuzz) soloBuzz.classList.remove('hidden');
             }
 
             if (modifierBadge && state.currentModifier !== 'normal') modifierBadge.classList.remove('hidden');
@@ -1037,8 +1066,9 @@ const handleBuzz = (idx) => {
                 window.startVoiceRecognition();
             } else {
                 displayFeedback("MICRO INDISPONIBLE", "feedback-dommage");
-                setTimeout(() => victory(), 1500);
             }
+            // Fallback: Show hints even in oral mode in solo
+            if (hintsEl) hintsEl.classList.remove('hidden');
         } else {
             setTimeout(() => {
                 victory();
@@ -1109,6 +1139,10 @@ const handleNextOrPlay = () => {
         btnNext.classList.add('hidden');
         countdownEl.innerText = state.timer;
         countdownEl.style.fontSize = "8rem"; // Reset size
+
+        // Restore visualizer
+        const viz = document.querySelector('.visualizer');
+        if (viz) viz.classList.remove('hidden');
 
         // Ensure solo UI is shown when sound is manually started
         if (state.soloMode) {
