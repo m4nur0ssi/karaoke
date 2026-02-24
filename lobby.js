@@ -38,6 +38,7 @@ window.populateTeams = (teams) => {
 
     teamArray.forEach((name, idx) => {
         if (name) {
+            if (state.teams[idx]) state.teams[idx].name = name;
             const opt = document.createElement('option');
             opt.value = idx;
             opt.innerText = name.toString().toUpperCase();
