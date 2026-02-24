@@ -182,7 +182,7 @@ async function nextSong() {
                 buzz: null,
                 answer: null,
                 activeJoker: null,
-                showHintsToPlayer: false
+                showHintsToPlayer: state.gameMode === 'buttons'
             });
         }
 
@@ -372,7 +372,7 @@ async function nextSong() {
                     choices: shuffle([...state.currentSong.hints]),
                     jokers: state.jokers,
                     activeJoker: null,
-                    showHintsToPlayer: false,
+                    showHintsToPlayer: state.gameMode === 'buttons',
                     timestamp: Date.now()
                 });
             }
@@ -381,34 +381,25 @@ async function nextSong() {
             audioPlayer.defaultPlaybackRate = state.mysteryRate;
             audioPlayer.playbackRate = state.mysteryRate;
 
-            // --- SOLO / UI UNHIDE SEQUENCE ---
-            if (state.soloMode) {
-                const soloBuzz = document.getElementById('solo-buzz-container');
-                const hints = document.getElementById('hints');
-                const teamsActionArea = document.getElementById('teams-action');
+            // --- Host / Solo UI Logic ---
+            const soloBuzz = document.getElementById('solo-buzz-container');
+            const hints = document.getElementById('hints');
+            const teamsActionArea = document.getElementById('teams-action');
 
-                // 1. Hide/Show Buzzers
-                if (soloBuzz) {
-                    if (state.gameMode === 'oral' || !state.gameMode) {
-                        soloBuzz.classList.remove('hidden');
-                    } else {
-                        soloBuzz.classList.add('hidden');
-                    }
-                }
-
-                // Hide team buttons in Arcade solo
-                if (state.gameMode === 'buttons' && teamsActionArea) {
-                    teamsActionArea.classList.add('hidden');
-                } else if (teamsActionArea) {
-                    teamsActionArea.classList.remove('hidden');
-                }
-
-                // 2. Clear then Show Hints if Arcade
-                if (state.gameMode === 'buttons') {
-                    showHints(); // This will populate and unhide
+            if (state.gameMode === 'buttons') {
+                if (soloBuzz) soloBuzz.classList.add('hidden');
+                if (teamsActionArea) teamsActionArea.classList.add('hidden');
+                showHints(); // Populates and unhides
+            } else {
+                // ORAL MODE
+                if (state.soloMode) {
+                    if (soloBuzz) soloBuzz.classList.remove('hidden');
+                    if (teamsActionArea) teamsActionArea.classList.add('hidden');
                 } else {
-                    if (hints) hints.classList.add('hidden');
+                    if (soloBuzz) soloBuzz.classList.add('hidden');
+                    if (teamsActionArea) teamsActionArea.classList.remove('hidden');
                 }
+                if (hints) hints.classList.add('hidden');
             }
 
             // Unhide Timer HUD normally
