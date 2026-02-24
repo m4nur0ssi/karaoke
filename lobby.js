@@ -631,13 +631,16 @@ window.updatePlayerInterface = (roomData) => {
         const titleLine = isWinner ? "BRAVO ! 🎉" : (roomData.winnerTeam !== null ? "DOMMAGE ! ⏳" : "FIN DU TEMPS ! ⌛");
         const pointsLine = roomData.feedbackMsg || "";
         const songLine = `${roomData.revealedArtist || "?"} - ${roomData.revealedTitle || "?"}`;
+        const coverImg = roomData.revealedCover ? `<img src="${roomData.revealedCover}" class="player-result-cover">` : "";
 
         waitingMsg.innerHTML = `
-            <div style="font-size:1.8rem; font-weight:900; color:var(--secondary); margin-bottom:10px;">${titleLine}</div>
-            <div style="font-size:1.1rem; color:white; font-weight:bold; margin-bottom:15px; background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:10px;">${pointsLine}</div>
-            <div style="font-size:0.9rem; color:var(--text-dim);">C'était :</div>
-            <div style="font-size:1.2rem; font-weight:bold; color:var(--primary); margin-top:5px;">${songLine.toUpperCase()}</div>
+            ${coverImg}
+            <div class="player-result-title" style="color:${isWinner ? 'var(--primary)' : 'var(--secondary)'}">${titleLine}</div>
+            <div class="player-result-points">${pointsLine}</div>
+            <div style="font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;">C'était :</div>
+            <div style="font-size:1.3rem; font-weight:950; color:white; margin-top:5px; text-shadow:0 0 10px rgba(255,255,255,0.3)">${songLine.toUpperCase()}</div>
         `;
+        waitingMsg.style.padding = "40px 20px";
 
         waitingMsg.classList.add('status-active');
         btnPlayerBuzz.classList.add('hidden');
@@ -731,6 +734,11 @@ if (btnPlayerBuzz) {
             // Trigger Voice Recognition immediately on user gesture
             if (state.gameMode === 'oral' || !state.gameMode) {
                 startVoiceRecognition();
+            }
+
+            // Re-warm remote audio on gesture to keep Safari happy
+            if (state.isRemote && playerAudio) {
+                playerAudio.play().catch(e => { });
             }
         }
     };
@@ -855,7 +863,7 @@ function syncRemoteAudio(url, rate, serverTime) {
     logDebug("📖 Sync Audio: " + url.split('/').pop());
     playerAudio.pause();
     playerAudio.src = url;
-    playerAudio.load();
+    // Removing load() can help Safari stability on subsequent songs
     playerAudio.playbackRate = rate;
 
     // Calculate offset based on server time + offset
@@ -875,14 +883,27 @@ function syncRemoteAudio(url, rate, serverTime) {
             const oldBtn = document.getElementById('btn-unlock-audio');
             if (oldBtn) {
                 const msg = document.getElementById('waiting-msg');
-                if (msg) msg.innerText = "À L'ÉCOUTE...";
+                if (msg && msg.innerHTML.includes('btn-unlock-audio')) {
+                    msg.innerText = "À L'ÉCOUTE...";
+                }
             }
         }).catch(e => {
             console.warn("Remote audio blocked by browser behavior:", e);
-            // Fallback UI to unlock audio
+            // Fallback UI to unlock audio - GIANT OVERLAY if it's REALLY blocked
             const msg = document.getElementById('waiting-msg');
             if (msg && !document.getElementById('btn-unlock-audio')) {
-                msg.innerHTML = `<button id='btn-unlock-audio' style='background:var(--secondary); color:white; border:none; padding:15px 30px; border-radius:15px; font-weight:bold; font-size:1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: pulse 1.5s infinite;'>🔊 ACTIVER LE SON DISTANCE</button>`;
+                const btnHtml = `<button id='btn-unlock-audio' class='main-btn primary' style='width:100%; border-radius:20px; padding:25px; box-shadow: 0 0 40px var(--primary); animation: pulse 1s infinite;'>🔊 RÉ-ACTIVER LE SON DISTANCE</button>`;
+                // We append or replace depending on state
+                if (msg.innerText.includes("À L'ÉCOUTE")) {
+                    msg.innerHTML = btnHtml;
+                } else {
+                    // Add it below current info
+                    const wrapper = document.createElement('div');
+                    wrapper.style.marginTop = "20px";
+                    wrapper.innerHTML = btnHtml;
+                    msg.appendChild(wrapper);
+                }
+
                 const unlock = document.getElementById('btn-unlock-audio');
                 if (unlock) {
                     const trigger = () => {
@@ -897,7 +918,9 @@ function syncRemoteAudio(url, rate, serverTime) {
         });
     };
 
-    // Give it a tiny moment to load metadata for currentTime
+    // Aggressive Safari Start
+    tryPlay();
+
     if (playerAudio.readyState >= 2) {
         tryPlay();
     } else {
@@ -933,6 +956,11 @@ function showPlayerChoices(choices) {
                 }
                 playerChoices.classList.add('hidden');
                 waitingMsg.innerText = "RÉPONSE ENVOYÉE...";
+
+                // Re-warm remote audio on gesture (Safari stabilization)
+                if (state.isRemote && playerAudio) {
+                    playerAudio.play().catch(e => { });
+                }
             };
             bts[i].onclick = handleChoice;
             bts[i].ontouchstart = (e) => {
