@@ -309,6 +309,15 @@ const handleJoinRoom = () => {
                 });
         }
 
+        // --- NOUVEAU : Pré-autorisation du son (Mode Distance) ---
+        playerAudio = new Audio();
+        playerAudio.volume = 0.5;
+        playerAudio.play().then(() => {
+            logDebug("🔊 Audio débloqué pour mode distance.");
+        }).catch(e => {
+            logDebug("⚠️ Audio bloqué. Touchez l'écran pour activer.");
+        });
+
         const badge = document.getElementById('player-room-badge');
         if (badge) badge.innerText = "ROOM: " + code;
         const myName = (state.teams[state.myTeamIdx] && state.teams[state.myTeamIdx].name) ? state.teams[state.myTeamIdx].name : `Équipe ${state.myTeamIdx + 1}`;
@@ -633,7 +642,10 @@ window.updatePlayerInterface = (roomData) => {
     // Refresh Joker Button
     if (btnPlayerJoker) {
         const isJokerUsed = roomData.jokers && roomData.jokers[state.myTeamIdx] === false;
-        btnPlayerJoker.classList.toggle('hidden', isJokerUsed || roomData.status !== 'playing');
+        const isOral = roomData.mode === 'oral' || !roomData.mode;
+        // Joker Rare : Uniquement si jokerAvailableThisRound est vrai (en mode Flash Quizz)
+        const showJoker = !isJokerUsed && roomData.status === 'playing' && (!isOral || roomData.jokerAvailableThisRound);
+        btnPlayerJoker.classList.toggle('hidden', !showJoker);
     }
 
     // Wheel of Fate Handling
@@ -795,13 +807,13 @@ window.startVoiceRecognition = startVoiceRecognition;
 function syncRemoteAudio(url, rate, serverTime) {
     if (playerAudio && playerAudio.src === url) return;
 
-    if (playerAudio) playerAudio.pause();
+    if (playerAudio) { playerAudio.pause(); }
 
     playerAudio = new Audio(url);
     playerAudio.playbackRate = rate;
 
-    // Calculate offset based on server time
-    const now = Date.now();
+    // Calculate offset based on server time + offset
+    const now = Date.now() + (typeof serverTimeOffset !== 'undefined' ? serverTimeOffset : 0);
     const offset = (now - serverTime) / 1000;
 
     if (offset > 0 && offset < 30) {
@@ -813,7 +825,21 @@ function syncRemoteAudio(url, rate, serverTime) {
         if (viz) viz.classList.remove('hidden');
     }).catch(e => {
         console.warn("Remote audio blocked:", e);
-        // Maybe show a "CLIQUER POUR ACTIVER LE SON" overlay if blocked
+        // Fallback UI to unlock audio
+        const msg = document.getElementById('waiting-msg');
+        if (msg) {
+            const original = msg.innerText;
+            msg.innerHTML = `<button id='btn-unlock-audio' style='background:var(--secondary); color:white; border:none; padding:10px 20px; border-radius:10px; font-weight:bold;'>TOUCHER ICI POUR LE SON 🔊</button>`;
+            const unlock = document.getElementById('btn-unlock-audio');
+            if (unlock) {
+                const trigger = () => {
+                    playerAudio.play();
+                    msg.innerText = original;
+                };
+                unlock.onclick = trigger;
+                unlock.ontouchstart = (e) => { e.preventDefault(); trigger(); };
+            }
+        }
     });
 }
 
