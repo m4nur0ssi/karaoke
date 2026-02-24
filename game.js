@@ -1,6 +1,7 @@
 /**
  * GAME LOGIC - STITCH 2026
  */
+let soloOralFallbackTimeout = null;
 
 // Game Logic
 const handleThemeSelection = (card) => {
@@ -129,6 +130,8 @@ async function nextSong() {
         return;
     }
     state.round++;
+
+    if (soloOralFallbackTimeout) { clearTimeout(soloOralFallbackTimeout); soloOralFallbackTimeout = null; }
 
     initAudio();
     if (audioContext) audioContext.resume();
@@ -810,6 +813,12 @@ function showHints() {
         }
         // En mode oral (Flash Quizz), on affiche les propositions (en local) à 10s ou sur buzz
         hints.classList.remove('hidden');
+
+        // Hide solo buzz when hints appear at 10s
+        if (state.soloMode) {
+            const soloBuzz = document.getElementById('solo-buzz-container');
+            if (soloBuzz) soloBuzz.classList.add('hidden');
+        }
     }
 }
 
@@ -1067,8 +1076,16 @@ const handleBuzz = (idx) => {
             } else {
                 displayFeedback("MICRO INDISPONIBLE", "feedback-dommage");
             }
-            // Fallback: Show hints even in oral mode in solo
-            if (hintsEl) hintsEl.classList.remove('hidden');
+            // Fallback: Show hints after a delay in oral mode in solo
+            if (hintsEl) {
+                if (soloOralFallbackTimeout) clearTimeout(soloOralFallbackTimeout);
+                soloOralFallbackTimeout = setTimeout(() => {
+                    if (!state.isPlaying && lastBuzzedTeam !== null) {
+                        hintsEl.classList.remove('hidden');
+                    }
+                    soloOralFallbackTimeout = null;
+                }, 5000);
+            }
         } else {
             setTimeout(() => {
                 victory();
