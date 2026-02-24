@@ -96,7 +96,7 @@ if (btnSoloMode) {
 
         const block1 = document.getElementById('block-team-1');
         const btn1 = block1 ? block1.querySelector('.team-btn') : null;
-        if (btn1) btn1.innerText = "JE SAIS !";
+        if (btn1) btn1.innerText = "BUZZ";
         ['block-team-2', 'block-team-3', 'block-team-4'].forEach(id => {
             const b = document.getElementById(id); if (b) b.classList.add('hidden');
         });
