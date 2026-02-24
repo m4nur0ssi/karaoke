@@ -298,6 +298,16 @@ const handleJoinRoom = () => {
     btnJoinRoom.innerText = "CONNEXION EN COURS...";
     btnJoinRoom.disabled = true;
 
+    // --- NOUVEAU : Pré-autorisation du son IMMÉDIATE (Mode Distance) ---
+    // On le fait ICI, dans le thread direct du clic utilisateur, pour iOS/Safari
+    if (!playerAudio) playerAudio = new Audio();
+    playerAudio.volume = 0.5;
+    playerAudio.play().then(() => {
+        logDebug("🔊 Audio débloqué pour mode distance.");
+    }).catch(e => {
+        logDebug("⚠️ Audio temporairement bloqué par l'OS.");
+    });
+
     const proceedToLobby = () => {
         playerLobby.classList.add('hidden');
         playerGame.classList.remove('hidden');
@@ -313,15 +323,6 @@ const handleJoinRoom = () => {
                     logDebug("❌ Player Mic pre-auth failed");
                 });
         }
-
-        // --- NOUVEAU : Pré-autorisation du son (Mode Distance) ---
-        playerAudio = new Audio();
-        playerAudio.volume = 0.5;
-        playerAudio.play().then(() => {
-            logDebug("🔊 Audio débloqué pour mode distance.");
-        }).catch(e => {
-            logDebug("⚠️ Audio bloqué. Touchez l'écran pour activer.");
-        });
 
         const badge = document.getElementById('player-room-badge');
         if (badge) badge.innerText = "ROOM: " + code;
