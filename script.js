@@ -1,194 +1,243 @@
-/**
- * KARAOKE ENGINE - STITCH 2026
- * SYNC & CORE LOGIC
- */
-
-let state = {
-    screen: 'role',
-    teams: [],
-    scores: [0, 0, 0, 0],
-    currentSong: null,
-    isPlaying: false,
-    timer: 30,
-    interval: null,
-    gameMode: 'oral', // 'oral' ou 'buttons'
-    soloMode: false,
-    soloName: '',
-    roomCode: '',
-    isHost: false,
-    myTeamIdx: null,
-    remoteAudio: false,
-    roomRef: null,
-    jokersUsed: [false, false, false, false],
-    activeJoker: null, // index de l'équipe qui a activé un joker
-    currentArtistChoices: [],
-    currentModifier: null,
-    wheelBusy: false,
-    streak: 0,
-    lastWinnerIdx: null
+const logDebug = (msg) => {
+    console.log(msg);
+    const logEl = document.getElementById('debug-log');
+    if (logEl) {
+        logEl.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}<br>` + logEl.innerHTML;
+    }
 };
 
-// MODIFICATEURS DE LA ROUE
-const MODIFIERS = [
-    { id: 'double', label: 'SCORE x2', color: '#ffcc00', weight: 3, icon: '🔥', desc: 'Les points de cette manche comptent double !' },
-    { id: 'triple', label: 'SCORE x3', color: '#ff3300', weight: 1, icon: '⚡', desc: 'Manche royale : Points triplés !' },
-    { id: 'half', label: 'VITESSE x1.5', color: '#00ccff', weight: 2, icon: '⏩', desc: 'La musique accélère, soyez vifs !' },
-    { id: 'slow', label: 'VITESSE x0.75', color: '#9933ff', weight: 2, icon: '🐢', desc: 'Mode escargot activé.' },
-    { id: 'blind', label: 'SANS INDICES', color: '#ff0066', weight: 2, icon: '🙈', desc: 'Aucun bouton d\'artiste ne s\'affichera.' },
-    { id: 'steal', label: 'VOL DE POINTS', color: '#33cc33', weight: 1, icon: '💰', desc: 'Si vous trouvez, vous volez 10pts à un adversaire !' }
-];
-
-function logDebug(msg) {
-    console.log(`[QUIZ] ${msg}`);
-    const debug = document.getElementById('debug-log');
-    if (debug) {
-        debug.innerHTML += `<div>> ${msg}</div>`;
-        debug.scrollTop = debug.scrollHeight;
-    }
-}
+const checkFirebase = () => {
+    if (typeof firebase === 'undefined') return { ok: false, msg: 'Firebase Script non chargé' };
+    if (!firebase.apps || firebase.apps.length === 0) return { ok: false, msg: 'Firebase non initialisé' };
+    return { ok: true, msg: 'Firebase OK' };
+};
 
 logDebug('Script loaded v2026_v53.8');
 
-// INITIALISATION UI
-document.addEventListener('DOMContentLoaded', () => {
-    // Bouton Accueil logo
-    document.getElementById('nav-home').addEventListener('click', () => goHome());
+// Tentative de synchronisation immédiate
+setTimeout(() => {
+    if (window.syncSongs) window.syncSongs();
+}, 100);
 
-    // Role Selection
-    document.getElementById('btn-role-host').addEventListener('click', () => {
-        state.isHost = true;
-        showScreen('home');
-        initHostMode();
-    });
+// Global Error Handler for remote debugging
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+    logDebug(`ERROR: ${msg} line:${lineNo} col:${columnNo}`);
+    return false;
+};
 
-    document.getElementById('btn-role-player').addEventListener('click', () => {
-        state.isHost = false;
-        showScreen('player');
-    });
+const state = {
+    screen: 'home',
+    teams: [
+        { name: 'Équipe 1', score: 0 },
+        { name: 'Équipe 2', score: 0 },
+        { name: 'Équipe 3', score: 0 },
+        { name: 'Équipe 4', score: 0 }
+    ],
+    teamCount: 2,
+    currentTheme: null,
+    timer: 30,
+    interval: null,
+    isPlaying: false,
+    currentSong: null,
+    round: 0,
+    maxRounds: 50,
+    playedSongs: [],
+    failedSongs: [],
+    streakTeam: null,
+    streakCount: 0,
+    currentModifier: null,
+    mysteryRate: 1.0,
+    speedBonusActive: false,
+    winningTeam: null,
+    jokers: [true, true, true, true],
+    activeJoker: null,
+    soloMode: false,
 
-    // Home Setup
-    document.querySelectorAll('.mode-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            state.gameMode = btn.dataset.mode;
-        });
-    });
+    // Multiplayer State
+    role: null,
+    roomId: null,
+    gameMode: 'oral',
+    myTeamIdx: null,
+    roomRef: null,
+    songsUntilWheel: 0,
 
-    document.getElementById('btn-create-teams').addEventListener('click', () => {
-        document.getElementById('modal-teams').style.display = 'flex';
-    });
+    songs: {}
+};
 
-    // Solo Mode
-    document.querySelectorAll('.solo-mode-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.solo-mode-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
-    document.getElementById('btn-solo-mode').addEventListener('click', () => {
-        const name = document.getElementById('input-solo-name').value.trim();
-        if (!name) {
-            alert("Entrez un prénom pour le mode solo !");
-            return;
-        }
-        state.soloMode = true;
-        state.soloName = name;
-        state.teams = [name, "Ordinateur"];
-        state.isHost = true;
-        state.gameMode = document.querySelector('.solo-mode-btn.active').dataset.soloMode;
-
-        initSoloGame();
-    });
-
-    // Modal Teams
-    document.querySelectorAll('.count-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const count = parseInt(btn.dataset.count);
-            document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            for (let i = 1; i <= 4; i++) {
-                const input = document.getElementById(`input-team-${i}`);
-                if (i <= count) input.classList.remove('hidden');
-                else input.classList.add('hidden');
-            }
-        });
-    });
-
-    document.getElementById('btn-start-game').addEventListener('click', () => {
-        const count = parseInt(document.querySelector('.count-btn.active').dataset.count);
-        state.teams = [];
-        for (let i = 1; i <= count; i++) {
-            state.teams.push(document.getElementById(`input-team-${i}`).value || `Équipe ${i}`);
-        }
-        document.getElementById('modal-teams').style.display = 'none';
-        
-        if (!state.roomCode) {
-            createRoom();
-        }
-        showScreen('themes');
-    });
-
-    // Theme Selection
-    document.querySelectorAll('.theme-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const theme = card.dataset.theme;
-            startNewGame(theme);
-        });
-    });
-
-    // Player Join
-    document.getElementById('btn-join-room').addEventListener('click', () => {
-        const code = document.getElementById('input-room-code').value.toUpperCase();
-        const teamIdx = parseInt(document.getElementById('select-team-join').value);
-        state.remoteAudio = document.getElementById('check-remote-audio').checked;
-        joinRoom(code, teamIdx);
-    });
-
-    // Monitor Firebase Connection
-    if (typeof firebase !== 'undefined') {
-        const connectedRef = firebase.database().ref(".info/connected");
-        connectedRef.on("value", (snap) => {
-            if (snap.val() === true) {
-                logDebug("Firebase: CONNECTÉ");
-            } else {
-                logDebug("Firebase: DÉCONNECTÉ");
-            }
-        });
+// Initialisation différée pour s'assurer que SONG_DATABASE est chargé
+function syncSongs() {
+    if (typeof SONG_DATABASE !== 'undefined' && Object.keys(state.songs).length === 0) {
+        state.songs = SONG_DATABASE;
+        logDebug("Database synchronisée : " + Object.keys(state.songs).length + " thèmes.");
+        return true;
     }
-});
+    return Object.keys(state.songs).length > 0;
+}
 
-function showScreen(screenId) {
-    state.screen = screenId;
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(`screen-${screenId}`).classList.add('active');
-    
-    // Cleanup navigation bar
-    if (screenId === 'role' || screenId === 'home') {
-        document.getElementById('room-code-display').classList.add('hidden');
-    } else if (state.roomCode) {
-        document.getElementById('room-code-display').classList.remove('hidden');
-        document.getElementById('current-room-id').innerText = state.roomCode;
-    }
+// UI Elements
+const screens = {
+    home: document.getElementById('screen-home'),
+    themes: document.getElementById('screen-themes'),
+    game: document.getElementById('screen-game'),
+    results: document.getElementById('screen-results'),
+    role: document.getElementById('screen-role'),
+    player: document.getElementById('screen-player')
+};
 
-    window.scrollTo(0, 0);
+// Lobby / Setup Elements (Shared)
+const btnRoleHost = document.getElementById('btn-role-host');
+const btnRolePlayer = document.getElementById('btn-role-player');
+const btnJoinRoom = document.getElementById('btn-join-room');
+const inputRoomCode = document.getElementById('input-room-code');
+const selectTeamJoin = document.getElementById('select-team-join');
+const roomCodeDisplay = document.getElementById('room-code-display');
+const currentRoomIdSpan = document.getElementById('current-room-id');
+const playerLobby = document.getElementById('player-lobby');
+const playerGame = document.getElementById('player-game');
+const waitingMsg = document.getElementById('waiting-msg');
+const btnPlayerBuzz = document.getElementById('btn-player-buzz');
+const btnPlayerJoker = document.getElementById('btn-player-joker');
+const playerChoices = document.getElementById('player-choices');
+const modeButtons = document.querySelectorAll('.mode-btn');
+const btnCreateTeams = document.getElementById('btn-create-teams');
+const navHome = document.getElementById('nav-home');
+const modalTeams = document.getElementById('modal-teams');
+const btnStartGame = document.getElementById('btn-start-game');
+const themeCards = document.querySelectorAll('.theme-card');
+const countdownEl = document.getElementById('countdown');
+const hintsEl = document.getElementById('hints');
+const revealCard = document.getElementById('reveal-card');
+const revealArtist = document.getElementById('reveal-artist');
+const revealTitle = document.getElementById('reveal-title');
+const btnNext = document.getElementById('btn-next');
+const teamButtons = document.querySelectorAll('.team-btn');
+const btnCorrect = document.getElementById('btn-correct');
+const btnWrong = document.getElementById('btn-wrong');
+const validationControls = document.getElementById('validation-controls');
+const bravoContainer = document.getElementById('bravo-container');
+const modifierBadge = document.getElementById('modifier-badge');
+const btnSoloBuzz = document.getElementById('btn-solo-buzz');
+const soloBuzzContainer = document.getElementById('solo-buzz-container');
+
+let lastBuzzedTeam = null;
+
+// Firebase Connection Monitor
+if (typeof firebase !== 'undefined') {
+    firebase.database().ref('.info/connected').on('value', (snap) => {
+        const connected = snap.val();
+        state.dbConnected = connected;
+        const statusEl = document.getElementById('firebase-status');
+        if (statusEl) {
+            statusEl.innerText = connected ? "DB CONNECTÉE ✅" : "DB DÉCONNECTÉE ❌ (Auto-Secours...)";
+            statusEl.style.color = connected ? "#00ff88" : "#ff3366";
+            statusEl.style.cursor = "pointer";
+            statusEl.onclick = () => {
+                logDebug("Tentative de reconnexion manuelle...");
+                firebase.database().goOnline();
+            };
+        }
+    });
+}
+
+function showScreen(name) {
+    if (!screens[name]) return;
+    Object.values(screens).forEach(s => s && s.classList.remove('active'));
+    screens[name].classList.add('active');
+    state.screen = name;
 }
 
 function goHome() {
-    if (state.interval) clearInterval(state.interval);
-    if (state.roomRef) state.roomRef.off();
-    
-    // Clean UI
-    document.getElementById('reveal-card').classList.add('hidden');
-    document.getElementById('modal-teams').style.display = 'none';
-    
+    if (state.role === 'player') {
+        if (state.roomRef) state.roomRef.off();
+        if (window.teamListener) window.teamListener.off();
+        state.role = null;
+        state.roomId = null;
+        state.roomRef = null;
+        state.myTeamIdx = null;
+        if (playerLobby) playerLobby.classList.remove('hidden');
+        if (playerGame) playerGame.classList.add('hidden');
+    }
+    if (state.role === 'host') {
+        state.isPlaying = false;
+        if (typeof audioPlayer !== 'undefined') audioPlayer.pause();
+        if (state.interval) clearInterval(state.interval);
+    }
     state.soloMode = false;
-    state.roomCode = '';
-    state.isHost = false;
-    
     showScreen('role');
 }
-
 window.goHome = goHome;
+
+if (navHome) {
+    navHome.addEventListener('click', goHome);
+    navHome.addEventListener('touchstart', (e) => { e.preventDefault(); goHome(); }, { passive: false });
+}
+
+// Host Room Creation
+btnRoleHost.addEventListener('click', () => {
+    state.role = 'host';
+    const charset = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    state.roomId = "";
+    for (let i = 0; i < 4; i++) state.roomId += charset.charAt(Math.floor(Math.random() * charset.length));
+
+    currentRoomIdSpan.innerText = state.roomId;
+    roomCodeDisplay.classList.remove('hidden');
+
+    if (window.firebase && firebase.apps.length) {
+        state.roomRef = firebase.database().ref('rooms/' + state.roomId);
+
+        const initData = {
+            status: 'initiating',
+            timestamp: Date.now(),
+            hostActive: true,
+            version: 'v51.2',
+            teams: state.teams.slice(0, state.teamCount).map(t => t.name)
+        };
+
+        state.roomRef.set(initData);
+
+        // REST Force Fallback
+        const forceREST = (data = initData) => {
+            const dbUrl = (typeof firebaseConfig !== 'undefined') ? firebaseConfig.databaseURL : "https://quizzgame2026-default-rtdb.firebaseio.com";
+            fetch(`${dbUrl}/rooms/${state.roomId}.json`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).catch(e => { });
+        };
+
+        forceREST();
+        if (window.syncHostTeams) setTimeout(window.syncHostTeams, 500);
+
+        setInterval(() => {
+            if (state.role === 'host' && state.roomId) {
+                const hb = { hostHeartbeat: Date.now() };
+                if (state.roomRef) state.roomRef.update(hb);
+                if (!state.dbConnected) forceREST(hb);
+            }
+        }, 3000);
+
+        state.roomRef.child('buzz').on('value', (snap) => {
+            const val = snap.val();
+            if (val && window.handleRemoteBuzz) window.handleRemoteBuzz(val.teamIdx);
+        });
+
+        state.roomRef.child('answer').on('value', (snap) => {
+            const val = snap.val();
+            if (val && window.handleRemoteAnswer) window.handleRemoteAnswer(val);
+        });
+
+        state.roomRef.child('vocalAnswer').on('value', (snap) => {
+            const val = snap.val();
+            if (val && window.handleRemoteVocal) window.handleRemoteVocal(val);
+        });
+
+        state.roomRef.child('activeJoker').on('value', (snap) => {
+            const val = snap.val();
+            if (val !== undefined) state.activeJoker = val;
+        });
+    }
+
+    showScreen('home');
+});
+
+logDebug('Script initialized (v2026_v51.2)');
