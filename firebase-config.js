@@ -1,5 +1,14 @@
 /**
  * CONFIGURATION FIREBASE - STITCH 2026
+ * 
+ * Instructions pour le propriétaire :
+ * 1. Allez sur https://console.firebase.google.com/
+ * 2. Créez un projet nommé "Karaoke-2026"
+ * 3. Ajoutez une application Web
+ * 4. Activez "Realtime Database" dans le menu de gauche
+ * 5. Dans les règles de la Realtime Database, mettez : 
+ *    { "rules": { ".read": true, ".write": true } }
+ * 6. Copiez vos IDs ci-dessous :
  */
 
 const firebaseConfig = {
@@ -13,12 +22,16 @@ const firebaseConfig = {
     measurementId: "G-WQ2XBQY49R"
 };
 
-// Initialisation globale
-if (typeof firebase !== 'undefined') {
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-        console.log("Firebase Initialisé ! ✅");
+// Initialisation globale si la config est remplie
+if (firebaseConfig.apiKey !== "VOTRE_API_KEY") {
+    if (typeof firebase !== 'undefined') {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+            console.log("Firebase Initialisé ! ✅");
+        }
+    } else {
+        console.error("Firebase SDK non trouvé ! Le mode multi-joueurs ne fonctionnera pas.");
     }
 } else {
-    console.error("Firebase SDK non trouvé ! Le mode multi-joueurs ne fonctionnera pas.");
+    console.warn("Firebase non configuré. Le mode multi-joueurs ne fonctionnera pas localement.");
 }
