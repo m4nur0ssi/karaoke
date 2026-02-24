@@ -333,6 +333,16 @@ async function nextSong() {
             audioPlayer.defaultPlaybackRate = state.mysteryRate;
             audioPlayer.playbackRate = state.mysteryRate;
 
+            // Unhide Solo UI elements before playing (to avoid being hidden if play() is blocked)
+            if (state.soloMode) {
+                if (state.gameMode === 'oral' || !state.gameMode) {
+                    if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.remove('hidden');
+                }
+                if (state.gameMode === 'buttons') {
+                    showHints();
+                }
+            }
+
             audioPlayer.play().then(() => {
                 clearTimeout(loadingSafetyTimeout);
                 // Double check rate on actual playback start (Crucial for mobile Safari)
@@ -341,14 +351,6 @@ async function nextSong() {
 
                 state.timer = (state.currentModifier === 'fast') ? 10 : 30;
                 countdownEl.innerText = state.timer;
-
-                if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
-                    if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.remove('hidden');
-                }
-
-                if (state.soloMode && state.gameMode === 'buttons') {
-                    showHints();
-                }
 
                 startTimer();
             }).catch(e => {
@@ -699,16 +701,31 @@ function handleTimeout() {
 }
 
 function showHints() {
+    if (!state.currentSong || !state.currentSong.hints) return;
+
+    const btns = hintsEl.querySelectorAll('.hint-btn');
+    const labels = state.currentSong.hints;
+
+    btns.forEach((btn, idx) => {
+        if (labels[idx]) {
+            btn.innerText = labels[idx];
+            btn.classList.remove('hidden');
+            // Re-bind click
+            btn.onclick = () => selectArtist(labels[idx]);
+        } else {
+            btn.classList.add('hidden');
+        }
+    });
+
     if (state.gameMode === 'buttons') {
         hintsEl.classList.remove('hidden');
     } else if (state.gameMode === 'oral') {
         if (state.roomRef) {
             state.roomRef.update({
                 showHintsToPlayer: true,
-                choices: shuffle([...state.currentSong.hints])
+                choices: state.currentSong.hints // No need to shuffle again, nextSong already did
             });
         } else if (state.soloMode) {
-            // En solo oral, on affiche aussi les propositions sur l'écran si on veut (Optionnel mais demandé indirectly)
             hintsEl.classList.remove('hidden');
         }
     }
@@ -1000,6 +1017,17 @@ const handleNextOrPlay = () => {
         btnNext.classList.add('hidden');
         countdownEl.innerText = state.timer;
         countdownEl.style.fontSize = "8rem"; // Reset size
+
+        // Ensure solo UI is shown when sound is manually started
+        if (state.soloMode) {
+            if (state.gameMode === 'oral' || !state.gameMode) {
+                if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.remove('hidden');
+            }
+            if (state.gameMode === 'buttons') {
+                showHints();
+            }
+        }
+
         audioPlayer.play().then(() => {
             state.isPlaying = true;
             startTimer();
