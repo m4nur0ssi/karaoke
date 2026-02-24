@@ -621,14 +621,28 @@ window.updatePlayerInterface = (roomData) => {
             waitingMsg.classList.add('status-buzzed');
             playerChoices.classList.add('hidden');
         }
-    } else if (roomData.status === 'finished_song' || roomData.status === 'finished') {
+    } else if (roomData.status === 'finished_song') {
         if (oralFallbackTimeout) { clearTimeout(oralFallbackTimeout); oralFallbackTimeout = null; }
         if (isRecognizing && recognition) recognition.stop();
         if (playerAudio) playerAudio.pause();
-        waitingMsg.innerText = "FIN DU TITRE";
-        waitingMsg.classList.add('status-waiting');
+
+        const isWinner = (roomData.winnerTeam === state.myTeamIdx);
+        const titleLine = isWinner ? "BRAVO ! 🎉" : (roomData.winnerTeam !== null ? "DOMMAGE ! ⏳" : "FIN DU TEMPS ! ⌛");
+        const pointsLine = roomData.feedbackMsg || "";
+        const songLine = `${roomData.revealedArtist || "?"} - ${roomData.revealedTitle || "?"}`;
+
+        waitingMsg.innerHTML = `
+            <div style="font-size:1.8rem; font-weight:900; color:var(--secondary); margin-bottom:10px;">${titleLine}</div>
+            <div style="font-size:1.1rem; color:white; font-weight:bold; margin-bottom:15px; background:rgba(255,255,255,0.1); padding:5px 15px; border-radius:10px;">${pointsLine}</div>
+            <div style="font-size:0.9rem; color:var(--text-dim);">C'était :</div>
+            <div style="font-size:1.2rem; font-weight:bold; color:var(--primary); margin-top:5px;">${songLine.toUpperCase()}</div>
+        `;
+
+        waitingMsg.classList.add('status-active');
         btnPlayerBuzz.classList.add('hidden');
         playerChoices.classList.add('hidden');
+        if (btnPlayerJoker) btnPlayerJoker.classList.add('hidden');
+
     } else if (roomData.status === 'finished') {
         if (isRecognizing && recognition) recognition.stop();
         if (playerAudio) playerAudio.pause();
