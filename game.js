@@ -174,6 +174,7 @@ async function nextSong() {
         }
 
         // Sync loading status to players & Reset states
+        const jokerAvailable = Math.random() < 0.20; // 20% chance
         if (state.roomRef) {
             state.roomRef.update({
                 status: 'loading',
@@ -182,7 +183,8 @@ async function nextSong() {
                 buzz: null,
                 answer: null,
                 activeJoker: null,
-                showHintsToPlayer: state.gameMode === 'buttons'
+                showHintsToPlayer: state.gameMode === 'buttons',
+                jokerAvailableThisRound: jokerAvailable
             });
         }
 
