@@ -81,6 +81,8 @@ if (btnSoloMode) {
         }
 
         state.soloMode = true;
+        state.roomId = null;
+        state.roomRef = null;
         state.role = 'host';
         state.teamCount = 1;
         state.teams[0].name = soloName;
