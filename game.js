@@ -335,12 +335,17 @@ async function nextSong() {
 
             // Unhide Solo UI elements before playing (to avoid being hidden if play() is blocked)
             if (state.soloMode) {
-                if (state.gameMode === 'oral' || !state.gameMode) {
-                    if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.remove('hidden');
+                const soloBuzz = document.getElementById('solo-buzz-container');
+                if (soloBuzz) {
+                    // Show large buzz button if in Oral mode (or default)
+                    if (state.gameMode === 'oral' || !state.gameMode) {
+                        soloBuzz.classList.remove('hidden');
+                    } else {
+                        soloBuzz.classList.add('hidden');
+                    }
                 }
-                if (state.gameMode === 'buttons') {
-                    showHints();
-                }
+                // Always call showHints in solo, it will handle visibility of the 4 propositions
+                showHints();
             }
 
             audioPlayer.play().then(() => {
@@ -375,11 +380,7 @@ async function nextSong() {
             displayFeedback("TITRE INDISPONIBLE... DÉSOLÉ ! 😓", "feedback-dommage");
         }
 
-        const hintButtons = hintsEl.querySelectorAll('.hint-btn');
-        state.currentSong.hints.forEach((hint, i) => {
-            hintButtons[i].innerText = hint;
-            hintButtons[i].onclick = () => selectArtist(hint);
-        });
+
     } catch (err) {
         console.error("Critical error in nextSong:", err);
         countdownEl.innerText = "Erreur - Passez au suivant";
@@ -703,7 +704,9 @@ function handleTimeout() {
 function showHints() {
     if (!state.currentSong || !state.currentSong.hints) return;
 
-    const btns = hintsEl.querySelectorAll('.hint-btn');
+    const hints = document.getElementById('hints');
+    if (!hints) return;
+    const btns = hints.querySelectorAll('.hint-btn');
     const labels = state.currentSong.hints;
 
     btns.forEach((btn, idx) => {
@@ -718,7 +721,7 @@ function showHints() {
     });
 
     if (state.gameMode === 'buttons') {
-        hintsEl.classList.remove('hidden');
+        hints.classList.remove('hidden');
     } else if (state.gameMode === 'oral') {
         if (state.roomRef) {
             state.roomRef.update({
@@ -726,7 +729,7 @@ function showHints() {
                 choices: state.currentSong.hints // No need to shuffle again, nextSong already did
             });
         } else if (state.soloMode) {
-            hintsEl.classList.remove('hidden');
+            hints.classList.remove('hidden');
         }
     }
 }
@@ -1020,12 +1023,11 @@ const handleNextOrPlay = () => {
 
         // Ensure solo UI is shown when sound is manually started
         if (state.soloMode) {
-            if (state.gameMode === 'oral' || !state.gameMode) {
-                if (typeof soloBuzzContainer !== 'undefined' && soloBuzzContainer) soloBuzzContainer.classList.remove('hidden');
+            const soloBuzz = document.getElementById('solo-buzz-container');
+            if (soloBuzz && (state.gameMode === 'oral' || !state.gameMode)) {
+                soloBuzz.classList.remove('hidden');
             }
-            if (state.gameMode === 'buttons') {
-                showHints();
-            }
+            showHints();
         }
 
         audioPlayer.play().then(() => {
