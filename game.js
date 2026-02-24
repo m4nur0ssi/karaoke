@@ -72,7 +72,7 @@ async function fetchPreview(artist, title, theme, brand) {
         const data = await response.json();
 
         if (data.results && data.results.length > 0) {
-            let coverUrl = data.results[0].artworkUrl100.replace('100x100bb', '600x600bb');
+            let coverUrl = data.results[0].artworkUrl100.replace('100x100bb', '1000x1000bb');
             let audioUrl = data.results[0].previewUrl;
 
             // Override cover for Series / Movies / Cartoons
@@ -92,7 +92,7 @@ async function fetchPreview(artist, title, theme, brand) {
 
                     let tvData = await tvResponse.json();
                     if (tvData.results && tvData.results.length > 0) {
-                        coverUrl = tvData.results[0].artworkUrl100.replace('100x100bb', '600x600bb');
+                        coverUrl = tvData.results[0].artworkUrl100.replace('100x100bb', '1000x1000bb');
                     } else {
                         const movieController = window.AbortController ? new AbortController() : null;
                         const movieTimeout = movieController ? setTimeout(() => movieController.abort(), 3000) : null;
@@ -104,7 +104,7 @@ async function fetchPreview(artist, title, theme, brand) {
 
                         let movData = await movResponse.json();
                         if (movData.results && movData.results.length > 0) {
-                            coverUrl = movData.results[0].artworkUrl100.replace('100x100bb', '600x600bb');
+                            coverUrl = movData.results[0].artworkUrl100.replace('100x100bb', '1000x1000bb');
                         }
                     }
                 } catch (e) { }
