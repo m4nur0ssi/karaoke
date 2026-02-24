@@ -2152,11 +2152,11 @@ input {
     left: 50% !important;
     transform: translateX(-50%) !important;
     backdrop-filter: blur(10px) !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 15px !important;
-    z-index: 10 !important;
-    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+    margin: 0;
 }
 
 #current-room-id {
