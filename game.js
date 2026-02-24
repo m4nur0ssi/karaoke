@@ -1032,16 +1032,6 @@ const handleBuzz = (idx) => {
         if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
             displayFeedback("JE VOUS ÉCOUTE... 🎤", "feedback-bravo", true);
 
-            // Afficher le bouton de secours pour iPhone/HTTP
-            const manualBtn = document.getElementById('btn-manual-validate');
-            if (manualBtn) {
-                manualBtn.classList.remove('hidden');
-                manualBtn.onclick = () => {
-                    manualBtn.classList.add('hidden');
-                    victory();
-                };
-            }
-
             // Appel immédiat sans setTimeout pour préserver le geste utilisateur
             if (window.startVoiceRecognition) {
                 window.startVoiceRecognition();
