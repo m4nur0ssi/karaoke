@@ -101,12 +101,8 @@ if (btnSoloMode) {
             const b = document.getElementById(id); if (b) b.classList.add('hidden');
         });
         if (block1) {
-            // Unhide buzzer ONLY if in Oral mode
-            if (state.gameMode === 'oral' || !state.gameMode) {
-                block1.classList.remove('hidden');
-            } else {
-                block1.classList.add('hidden');
-            }
+            // Hide team blocks in solo mode as the huge BUZZ button is used instead
+            block1.classList.add('hidden');
         }
 
         const chip1 = document.getElementById('score-team-1');
@@ -298,6 +294,19 @@ const handleJoinRoom = () => {
     const proceedToLobby = () => {
         playerLobby.classList.add('hidden');
         playerGame.classList.remove('hidden');
+
+        // Pre-authorize Microphone for the player
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    stream.getTracks().forEach(t => t.stop());
+                    logDebug("✅ Player Mic ready");
+                })
+                .catch(e => {
+                    logDebug("❌ Player Mic pre-auth failed");
+                });
+        }
+
         const badge = document.getElementById('player-room-badge');
         if (badge) badge.innerText = "ROOM: " + code;
         const myName = (state.teams[state.myTeamIdx] && state.teams[state.myTeamIdx].name) ? state.teams[state.myTeamIdx].name : `Équipe ${state.myTeamIdx + 1}`;
@@ -504,12 +513,14 @@ window.updatePlayerInterface = (roomData) => {
     waitingMsg.className = 'player-status-indicator';
 
     if (roomData.status === 'playing' || roomData.status === 'loading') {
-        // Only stop recognition if we are transitioning BACK to playing
-        if (isRecognizing && recognition) recognition.stop();
-
         const isPlaying = roomData.status === 'playing';
         waitingMsg.innerText = isPlaying ? "À L'ÉCOUTE..." : "CHARGEMENT DU TITRE...";
         waitingMsg.classList.add(isPlaying ? 'status-active' : 'status-waiting');
+
+        // Safari stabilization: only stop if actually recognizing
+        if (isRecognizing && recognition) {
+            try { recognition.stop(); } catch (e) { }
+        }
 
         if (isPlaying) {
             btnPlayerBuzz.classList.remove('hidden');
@@ -552,6 +563,10 @@ window.updatePlayerInterface = (roomData) => {
             if (isOral) {
                 // Ensure recognition is running
                 startVoiceRecognition();
+                // FALLBACK: Show choices even in oral mode so user can click if mic fails
+                if (roomData.status === 'buzzed' && roomData.choices) {
+                    showPlayerChoices(roomData.choices);
+                }
             } else {
                 if (isRecognizing && recognition) recognition.stop();
                 if (roomData.status === 'buzzed' && roomData.choices) {
@@ -653,9 +668,7 @@ if (btnPlayerBuzz) {
             btnPlayerBuzz.disabled = true;
 
             // Trigger Voice Recognition immediately on user gesture
-            // This satisfies browser security requirements for microphone access
-            if (recognition) {
-                // We start it; if it's not oral mode, updatePlayerInterface will stop it in a few ms
+            if (state.gameMode === 'oral' || !state.gameMode) {
                 startVoiceRecognition();
             }
         }
@@ -677,15 +690,13 @@ function setupRecognition(instance) {
     instance.lang = 'fr-FR';
     instance.continuous = false;
     instance.interimResults = true;
+    instance.maxAlternatives = 1;
 
     instance.onstart = () => {
         isRecognizing = true;
-        logDebug("Microphone activé !");
-        if (window.displayFeedback) {
-            window.displayFeedback("JE VOUS ÉCOUTE... 🎤", "feedback-bravo", true);
-        }
-        const waitingMsg = document.getElementById('waiting-msg');
-        if (waitingMsg) waitingMsg.innerText = "🎤 JE VOUS ÉCOUTE...";
+        logDebug("🎤 Micro ON");
+        const msg = document.getElementById('waiting-msg');
+        if (msg) msg.innerText = "🎤 JE VOUS ÉCOUTE...";
     };
 
     instance.onresult = (event) => {
@@ -713,16 +724,20 @@ function setupRecognition(instance) {
 
     instance.onend = () => {
         isRecognizing = false;
-        logDebug("Microphone coupé");
+        logDebug("🎤 Micro OFF");
     };
 
     instance.onerror = (event) => {
-        console.error("Speech Error:", event.error);
         isRecognizing = false;
-        let msg = "ERREUR MICRO : " + event.error;
-        if (event.error === 'not-allowed') msg = "MICRO BLOQUÉ (Vérifiez les réglages)";
-        if (event.error === 'network') msg = "ERREUR RÉSEAU (Reconnexion nécessaire)";
-        if (window.displayFeedback) window.displayFeedback(msg, "feedback-dommage");
+        if (event.error === 'aborted') {
+            logDebug("🎤 Micro: Aborted (Normal ignore)");
+            return;
+        }
+        logDebug("🎤 Micro Error: " + event.error);
+        if (event.error === 'not-allowed') {
+            const msg = document.getElementById('waiting-msg');
+            if (msg) msg.innerText = "MICRO BLOQUÉ (Vérifiez réglages)";
+        }
     };
 }
 
@@ -734,32 +749,28 @@ if (SpeechRecognition) {
 function startVoiceRecognition() {
     try {
         const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SR) {
-            if (window.displayFeedback) window.displayFeedback("MICRO NON SUPPORTÉ", "feedback-dommage");
-            return;
-        }
+        if (!SR) return;
 
         if (!recognition) {
             recognition = new SR();
             setupRecognition(recognition);
         }
 
-        if (isRecognizing) {
-            try { recognition.stop(); } catch (e) { }
-        }
+        if (isRecognizing) return;
 
-        // APPEL IMMEDIAT - Indispensable pour iOS/Safari
-        try {
-            recognition.start();
-        } catch (e) {
-            console.warn("Recognition start failed, retrying with tiny delay...", e);
-            setTimeout(() => {
-                try { recognition.start(); } catch (err) { }
-            }, 100);
-        }
+        // Safari requires a fresh cycle if it was just stop()ed
+        setTimeout(() => {
+            try {
+                if (!isRecognizing) {
+                    recognition.start();
+                    logDebug("🎤 Mic Start Triggered");
+                }
+            } catch (e) {
+                // If already started or aborting, ignore to prevent freeze
+            }
+        }, 100);
     } catch (e) {
-        console.error("Failed to start recognition:", e);
-        if (window.displayFeedback) window.displayFeedback("ERREUR Lancement Micro", "feedback-dommage");
+        logDebug("🎤 Recognition Start Error: " + e.message);
         isRecognizing = false;
     }
 }
