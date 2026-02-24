@@ -524,8 +524,9 @@ window.updatePlayerInterface = (roomData) => {
             try { recognition.stop(); } catch (e) { }
         }
 
-        const showHints = isPlaying && roomData.showHintsToPlayer && roomData.choices;
-        if (isPlaying && !showHints) {
+        const isArcade = roomData.mode === 'buttons';
+        const showHints = isPlaying && (roomData.showHintsToPlayer || isArcade) && roomData.choices;
+        if (isPlaying && !showHints && !isArcade) {
             btnPlayerBuzz.classList.remove('hidden');
             btnPlayerBuzz.disabled = false;
         } else {
