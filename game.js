@@ -570,7 +570,7 @@ function handleRemoteAnswer(answerData) {
         if (isCorrectAnswer(answerData.choice, state.currentSong)) {
             lastBuzzedTeam = answerData.teamIdx;
             state.roomRef.child('answer').set(null);
-            victory();
+            btnCorrect.click();
             return;
         } else {
             // Mauvaise réponse via hint en mode oral
