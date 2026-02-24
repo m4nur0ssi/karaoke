@@ -290,6 +290,10 @@ const handleJoinRoom = () => {
     if (selectTeamJoin.value === "") return alert("Veuillez choisir une équipe");
     state.myTeamIdx = parseInt(selectTeamJoin.value);
 
+    // Store remote preference
+    const checkRemote = document.getElementById('check-remote-audio');
+    state.isRemote = checkRemote ? checkRemote.checked : false;
+
     btnJoinRoom.innerText = "CONNEXION EN COURS...";
     btnJoinRoom.disabled = true;
 
@@ -518,7 +522,7 @@ window.updatePlayerInterface = (roomData) => {
     if (!waitingMsg) return;
 
     // Mode Distance Logic
-    const isRemote = document.getElementById('check-remote-audio') && document.getElementById('check-remote-audio').checked;
+    const isRemote = state.isRemote;
 
     // Helper to clear existing classes
     waitingMsg.className = 'player-status-indicator';
@@ -805,11 +809,24 @@ function startVoiceRecognition() {
 window.startVoiceRecognition = startVoiceRecognition;
 
 function syncRemoteAudio(url, rate, serverTime) {
-    if (playerAudio && playerAudio.src === url) return;
+    if (!url) return;
 
-    if (playerAudio) { playerAudio.pause(); }
+    if (!playerAudio) {
+        playerAudio = new Audio();
+    }
 
-    playerAudio = new Audio(url);
+    // Use includes to avoid issues with absolute/relative URL translations by the browser
+    if (playerAudio.src && playerAudio.src.includes(url)) {
+        if (playerAudio.paused && !playerAudio.ended) {
+            playerAudio.play().catch(e => { /* still blocked? */ });
+        }
+        return;
+    }
+
+    logDebug("📖 Sync Audio: " + url.split('/').pop());
+    playerAudio.pause();
+    playerAudio.src = url;
+    playerAudio.load();
     playerAudio.playbackRate = rate;
 
     // Calculate offset based on server time + offset
@@ -820,27 +837,46 @@ function syncRemoteAudio(url, rate, serverTime) {
         playerAudio.currentTime = offset;
     }
 
-    playerAudio.play().then(() => {
-        const viz = document.getElementById('player-viz');
-        if (viz) viz.classList.remove('hidden');
-    }).catch(e => {
-        console.warn("Remote audio blocked:", e);
-        // Fallback UI to unlock audio
-        const msg = document.getElementById('waiting-msg');
-        if (msg) {
-            const original = msg.innerText;
-            msg.innerHTML = `<button id='btn-unlock-audio' style='background:var(--secondary); color:white; border:none; padding:10px 20px; border-radius:10px; font-weight:bold;'>TOUCHER ICI POUR LE SON 🔊</button>`;
-            const unlock = document.getElementById('btn-unlock-audio');
-            if (unlock) {
-                const trigger = () => {
-                    playerAudio.play();
-                    msg.innerText = original;
-                };
-                unlock.onclick = trigger;
-                unlock.ontouchstart = (e) => { e.preventDefault(); trigger(); };
+    const tryPlay = () => {
+        playerAudio.play().then(() => {
+            logDebug("🔊 Audio en cours (Sync OK)");
+            const viz = document.getElementById('player-viz');
+            if (viz) viz.classList.remove('hidden');
+            // Hide unlock button if it was there
+            const oldBtn = document.getElementById('btn-unlock-audio');
+            if (oldBtn) {
+                const msg = document.getElementById('waiting-msg');
+                if (msg) msg.innerText = "À L'ÉCOUTE...";
             }
-        }
-    });
+        }).catch(e => {
+            console.warn("Remote audio blocked by browser behavior:", e);
+            // Fallback UI to unlock audio
+            const msg = document.getElementById('waiting-msg');
+            if (msg && !document.getElementById('btn-unlock-audio')) {
+                msg.innerHTML = `<button id='btn-unlock-audio' style='background:var(--secondary); color:white; border:none; padding:15px 30px; border-radius:15px; font-weight:bold; font-size:1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: pulse 1.5s infinite;'>🔊 ACTIVER LE SON DISTANCE</button>`;
+                const unlock = document.getElementById('btn-unlock-audio');
+                if (unlock) {
+                    const trigger = () => {
+                        playerAudio.play().then(() => {
+                            msg.innerText = "À L'ÉCOUTE...";
+                        });
+                    };
+                    unlock.onclick = trigger;
+                    unlock.ontouchstart = (e) => { e.preventDefault(); trigger(); };
+                }
+            }
+        });
+    };
+
+    // Give it a tiny moment to load metadata for currentTime
+    if (playerAudio.readyState >= 2) {
+        tryPlay();
+    } else {
+        playerAudio.oncanplay = () => {
+            tryPlay();
+            playerAudio.oncanplay = null;
+        };
+    }
 }
 
 function showPlayerChoices(choices) {
