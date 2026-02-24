@@ -2,6 +2,8 @@
  * LOBBY & TEAM MANAGEMENT - STITCH 2026
  */
 let oralFallbackTimeout = null;
+let playerAudio = null;
+const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
 
 btnRoleHost.addEventListener('touchstart', (e) => {
     e.preventDefault();
@@ -299,13 +301,15 @@ const handleJoinRoom = () => {
     btnJoinRoom.disabled = true;
 
     // --- NOUVEAU : Pré-autorisation du son IMMÉDIATE (Mode Distance) ---
-    // On le fait ICI, dans le thread direct du clic utilisateur, pour iOS/Safari
+    // On utilise un flux SILENCIEUX permanent pour garder Safari débloqué
     if (!playerAudio) playerAudio = new Audio();
+    playerAudio.src = SILENCE_SRC;
+    playerAudio.loop = true;
     playerAudio.volume = 0.5;
     playerAudio.play().then(() => {
-        logDebug("🔊 Audio débloqué pour mode distance.");
+        logDebug("🔊 Audio débloqué (Silence Loop ON).");
     }).catch(e => {
-        logDebug("⚠️ Audio temporairement bloqué par l'OS.");
+        logDebug("⚠️ Action requise pour débloquer le son.");
     });
 
     const proceedToLobby = () => {
@@ -510,7 +514,6 @@ function updateScores() {
     }
 }
 // --- REMOTE SYNC & PLAYER UI ---
-let playerAudio = null;
 
 window.updatePlayerInterface = (roomData) => {
     if (!roomData) return;
@@ -571,14 +574,22 @@ window.updatePlayerInterface = (roomData) => {
         if (isRemote && isPlaying && roomData.audioUrl) {
             syncRemoteAudio(roomData.audioUrl, roomData.mysteryRate || 1.0, roomData.timestamp);
         } else if (!isPlaying && playerAudio) {
-            playerAudio.pause();
-            // Important: Don't set playerAudio to null on iOS/Safari, reuse the object
-            // Remove visualizer if any
+            // Au lieu de mettre en pause, on repasse sur le silence pour ne pas perdre le flux iOS
+            if (playerAudio.src !== SILENCE_SRC) {
+                playerAudio.src = SILENCE_SRC;
+                playerAudio.loop = true;
+                playerAudio.play().catch(() => { });
+            }
+            // Hide visualizer
             const viz = document.getElementById('player-viz');
             if (viz) viz.classList.add('hidden');
         }
     } else if (roomData.status === 'buzzed' || roomData.status === 'feedback') {
-        if (playerAudio) playerAudio.pause();
+        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
+            playerAudio.src = SILENCE_SRC;
+            playerAudio.loop = true;
+            playerAudio.play().catch(() => { });
+        }
         const viz = document.getElementById('player-viz');
         if (viz) viz.classList.add('hidden');
 
@@ -625,7 +636,11 @@ window.updatePlayerInterface = (roomData) => {
     } else if (roomData.status === 'finished_song') {
         if (oralFallbackTimeout) { clearTimeout(oralFallbackTimeout); oralFallbackTimeout = null; }
         if (isRecognizing && recognition) recognition.stop();
-        if (playerAudio) playerAudio.pause();
+        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
+            playerAudio.src = SILENCE_SRC;
+            playerAudio.loop = true;
+            playerAudio.play().catch(() => { });
+        }
 
         const isWinner = (roomData.winnerTeam === state.myTeamIdx);
         const titleLine = isWinner ? "BRAVO ! 🎉" : (roomData.winnerTeam !== null ? "DOMMAGE ! ⏳" : "FIN DU TEMPS ! ⌛");
@@ -649,7 +664,11 @@ window.updatePlayerInterface = (roomData) => {
 
     } else if (roomData.status === 'finished') {
         if (isRecognizing && recognition) recognition.stop();
-        if (playerAudio) playerAudio.pause();
+        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
+            playerAudio.src = SILENCE_SRC;
+            playerAudio.loop = true;
+            playerAudio.play().catch(() => { });
+        }
         waitingMsg.innerHTML = "<div style='color:var(--secondary); font-size:1.5rem; font-weight:900;'>PARTIE TERMINÉE !</div>";
         if (roomData.scores) {
             const sorted = [...roomData.scores].sort((a, b) => b.score - a.score);
@@ -669,6 +688,11 @@ window.updatePlayerInterface = (roomData) => {
         playerChoices.classList.add('hidden');
     } else {
         if (isRecognizing && recognition) recognition.stop();
+        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
+            playerAudio.src = SILENCE_SRC;
+            playerAudio.loop = true;
+            playerAudio.play().catch(() => { });
+        }
         waitingMsg.innerText = "EN ATTENTE...";
         waitingMsg.classList.add('status-waiting');
         btnPlayerBuzz.classList.add('hidden');
@@ -846,24 +870,19 @@ function startVoiceRecognition() {
 window.startVoiceRecognition = startVoiceRecognition;
 
 function syncRemoteAudio(url, rate, serverTime) {
-    if (!url) return;
+    if (!url || !playerAudio) return;
 
-    if (!playerAudio) {
-        playerAudio = new Audio();
-    }
-
-    // Use includes to avoid issues with absolute/relative URL translations by the browser
+    // Si on joue déjà cette URL, on s'assure juste d'être en lecture
     if (playerAudio.src && playerAudio.src.includes(url)) {
-        if (playerAudio.paused && !playerAudio.ended) {
-            playerAudio.play().catch(e => { /* still blocked? */ });
+        if (playerAudio.paused) {
+            playerAudio.play().catch(e => { });
         }
         return;
     }
 
     logDebug("📖 Sync Audio: " + url.split('/').pop());
-    playerAudio.pause();
+    playerAudio.loop = false;
     playerAudio.src = url;
-    // Removing load() can help Safari stability on subsequent songs
     playerAudio.playbackRate = rate;
 
     // Calculate offset based on server time + offset
