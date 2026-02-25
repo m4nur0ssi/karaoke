@@ -12,7 +12,7 @@ const checkFirebase = () => {
     return { ok: true, msg: 'Firebase OK' };
 };
 
-logDebug('Script loaded v2026_v54.0');
+logDebug('Script loaded v2026_v54.2');
 
 // Tentative de synchronisation immédiate
 setTimeout(() => {
@@ -193,7 +193,7 @@ btnRoleHost.addEventListener('click', () => {
             status: 'initiating',
             timestamp: Date.now(),
             hostActive: true,
-            version: 'v51.2',
+            version: 'v2026_v54.2',
             teams: state.teams.slice(0, state.teamCount).map(t => t.name)
         };
 
@@ -244,4 +244,4 @@ btnRoleHost.addEventListener('click', () => {
     showScreen('home');
 });
 
-logDebug('Script initialized (v2026_v54.0)');
+logDebug('Script initialized (v2026_v54.2)');
