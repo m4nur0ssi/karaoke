@@ -702,13 +702,17 @@ window.updatePlayerInterface = (roomData) => {
         scoresHtm += "</div>";
 
         waitingMsg.innerHTML = `
+            <div style="font-size:1.4rem; font-weight:900; color:var(--secondary); margin-bottom:15px; letter-spacing:2px; text-shadow:0 0 20px var(--secondary);">FIN DU TITRE</div>
             ${coverImg}
-            <div class="player-result-title" style="color:${isWinner ? 'var(--secondary)' : 'var(--primary)'}">${titleLine}</div>
-            <div style="font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; margin-top:10px;">C'était :</div>
-            <div style="font-size:1.2rem; font-weight:900; color:white; margin:5px 0 20px;">${songLine.toUpperCase()}</div>
+            <div class="player-result-title" style="color:${isWinner ? 'var(--secondary)' : 'var(--primary)'}; font-size:1.8rem; margin:10px 0;">${titleLine}</div>
+            <div style="font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:2px; margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">La réponse était :</div>
+            <div style="font-size:1.3rem; font-weight:900; color:white; margin:10px 0 20px; line-height:1.2;">
+                <span style="display:block; font-size:0.9rem; opacity:0.8; font-weight:400;">${(roomData.revealedArtist || "Artiste inconnu").toUpperCase()}</span>
+                ${(roomData.revealedTitle || "Titre inconnu").toUpperCase()}
+            </div>
             ${scoresHtm}
         `;
-        waitingMsg.classList.add('status-active');
+        waitingMsg.className = 'player-status-indicator status-finished';
         btnPlayerBuzz.classList.add('hidden');
         playerChoices.classList.add('hidden');
 
