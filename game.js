@@ -1260,6 +1260,7 @@ async function launchWheelOfFate(modifier) {
         }
 
         const doSpin = () => {
+            if (state.roomRef) state.roomRef.update({ status: 'wheel_spinning' });
             playTone(880, 'sine', 0.1);
             teamZone.classList.add('hidden');
             slotWindow.classList.remove('hidden');
