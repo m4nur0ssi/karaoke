@@ -896,6 +896,7 @@ function syncRemoteAudio(url, rate, serverTime) {
     logDebug("📖 Sync New Song: " + url.split('/').pop());
     playerAudio.loop = false;
     playerAudio.src = url;
+    playerAudio.load(); // Explicit load fixes some iOS Safari stream locks
     try { playerAudio.playbackRate = rate; } catch (e) { }
 
     // Calculate offset based on server time + offset
@@ -906,16 +907,26 @@ function syncRemoteAudio(url, rate, serverTime) {
     if (offset < 0) offset = 0;
     if (offset > 29) offset = 0;
 
-    if (offset > 0.1) {
-        try { playerAudio.currentTime = offset; } catch (e) { }
-    }
+    // NEVER set currentTime synchronously before loadedmetadata on iOS!
+    // It permanently breaks the audio element's pipeline for certain files.
+
+    const applyOffset = () => {
+        if (offset > 0.5 && playerAudio.readyState >= 1) {
+            try {
+                if (Math.abs(playerAudio.currentTime - offset) > 1.5) {
+                    playerAudio.currentTime = offset;
+                }
+            } catch (e) { }
+        }
+    };
+
+    // Listen once for metadata to apply the offset correctly
+    playerAudio.addEventListener('loadedmetadata', applyOffset, { once: true });
 
     const tryPlay = () => {
-        if (playerAudio.src !== url) return; // Prevent racing updates
+        if (!playerAudio.src.includes(url) && playerAudio.src !== url) return; // Prevent racing updates
 
-        if (offset > 0.1) {
-            try { playerAudio.currentTime = offset; } catch (e) { }
-        }
+        applyOffset();
 
         playerAudio.play().then(() => {
             logDebug("🔊 Sync OK: Joue maintenant.");
