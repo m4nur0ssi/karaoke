@@ -2246,27 +2246,102 @@ input {
     }
 }
 
-/* Fix iOS white borders */
-html,
-body {
-    background-color: var(--bg-dark) !important;
-    height: 100vh;
-    height: -webkit-fill-available;
-    width: 100vw;
-    position: fixed;
-    overflow: hidden;
+/* STITCH 2026 - NEW PLAYER SCREEN ELEMENTS SYNC */
+.player-modifier-zone {
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-out;
 }
 
-#app-container {
-    height: 100vh;
-    height: -webkit-fill-available;
-    width: 100vw;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+.player-wheel-zone {
+    width: 100%;
+    margin-top: 20px;
+    animation: slideInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.club-dorothee {
-    background: url('https://img.buzzfeed.com/buzzfeed-static/static/2021-08/17/10/asset/fb99bde56475/sub-buzz-4340-1629202159-4.jpg') center/cover;
+.slot-machine.mini {
+    padding: 30px 15px;
+    max-width: 100% !important;
+    border-radius: 30px;
+}
+
+.player-result-cover {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.1);
+    border: 3px solid rgba(255,255,255,0.1);
+    animation: revealIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.player-result-title {
+    font-size: 2.5rem;
+    font-weight: 950;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.player-result-points {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+@keyframes revealIn {
+    0% { transform: scale(0.5) rotate(-10deg); opacity: 0; filter: blur(10px); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); }
+    100% { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 242, 254, 0.8); }
+}
+
+.wheel-explanation-text.tiny {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Specific player scores list style */
+.player-scores-list {
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.player-score-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+}
+
+.player-score-item:last-child {
+    border-bottom: none;
+}
+
+.player-score-item.gold { color: gold; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
+
+/* V54.1 Fixes */
+#waiting-msg.status-active {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(244, 37, 175, 0.1));
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure images fit well */
+.player-game img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* ========================================
