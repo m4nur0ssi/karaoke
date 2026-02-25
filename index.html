@@ -259,8 +259,8 @@
                 <h2 class="glow-text mini">REJOINDRE LE JEU</h2>
                 <div class="join-form">
                     <div class="field-group">
-                        <label class="field-label">CODE DU SALON</label>
-                        <input type="text" id="input-room-code" placeholder="----" maxlength="4"
+                        <label class="field-label">CODE</label>
+                        <input type="text" id="input-room-code" placeholder="Entrez le code" maxlength="4"
                             class="room-input lobby-input">
                     </div>
 
@@ -274,18 +274,19 @@
                         </select>
                     </div>
 
-                    <div class="remote-mode-toggle">
+                    <button id="btn-join-room" class="main-btn primary large-mobile"
+                        style="height: 80px; font-size: 1.6rem; border-radius: 40px; margin-top: 10px;">
+                        REJOINDRE LE JEU
+                    </button>
+
+                    <div class="remote-mode-toggle"
+                        style="justify-content: center; background: transparent; border: none; margin-top: 0; padding-top: 5px;">
                         <label class="switch-premium">
                             <input type="checkbox" id="check-remote-audio">
                             <span class="slider-premium"></span>
                         </label>
                         <span class="toggle-label">MODE DISTANCE (SON LOCAL)</span>
                     </div>
-
-                    <button id="btn-join-room" class="main-btn primary large-mobile"
-                        style="height: 80px; font-size: 1.6rem; border-radius: 40px; margin-top: 20px;">
-                        PRÊT À CHANTER !
-                    </button>
                 </div>
                 <div id="player-status-msg" class="player-status-msg"></div>
             </div>
