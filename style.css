@@ -1480,7 +1480,20 @@ input {
 
 .joker-btn {
     display: none;
-    /* User wants jokers only on client */
+}
+
+.joker-mobile {
+    position: relative;
+    margin-top: 30px;
+    width: 200px !important;
+    height: 55px !important;
+    font-size: 1.1rem !important;
+    border-radius: 30px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    z-index: 5;
 }
 
 .speed-bonus-text {
@@ -1672,33 +1685,38 @@ input {
 }
 
 .field-label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 800;
     color: var(--secondary);
-    letter-spacing: 2px;
-    margin-left: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+    padding-left: 15px;
 }
 
 .lobby-input,
 .lobby-select,
 .lobby-btn {
     width: 100%;
-    height: 75px;
-    border-radius: 100px;
-    border: 2px solid rgba(0, 242, 254, 0.5);
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9));
+    height: 60px;
+    border-radius: 30px;
+    border: 2px solid rgba(0, 242, 254, 0.4);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
     outline: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
 .lobby-input {
-    font-size: 2.2rem;
-    letter-spacing: 5px;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--secondary);
     text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
@@ -2274,8 +2292,8 @@ input {
     object-fit: cover;
     margin: 0 auto 20px;
     display: block;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.1);
-    border: 3px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.1);
     animation: revealIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
@@ -2283,7 +2301,7 @@ input {
     font-size: 2.5rem;
     font-weight: 950;
     margin-bottom: 10px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .player-result-points {
@@ -2295,13 +2313,29 @@ input {
 }
 
 @keyframes revealIn {
-    0% { transform: scale(0.5) rotate(-10deg); opacity: 0; filter: blur(10px); }
-    100% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0px); }
+    0% {
+        transform: scale(0.5) rotate(-10deg);
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: blur(0px);
+    }
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); }
-    100% { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 242, 254, 0.8); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    }
+
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(0, 242, 254, 0.8);
+    }
 }
 
 .wheel-explanation-text.tiny {
@@ -2330,7 +2364,10 @@ input {
     border-bottom: none;
 }
 
-.player-score-item.gold { color: gold; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
+.player-score-item.gold {
+    color: gold;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
 
 /* V54.1 Fixes */
 #waiting-msg.status-active {
@@ -2737,6 +2774,19 @@ input:checked+.slider-premium:before {
     box-shadow: 0 0 30px rgba(244, 37, 175, 0.4);
     transform: scale(1.05);
     border-color: rgba(255, 255, 255, 0.2);
+}
+
+.status-finished {
+    background: rgba(20, 20, 30, 0.9) !important;
+    border: 2px solid var(--secondary);
+    border-radius: 25px !important;
+    padding: 20px !important;
+    width: 90%;
+    max-width: 400px;
+    height: auto !important;
+    color: white;
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+    transform: none !important;
 }
 
 .status-buzzed {
