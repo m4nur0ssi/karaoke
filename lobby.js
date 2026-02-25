@@ -18,7 +18,7 @@ btnRolePlayer.addEventListener('click', () => {
     if (inputRoomCode) {
         inputRoomCode.value = '';
         lastFetchedCode = '';
-        selectTeamJoin.innerHTML = '<option value="">ENTREZ LE CODE...</option>';
+        selectTeamJoin.innerHTML = '<option value="">Entrez le code...</option>';
         btnJoinRoom.disabled = true;
         btnJoinRoom.innerText = 'REJOINDRE LE JEU';
         setTimeout(() => inputRoomCode.focus(), 150);
@@ -224,7 +224,7 @@ function fetchTeams(code) {
 
     if (finalCode.length !== 4) {
         lastFetchedCode = "";
-        const msg = finalCode.length === 0 ? "ENTREZ LE CODE..." : `[${finalCode}] (${finalCode.length}/4)...`;
+        const msg = finalCode.length === 0 ? "Entrez le code..." : `[${finalCode}] (${finalCode.length}/4)...`;
         selectTeamJoin.innerHTML = `<option value="">${msg}</option>`;
         btnJoinRoom.disabled = true;
         return;
