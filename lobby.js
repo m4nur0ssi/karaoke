@@ -3,6 +3,8 @@
  */
 let oralFallbackTimeout = null;
 let playerAudio = null;
+let keepAliveAudio = null;
+window.lastSyncRate = 1.0;
 const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
 
 btnRoleHost.addEventListener('touchstart', (e) => {
@@ -155,7 +157,7 @@ if (btnSoloMode) {
 
         // Anti-blocage mobile : "primer" le player sur ce geste utilisateur
         if (typeof audioPlayer !== 'undefined') {
-            audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFRZmIBAAwAACIAAAAhQAAQAEAgAMEFBMUEjMDADf/f/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/y/+7/";
+            audioPlayer.src = "data:audio/wav;base64,UklGRigAAABXQVZFVZmIBAAwAACIAAAAhQAAQAEAgAMEFBMUEjMDADf/f/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/u/+7/7v/y/+7/";
             audioPlayer.play().then(() => audioPlayer.pause()).catch(() => { });
         }
 
@@ -301,15 +303,37 @@ const handleJoinRoom = () => {
     btnJoinRoom.disabled = true;
 
     // --- NOUVEAU : Pré-autorisation du son IMMÉDIATE (Mode Distance) ---
-    // On utilise un flux SILENCIEUX permanent pour garder Safari débloqué
+    // On utilise DEUX players : un dédié au silence (Keep-Alive) et un pour les chansons
     if (!playerAudio) playerAudio = new Audio();
-    playerAudio.src = SILENCE_SRC;
-    playerAudio.loop = true;
-    playerAudio.volume = 0.5;
-    playerAudio.play().then(() => {
-        logDebug("🔊 Audio débloqué (Silence Loop ON).");
+    if (!keepAliveAudio) keepAliveAudio = new Audio();
+
+    // Config du Keep-Alive (NE CHANGE JAMAIS de source pour garder la session active)
+    keepAliveAudio.src = SILENCE_SRC;
+    keepAliveAudio.loop = true;
+    keepAliveAudio.volume = 0.1;
+    keepAliveAudio.play().then(() => {
+        logDebug("✅ Keep-Alive démarré (Session active).");
     }).catch(e => {
-        logDebug("⚠️ Action requise pour débloquer le son.");
+        logDebug("⚠️ Keep-Alive bloqué (Attente geste).");
+    });
+
+    // Config du Player Principal
+    playerAudio.src = SILENCE_SRC;
+    playerAudio.loop = false;
+    playerAudio.volume = 0.8;
+
+    // Anti-reset playbackRate (Mystery Mode)
+    playerAudio.addEventListener('play', () => {
+        if (window.lastSyncRate) playerAudio.playbackRate = window.lastSyncRate;
+    });
+    playerAudio.addEventListener('playing', () => {
+        if (window.lastSyncRate) playerAudio.playbackRate = window.lastSyncRate;
+    });
+
+    playerAudio.play().then(() => {
+        logDebug("🔊 Audio principal prêt (Sync autorisée).");
+    }).catch(e => {
+        logDebug("⚠️ Audio principal restreint (On débloquera au prochain buzz/clic).");
     });
 
     const proceedToLobby = () => {
@@ -622,20 +646,22 @@ window.updatePlayerInterface = (roomData) => {
         if (isRemote && isPlaying && roomData.audioUrl) {
             syncRemoteAudio(roomData.audioUrl, roomData.mysteryRate || 1.0, roomData.timestamp);
         } else if (!isPlaying && playerAudio) {
-            if (playerAudio.src !== SILENCE_SRC) {
+            if (playerAudio.src && !playerAudio.src.includes("data:audio")) {
                 playerAudio.src = SILENCE_SRC;
                 playerAudio.loop = true;
                 playerAudio.play().catch(() => { });
+                if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
             }
             if (playerViz) playerViz.classList.add('hidden');
         }
 
     } else if (roomData.status === 'buzzed' || roomData.status === 'feedback') {
         // Stop audio if playing
-        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
+        if (playerAudio && playerAudio.src && !playerAudio.src.includes("data:audio")) {
             playerAudio.src = SILENCE_SRC;
             playerAudio.loop = true;
             playerAudio.play().catch(() => { });
+            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
         }
         if (playerViz) playerViz.classList.add('hidden');
 
@@ -654,10 +680,11 @@ window.updatePlayerInterface = (roomData) => {
         }
 
     } else if (roomData.status === 'finished_song') {
-        if (playerAudio && playerAudio.src !== SILENCE_SRC) {
+        if (playerAudio && playerAudio.src && !playerAudio.src.includes("data:audio")) {
             playerAudio.src = SILENCE_SRC;
             playerAudio.loop = true;
             playerAudio.play().catch(() => { });
+            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
         }
 
         const isWinner = (roomData.winnerTeam === state.myTeamIdx);
@@ -855,34 +882,47 @@ window.startVoiceRecognition = startVoiceRecognition;
 
 function syncRemoteAudio(url, rate, serverTime) {
     if (!url || !playerAudio) return;
+    window.lastSyncRate = rate || 1.0;
 
     // Si on joue déjà cette URL, on s'assure juste d'être en lecture
     if (playerAudio.src && playerAudio.src.includes(url)) {
         if (playerAudio.paused) {
             playerAudio.play().catch(e => { });
         }
+        if (playerAudio.playbackRate !== rate) playerAudio.playbackRate = rate;
         return;
     }
 
-    logDebug("📖 Sync Audio: " + url.split('/').pop());
+    logDebug("📖 Sync New Song: " + url.split('/').pop());
     playerAudio.loop = false;
     playerAudio.src = url;
-    playerAudio.playbackRate = rate;
+    try { playerAudio.playbackRate = rate; } catch (e) { }
 
     // Calculate offset based on server time + offset
     const now = Date.now() + (typeof serverTimeOffset !== 'undefined' ? serverTimeOffset : 0);
-    const offset = (now - serverTime) / 1000;
+    let offset = (now - serverTime) / 1000;
 
-    if (offset > 0 && offset < 30) {
-        playerAudio.currentTime = offset;
+    // Safety: don't seek too far or into negative
+    if (offset < 0) offset = 0;
+    if (offset > 29) offset = 0;
+
+    if (offset > 0.1) {
+        try { playerAudio.currentTime = offset; } catch (e) { }
     }
 
     const tryPlay = () => {
+        if (playerAudio.src !== url) return; // Prevent racing updates
+
+        if (offset > 0.1) {
+            try { playerAudio.currentTime = offset; } catch (e) { }
+        }
+
         playerAudio.play().then(() => {
-            logDebug("🔊 Audio en cours (Sync OK)");
+            logDebug("🔊 Sync OK: Joue maintenant.");
             const viz = document.getElementById('player-viz');
             if (viz) viz.classList.remove('hidden');
-            // Hide unlock button if it was there
+
+            // Hide unlock button if present
             const oldBtn = document.getElementById('btn-unlock-audio');
             if (oldBtn) {
                 const msg = document.getElementById('waiting-msg');
@@ -891,46 +931,57 @@ function syncRemoteAudio(url, rate, serverTime) {
                 }
             }
         }).catch(e => {
-            console.warn("Remote audio blocked by browser behavior:", e);
-            // Fallback UI to unlock audio - GIANT OVERLAY if it's REALLY blocked
-            const msg = document.getElementById('waiting-msg');
-            if (msg && !document.getElementById('btn-unlock-audio')) {
-                const btnHtml = `<button id='btn-unlock-audio' class='main-btn primary' style='width:100%; border-radius:20px; padding:25px; box-shadow: 0 0 40px var(--primary); animation: pulse 1s infinite;'>🔊 RÉ-ACTIVER LE SON DISTANCE</button>`;
-                // We append or replace depending on state
-                if (msg.innerText.includes("À L'ÉCOUTE")) {
-                    msg.innerHTML = btnHtml;
-                } else {
-                    // Add it below current info
-                    const wrapper = document.createElement('div');
-                    wrapper.style.marginTop = "20px";
-                    wrapper.innerHTML = btnHtml;
-                    msg.appendChild(wrapper);
-                }
-
-                const unlock = document.getElementById('btn-unlock-audio');
-                if (unlock) {
-                    const trigger = () => {
-                        playerAudio.play().then(() => {
-                            msg.innerText = "À L'ÉCOUTE...";
-                        });
-                    };
-                    unlock.onclick = trigger;
-                    unlock.ontouchstart = (e) => { e.preventDefault(); trigger(); };
-                }
-            }
+            console.warn("Autoplay failed, showing fallback.", e);
+            showUnlockButton();
         });
     };
 
-    // Aggressive Safari Start
+    // Aggressive retry on multiple events
     tryPlay();
-
-    if (playerAudio.readyState >= 2) {
+    playerAudio.oncanplay = () => {
         tryPlay();
+        playerAudio.oncanplay = null;
+    };
+
+    // Extra safety for Safari: re-trigger play on any touch if we are supposed to be playing
+    if (!window._globalTouchAuthorized) {
+        window._globalTouchAuthorized = true;
+        document.addEventListener('touchstart', () => {
+            if (state.role === 'player' && playerAudio && playerAudio.paused && !playerAudio.src.includes(SILENCE_SRC)) {
+                playerAudio.play().catch(() => { });
+            }
+            if (keepAliveAudio && keepAliveAudio.paused) {
+                keepAliveAudio.play().catch(() => { });
+            }
+        }, { passive: true });
+    }
+}
+
+function showUnlockButton() {
+    const msg = document.getElementById('waiting-msg');
+    if (!msg || document.getElementById('btn-unlock-audio')) return;
+
+    const btnHtml = `<button id='btn-unlock-audio' class='main-btn primary' style='width:100%; border-radius:20px; padding:25px; box-shadow: 0 0 40px var(--primary); animation: pulse 1s infinite;'>🔊 RÉ-ACTIVER LE SON DISTANCE</button>`;
+
+    if (msg.innerText.includes("À L'ÉCOUTE") || msg.innerText.includes("CHARGEMENT")) {
+        msg.innerHTML = btnHtml;
     } else {
-        playerAudio.oncanplay = () => {
-            tryPlay();
-            playerAudio.oncanplay = null;
+        const wrapper = document.createElement('div');
+        wrapper.style.marginTop = "20px";
+        wrapper.innerHTML = btnHtml;
+        msg.appendChild(wrapper);
+    }
+
+    const unlock = document.getElementById('btn-unlock-audio');
+    if (unlock) {
+        const trigger = () => {
+            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
+            playerAudio.play().then(() => {
+                msg.innerText = "À L'ÉCOUTE...";
+            });
         };
+        unlock.onclick = trigger;
+        unlock.ontouchstart = (e) => { e.preventDefault(); trigger(); };
     }
 }
 
