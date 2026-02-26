@@ -3,8 +3,9 @@
  */
 let oralFallbackTimeout = null;
 const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
-window.playerAudio = null;
-window.keepAliveAudio = null;
+let playerAudio = null;
+let keepAliveAudio = null;
+window.lastSyncRate = 1.0;
 
 btnRoleHost.addEventListener('touchstart', (e) => {
     e.preventDefault();
@@ -416,38 +417,44 @@ btnJoinRoom.addEventListener('touchstart', (e) => {
     handleJoinRoom();
 }, { passive: false });
 
-// --- SIMPLEST AUDIO UNLOCK ---
+// --- SECURE AUDIO UNLOCK ---
+let isTestingAudio = false;
 const runAudioTest = async (e) => {
+    if (isTestingAudio) return;
+    isTestingAudio = true;
+
     if (e) {
         e.preventDefault();
         e.stopPropagation();
     }
+
     const btn = document.getElementById('btn-test-audio');
-    if (!btn) return;
 
     try {
-        // Essential for iOS: Player must be created/accessed inside the click handler
-        if (!window.playerAudio) window.playerAudio = new Audio();
+        if (!playerAudio) playerAudio = new Audio();
+        if (!keepAliveAudio) keepAliveAudio = new Audio();
 
-        // Use a short, valid mp3 hosted on a common CDN
-        window.playerAudio.src = "https://www.soundjay.com/button/button-1.mp3";
-        window.playerAudio.load();
+        // Prime both with silence
+        playerAudio.src = SILENCE_SRC;
+        keepAliveAudio.src = SILENCE_SRC;
 
-        await window.playerAudio.play();
+        await playerAudio.play();
+        await keepAliveAudio.play();
 
-        btn.innerText = "✅ SON OK";
-        btn.style.background = "rgba(0, 255, 136, 0.2)";
-        btn.style.borderColor = "#00ff88";
-    } catch (err) {
-        console.warn("Test audio failed:", err);
-        // Fallback to silence to at least get permission
-        try {
-            window.playerAudio.src = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
-            await window.playerAudio.play();
-            btn.innerText = "✅ AUDIO AUTORISÉ";
-        } catch (e2) {
-            btn.innerText = "❌ CLIQUEZ ENCORE";
+        // If we reached here, audio is unlocked. Now try to play an actual sound for the user
+        playerAudio.src = "https://www.soundjay.com/button/button-1.mp3";
+        await playerAudio.play();
+
+        if (btn) {
+            btn.innerText = "✅ SON OK";
+            btn.style.background = "rgba(0, 255, 136, 0.2)";
+            btn.style.borderColor = "#00ff88";
         }
+    } catch (err) {
+        console.warn("Audio unlock failed:", err);
+        if (btn) btn.innerText = "❌ RÉ-ESSAYEZ";
+    } finally {
+        setTimeout(() => { isTestingAudio = false; }, 500);
     }
 };
 
