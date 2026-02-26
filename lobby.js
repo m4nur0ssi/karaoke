@@ -740,7 +740,11 @@ window.updatePlayerInterface = (roomData) => {
             waitingMsg.innerText = roomData.status === 'feedback' ? (roomData.feedbackMsg || "VÉRIFICATION...") : "C'EST À VOUS !";
             waitingMsg.classList.add('status-active');
             if (roomData.mode === 'oral' || !roomData.mode) startVoiceRecognition();
-            if (roomData.choices) showPlayerChoices(roomData.choices);
+
+            // Respect showHintsToPlayer in oral mode (delay fallback)
+            const showChoices = (roomData.mode === 'buttons' || roomData.showHintsToPlayer);
+            if (roomData.choices && showChoices) showPlayerChoices(roomData.choices);
+            else playerChoices.classList.add('hidden');
         } else {
             waitingMsg.innerText = roomData.status === 'feedback' ? (roomData.feedbackMsg || "VÉRIFICATION...") : (roomData.buzzerName || "Quelqu'un") + " a buzzé !";
             waitingMsg.classList.add('status-buzzed');
