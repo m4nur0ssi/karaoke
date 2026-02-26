@@ -3051,13 +3051,18 @@ input:checked+.slider-premium:before {
    ======================================== */
 .player-wheel-zone {
     width: 100%;
-    display: flex;
+    display: none;
+    /* Controlled by JS classList */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
     animation: fadeIn 0.5s ease-out;
     margin-bottom: 20px;
+}
+
+.player-wheel-zone:not(.hidden) {
+    display: flex !important;
 }
 
 .slot-machine.mini {
@@ -3069,6 +3074,26 @@ input:checked+.slider-premium:before {
     max-width: 400px;
     box-shadow: 0 0 50px rgba(0, 242, 254, 0.15);
     text-align: center;
+}
+
+.player-modifier-zone {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.modifier-badge {
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 950;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .slot-machine.mini .slot-title {
