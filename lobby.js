@@ -3,8 +3,11 @@
  */
 let oralFallbackTimeout = null;
 const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
-let playerAudio = null;
-let keepAliveAudio = null;
+
+// Use global window scope for shared audio elements
+if (!window.playerAudio) window.playerAudio = new Audio();
+if (!window.keepAliveAudio) window.keepAliveAudio = new Audio();
+
 window.lastSyncRate = 1.0;
 
 btnRoleHost.addEventListener('touchstart', (e) => {
@@ -304,25 +307,21 @@ const handleJoinRoom = () => {
 
     // --- NOUVEAU : Pré-autorisation du son IMMÉDIATE (Mode Distance) ---
     // On utilise DEUX players : un dédié au silence (Keep-Alive) et un pour les chansons
-    if (!playerAudio) playerAudio = new Audio();
-    if (!keepAliveAudio) keepAliveAudio = new Audio();
+    // --- NOUVEAU : Pré-autorisation du son IMMÉDIATE (Mode Distance) ---
+    // On utilise DEUX players : un dédié au silence (Keep-Alive) et un pour les chansons
 
     // Config du Keep-Alive (NE CHANGE JAMAIS de source pour garder la session active)
-    keepAliveAudio.src = SILENCE_SRC;
-    keepAliveAudio.loop = true;
-    keepAliveAudio.volume = 0.1;
-    keepAliveAudio.play().then(() => {
-        logDebug("✅ Keep-Alive démarré (Session active).");
-    }).catch(e => {
-        logDebug("⚠️ Keep-Alive bloqué (Attente geste).");
-    });
+    window.keepAliveAudio.src = SILENCE_SRC;
+    window.keepAliveAudio.loop = true;
+    window.keepAliveAudio.volume = 0.1;
+    window.keepAliveAudio.play().catch(() => { });
 
     // --- GLOBAL TAP AUTHORIZATION ---
     if (!window._globalTouchAuthorized) {
         window._globalTouchAuthorized = true;
         const primeAudio = () => {
-            if (playerAudio) playerAudio.play().then(() => playerAudio.pause()).catch(() => { });
-            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
+            if (window.playerAudio) window.playerAudio.play().then(() => window.playerAudio.pause()).catch(() => { });
+            if (window.keepAliveAudio) window.keepAliveAudio.play().catch(() => { });
             document.removeEventListener('touchstart', primeAudio);
             document.removeEventListener('click', primeAudio);
         };
@@ -331,19 +330,19 @@ const handleJoinRoom = () => {
     }
 
     // Config du Player Principal
-    playerAudio.src = SILENCE_SRC;
-    playerAudio.loop = false;
-    playerAudio.volume = 0.8;
+    window.playerAudio.src = SILENCE_SRC;
+    window.playerAudio.loop = false;
+    window.playerAudio.volume = 0.8;
 
     // Anti-reset playbackRate (Mystery Mode)
-    playerAudio.addEventListener('play', () => {
-        if (window.lastSyncRate) playerAudio.playbackRate = window.lastSyncRate;
+    window.playerAudio.addEventListener('play', () => {
+        if (window.lastSyncRate) window.playerAudio.playbackRate = window.lastSyncRate;
     });
-    playerAudio.addEventListener('playing', () => {
-        if (window.lastSyncRate) playerAudio.playbackRate = window.lastSyncRate;
+    window.playerAudio.addEventListener('playing', () => {
+        if (window.lastSyncRate) window.playerAudio.playbackRate = window.lastSyncRate;
     });
 
-    playerAudio.play().then(() => {
+    window.playerAudio.play().then(() => {
         logDebug("🔊 Audio principal prêt (Sync autorisée).");
     }).catch(e => {
         logDebug("⚠️ Audio principal restreint (On débloquera au prochain buzz/clic).");
@@ -417,51 +416,49 @@ btnJoinRoom.addEventListener('touchstart', (e) => {
     handleJoinRoom();
 }, { passive: false });
 
-// --- SECURE AUDIO UNLOCK (iOS COMPATIBLE) ---
-let isTestingAudio = false;
+// --- BRUTE FORCE AUDIO UNLOCK ---
 const runAudioTest = (e) => {
-    if (isTestingAudio) return;
-    isTestingAudio = true;
-
     if (e) {
         e.preventDefault();
         e.stopPropagation();
     }
 
     const btn = document.getElementById('btn-test-audio');
-    if (btn) btn.innerText = "⌛...";
+    if (btn) btn.innerText = "DÉBLOQUAGE...";
 
-    // 1. Synchronous access (Crucial for iOS)
-    if (!playerAudio) playerAudio = new Audio();
-    if (!keepAliveAudio) keepAliveAudio = new Audio();
+    // Ensure we are using the global singletons
+    const audio = window.playerAudio || (window.playerAudio = new Audio());
+    const keep = window.keepAliveAudio || (window.keepAliveAudio = new Audio());
 
-    // 2. Synchronous src & play
-    playerAudio.src = "https://www.soundjay.com/button/button-1.mp3";
-    keepAliveAudio.src = SILENCE_SRC;
+    // 1. First trigger: Try to play silence synchronously
+    audio.src = SILENCE_SRC;
+    keep.src = SILENCE_SRC;
 
-    const p1 = playerAudio.play();
-    const p2 = keepAliveAudio.play();
+    const p1 = audio.play();
+    keep.play().catch(() => { });
 
-    p1.then(() => {
-        if (btn) {
-            btn.innerText = "✅ SON OK";
-            btn.style.background = "rgba(0, 255, 136, 0.2)";
-            btn.style.borderColor = "#00ff88";
-        }
-    }).catch(err => {
-        console.warn("Bip failed, trying fallback...", err);
-        playerAudio.src = SILENCE_SRC;
-        playerAudio.play().then(() => {
+    if (p1 !== undefined) {
+        p1.then(() => {
+            // SUCCESS: Audio driver is now open.
+            // 2. Play the actual sound
+            audio.src = "https://www.soundjay.com/button/button-1.mp3";
+            return audio.play();
+        }).then(() => {
+            if (btn) {
+                btn.innerText = "✅ SON OK";
+                btn.style.background = "rgba(0, 255, 136, 0.2)";
+                btn.style.borderColor = "#00ff88";
+            }
+        }).catch(err => {
+            console.warn("Test audio failed:", err);
+            // It could be that play() was successful but the MP3 URL failed.
+            // If the first play() (silence) worked, we are still UNLOCKED.
             if (btn) btn.innerText = "✅ AUDIO DÉBLOQUÉ";
-        }).catch(err2 => {
-            console.error("Total block:", err2);
-            if (btn) btn.innerText = "❌ RÉ-ESSAYEZ";
         });
-    }).finally(() => {
-        setTimeout(() => { isTestingAudio = false; }, 1000);
-    });
-
-    p2.catch(() => { });
+    } else {
+        // Fallback for very old browsers
+        if (btn) btn.innerText = "❌ RÉ-ESSAYEZ";
+    }
 };
 
 const btnTestAudio = document.getElementById('btn-test-audio');
