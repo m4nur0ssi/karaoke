@@ -656,27 +656,30 @@ window.updatePlayerInterface = (roomData) => {
     if (playerWheelZone) {
         if (roomData.status === 'wheel_waiting' || roomData.status === 'wheel_spinning') {
             playerWheelZone.classList.remove('hidden');
+            if (waitingMsg) waitingMsg.classList.add('hidden'); // Hide status msg to let wheel shine
 
             const isSpinning = roomData.status === 'wheel_spinning';
-            playerWheelMsg.innerText = isSpinning ? "LA ROUE TOURNE..." : (roomData.wheelTeamName || "L'ÉQUIPE").toUpperCase() + " LANCE LA ROUE...";
+            if (playerWheelMsg) {
+                playerWheelMsg.innerText = isSpinning ? "LA ROUE TOURNE..." : (roomData.wheelTeamName || "L'ÉQUIPE").toUpperCase() + " LANCE LA ROUE...";
+            }
 
             // Find current modifier details
             if (roomData.currentModifier && roomData.currentModifier !== 'normal' && modifierMap[roomData.currentModifier]) {
                 const mod = modifierMap[roomData.currentModifier];
-                playerWheelExpl.innerHTML = `
-                    <div class="wheel-expl-emoji">${mod.emoji}</div>
-                    <div class="wheel-expl-title">${mod.title}</div>
-                    <div class="wheel-expl-desc" style="font-size:0.9rem; opacity:0.8; margin-top:5px;">${mod.desc}</div>
-                `;
-                playerWheelExpl.classList.toggle('hidden', !isSpinning && !roomData.status.includes('wheel'));
-
-                // If we are spinning, maybe wait before showing explanation, but for sync it's better to show it
-                if (isSpinning) playerWheelExpl.classList.remove('hidden');
+                if (playerWheelExpl) {
+                    playerWheelExpl.innerHTML = `
+                        <div class="wheel-expl-emoji" style="color:var(--secondary)">${mod.emoji}</div>
+                        <div class="wheel-expl-title">${mod.title}</div>
+                        <div class="wheel-expl-desc" style="font-size:0.9rem; opacity:0.8; margin-top:5px;">${mod.desc}</div>
+                    `;
+                    playerWheelExpl.classList.remove('hidden');
+                }
             } else {
-                playerWheelExpl.classList.add('hidden');
+                if (playerWheelExpl) playerWheelExpl.classList.add('hidden');
             }
         } else {
             playerWheelZone.classList.add('hidden');
+            if (waitingMsg) waitingMsg.classList.remove('hidden');
         }
     }
 
@@ -709,21 +712,21 @@ window.updatePlayerInterface = (roomData) => {
         if (state.isRemote && isPlaying && roomData.audioUrl) {
             syncRemoteAudio(roomData.audioUrl, roomData.mysteryRate || 1.0, roomData.timestamp);
         } else {
-            if (playerAudio && playerAudio.src && !playerAudio.src.includes("data:audio")) {
-                playerAudio.src = SILENCE_SRC;
-                playerAudio.loop = true;
-                playerAudio.play().catch(() => { });
+            if (window.playerAudio && window.playerAudio.src && !window.playerAudio.src.includes("data:audio")) {
+                window.playerAudio.src = SILENCE_SRC;
+                window.playerAudio.loop = true;
+                window.playerAudio.play().catch(() => { });
             }
             if (playerViz) playerViz.classList.add('hidden');
         }
 
     } else if (roomData.status === 'buzzed' || roomData.status === 'feedback') {
         // Stop audio if playing
-        if (playerAudio && playerAudio.src && !playerAudio.src.includes("data:audio")) {
-            playerAudio.src = SILENCE_SRC;
-            playerAudio.loop = true;
-            playerAudio.play().catch(() => { });
-            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
+        if (window.playerAudio && window.playerAudio.src && !window.playerAudio.src.includes("data:audio")) {
+            window.playerAudio.src = SILENCE_SRC;
+            window.playerAudio.loop = true;
+            window.playerAudio.play().catch(() => { });
+            if (window.keepAliveAudio) window.keepAliveAudio.play().catch(() => { });
         }
         if (playerViz) playerViz.classList.add('hidden');
 
@@ -742,11 +745,11 @@ window.updatePlayerInterface = (roomData) => {
         }
 
     } else if (roomData.status === 'finished_song') {
-        if (playerAudio && playerAudio.src && !playerAudio.src.includes("data:audio")) {
-            playerAudio.src = SILENCE_SRC;
-            playerAudio.loop = true;
-            playerAudio.play().catch(() => { });
-            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
+        if (window.playerAudio && window.playerAudio.src && !window.playerAudio.src.includes("data:audio")) {
+            window.playerAudio.src = SILENCE_SRC;
+            window.playerAudio.loop = true;
+            window.playerAudio.play().catch(() => { });
+            if (window.keepAliveAudio) window.keepAliveAudio.play().catch(() => { });
         }
 
         const isWinner = (roomData.winnerTeam === state.myTeamIdx);
@@ -838,8 +841,8 @@ if (btnPlayerBuzz) {
             }
 
             // Re-warm remote audio on gesture to keep Safari happy
-            if (state.isRemote && playerAudio) {
-                playerAudio.play().catch(e => { });
+            if (state.isRemote && window.playerAudio) {
+                window.playerAudio.play().catch(e => { });
             }
         }
     };
@@ -947,23 +950,23 @@ function startVoiceRecognition() {
 window.startVoiceRecognition = startVoiceRecognition;
 
 function syncRemoteAudio(url, rate, serverTime) {
-    if (!url || !playerAudio) return;
+    if (!url || !window.playerAudio) return;
     window.lastSyncRate = rate || 1.0;
 
     // Si on joue déjà cette URL, on s'assure juste d'être en lecture
-    if (playerAudio.src && playerAudio.src.includes(url)) {
-        if (playerAudio.paused) {
-            playerAudio.play().catch(e => { });
+    if (window.playerAudio.src && window.playerAudio.src.includes(url)) {
+        if (window.playerAudio.paused) {
+            window.playerAudio.play().catch(e => { });
         }
-        if (playerAudio.playbackRate !== rate) playerAudio.playbackRate = rate;
+        if (window.playerAudio.playbackRate !== rate) window.playerAudio.playbackRate = rate;
         return;
     }
 
     logDebug("📖 Sync New Song: " + url.split('/').pop());
-    playerAudio.loop = false;
-    playerAudio.src = url;
-    playerAudio.load(); // Explicit load fixes some iOS Safari stream locks
-    try { playerAudio.playbackRate = rate; } catch (e) { }
+    window.playerAudio.loop = false;
+    window.playerAudio.src = url;
+    window.playerAudio.load(); // Explicit load fixes some iOS Safari stream locks
+    try { window.playerAudio.playbackRate = rate; } catch (e) { }
 
     // Calculate offset based on server time + offset
     const now = Date.now() + (typeof serverTimeOffset !== 'undefined' ? serverTimeOffset : 0);
@@ -978,24 +981,24 @@ function syncRemoteAudio(url, rate, serverTime) {
     // It permanently breaks the audio element's pipeline for certain files.
 
     const applyOffset = () => {
-        if (offset > 0.5 && playerAudio.readyState >= 1) {
+        if (offset > 0.5 && window.playerAudio.readyState >= 1) {
             try {
-                if (Math.abs(playerAudio.currentTime - offset) > 1.5) {
-                    playerAudio.currentTime = offset;
+                if (Math.abs(window.playerAudio.currentTime - offset) > 1.5) {
+                    window.playerAudio.currentTime = offset;
                 }
             } catch (e) { }
         }
     };
 
     // Listen once for metadata to apply the offset correctly
-    playerAudio.addEventListener('loadedmetadata', applyOffset, { once: true });
+    window.playerAudio.addEventListener('loadedmetadata', applyOffset, { once: true });
 
     const tryPlay = () => {
-        if (!playerAudio.src.includes(url) && playerAudio.src !== url) return; // Prevent racing updates
+        if (!window.playerAudio.src.includes(url) && window.playerAudio.src !== url) return; // Prevent racing updates
 
         applyOffset();
 
-        playerAudio.play().then(() => {
+        window.playerAudio.play().then(() => {
             logDebug("🔊 Sync OK: Joue maintenant.");
             const viz = document.getElementById('player-viz');
             if (viz) viz.classList.remove('hidden');
@@ -1014,7 +1017,7 @@ function syncRemoteAudio(url, rate, serverTime) {
     };
 
     tryPlay();
-    playerAudio.addEventListener('canplay', tryPlay, { once: true });
+    window.playerAudio.addEventListener('canplay', tryPlay, { once: true });
 }
 
 function showUnlockButton() {
@@ -1035,8 +1038,8 @@ function showUnlockButton() {
     const unlock = document.getElementById('btn-unlock-audio');
     if (unlock) {
         const trigger = () => {
-            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
-            playerAudio.play().then(() => {
+            if (window.keepAliveAudio) window.keepAliveAudio.play().catch(() => { });
+            if (window.playerAudio) window.playerAudio.play().then(() => {
                 msg.innerText = "À L'ÉCOUTE...";
             });
         };
@@ -1072,8 +1075,8 @@ function showPlayerChoices(choices) {
                 waitingMsg.innerText = "RÉPONSE ENVOYÉE...";
 
                 // Re-warm remote audio on gesture (Safari stabilization)
-                if (state.isRemote && playerAudio) {
-                    playerAudio.play().catch(e => { });
+                if (state.isRemote && window.playerAudio) {
+                    window.playerAudio.play().catch(e => { });
                 }
             };
             bts[i].onclick = handleChoice;
