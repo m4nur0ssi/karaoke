@@ -2,6 +2,32 @@
  * GAME LOGIC - STITCH 2026
  */
 let soloOralFallbackTimeout = null;
+let autoNextTimeout = null;
+let autoNextInterval = null;
+
+function startAutoNextCountdown() {
+    if (autoNextTimeout) clearTimeout(autoNextTimeout);
+    if (autoNextInterval) clearInterval(autoNextInterval);
+
+    let timeLeft = 5;
+    const originalText = "SUIVANT";
+    btnNext.innerText = `${originalText} (${timeLeft}s)`;
+
+    autoNextInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft > 0) {
+            btnNext.innerText = `${originalText} (${timeLeft}s)`;
+        } else {
+            clearInterval(autoNextInterval);
+        }
+    }, 1000);
+
+    autoNextTimeout = setTimeout(() => {
+        if (!revealCard.classList.contains('hidden')) {
+            nextSong();
+        }
+    }, 5000);
+}
 
 // Game Logic
 const handleThemeSelection = (card) => {
@@ -132,6 +158,8 @@ async function nextSong() {
     state.round++;
 
     if (soloOralFallbackTimeout) { clearTimeout(soloOralFallbackTimeout); soloOralFallbackTimeout = null; }
+    if (autoNextTimeout) { clearTimeout(autoNextTimeout); autoNextTimeout = null; }
+    if (autoNextInterval) { clearInterval(autoNextInterval); autoNextInterval = null; }
 
     initAudio();
     if (audioContext) audioContext.resume();
@@ -774,6 +802,9 @@ function handleTimeout() {
 
     lastBuzzedTeam = null;
     victory();
+
+    // Auto-next after 5s
+    startAutoNextCountdown();
 }
 
 function showHints() {
@@ -943,6 +974,9 @@ btnCorrect.addEventListener('click', () => {
         validationControls.classList.add('hidden');
         btnNext.classList.remove('hidden');
         playTone(660, 'sine', 0.2);
+
+        // Auto-next after 5s
+        startAutoNextCountdown();
     }
 });
 
@@ -1090,6 +1124,19 @@ const handleBuzz = (idx) => {
                 }, 5000);
             }
         } else {
+            // Mode normal ou remote
+            if (state.gameMode === 'oral' || !state.gameMode) {
+                // En mode oral remote, on attend 5s avant de montrer les propositions au joueur
+                if (state.roomRef) {
+                    state.roomRef.update({ showHintsToPlayer: false });
+                    setTimeout(() => {
+                        // Si on est toujours en train d'attendre la réponse du buzzer
+                        if (!state.isPlaying && lastBuzzedTeam !== null) {
+                            state.roomRef.update({ showHintsToPlayer: true });
+                        }
+                    }, 5000);
+                }
+            }
             setTimeout(() => {
                 victory();
             }, 1200);
