@@ -656,7 +656,7 @@ window.updatePlayerInterface = (roomData) => {
     if (playerWheelZone) {
         if (roomData.status === 'wheel_waiting' || roomData.status === 'wheel_spinning') {
             playerWheelZone.classList.remove('hidden');
-            if (waitingMsg) waitingMsg.classList.add('hidden'); // Hide status msg to let wheel shine
+            if (waitingMsg) waitingMsg.style.display = 'none'; // Force hide status msg during wheel
 
             const isSpinning = roomData.status === 'wheel_spinning';
             if (playerWheelMsg) {
@@ -668,7 +668,7 @@ window.updatePlayerInterface = (roomData) => {
                 const mod = modifierMap[roomData.currentModifier];
                 if (playerWheelExpl) {
                     playerWheelExpl.innerHTML = `
-                        <div class="wheel-expl-emoji" style="color:var(--secondary)">${mod.emoji}</div>
+                        <div class="wheel-expl-emoji" style="color:var(--secondary); text-shadow:0 0 10px var(--secondary);">${mod.emoji}</div>
                         <div class="wheel-expl-title">${mod.title}</div>
                         <div class="wheel-expl-desc" style="font-size:0.9rem; opacity:0.8; margin-top:5px;">${mod.desc}</div>
                     `;
@@ -679,12 +679,15 @@ window.updatePlayerInterface = (roomData) => {
             }
         } else {
             playerWheelZone.classList.add('hidden');
-            if (waitingMsg) waitingMsg.classList.remove('hidden');
+            if (waitingMsg) waitingMsg.style.display = ''; // Restore status msg
         }
     }
 
-    // 3. Main Status Handling
-    waitingMsg.className = 'player-status-indicator';
+    // 3. Main Status Handling - USE CLASSLIST, NOT CLASSNAME
+    if (waitingMsg) {
+        waitingMsg.classList.remove('status-active', 'status-waiting', 'status-finished', 'status-buzzed');
+        waitingMsg.classList.add('player-status-indicator');
+    }
 
     if (roomData.status === 'playing' || roomData.status === 'loading') {
         const isPlaying = roomData.status === 'playing';
