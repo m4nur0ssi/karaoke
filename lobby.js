@@ -1,5 +1,5 @@
 /**
- * LOBBY & TEAM MANAGEMENT - STITCH 2026
+ * LOBBY JS - STITCH 2026 - v54.7
  */
 let oralFallbackTimeout = null;
 const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
