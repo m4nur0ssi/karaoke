@@ -2,14 +2,9 @@
  * LOBBY & TEAM MANAGEMENT - STITCH 2026
  */
 let oralFallbackTimeout = null;
-let playerAudio = null;
-let keepAliveAudio = null;
-window.lastSyncRate = 1.0;
 const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
-// Global context for player audio
-window.playerContext = null;
-window.playerSource = null;
-window.playerGain = null;
+window.playerAudio = null;
+window.keepAliveAudio = null;
 
 btnRoleHost.addEventListener('touchstart', (e) => {
     e.preventDefault();
@@ -421,43 +416,38 @@ btnJoinRoom.addEventListener('touchstart', (e) => {
     handleJoinRoom();
 }, { passive: false });
 
-// --- NEW DEEP AUDIO UNLOCK ---
+// --- SIMPLEST AUDIO UNLOCK ---
 const runAudioTest = async (e) => {
-    if (e) e.preventDefault();
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
     const btn = document.getElementById('btn-test-audio');
     if (!btn) return;
 
     try {
-        // Force AudioContext creation (The only way to be sure on some iOS versions)
-        if (!window.playerContext) {
-            window.playerContext = new (window.AudioContext || window.webkitAudioContext)();
-        }
+        // Essential for iOS: Player must be created/accessed inside the click handler
+        if (!window.playerAudio) window.playerAudio = new Audio();
 
-        if (window.playerContext.state === 'suspended') {
-            await window.playerContext.resume();
-        }
+        // Use a short, valid mp3 hosted on a common CDN
+        window.playerAudio.src = "https://www.soundjay.com/button/button-1.mp3";
+        window.playerAudio.load();
 
-        // Play a synthesised beep (No file needed, bypasses network issues)
-        const osc = window.playerContext.createOscillator();
-        const gain = window.playerContext.createGain();
-        osc.connect(gain);
-        gain.connect(window.playerContext.destination);
-        gain.gain.setValueAtTime(0.1, window.playerContext.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, window.playerContext.currentTime + 0.5);
-        osc.start();
-        osc.stop(window.playerContext.currentTime + 0.5);
+        await window.playerAudio.play();
 
-        // Also prime the standard Audio element
-        if (!playerAudio) playerAudio = new Audio();
-        playerAudio.src = SILENCE_SRC;
-        await playerAudio.play();
-
-        btn.innerText = "✅ AUDIO DÉBLOQUÉ";
+        btn.innerText = "✅ SON OK";
         btn.style.background = "rgba(0, 255, 136, 0.2)";
-        btn.style.borderColor = "var(--success)";
+        btn.style.borderColor = "#00ff88";
     } catch (err) {
-        console.error("Deep Unlock failed:", err);
-        btn.innerText = "❌ ERREUR SYSTÈME";
+        console.warn("Test audio failed:", err);
+        // Fallback to silence to at least get permission
+        try {
+            window.playerAudio.src = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
+            await window.playerAudio.play();
+            btn.innerText = "✅ AUDIO AUTORISÉ";
+        } catch (e2) {
+            btn.innerText = "❌ CLIQUEZ ENCORE";
+        }
     }
 };
 
