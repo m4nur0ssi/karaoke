@@ -3045,3 +3045,48 @@ input:checked+.slider-premium:before {
     font-weight: 800;
     margin-bottom: 20px;
 }
+
+/* ========================================
+   PLAYER WHEEL ZONE — STITCH 2026
+   ======================================== */
+.player-wheel-zone {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-out;
+    margin-bottom: 20px;
+}
+
+.slot-machine.mini {
+    background: rgba(15, 15, 25, 0.7);
+    border: 2px solid var(--secondary);
+    padding: 30px 20px;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 50px rgba(0, 242, 254, 0.15);
+    text-align: center;
+}
+
+.slot-machine.mini .slot-title {
+    font-size: 1rem;
+    letter-spacing: 5px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+.wheel-team-name {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#btn-player-spin {
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+}
