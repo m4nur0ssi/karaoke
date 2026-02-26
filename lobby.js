@@ -6,7 +6,10 @@ let playerAudio = null;
 let keepAliveAudio = null;
 window.lastSyncRate = 1.0;
 const SILENCE_SRC = "data:audio/wav;base64,UklGRigAAABXQVZFRm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAP8A/wD/Lw==";
-const BEEP_SRC = "data:audio/wav;base64,UklGRl9vT1BSU09VTkQAAABXQVZFRm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU9vT1BSU09VTkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"; // Simple short burst
+// Global context for player audio
+window.playerContext = null;
+window.playerSource = null;
+window.playerGain = null;
 
 btnRoleHost.addEventListener('touchstart', (e) => {
     e.preventDefault();
@@ -418,45 +421,48 @@ btnJoinRoom.addEventListener('touchstart', (e) => {
     handleJoinRoom();
 }, { passive: false });
 
-// Audio Test Logic
+// --- NEW DEEP AUDIO UNLOCK ---
+const runAudioTest = async (e) => {
+    if (e) e.preventDefault();
+    const btn = document.getElementById('btn-test-audio');
+    if (!btn) return;
+
+    try {
+        // Force AudioContext creation (The only way to be sure on some iOS versions)
+        if (!window.playerContext) {
+            window.playerContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        if (window.playerContext.state === 'suspended') {
+            await window.playerContext.resume();
+        }
+
+        // Play a synthesised beep (No file needed, bypasses network issues)
+        const osc = window.playerContext.createOscillator();
+        const gain = window.playerContext.createGain();
+        osc.connect(gain);
+        gain.connect(window.playerContext.destination);
+        gain.gain.setValueAtTime(0.1, window.playerContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, window.playerContext.currentTime + 0.5);
+        osc.start();
+        osc.stop(window.playerContext.currentTime + 0.5);
+
+        // Also prime the standard Audio element
+        if (!playerAudio) playerAudio = new Audio();
+        playerAudio.src = SILENCE_SRC;
+        await playerAudio.play();
+
+        btn.innerText = "✅ AUDIO DÉBLOQUÉ";
+        btn.style.background = "rgba(0, 255, 136, 0.2)";
+        btn.style.borderColor = "var(--success)";
+    } catch (err) {
+        console.error("Deep Unlock failed:", err);
+        btn.innerText = "❌ ERREUR SYSTÈME";
+    }
+};
+
 const btnTestAudio = document.getElementById('btn-test-audio');
 if (btnTestAudio) {
-    const runAudioTest = async (e) => {
-        if (e) e.preventDefault();
-
-        try {
-            if (!playerAudio) playerAudio = new Audio();
-
-            // Re-init context if exists
-            if (window.audioContext && window.audioContext.state === 'suspended') {
-                window.audioContext.resume();
-            }
-
-            // Using a simple beep sound that is very reliable
-            playerAudio.src = "https://www.soundjay.com/buttons/beep-01a.mp3";
-            playerAudio.load();
-
-            await playerAudio.play();
-
-            btnTestAudio.innerText = "✅ SON OK";
-            btnTestAudio.style.borderColor = "var(--success)";
-            setTimeout(() => {
-                btnTestAudio.innerText = "🔊 TESTER LE SON";
-                btnTestAudio.style.borderColor = "rgba(255,255,255,0.3)";
-            }, 2000);
-        } catch (err) {
-            console.error("Test audio error:", err);
-            // Retry with silence if mp3 failed (to at least unlock the driver)
-            try {
-                playerAudio.src = SILENCE_SRC;
-                await playerAudio.play();
-                btnTestAudio.innerText = "✅ AUDIO DÉBLOQUÉ";
-            } catch (e2) {
-                btnTestAudio.innerText = "❌ TJRS BLOQUÉ";
-            }
-        }
-    };
-
     btnTestAudio.addEventListener('click', runAudioTest);
     btnTestAudio.addEventListener('touchstart', runAudioTest, { passive: false });
 }
