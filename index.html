@@ -286,58 +286,62 @@
                             <span class="slider-premium"></span>
                         </label>
                         <span class="toggle-label">MODE DISTANCE (SON LOCAL)</span>
+                        <div class="test-audio-zone" style="margin-top: 10px; opacity: 0.6; font-size: 0.75rem;">
+                            <button id="btn-test-audio" type="button"
+                                style="background:none; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 5px 15px; border-radius: 15px; cursor: pointer;">🔊
+                                TESTER LE SON</button>
+                        </div>
                     </div>
-                </div>
-                <div id="player-status-msg" class="player-status-msg"></div>
-            </div>
-
-            <div id="player-game" class="player-game hidden">
-                <div id="player-room-badge" class="player-room-badge">ROOM: ----</div>
-
-                <!-- NEW: Remote Modifier Display -->
-                <div id="player-modifier-zone" class="player-modifier-zone hidden">
-                    <div id="player-modifier-badge" class="modifier-badge"></div>
+                    <div id="player-status-msg" class="player-status-msg"></div>
                 </div>
 
-                <div id="waiting-msg" class="waiting-msg">Attente de la musique...</div>
+                <div id="player-game" class="player-game hidden">
+                    <div id="player-room-badge" class="player-room-badge">ROOM: ----</div>
 
-                <!-- NEW: Remote Wheel Display -->
-                <div id="player-wheel-zone" class="player-wheel-zone hidden">
-                    <div class="slot-machine mini">
-                        <h2 class="slot-title">LA ROUE DU DESTIN</h2>
-                        <div id="player-wheel-msg" class="wheel-team-name">...</div>
-                        <div id="player-wheel-expl" class="wheel-explanation-text"></div>
+                    <!-- NEW: Remote Modifier Display -->
+                    <div id="player-modifier-zone" class="player-modifier-zone hidden">
+                        <div id="player-modifier-badge" class="modifier-badge"></div>
                     </div>
+
+                    <div id="waiting-msg" class="waiting-msg">Attente de la musique...</div>
+
+                    <!-- NEW: Remote Wheel Display -->
+                    <div id="player-wheel-zone" class="player-wheel-zone hidden">
+                        <div class="slot-machine mini">
+                            <h2 class="slot-title">LA ROUE DU DESTIN</h2>
+                            <div id="player-wheel-msg" class="wheel-team-name">...</div>
+                            <div id="player-wheel-expl" class="wheel-explanation-text"></div>
+                        </div>
+                    </div>
+
+                    <div id="player-viz" class="remote-sync-visualizer hidden">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+
+                    <button id="btn-player-buzz" class="huge-buzz-btn hidden">
+                        <span>BUZZ !</span>
+                    </button>
+
+                    <!-- Joker button for Mobile Player -->
+                    <button id="btn-player-joker" class="main-btn secondary joker-mobile hidden"
+                        onclick="handlePlayerJoker()">🃏 JOKER !</button>
+
+                    <div id="player-choices" class="player-choices hidden">
+                        <button class="choice-btn" data-idx="0">A</button>
+                        <button class="choice-btn" data-idx="1">B</button>
+                        <button class="choice-btn" data-idx="2">C</button>
+                        <button class="choice-btn" data-idx="3">D</button>
+                    </div>
+
+                    <button id="btn-player-spin" class="main-btn primary huge-buzz-btn hidden"
+                        style="background: linear-gradient(45deg, #ff00cc, #3333ff); border: none; box-shadow: 0 0 30px rgba(255, 0, 204, 0.5);">
+                        🌀 LANCER LA ROUE !
+                    </button>
                 </div>
-
-                <div id="player-viz" class="remote-sync-visualizer hidden">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-
-                <button id="btn-player-buzz" class="huge-buzz-btn hidden">
-                    <span>BUZZ !</span>
-                </button>
-
-                <!-- Joker button for Mobile Player -->
-                <button id="btn-player-joker" class="main-btn secondary joker-mobile hidden"
-                    onclick="handlePlayerJoker()">🃏 JOKER !</button>
-
-                <div id="player-choices" class="player-choices hidden">
-                    <button class="choice-btn" data-idx="0">A</button>
-                    <button class="choice-btn" data-idx="1">B</button>
-                    <button class="choice-btn" data-idx="2">C</button>
-                    <button class="choice-btn" data-idx="3">D</button>
-                </div>
-
-                <button id="btn-player-spin" class="main-btn primary huge-buzz-btn hidden"
-                    style="background: linear-gradient(45deg, #ff00cc, #3333ff); border: none; box-shadow: 0 0 30px rgba(255, 0, 204, 0.5);">
-                    🌀 LANCER LA ROUE !
-                </button>
-            </div>
         </section>
 
         <!-- Results/Podium Screen -->
