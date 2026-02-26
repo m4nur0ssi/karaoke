@@ -375,7 +375,7 @@ async function nextSong() {
                     jokers: state.jokers,
                     activeJoker: null,
                     showHintsToPlayer: state.gameMode === 'buttons',
-                    timestamp: Date.now()
+                    timestamp: Date.now() + (window.serverTimeOffset || 0)
                 });
             }
 
