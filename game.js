@@ -17,16 +17,21 @@ function startAutoNextCountdown() {
         timeLeft--;
         if (timeLeft > 0) {
             btnNext.innerText = `${originalText} (${timeLeft}s)`;
+            btnNext.style.boxShadow = "0 0 30px var(--secondary)";
         } else {
+            btnNext.innerText = originalText;
+            btnNext.style.boxShadow = "";
             clearInterval(autoNextInterval);
         }
     }, 1000);
 
     autoNextTimeout = setTimeout(() => {
+        // Double safety check: revealCard must be visible
         if (!revealCard.classList.contains('hidden')) {
+            console.log("Auto-chaining to next song...");
             nextSong();
         }
-    }, 5000);
+    }, 5100);
 }
 
 // Game Logic
@@ -896,12 +901,13 @@ function victory(keepPlaying = false) {
     hintsEl.classList.add('hidden');
     countdownEl.classList.add('hidden');
 
+    // Always show Next button on reveal card, alongside validation if needed
+    btnNext.classList.remove('hidden');
+
     if (lastBuzzedTeam !== null) {
         validationControls.classList.remove('hidden');
-        btnNext.classList.add('hidden');
     } else {
         validationControls.classList.add('hidden');
-        btnNext.classList.remove('hidden');
     }
 }
 
