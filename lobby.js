@@ -417,9 +417,9 @@ btnJoinRoom.addEventListener('touchstart', (e) => {
     handleJoinRoom();
 }, { passive: false });
 
-// --- SECURE AUDIO UNLOCK ---
+// --- SECURE AUDIO UNLOCK (iOS COMPATIBLE) ---
 let isTestingAudio = false;
-const runAudioTest = async (e) => {
+const runAudioTest = (e) => {
     if (isTestingAudio) return;
     isTestingAudio = true;
 
@@ -429,33 +429,39 @@ const runAudioTest = async (e) => {
     }
 
     const btn = document.getElementById('btn-test-audio');
+    if (btn) btn.innerText = "⌛...";
 
-    try {
-        if (!playerAudio) playerAudio = new Audio();
-        if (!keepAliveAudio) keepAliveAudio = new Audio();
+    // 1. Synchronous access (Crucial for iOS)
+    if (!playerAudio) playerAudio = new Audio();
+    if (!keepAliveAudio) keepAliveAudio = new Audio();
 
-        // Prime both with silence
-        playerAudio.src = SILENCE_SRC;
-        keepAliveAudio.src = SILENCE_SRC;
+    // 2. Synchronous src & play
+    playerAudio.src = "https://www.soundjay.com/button/button-1.mp3";
+    keepAliveAudio.src = SILENCE_SRC;
 
-        await playerAudio.play();
-        await keepAliveAudio.play();
+    const p1 = playerAudio.play();
+    const p2 = keepAliveAudio.play();
 
-        // If we reached here, audio is unlocked. Now try to play an actual sound for the user
-        playerAudio.src = "https://www.soundjay.com/button/button-1.mp3";
-        await playerAudio.play();
-
+    p1.then(() => {
         if (btn) {
             btn.innerText = "✅ SON OK";
             btn.style.background = "rgba(0, 255, 136, 0.2)";
             btn.style.borderColor = "#00ff88";
         }
-    } catch (err) {
-        console.warn("Audio unlock failed:", err);
-        if (btn) btn.innerText = "❌ RÉ-ESSAYEZ";
-    } finally {
-        setTimeout(() => { isTestingAudio = false; }, 500);
-    }
+    }).catch(err => {
+        console.warn("Bip failed, trying fallback...", err);
+        playerAudio.src = SILENCE_SRC;
+        playerAudio.play().then(() => {
+            if (btn) btn.innerText = "✅ AUDIO DÉBLOQUÉ";
+        }).catch(err2 => {
+            console.error("Total block:", err2);
+            if (btn) btn.innerText = "❌ RÉ-ESSAYEZ";
+        });
+    }).finally(() => {
+        setTimeout(() => { isTestingAudio = false; }, 1000);
+    });
+
+    p2.catch(() => { });
 };
 
 const btnTestAudio = document.getElementById('btn-test-audio');
