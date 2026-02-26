@@ -317,6 +317,19 @@ const handleJoinRoom = () => {
         logDebug("⚠️ Keep-Alive bloqué (Attente geste).");
     });
 
+    // --- GLOBAL TAP AUTHORIZATION ---
+    if (!window._globalTouchAuthorized) {
+        window._globalTouchAuthorized = true;
+        const primeAudio = () => {
+            if (playerAudio) playerAudio.play().then(() => playerAudio.pause()).catch(() => { });
+            if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
+            document.removeEventListener('touchstart', primeAudio);
+            document.removeEventListener('click', primeAudio);
+        };
+        document.addEventListener('touchstart', primeAudio);
+        document.addEventListener('click', primeAudio);
+    }
+
     // Config du Player Principal
     playerAudio.src = SILENCE_SRC;
     playerAudio.loop = false;
@@ -403,6 +416,22 @@ btnJoinRoom.addEventListener('touchstart', (e) => {
     e.preventDefault();
     handleJoinRoom();
 }, { passive: false });
+
+// Audio Test Logic
+const btnTestAudio = document.getElementById('btn-test-audio');
+if (btnTestAudio) {
+    btnTestAudio.addEventListener('click', () => {
+        if (!playerAudio) playerAudio = new Audio();
+        playerAudio.src = "https://www.soundjay.com/buttons/beep-01a.mp3";
+        playerAudio.play().then(() => {
+            btnTestAudio.innerText = "✅ SON OK";
+            setTimeout(() => { btnTestAudio.innerText = "🔊 TESTER LE SON"; }, 2000);
+        }).catch(e => {
+            btnTestAudio.innerText = "❌ BLOQUÉ";
+            console.warn("Test audio bloqué:", e);
+        });
+    });
+}
 
 // Team Setup
 btnCreateTeams.addEventListener('click', () => {
@@ -643,14 +672,13 @@ window.updatePlayerInterface = (roomData) => {
         else playerChoices.classList.add('hidden');
 
         // Audio Sync
-        if (isRemote && isPlaying && roomData.audioUrl) {
+        if (state.isRemote && isPlaying && roomData.audioUrl) {
             syncRemoteAudio(roomData.audioUrl, roomData.mysteryRate || 1.0, roomData.timestamp);
-        } else if (!isPlaying && playerAudio) {
-            if (playerAudio.src && !playerAudio.src.includes("data:audio")) {
+        } else {
+            if (playerAudio && playerAudio.src && !playerAudio.src.includes("data:audio")) {
                 playerAudio.src = SILENCE_SRC;
                 playerAudio.loop = true;
                 playerAudio.play().catch(() => { });
-                if (keepAliveAudio) keepAliveAudio.play().catch(() => { });
             }
             if (playerViz) playerViz.classList.add('hidden');
         }
@@ -909,7 +937,8 @@ function syncRemoteAudio(url, rate, serverTime) {
 
     // Safety: don't seek too far or into negative
     if (offset < 0) offset = 0;
-    if (offset > 29) offset = 0;
+    // v54.5: Better safety for short previews
+    if (offset > 28) offset = 0;
 
     // NEVER set currentTime synchronously before loadedmetadata on iOS!
     // It permanently breaks the audio element's pipeline for certain files.
@@ -937,7 +966,6 @@ function syncRemoteAudio(url, rate, serverTime) {
             const viz = document.getElementById('player-viz');
             if (viz) viz.classList.remove('hidden');
 
-            // Hide unlock button if present
             const oldBtn = document.getElementById('btn-unlock-audio');
             if (oldBtn) {
                 const msg = document.getElementById('waiting-msg');
@@ -951,25 +979,8 @@ function syncRemoteAudio(url, rate, serverTime) {
         });
     };
 
-    // Aggressive retry on multiple events
     tryPlay();
-    playerAudio.oncanplay = () => {
-        tryPlay();
-        playerAudio.oncanplay = null;
-    };
-
-    // Extra safety for Safari: re-trigger play on any touch if we are supposed to be playing
-    if (!window._globalTouchAuthorized) {
-        window._globalTouchAuthorized = true;
-        document.addEventListener('touchstart', () => {
-            if (state.role === 'player' && playerAudio && playerAudio.paused && !playerAudio.src.includes(SILENCE_SRC)) {
-                playerAudio.play().catch(() => { });
-            }
-            if (keepAliveAudio && keepAliveAudio.paused) {
-                keepAliveAudio.play().catch(() => { });
-            }
-        }, { passive: true });
-    }
+    playerAudio.addEventListener('canplay', tryPlay, { once: true });
 }
 
 function showUnlockButton() {
@@ -1020,7 +1031,7 @@ function showPlayerChoices(choices) {
                     state.roomRef.child('answer').set({
                         teamIdx: state.myTeamIdx,
                         choice: c,
-                        timestamp: Date.now()
+                        timestamp: Date.now() + (window.serverTimeOffset || 0)
                     });
                 }
                 playerChoices.classList.add('hidden');
