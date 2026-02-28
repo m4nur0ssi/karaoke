@@ -40,8 +40,31 @@ const handleThemeSelection = (card) => {
     startTheme(theme);
 };
 
+let isDraggingTheme = false;
+let startY = 0;
+
 themeCards.forEach(card => {
-    card.addEventListener('click', () => handleThemeSelection(card));
+    card.addEventListener('touchstart', (e) => {
+        isDraggingTheme = false;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    card.addEventListener('touchmove', (e) => {
+        if (Math.abs(e.touches[0].clientY - startY) > 10) {
+            isDraggingTheme = true;
+        }
+    }, { passive: true });
+
+    card.addEventListener('mousedown', () => isDraggingTheme = false);
+    card.addEventListener('mousemove', () => isDraggingTheme = true);
+
+    card.addEventListener('click', (e) => {
+        if (isDraggingTheme) {
+            e.preventDefault();
+            return;
+        }
+        handleThemeSelection(card);
+    });
 });
 
 function startTheme(theme) {
@@ -96,7 +119,14 @@ async function fetchPreview(artist, title, theme, brand) {
         });
 
         if (timeoutId) clearTimeout(timeoutId);
-        const data = await response.json();
+        let data = await response.json();
+
+        // Fallback for Movies if first search yields nothing
+        if ((!data.results || data.results.length === 0) && theme === 'movies' && brand) {
+            const fallbackQuery = `${brand} soundtrack`.replace(/['"]/g, "");
+            const fbRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(fallbackQuery)}&entity=song&limit=1&country=FR`);
+            data = await fbRes.json();
+        }
 
         if (data.results && data.results.length > 0) {
             let coverUrl = data.results[0].artworkUrl100.replace('100x100bb', '1000x1000bb');
@@ -373,14 +403,19 @@ async function nextSong() {
         if (result && result.audio) {
             state.playedSongs.push(state.currentSong.title);
 
-            // Gérer les 4 propositions proprement (1 bonne, 3 mauvaises au hasard dans le même thème)
-            const getDisplayTarget = (s) => s.brand || (s.artist === "Générique" || s.artist === "Soundtrack" ? s.title : s.artist);
-            let correctChoice = getDisplayTarget(state.currentSong);
-            let pool = Array.from(new Set(themeSongs.map(s => getDisplayTarget(s))));
-            pool = pool.filter(c => c !== correctChoice);
-            pool.sort(() => Math.random() - 0.5);
-            let choices = [correctChoice, ...pool.slice(0, 3)].sort(() => Math.random() - 0.5);
-            state.currentSong.hints = choices;
+            // Gérer les 4 propositions proprement
+            if (state.currentSong.hints && state.currentSong.hints.length === 4) {
+                // Keep predefined hints and shuffle
+                state.currentSong.hints = [...state.currentSong.hints].sort(() => Math.random() - 0.5);
+            } else {
+                const getDisplayTarget = (s) => s.brand || (s.artist === "Générique" || s.artist === "Soundtrack" ? s.title : s.artist);
+                let correctChoice = getDisplayTarget(state.currentSong);
+                let pool = Array.from(new Set(themeSongs.map(s => getDisplayTarget(s))));
+                pool = pool.filter(c => c !== correctChoice);
+                pool.sort(() => Math.random() - 0.5);
+                let choices = [correctChoice, ...pool.slice(0, 3)].sort(() => Math.random() - 0.5);
+                state.currentSong.hints = choices;
+            }
 
             audioPlayer.src = result.audio;
             audioPlayer.load();
@@ -1045,23 +1080,30 @@ btnWrong.addEventListener('click', () => {
 });
 
 function launchBonusParticles(text) {
-    const count = 30;
-    for (let i = 0; i < count; i++) {
-        setTimeout(() => {
-            const p = document.createElement('div');
-            const isPenalty = text.includes("-");
-            p.className = 'particle ' + (i % 2 === 0 ? 'heart-particle' : (isPenalty ? 'penalty-label' : 'bonus-label'));
+    const overlay = document.createElement('div');
+    const isPenalty = text.includes("-");
+    overlay.className = `stitch-huge-bonus ${isPenalty ? 'penalty' : 'bonus'}`;
 
-            p.innerHTML = (i % 2 === 0 ? '❤️' : text);
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            p.style.setProperty('--drift', (Math.random() * 400 - 200) + 'px');
-            p.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-            document.body.appendChild(p);
+    overlay.innerHTML = `
+        <div class="huge-bonus-content">
+            <span class="bonus-icon">${isPenalty ? '💣' : '🚨'}</span>
+            <span class="bonus-text">${text}</span>
+        </div>
+    `;
 
-            p.addEventListener('animationend', () => p.remove());
-        }, i * 100);
+    document.body.appendChild(overlay);
+
+    if (isPenalty) {
+        playTone(300, 'sawtooth', 0.8, 0.2);
+    } else {
+        playTone(600, 'sine', 0.5, 0.2);
+        setTimeout(() => playTone(800, 'sine', 0.5, 0.2), 150);
     }
+
+    setTimeout(() => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => overlay.remove(), 600);
+    }, 2500);
 }
 
 function displayFeedback(text, className, keepBuzzer = false) {
