@@ -236,10 +236,18 @@ body::before {
     box-shadow: 0 20px 40px rgba(244, 37, 175, 0.4);
 }
 
+#screen-themes {
+    justify-content: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 100px;
+}
+
 /* Themes Screen */
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 40px;
+    flex-shrink: 0;
 }
 
 .themes-grid {
@@ -249,7 +257,6 @@ body::before {
     gap: 30px;
     width: 100%;
     max-width: 1200px;
-    overflow-y: auto;
     padding-bottom: 50px;
 }
 
@@ -1678,8 +1685,20 @@ input {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(244, 37, 175, 0.1);
 }
 
+#screen-player {
+    padding: 0;
+}
+
 .player-lobby {
-    max-width: 450px;
+    max-width: none;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 20px;
+    justify-content: flex-start;
 }
 
 .role-lobby {
@@ -1771,13 +1790,14 @@ input {
 
 .lobby-btn {
     border: none;
-    margin-top: 10px;
-    height: 75px;
-    font-size: 1.5rem;
+    margin-top: 20px;
+    height: 60px;
+    font-size: 1.1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 2px;
 }
 
 .lobby-btn:disabled {
@@ -3135,4 +3155,120 @@ input:checked+.slider-premium:before {
     position: relative;
     z-index: 10;
     margin-top: 20px;
+}
+
+/* STITCH 2026 HUGE BONUS/MALUS OVERLAY */
+.stitch-huge-bonus {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20000;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0);
+    animation: bgFlash 2.5s ease-out;
+}
+
+.huge-bonus-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    animation: popInBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, floatPulse 2s infinite alternate;
+}
+
+.bonus-icon {
+    font-size: 8rem;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+    margin-bottom: -20px;
+}
+
+.bonus-text {
+    font-size: 6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    font-family: 'Outfit', sans-serif;
+}
+
+.stitch-huge-bonus.bonus .bonus-text {
+    color: #00f2fe;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 50px rgba(0, 242, 254, 0.6);
+}
+
+.stitch-huge-bonus.penalty .bonus-text {
+    color: #ff3366;
+    background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 50px rgba(255, 51, 102, 0.6);
+}
+
+.stitch-huge-bonus.fade-out .huge-bonus-content {
+    animation: zoomOutFade 0.6s forwards;
+}
+
+@keyframes popInBounce {
+    0% {
+        transform: scale(0) rotate(-15deg);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.2) rotate(5deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes floatPulse {
+    from {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+
+    to {
+        transform: scale(1.05) translateY(-10px);
+        filter: brightness(1.2);
+    }
+}
+
+@keyframes bgFlash {
+    0% {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    20% {
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    100% {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes zoomOutFade {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+        filter: blur(10px);
+    }
 }
