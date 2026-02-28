@@ -42,10 +42,6 @@ const handleThemeSelection = (card) => {
 
 themeCards.forEach(card => {
     card.addEventListener('click', () => handleThemeSelection(card));
-    card.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        handleThemeSelection(card);
-    }, { passive: false });
 });
 
 function startTheme(theme) {
