@@ -85,10 +85,10 @@ async function fetchPreview(artist, title, theme, brand) {
 
     try {
         let queryStr = `${artist} ${title}`;
-        if (artist === "Générique" || artist === "Soundtrack") queryStr = brand ? `${brand} ${title}` : title;
+        if (artist === "Générique" || artist === "Soundtrack" || artist === "Mark Snow" || artist === "The Rembrandts") queryStr = brand ? `${brand} ${title}` : title;
         if (theme === 'clubdorothee') queryStr += " French";
         if (theme === 'disney') queryStr += " French Disney";
-        if (brand && theme === 'series') queryStr += " soundtrack";
+        if (brand && theme === 'series') queryStr = `${brand} theme TV`;
         const query = queryStr.replace(/['"]/g, "");
 
         const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1&country=FR`, {
