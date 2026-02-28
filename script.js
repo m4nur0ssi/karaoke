@@ -245,3 +245,10 @@ btnRoleHost.addEventListener('click', () => {
 });
 
 logDebug('Script initialized (v2026_v54.3)');
+
+// Prevent iOS bounce on non-scrollable containers
+document.addEventListener('touchmove', function (e) {
+    if (!e.target.closest('#screen-themes')) {
+        e.preventDefault();
+    }
+}, { passive: false });
