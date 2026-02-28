@@ -306,5 +306,27 @@ const SONG_DATABASE = {
         { brand: 'Le Prince de Bel-Air', artist: 'DJ Jazzy Jeff', title: 'The Fresh Prince of Bel-Air', hints: ['Le Prince de Bel-Air', 'Ma Famille d\'Abord', 'Cosby Show', 'Kenan et Kel'] },
         { brand: 'Alerte à Malibu', artist: 'Jimi Jamison', title: 'I\'m Always Here', hints: ['Alerte à Malibu', 'Magnum', 'K2000', 'MacGyver'] },
         { brand: 'MacGyver', artist: 'Randy Edelman', title: 'MacGyver Theme', hints: ['MacGyver', 'L\'Agence Tous Risques', 'K2000', 'Magnum'] }
+    ],
+    'movies': [
+        { brand: 'Titanic', artist: 'Celine Dion', title: 'My Heart Will Go On' },
+        { brand: 'Star Wars', artist: 'John Williams', title: 'Main Theme' },
+        { brand: 'James Bond', artist: 'Adele', title: 'Skyfall' },
+        { brand: 'Rocky', artist: 'Survivor', title: 'Eye of the Tiger' },
+        { brand: 'Grease', artist: 'John Travolta', title: 'You\'re The One That I Want' },
+        { brand: 'Ghostbusters', artist: 'Ray Parker Jr', title: 'Ghostbusters' },
+        { brand: 'Pulp Fiction', artist: 'Dick Dale', title: 'Misirlou' },
+        { brand: 'Mission Impossible', artist: 'Lalo Schifrin', title: 'Theme from Mission: Impossible' },
+        { brand: 'Harry Potter', artist: 'John Williams', title: 'Hedwig\'s Theme' },
+        { brand: 'Jurassic Park', artist: 'John Williams', title: 'Theme from Jurassic Park' },
+        { brand: 'Le Professionnel', artist: 'Ennio Morricone', title: 'Chi Mai' },
+        { brand: 'La Boum', artist: 'Richard Sanderson', title: 'Reality' },
+        { brand: 'Les Bronzés', artist: 'Pierre Bachelet', title: 'Just Because of You' },
+        { brand: 'Retour vers le futur', artist: 'Huey Lewis', title: 'The Power of Love' },
+        { brand: 'Dirty Dancing', artist: 'Bill Medley', title: '(I\'ve Had) The Time of My Life' },
+        { brand: 'Top Gun', artist: 'Berlin', title: 'Take My Breath Away' },
+        { brand: 'Bodyguard', artist: 'Whitney Houston', title: 'I Will Always Love You' },
+        { brand: 'Le Flic de Beverly Hills', artist: 'Harold Faltermeyer', title: 'Axel F' },
+        { brand: 'Flashdance', artist: 'Irene Cara', title: 'Flashdance... What a Feeling' },
+        { brand: 'Le Seigneur des Anneaux', artist: 'Howard Shore', title: 'The Shire' }
     ]
 };
