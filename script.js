@@ -241,14 +241,15 @@ btnRoleHost.addEventListener('click', () => {
         });
     }
 
-    showScreen('home');
+    const modalTeams = document.getElementById('modal-teams');
+    if (modalTeams) modalTeams.classList.remove('hidden');
 });
 
 logDebug('Script initialized (v2026_v54.3)');
 
 // Prevent iOS bounce on non-scrollable containers
 document.addEventListener('touchmove', function (e) {
-    if (!e.target.closest('#screen-themes')) {
+    if (!e.target.closest('#screen-themes') && !e.target.closest('#screen-role')) {
         e.preventDefault();
     }
 }, { passive: false });
