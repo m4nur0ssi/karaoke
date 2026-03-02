@@ -145,8 +145,8 @@ if (btnSoloMode) {
             }
         }
 
-        initAudio();
-        if (audioContext) audioContext.resume().catch(() => { });
+        window.initAudio();
+        if (window.audioContext) window.audioContext.resume().catch(() => { });
 
         // Anti-blocage mobile : "primer" le player sur ce geste utilisateur
         if (typeof audioPlayer !== 'undefined') {
@@ -559,8 +559,8 @@ const startGame = () => {
 
     updateScores();
     modalTeams.classList.remove('active');
-    initAudio();
-    if (audioContext) audioContext.resume();
+    window.initAudio();
+    if (window.audioContext) window.audioContext.resume();
     showScreen('themes');
 };
 
