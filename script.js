@@ -249,8 +249,9 @@ btnRoleHost.addEventListener('click', () => {
         });
     }
 
+    // Auto-open the Team configuration modal directly after creating the room
     const modalTeams = document.getElementById('modal-teams');
-    if (modalTeams) modalTeams.classList.remove('hidden');
+    if (modalTeams) modalTeams.classList.add('active');
 });
 
 logDebug('Script initialized (v2026_v54.3)');
