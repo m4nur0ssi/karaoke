@@ -10,11 +10,6 @@ if (!window.keepAliveAudio) window.keepAliveAudio = new Audio();
 
 window.lastSyncRate = 1.0;
 
-btnRoleHost.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    btnRoleHost.click();
-}, { passive: false });
-
 btnRolePlayer.addEventListener('click', () => {
     state.role = 'player';
     showScreen('player');
@@ -27,11 +22,6 @@ btnRolePlayer.addEventListener('click', () => {
         setTimeout(() => inputRoomCode.focus(), 150);
     }
 });
-
-btnRolePlayer.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    btnRolePlayer.click();
-}, { passive: false });
 
 window.populateTeams = (teams) => {
     if (!teams) return;
@@ -167,7 +157,6 @@ if (btnSoloMode) {
         showScreen('themes');
     };
     btnSoloMode.addEventListener('click', launchSolo);
-    btnSoloMode.addEventListener('touchstart', (e) => { e.preventDefault(); launchSolo(); }, { passive: false });
 }
 
 // --- SOLO MODE SELECTOR ---
@@ -190,7 +179,6 @@ soloModeBtns.forEach(btn => {
         }
     };
     btn.addEventListener('click', handleSoloModeClick);
-    btn.addEventListener('touchstart', (e) => { e.preventDefault(); handleSoloModeClick(); }, { passive: false });
 });
 
 // --- MODE SELECTOR (NORMAL) ---
