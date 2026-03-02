@@ -853,6 +853,8 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 let recognition = null;
 let isRecognizing = false;
 
+let vocalHasResult = false;
+
 function setupRecognition(instance) {
     if (!instance) return;
     instance.lang = 'fr-FR';
@@ -862,6 +864,7 @@ function setupRecognition(instance) {
 
     instance.onstart = () => {
         isRecognizing = true;
+        vocalHasResult = false;
         logDebug("🎤 Micro ON");
         const msg = document.getElementById('waiting-msg');
         if (msg) msg.innerText = "🎤 JE VOUS ÉCOUTE...";
@@ -870,6 +873,8 @@ function setupRecognition(instance) {
     instance.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         const isFinal = event.results[0].isFinal;
+
+        vocalHasResult = true;
 
         if (state.roomRef) {
             state.roomRef.child('vocalAnswer').set({
@@ -893,6 +898,14 @@ function setupRecognition(instance) {
     instance.onend = () => {
         isRecognizing = false;
         logDebug("🎤 Micro OFF");
+
+        // Auto-reprise en mode solo oral si aucun résultat ou micro interrompu (ex: timeout sans voix)
+        if (!vocalHasResult && state.soloMode && (state.gameMode === 'oral' || !state.gameMode) && !state.isPlaying) {
+            const btnWrong = document.getElementById('btn-wrong');
+            if (btnWrong) {
+                btnWrong.click(); // Repulse comme fausse réponse (la musique va continuer)
+            }
+        }
     };
 
     instance.onerror = (event) => {
@@ -904,7 +917,7 @@ function setupRecognition(instance) {
         logDebug("🎤 Micro Error: " + event.error);
         if (event.error === 'not-allowed') {
             const msg = document.getElementById('waiting-msg');
-            if (msg) msg.innerText = "MICRO BLOQUÉ (Vérifiez réglages)";
+            if (msg) msg.innerText = "MICRO BLOQUÉ (Vérifiez réglages iOS)";
         }
     };
 }
@@ -917,14 +930,14 @@ if (SpeechRecognition) {
 function startVoiceRecognition() {
     try {
         const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SR) return;
+        if (!SR) return false;
 
         if (!recognition) {
             recognition = new SR();
             setupRecognition(recognition);
         }
 
-        if (isRecognizing) return;
+        if (isRecognizing) return true;
 
         // Safari requires a fresh cycle if it was just stop()ed
         setTimeout(() => {
@@ -937,9 +950,11 @@ function startVoiceRecognition() {
                 // If already started or aborting, ignore to prevent freeze
             }
         }, 100);
+        return true;
     } catch (e) {
         logDebug("🎤 Recognition Start Error: " + e.message);
         isRecognizing = false;
+        return false;
     }
 }
 window.startVoiceRecognition = startVoiceRecognition;
