@@ -1147,9 +1147,20 @@ const handleBuzz = (idx) => {
 
             // Appel immédiat sans setTimeout pour préserver le geste utilisateur
             if (window.startVoiceRecognition) {
-                window.startVoiceRecognition();
+                const started = window.startVoiceRecognition();
+                if (started === false) {
+                    displayFeedback("MICRO INDISPONIBLE SUR CET APPAREIL", "feedback-dommage");
+                    setTimeout(() => {
+                        const btnWrong = document.getElementById('btn-wrong');
+                        if (btnWrong) btnWrong.click(); // Repulse comme fausse réponse
+                    }, 2500);
+                }
             } else {
                 displayFeedback("MICRO INDISPONIBLE", "feedback-dommage");
+                setTimeout(() => {
+                    const btnWrong = document.getElementById('btn-wrong');
+                    if (btnWrong) btnWrong.click(); // Repulse comme fausse réponse
+                }, 2500);
             }
             // Fallback: Show hints after a delay in oral mode in solo
             if (hintsEl) {
@@ -1183,7 +1194,8 @@ const handleBuzz = (idx) => {
     } catch (err) {
         console.error("Buzz Error:", err);
         state.isPlaying = false;
-        victory(); // Fallback to at least show the answer
+        displayFeedback("ERREUR BUZZ: " + err.message, "feedback-dommage");
+        // victory(); // Fallback to at least show the answer
     }
 };
 
