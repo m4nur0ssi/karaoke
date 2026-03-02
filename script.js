@@ -25,6 +25,14 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     return false;
 };
 
+window.audioContext = null;
+function initAudio() {
+    if (!window.audioContext) {
+        window.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+}
+window.initAudio = initAudio;
+
 const state = {
     screen: 'home',
     teams: [
