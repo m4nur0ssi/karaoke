@@ -456,16 +456,21 @@ if (btnTestAudio) {
 }
 
 // Team Setup
-btnCreateTeams.addEventListener('click', () => {
-    modalTeams.classList.add('active');
-    syncHostTeams();
-});
+const btnCreateTeamsEl = document.getElementById('btn-create-teams');
+if (btnCreateTeamsEl) {
+    btnCreateTeamsEl.addEventListener('click', () => {
+        const modalTeams = document.getElementById('modal-teams');
+        if (modalTeams) modalTeams.classList.add('active');
+        syncHostTeams();
+    });
 
-btnCreateTeams.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    modalTeams.classList.add('active');
-    syncHostTeams();
-}, { passive: false });
+    btnCreateTeamsEl.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const modalTeams = document.getElementById('modal-teams');
+        if (modalTeams) modalTeams.classList.add('active');
+        syncHostTeams();
+    }, { passive: false });
+}
 
 // Team Sync for Host
 function syncHostTeams() {
@@ -592,6 +597,8 @@ function updateScores() {
 
 window.updatePlayerInterface = (roomData) => {
     if (!roomData) return;
+
+    if (roomData.mode) state.gameMode = roomData.mode;
 
     // UI Elements
     const waitingMsg = document.getElementById('waiting-msg');
@@ -939,17 +946,25 @@ function startVoiceRecognition() {
 
         if (isRecognizing) return true;
 
-        // Safari requires a fresh cycle if it was just stop()ed
-        setTimeout(() => {
-            try {
-                if (!isRecognizing) {
-                    recognition.start();
-                    logDebug("🎤 Mic Start Triggered");
-                }
-            } catch (e) {
-                // If already started or aborting, ignore to prevent freeze
+        // Safari requires a fresh cycle if it was just stop()ed,
+        // but it ALSO requires synchronous start on first launch!
+        try {
+            if (!isRecognizing) {
+                recognition.start();
+                logDebug("🎤 Mic Start Triggered (Sync)");
             }
-        }, 100);
+        } catch (syncErr) {
+            setTimeout(() => {
+                try {
+                    if (!isRecognizing) {
+                        recognition.start();
+                        logDebug("🎤 Mic Start Triggered (Async fallback)");
+                    }
+                } catch (e) {
+                    // Ignore
+                }
+            }, 100);
+        }
         return true;
     } catch (e) {
         logDebug("🎤 Recognition Start Error: " + e.message);
