@@ -89,13 +89,7 @@ audioPlayer.addEventListener('play', () => {
 audioPlayer.addEventListener('playing', () => {
     audioPlayer.playbackRate = state.mysteryRate;
 });
-let audioContext = null;
 
-function initAudio() {
-    if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    }
-}
 
 async function fetchPreview(artist, title, theme, brand) {
     let controller = null;
@@ -193,7 +187,7 @@ async function nextSong() {
     if (autoNextInterval) { clearInterval(autoNextInterval); autoNextInterval = null; }
 
     initAudio();
-    if (audioContext) audioContext.resume();
+    if (window.audioContext) window.audioContext.resume();
 
     try {
         state.isPlaying = false;
@@ -1283,17 +1277,17 @@ function stopGame() {
 }
 
 function playTone(freq, type, duration, volume = 0.1) {
-    if (!audioContext) initAudio();
-    const osc = audioContext.createOscillator();
-    const gain = audioContext.createGain();
+    if (!window.audioContext) initAudio();
+    const osc = window.audioContext.createOscillator();
+    const gain = window.audioContext.createGain();
     osc.type = type;
     osc.frequency.value = freq;
-    gain.gain.setValueAtTime(volume, audioContext.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+    gain.gain.setValueAtTime(volume, window.audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, window.audioContext.currentTime + duration);
     osc.connect(gain);
-    gain.connect(audioContext.destination);
+    gain.connect(window.audioContext.destination);
     osc.start();
-    osc.stop(audioContext.currentTime + duration);
+    osc.stop(window.audioContext.currentTime + duration);
 }
 
 async function launchWheelOfFate(modifier) {
