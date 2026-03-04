@@ -398,12 +398,16 @@ async function nextSong() {
             state.playedSongs.push(state.currentSong.title);
 
             // Gérer les 4 propositions proprement
-            if (state.currentSong.hints && state.currentSong.hints.length === 4) {
-                // Keep predefined hints and shuffle
-                state.currentSong.hints = [...state.currentSong.hints].sort(() => Math.random() - 0.5);
+            const getDisplayTarget = (s) => s.brand || (s.artist === "Générique" || s.artist === "Soundtrack" ? s.title : s.artist);
+            let correctChoice = getDisplayTarget(state.currentSong);
+
+            if (state.currentSong.hints && state.currentSong.hints.length > 0) {
+                let pool = [...state.currentSong.hints];
+                if (!pool.includes(correctChoice)) {
+                    pool = [correctChoice, ...pool.slice(0, 3)];
+                }
+                state.currentSong.hints = pool.sort(() => Math.random() - 0.5);
             } else {
-                const getDisplayTarget = (s) => s.brand || (s.artist === "Générique" || s.artist === "Soundtrack" ? s.title : s.artist);
-                let correctChoice = getDisplayTarget(state.currentSong);
                 let pool = Array.from(new Set(themeSongs.map(s => getDisplayTarget(s))));
                 pool = pool.filter(c => c !== correctChoice);
                 pool.sort(() => Math.random() - 0.5);
@@ -881,15 +885,8 @@ function selectArtist(name) {
         lastBuzzedTeam = 0; // Forced for solo/arcade feedback rewards
         btnCorrect.click();
     } else {
-        const penalty = state.currentModifier === 'bomb' ? 3 : 1;
-        playTone(110, 'sawtooth', 0.3);
-        displayFeedback(`MAUVAISE RÉPONSE ! -${penalty} PTS ❌`, "feedback-dommage");
-        applyWrongPenalty(0); // Penalty for solo error
-        setTimeout(() => {
-            if (bravoContainer.innerText.includes("MAUVAISE")) {
-                bravoContainer.innerHTML = '';
-            }
-        }, 1500);
+        lastBuzzedTeam = 0;
+        btnWrong.click();
     }
 }
 
@@ -1041,14 +1038,14 @@ btnWrong.addEventListener('click', () => {
                 answer: null,
                 vocalAnswer: null,
                 buzz: null,
-                showHintsToPlayer: state.timer <= 10
+                showHintsToPlayer: state.gameMode === 'buttons' || state.timer <= 10
             });
         }
         lastBuzzedTeam = null;
         bravoContainer.innerHTML = ''; // Effacer le message de feedback
 
         // SOLO: Hide hints if they were shown as fallback and timer > 10
-        if (state.soloMode && hintsEl && state.timer > 10) {
+        if (state.soloMode && hintsEl && state.timer > 10 && state.gameMode !== 'buttons') {
             hintsEl.classList.add('hidden');
         }
 
@@ -1057,7 +1054,7 @@ btnWrong.addEventListener('click', () => {
 
             // Restore host UI elements hidden during buzz
             countdownEl.classList.remove('hidden');
-            if (state.timer <= 10) {
+            if (state.timer <= 10 || state.gameMode === 'buttons') {
                 showHints(); // This will unhide hintsEl or update Firebase for players
             }
 
