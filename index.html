@@ -8,6 +8,8 @@
     <meta name="color-scheme" content="dark">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Quizzy">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <style>
         .loader-overlay {
             position: fixed;
@@ -63,7 +65,7 @@
                             amis rejoignent avec leur téléphone comme buzzer.</p>
                         <div class="mode-btns" style="display: flex; gap: 10px; position: relative;">
                             <button class="mode-btn active" data-mode="oral"
-                                style="flex:1; padding: 10px; font-size: 0.8rem; border-radius: 15px;">🎤 VOX</button>
+                                style="flex:1; padding: 10px; font-size: 0.8rem; border-radius: 15px;">🎤 VOIX</button>
                             <button class="mode-btn" data-mode="buttons"
                                 style="flex:1; padding: 10px; font-size: 0.8rem; border-radius: 15px;">🕹️
                                 ARCADE</button>
@@ -71,6 +73,9 @@
                         <button id="btn-role-host" class="main-btn primary"
                             style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 20px; border: none; font-weight: 800; cursor: pointer;">CRÉER
                             UN SALON</button>
+                        <button id="btn-create-teams" class="main-btn secondary"
+                            style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 20px; border: 2px solid var(--secondary); background: transparent; color: white; font-weight: 800; cursor: pointer; margin-top: -5px;">CRÉER
+                            LES ÉQUIPES</button>
                     </div>
 
                     <!-- REJOINDRE -->
@@ -101,7 +106,7 @@
                             autres joueurs.</p>
                         <div class="solo-mode-selector" style="display: flex; gap: 10px; position: relative;">
                             <button class="solo-mode-btn active" data-solo-mode="oral"
-                                style="flex:1; padding: 10px; font-size: 0.8rem; border-radius: 15px;">🎤 VOX</button>
+                                style="flex:1; padding: 10px; font-size: 0.8rem; border-radius: 15px;">🎤 VOIX</button>
                             <button class="solo-mode-btn" data-solo-mode="buttons"
                                 style="flex:1; padding: 10px; font-size: 0.8rem; border-radius: 15px;">🕹️
                                 ARCADE</button>
