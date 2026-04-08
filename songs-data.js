@@ -1,4 +1,4 @@
-/**
+f/**
  * DATABASE DES TITRES - STITCH 2026
  */
 const SONG_DATABASE = {
@@ -35,7 +35,6 @@ const SONG_DATABASE = {
         { "artist": "Mylène Farmer", "title": "Désenchantée", "hints": [] },
         { "artist": "Céline Dion", "title": "Pour que tu m’aimes encore", "hints": [] },
         { "artist": "Céline Dion & Jean-Jacques Goldman", "title": "J’irai où tu iras", "hints": [] },
-        { "artist": "Fredericks Goldman Jones", "title": "À nos actes manqués", "hints": [] },
         { "artist": "Fredericks Goldman Jones", "title": "Né en 17 à Leidenstadt", "hints": [] },
         { "artist": "MC Solaar", "title": "Caroline", "hints": [] },
         { "artist": "MC Solaar", "title": "Bouge de là", "hints": [] },
@@ -75,8 +74,8 @@ const SONG_DATABASE = {
         { artist: 'Dadju', title: 'Bob Marley', hints: ["Gims", "Tayc", "Franglish", "Ninho"] },
         { artist: 'Zola', title: 'Amber', hints: ["Gazo", "Koba LaD", "Maes", "Ninho"] },
         { artist: 'Aya Nakamura', title: 'Baddies', hints: ["Gazo", "Tiakola", "Hamza", "SDM"] },
-        { artist: 'Aya Nakamura', title: 'Djadja', hints: ["Aya Nakamura", "Ronisia", "Wejdene", "Tayc"] },
-        { artist: 'Aya Nakamura', title: 'Pookie', hints: ["Aya Nakamura", "Ronisia", "Imen Es", "Dadju"] },
+        { artist: 'Aya Nakamura', title: 'Djadja', hints: ["Ronisia", "Wejdene", "Tayc", "Tiakola"] },
+        { artist: 'Aya Nakamura', title: 'Pookie', hints: ["Ronisia", "Imen Es", "Dadju", "Gazo"] },
         { artist: 'Jul', title: 'Madame', hints: ["Jul", "SCH", "Naps", "Alonzo"] },
         { artist: 'Jul', title: 'Tchikita', hints: ["Naps", "Alonzo", "Soso Maness", "Jul"] },
         { artist: 'Orelsan', title: 'La Quête', hints: ["Vald", "Lomepal", "Nekfeu", "Damso"] },
