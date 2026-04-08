@@ -150,8 +150,8 @@ async function fetchPreview(artist, title, theme, brand) {
                 if (isNonArtistTheme || artistMatches(r.artistName, artist)) {
                     if (r.previewUrl) {
                         matched = r;
-                        break;
-                    }
+                        break;f
+589                    }
                 }
             }
 
@@ -588,8 +588,10 @@ function startTimer() {
 
 function handleRemoteBuzz(teamIdx) {
     // Allow buzz if playing OR if we are on the game screen waiting for the "Play" click
-    const isWaitingForPlay = (btnNext.innerText === "LANCER LE SON" && !btnNext.classList.contains('hidden'));
-    if (!state.isPlaying && !isWaitingForPlay) return;
+        const isWaitingForPlay = (btnNext.innerText === "LANCER LE SON" && !btnNext.classList.contains('hidden'));
+        // Fix: also allow buzz if answer has arrived (state.isPlaying may already be false)
+        const answerJustArrived = (lastBuzzedTeam === null && revealCard.classList.contains('hidden'));
+            if (!state.isPlaying && !isWaitingForPlay && !answerJustArrived) return;
 
     // Local buzz handling logic
     audioPlayer.pause();
@@ -683,6 +685,13 @@ function handleRemoteAnswer(answerData) {
 
     if (lastBuzzedTeam === null) {
         handleRemoteBuzz(answerData.teamIdx);
+                // Fix: if handleRemoteBuzz returned early (music already paused), force-set lastBuzzedTeam
+                if (lastBuzzedTeam === null) {
+                                lastBuzzedTeam = answerData.teamIdx;
+                                audioPlayer.pause();
+                                state.isPlaying = false;
+                                clearInterval(state.interval);
+                }
     } else if (lastBuzzedTeam !== answerData.teamIdx) {
         // Ignorer les clics des autres équipes pendant que quelqu'un a la main
         return;
