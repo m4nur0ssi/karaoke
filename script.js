@@ -48,7 +48,7 @@ const state = {
     isPlaying: false,
     currentSong: null,
     round: 0,
-    maxRounds: 15,
+        maxRounds: 20,
     playedSongs: [],
     failedSongs: [],
     streakTeam: null,
