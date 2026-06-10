@@ -88,6 +88,8 @@ if (btnSoloMode) {
         state.teams[0].score = 0;
         for (let i = 1; i < 4; i++) state.teams[i].score = 0;
         state.round = 0;
+        state.soloCorrect = 0;
+        state.soloErrors = 0;
         state.playedSongs = [];
         state.failedSongs = [];
         state.jokers = [true, true, true, true];
@@ -686,6 +688,7 @@ window.updatePlayerInterface = (roomData) => {
 
     if (roomData.status === 'playing' || roomData.status === 'loading') {
         const isPlaying = roomData.status === 'playing';
+        stopVoiceRecognition();
 
         // Only update text if not showing unlock button
         if (!document.getElementById('btn-unlock-audio')) {
@@ -744,9 +747,11 @@ window.updatePlayerInterface = (roomData) => {
             waitingMsg.innerText = roomData.status === 'feedback' ? (roomData.feedbackMsg || "VÉRIFICATION...") : (roomData.buzzerName || "Quelqu'un") + " a buzzé !";
             waitingMsg.classList.add('status-buzzed');
             playerChoices.classList.add('hidden');
+            stopVoiceRecognition();
         }
 
     } else if (roomData.status === 'finished_song') {
+        stopVoiceRecognition();
         if (window.playerAudio && window.playerAudio.src && !window.playerAudio.src.includes("data:audio")) {
             window.playerAudio.src = SILENCE_SRC;
             window.playerAudio.loop = true;
@@ -784,6 +789,7 @@ window.updatePlayerInterface = (roomData) => {
         playerChoices.classList.add('hidden');
 
     } else if (roomData.status === 'finished') {
+        stopVoiceRecognition();
         waitingMsg.innerHTML = "<div class='player-result-title'>PARTIE TERMINÉE !</div>";
         if (roomData.scores) {
             let podiumHtm = "<div class='player-scores-list' style='margin-top:20pxScale;'>";
@@ -972,6 +978,18 @@ function startVoiceRecognition() {
         return false;
     }
 }
+function stopVoiceRecognition() {
+    if (recognition && isRecognizing) {
+        try {
+            recognition.stop();
+            isRecognizing = false;
+            logDebug("🎤 Micro STOPPED (Forced)");
+        } catch (e) {
+            logDebug("🎤 Mic Stop Error: " + e.message);
+        }
+    }
+}
+window.stopVoiceRecognition = stopVoiceRecognition;
 window.startVoiceRecognition = startVoiceRecognition;
 
 function syncRemoteAudio(url, rate, serverTime) {

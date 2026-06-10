@@ -14,6 +14,15 @@ const checkFirebase = () => {
 
 logDebug('Script loaded v2026_v55.0');
 
+// ✅ Retire le loader overlay dès que la page est prête
+window.addEventListener('load', () => {
+    const overlay = document.querySelector('.loader-overlay');
+    if (overlay) {
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.remove(); }, 500);
+    }
+});
+
 // Tentative de synchronisation immédiate
 setTimeout(() => {
     if (window.syncSongs) window.syncSongs();
@@ -48,7 +57,7 @@ const state = {
     isPlaying: false,
     currentSong: null,
     round: 0,
-        maxRounds: 20,
+    maxRounds: 20,
     playedSongs: [],
     failedSongs: [],
     streakTeam: null,
@@ -61,6 +70,7 @@ const state = {
     activeJoker: null,
     soloMode: false,
     soloCorrect: 0, // Nombre de chansons trouvées correctement (indépendant des bonus de points)
+    soloErrors: 0,
 
     // Multiplayer State
     role: null,

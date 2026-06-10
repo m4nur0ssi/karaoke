@@ -150,8 +150,8 @@ async function fetchPreview(artist, title, theme, brand) {
                 if (isNonArtistTheme || artistMatches(r.artistName, artist)) {
                     if (r.previewUrl) {
                         matched = r;
-                        break;f
-589                    }
+                        break;
+                    }
                 }
             }
 
@@ -159,37 +159,68 @@ async function fetchPreview(artist, title, theme, brand) {
                 let coverUrl = matched.artworkUrl100.replace('100x100bb', '1000x1000bb');
                 let audioUrl = matched.previewUrl;
 
-                // Override cover for Series / Movies / Cartoons
+                // Override cover for Series / Movies / Cartoons, but only when the
+                // returned artwork clearly matches the requested brand.
                 if (['series', 'clubdorothee', 'disney', 'cartoons', 'movies'].includes(theme) && brand) {
                     try {
-                        let searchBrand = brand;
-                        if (theme === 'disney') searchBrand += " Disney Pixar Animation";
+                        const normalizeCoverName = (value) => value.toLowerCase()
+                            .normalize('NFD')
+                            .replace(/[\u0300-\u036f]/g, '')
+                            .replace(/[^a-z0-9]/g, '');
+                        const disneyAliases = {
+                            'La Reine des Neiges': ['Frozen'],
+                            'La Reine des Neiges 2': ['Frozen II', 'Frozen 2'],
+                            'Vaiana': ['Moana'],
+                            'Vaiana 2': ['Moana 2'],
+                            'La Belle au bois dormant': ['Sleeping Beauty'],
+                            'Alice au pays des merveilles': ['Alice in Wonderland'],
+                            'Rox et Rouky': ['The Fox and the Hound'],
+                            'Oliver et Compagnie': ['Oliver and Company'],
+                            'Rebelle': ['Brave'],
+                            'Les 101 Dalmatiens': ['101 Dalmatians'],
+                            'La Planète au Trésor': ['Treasure Planet'],
+                            'Atlantide, l\'empire perdu': ['Atlantis The Lost Empire'],
+                            'Le Monde de Nemo': ['Finding Nemo'],
+                            'Le Bossu de Notre-Dame': ['The Hunchback of Notre Dame'],
+                            'La Princesse et la Grenouille': ['The Princess and the Frog']
+                        };
+                        const acceptedNames = [brand, ...(theme === 'disney' ? (disneyAliases[brand] || []) : [])]
+                            .map(normalizeCoverName);
+                        const matchesBrand = (item) => {
+                            const itemNames = [item.trackName, item.collectionName]
+                                .filter(Boolean)
+                                .map(normalizeCoverName);
+                            return acceptedNames.some(name => name && itemNames.some(itemName =>
+                                itemName === name ||
+                                itemName.startsWith(name) ||
+                                itemName.includes(name + 'disney') ||
+                                itemName.includes(name + 'pixar')
+                            ));
+                        };
+                        const searchTerms = theme === 'disney'
+                            ? [`${brand} Disney`, `${brand} Pixar`, brand, ...(disneyAliases[brand] || [])]
+                            : [brand];
 
                         const secController = window.AbortController ? new AbortController() : null;
                         const secTimeout = secController ? setTimeout(() => secController.abort(), 3000) : null;
 
-                        let tvResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(searchBrand)}&entity=tvSeason&limit=1&country=FR`, {
-                            signal: secController ? secController.signal : undefined
-                        });
-                        if (secTimeout) clearTimeout(secTimeout);
-
-                        let tvData = await tvResponse.json();
-                        if (tvData.results && tvData.results.length > 0) {
-                            coverUrl = tvData.results[0].artworkUrl100.replace('100x100bb', '1000x1000bb');
-                        } else {
-                            const movieController = window.AbortController ? new AbortController() : null;
-                            const movieTimeout = movieController ? setTimeout(() => movieController.abort(), 3000) : null;
-
-                            let movResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(searchBrand)}&entity=movie&limit=1&country=FR`, {
-                                signal: movieController ? movieController.signal : undefined
-                            });
-                            if (movieTimeout) clearTimeout(movieTimeout);
-
-                            let movData = await movResponse.json();
-                            if (movData.results && movData.results.length > 0) {
-                                coverUrl = movData.results[0].artworkUrl100.replace('100x100bb', '1000x1000bb');
+                        for (const searchBrand of searchTerms) {
+                            let foundCover = false;
+                            for (const entity of ['movie', 'tvSeason']) {
+                                let coverResponse = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(searchBrand)}&entity=${entity}&limit=3&country=FR`, {
+                                    signal: secController ? secController.signal : undefined
+                                });
+                                let coverData = await coverResponse.json();
+                                const coverMatch = coverData.results && coverData.results.find(matchesBrand);
+                                if (coverMatch) {
+                                    coverUrl = coverMatch.artworkUrl100.replace('100x100bb', '1000x1000bb');
+                                    foundCover = true;
+                                    break;
+                                }
                             }
+                            if (foundCover) break;
                         }
+                        if (secTimeout) clearTimeout(secTimeout);
                     } catch (e) { }
                 }
 
@@ -588,10 +619,10 @@ function startTimer() {
 
 function handleRemoteBuzz(teamIdx) {
     // Allow buzz if playing OR if we are on the game screen waiting for the "Play" click
-        const isWaitingForPlay = (btnNext.innerText === "LANCER LE SON" && !btnNext.classList.contains('hidden'));
-        // Fix: also allow buzz if answer has arrived (state.isPlaying may already be false)
-        const answerJustArrived = (lastBuzzedTeam === null && revealCard.classList.contains('hidden'));
-            if (!state.isPlaying && !isWaitingForPlay && !answerJustArrived) return;
+    const isWaitingForPlay = (btnNext.innerText === "LANCER LE SON" && !btnNext.classList.contains('hidden'));
+    // Fix: also allow buzz if answer has arrived (state.isPlaying may already be false for buzz events arriving late)
+    const answerJustArrived = (lastBuzzedTeam === null && revealCard.classList.contains('hidden'));
+    if (!state.isPlaying && !isWaitingForPlay && !answerJustArrived) return;
 
     // Local buzz handling logic
     audioPlayer.pause();
@@ -641,7 +672,11 @@ function handleRemoteBuzz(teamIdx) {
 
 function isCorrectAnswer(choice, song) {
     if (!choice || !song) return false;
-    const clean = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    const clean = (s) => s.toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\b(?:you too|you two|u two)\b/g, 'u2')
+        .replace(/[^a-z0-9]/g, '');
     const c = clean(choice);
 
     // v43: Strict check for Disney theme (brand only = cartoon name)
@@ -685,13 +720,13 @@ function handleRemoteAnswer(answerData) {
 
     if (lastBuzzedTeam === null) {
         handleRemoteBuzz(answerData.teamIdx);
-                // Fix: if handleRemoteBuzz returned early (music already paused), force-set lastBuzzedTeam
-                if (lastBuzzedTeam === null) {
-                                lastBuzzedTeam = answerData.teamIdx;
-                                audioPlayer.pause();
-                                state.isPlaying = false;
-                                clearInterval(state.interval);
-                }
+        // Fix: if handleRemoteBuzz returned early (music already paused), force-set lastBuzzedTeam
+        if (lastBuzzedTeam === null) {
+            lastBuzzedTeam = answerData.teamIdx;
+            audioPlayer.pause();
+            state.isPlaying = false;
+            clearInterval(state.interval);
+        }
     } else if (lastBuzzedTeam !== answerData.teamIdx) {
         // Ignorer les clics des autres équipes pendant que quelqu'un a la main
         return;
@@ -765,6 +800,8 @@ function applyWrongPenalty(teamIdx) {
 
 function handleRemoteVocal(data) {
     if (state.role !== 'host') return;
+    // Guard: ignore vocal data if already revealed/finished
+    if (!state.isPlaying && lastBuzzedTeam === null && !revealCard.classList.contains('hidden')) return;
 
     const vocalDisplay = document.getElementById('vocal-answer-display');
     if (vocalDisplay) {
@@ -797,7 +834,7 @@ function handleRemoteVocal(data) {
 
     targets = targets.map(t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
 
-    let isCorrect = false;
+    let isCorrect = isCorrectAnswer(data.text, state.currentSong);
 
     const normalizePhonetic = (str) => {
         return str.replace(/ph/g, "f")
@@ -813,9 +850,10 @@ function handleRemoteVocal(data) {
     };
 
     for (let target of targets) {
+        if (isCorrect) break;
         let cleanTarget = target.replace(/[^a-z0-9]/g, "");
         let cleanTranscript = transcript.replace(/[^a-z0-9]/g, "");
-        if (cleanTarget.length < 3) continue;
+        if (cleanTarget.length < 3 && cleanTranscript !== cleanTarget) continue;
 
         if (cleanTranscript.includes(cleanTarget)) {
             isCorrect = true;
@@ -984,6 +1022,8 @@ function victory(keepPlaying = false) {
 }
 
 btnCorrect.addEventListener('click', () => {
+    if (lastBuzzedTeam === null && !revealCard.classList.contains('hidden')) return; // Guard against redundant calls
+
     if (lastBuzzedTeam !== null) {
         if (state.streakTeam === lastBuzzedTeam) {
             state.streakCount++;
@@ -1061,6 +1101,14 @@ btnCorrect.addEventListener('click', () => {
 });
 
 btnWrong.addEventListener('click', () => {
+    if (lastBuzzedTeam === null && !revealCard.classList.contains('hidden')) return; // Guard against redundant calls
+
+    const soloOralMode = state.soloMode && (state.gameMode === 'oral' || !state.gameMode);
+    if (soloOralFallbackTimeout) {
+        clearTimeout(soloOralFallbackTimeout);
+        soloOralFallbackTimeout = null;
+    }
+
     const teamIdx = lastBuzzedTeam;
     let penalty = 1;
     if (state.currentModifier === 'bomb') penalty = 3;
@@ -1068,12 +1116,14 @@ btnWrong.addEventListener('click', () => {
     if (teamIdx !== null) {
         applyWrongPenalty(teamIdx);
     }
+    if (state.soloMode) state.soloErrors++;
 
     displayFeedback(`MAUVAISE RÉPONSE ! -${penalty} PTS ❌`, "feedback-dommage");
     playTone(220, 'sawtooth', 0.2);
 
     validationControls.classList.add('hidden');
     revealCard.classList.add('hidden');
+    if (soloOralMode && hintsEl) hintsEl.classList.add('hidden');
     const vocalDisplay = document.getElementById('vocal-answer-display');
     if (vocalDisplay) vocalDisplay.classList.add('hidden');
 
@@ -1096,8 +1146,8 @@ btnWrong.addEventListener('click', () => {
         lastBuzzedTeam = null;
         bravoContainer.innerHTML = ''; // Effacer le message de feedback
 
-        // SOLO: Hide hints if they were shown as fallback and timer > 10
-        if (state.soloMode && hintsEl && state.timer > 10 && state.gameMode !== 'buttons') {
+        // SOLO oral: always return to the BUZZ state after a wrong vocal answer.
+        if (soloOralMode && hintsEl) {
             hintsEl.classList.add('hidden');
         }
 
@@ -1106,12 +1156,12 @@ btnWrong.addEventListener('click', () => {
 
             // Restore host UI elements hidden during buzz
             countdownEl.classList.remove('hidden');
-            if (state.timer <= 10 || state.gameMode === 'buttons') {
+            if (!soloOralMode && (state.timer <= 10 || state.gameMode === 'buttons')) {
                 showHints(); // This will unhide hintsEl or update Firebase for players
             }
 
             // Re-show solo buzz if it was hidden
-            if (state.soloMode && (state.gameMode === 'oral' || !state.gameMode)) {
+            if (soloOralMode) {
                 const soloBuzz = document.getElementById('solo-buzz-container');
                 if (soloBuzz) soloBuzz.classList.remove('hidden');
             }
@@ -1516,7 +1566,13 @@ function showResults() {
         // ---- SOLO MODE RECAP ----
         const sessionCount = state.round; // Use round count for this specific session
         const correct = state.soloCorrect;
+        const errors = state.soloErrors || 0;
+        const finalScore = state.teams[0] ? state.teams[0].score : 0;
         const percent = sessionCount > 0 ? Math.min(100, Math.round((correct / sessionCount) * 100)) : 0;
+        const appreciation = percent >= 85 ? 'EXCELLENT'
+            : percent >= 60 ? 'BIEN JOUE'
+                : percent >= 30 ? 'PAS MAL'
+                    : 'A REJOUER';
 
 
         let trophySVG = '<svg viewBox="0 0 576 512" style="width:120px;height:120px;fill:gold;filter:drop-shadow(0 0 20px rgba(255,215,0,0.6));"><path d="M400 0H176c-26.5 0-48 21.5-48 48v48H48c-26.5 0-48 21.5-48 48v80c0 53 43 96 96 96h27.1c11.1 43.1 41.2 78.4 80.9 92.6V448h-16c-17.7 0-32 14.3-32 32s14.3 32 32 32h144c17.7 0 32-14.3 32-32s-14.3-32-32-32h-16v-35.4c39.7-14.2 69.8-49.5 80.9-92.6H480c53 0 96-43 96-96v-80c0-26.5-21.5-48-48-48h-80V48c0-26.5-21.5-48-48-48zM96 224c-17.7 0-32-14.3-32-32v-48h64v113.1c-18.7-8.8-32-28-32-53.1zm384-32c0 17.7-14.3 32-32 32-18.7 25-32 44.3-32 53.1V144h64v48z"/></svg>';
@@ -1543,9 +1599,11 @@ function showResults() {
         winnerNameEl.parentNode.insertBefore(aEl, winnerNameEl);
 
         var msgCorrect = correct > 1 ? correct + ' bonnes réponses' : correct + ' bonne réponse';
+        var msgErrors = errors > 1 ? errors + ' erreurs' : errors + ' erreur';
         var msgTotal = sessionCount > 1 ? sessionCount + ' chansons' : sessionCount + ' chanson';
         winnerMsgEl.innerHTML = '<div style="font-size:1.8rem;font-weight:700;color:white;text-align:center;">' + msgCorrect + ' sur ' + msgTotal + '</div>'
-            + '<div style="font-size:1.4rem;color:var(--secondary);font-weight:800;margin-top:10px;text-align:center;text-shadow:0 0 10px rgba(0,242,254,0.3);">SCORE FINAL : ' + percent + '%</div>';
+            + '<div style="font-size:1.4rem;color:var(--secondary);font-weight:800;margin-top:10px;text-align:center;text-shadow:0 0 10px rgba(0,242,254,0.3);">SCORE FINAL : ' + finalScore + ' PTS (' + percent + '%)</div>'
+            + '<div style="font-size:1.1rem;color:rgba(255,255,255,0.82);font-weight:700;margin-top:8px;text-align:center;">' + msgErrors + '</div>';
 
         // Progress bar
         const progressItem = document.createElement('div');
@@ -1617,6 +1675,7 @@ function restartGame() {
     state.teams.forEach(t => t.score = 0);
     state.round = 0;
     state.soloCorrect = 0;     // Reset compteur de bonnes reponses
+    state.soloErrors = 0;
     state.failedSongs = [];    // Reset les chansons qui ont echoue
     // NE PAS reset playedSongs : on garde la liste des chansons dejà jouees
     // pour avoir des chansons differentes a chaque session sur la meme playlist.
